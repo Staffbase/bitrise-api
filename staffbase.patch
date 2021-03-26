@@ -15,7 +15,7 @@
                      "type": "string"
 +                },
 +                "organization_slug": {
-+                    "description": "Property added by SouthPark as this is missing within open-api spec. This can be removed/ should be here on (re-)download when bitrise has fixed it",
++                    "description": "Property added by Staffbase as this is missing within open-api spec. This can be removed/ should be here on (re-)download when bitrise has fixed it",
 +                    "type": "string"
                  }
              }
