@@ -13,7 +13,7 @@ build: ## Build the API Go client.
 	go build ./go/...
 
 deps: ## Download dependencies.
-	GO111MODULE=off go get -u github.com/myitcv/gobin && go mod download
+	go install github.com/myitcv/gobin@v0.0.14 && go mod download
 
 download: ## Download bitrise swagger specification
 	wget -q -O $(SWAGGER_SPEC) https://api-docs.bitrise.io/docs/swagger.json
@@ -23,9 +23,6 @@ patch: ## Apply swagger.json patches
 
 generate: validate ## Generate the API Go client and the JSON document for the UI.
 	go generate
-
-test: ## Test the go code.
-	gobin -m -run github.com/kyoh86/richgo test -v $(CHECK_FILES)
 
 validate: deps ## Check that the swagger spec is valid.
 	gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger@v0.26.1 validate $(PATCHED_SWAGGER_SPEC)
