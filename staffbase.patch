@@ -1,0 +1,22 @@
+--- swagger.json	2021-03-01 12:52:57.000000000 +0100
++++ swagger_patched.json	2021-03-01 14:19:36.202586579 +0100
+@@ -1683,7 +1683,7 @@
+                     }
+                 ],
+                 "responses": {
+-                    "200": {
++                    "201": {
+                         "description": "OK",
+                         "schema": {
+                             "$ref": "#/definitions/v0.BuildTriggerRespModel"
+@@ -5233,6 +5233,10 @@
+                 "type": {
+                     "description": "It has to be provided by legacy reasons and has to have the `git` value",
+                     "type": "string"
++                },
++                "organization_slug": {
++                    "description": "Property added by SouthPark as this is missing within open-api spec. This can be removed/ should be here on (re-)download when bitrise has fixed it",
++                    "type": "string"
+                 }
+             }
+         },
