@@ -15,16 +15,11 @@ jobs:
     steps:
       - name: "CLA Assistant"
         if: (github.event.comment.body == 'recheckcla' || github.event.comment.body == 'I have read the CLA Document and I hereby sign the CLA') || github.event_name == 'pull_request'
-        # Alpha Release
         uses: cla-assistant/github-action@v2.1.1-beta
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           path-to-signatures: 'signatures/version1/cla.json'
           path-to-document: 'https://github.com/Staffbase/template-oss-repository/blob/master/CLA.md'
-          # branch should not be protected
           branch: 'signatures'
-          # no whitelist currently
-          whitelist: cstaud,staust
-          empty-commit-flag: false
-          blockchain-storage-flag: false
+          allowlist: cstaud,staust
