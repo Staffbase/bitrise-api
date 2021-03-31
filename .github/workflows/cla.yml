@@ -18,7 +18,7 @@ jobs:
         uses: cla-assistant/github-action@v2.1.1-beta
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          PERSONAL_ACCESS_TOKEN: ${{ secrets.BITRISE_API_CONTRIBUTOR_LICENSE_AGREEMENT }}
         with:
           path-to-signatures: 'signatures/version1/cla.json'
           path-to-document: 'https://github.com/Staffbase/template-oss-repository/blob/master/CLA.md'
