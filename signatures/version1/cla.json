@@ -1,3 +1,12 @@
 {
-  "signedContributors": []
+  "signedContributors": [
+    {
+      "name": "staust",
+      "id": 28901187,
+      "comment_id": 811016224,
+      "created_at": "2021-03-31T12:04:30Z",
+      "repoId": 351721061,
+      "pullRequestNo": 1
+    }
+  ]
 }
