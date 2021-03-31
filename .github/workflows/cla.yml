@@ -19,4 +19,4 @@ jobs:
           path-to-signatures: 'signatures/version1/cla.json'
           path-to-document: 'https://github.com/Staffbase/template-oss-repository/blob/master/CLA.md'
           branch: 'signatures'
-#          allowlist: cstaud,staust
+          allowlist: cstaud,staust
