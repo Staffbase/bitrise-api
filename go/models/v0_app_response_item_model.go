@@ -34,16 +34,16 @@ type V0AppResponseItemModel struct {
 	ProjectType string `json:"project_type,omitempty"`
 
 	// provider
-	Provider *NullsString `json:"provider,omitempty"`
+	Provider string `json:"provider,omitempty"`
 
 	// repo owner
-	RepoOwner *NullsString `json:"repo_owner,omitempty"`
+	RepoOwner string `json:"repo_owner,omitempty"`
 
 	// repo slug
-	RepoSlug *NullsString `json:"repo_slug,omitempty"`
+	RepoSlug string `json:"repo_slug,omitempty"`
 
 	// repo url
-	RepoURL *NullsString `json:"repo_url,omitempty"`
+	RepoURL string `json:"repo_url,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -64,22 +64,6 @@ func (m *V0AppResponseItemModel) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOwner(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateProvider(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRepoOwner(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRepoSlug(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRepoURL(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -123,74 +107,6 @@ func (m *V0AppResponseItemModel) validateOwner(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *V0AppResponseItemModel) validateProvider(formats strfmt.Registry) error {
-	if swag.IsZero(m.Provider) { // not required
-		return nil
-	}
-
-	if m.Provider != nil {
-		if err := m.Provider.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("provider")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) validateRepoOwner(formats strfmt.Registry) error {
-	if swag.IsZero(m.RepoOwner) { // not required
-		return nil
-	}
-
-	if m.RepoOwner != nil {
-		if err := m.RepoOwner.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repo_owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) validateRepoSlug(formats strfmt.Registry) error {
-	if swag.IsZero(m.RepoSlug) { // not required
-		return nil
-	}
-
-	if m.RepoSlug != nil {
-		if err := m.RepoSlug.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repo_slug")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) validateRepoURL(formats strfmt.Registry) error {
-	if swag.IsZero(m.RepoURL) { // not required
-		return nil
-	}
-
-	if m.RepoURL != nil {
-		if err := m.RepoURL.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repo_url")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 // ContextValidate validate this v0 app response item model based on the context it is used
 func (m *V0AppResponseItemModel) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -200,22 +116,6 @@ func (m *V0AppResponseItemModel) ContextValidate(ctx context.Context, formats st
 	}
 
 	if err := m.contextValidateOwner(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateProvider(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateRepoOwner(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateRepoSlug(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateRepoURL(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -245,62 +145,6 @@ func (m *V0AppResponseItemModel) contextValidateOwner(ctx context.Context, forma
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) contextValidateProvider(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Provider != nil {
-		if err := m.Provider.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("provider")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) contextValidateRepoOwner(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.RepoOwner != nil {
-		if err := m.RepoOwner.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repo_owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) contextValidateRepoSlug(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.RepoSlug != nil {
-		if err := m.RepoSlug.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repo_slug")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) contextValidateRepoURL(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.RepoURL != nil {
-		if err := m.RepoURL.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("repo_url")
 			}
 			return err
 		}
