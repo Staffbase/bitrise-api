@@ -1,5 +1,5 @@
 --- swagger.json	2021-03-10 14:13:25.000000000 +0100
-+++ swagger_patched.json	2021-04-07 13:26:14.079098374 +0200
++++ swagger_patched.json	2021-04-07 13:43:49.367245214 +0200
 @@ -1683,7 +1683,7 @@
                      }
                  ],
@@ -9,7 +9,7 @@
                          "description": "OK",
                          "schema": {
                              "$ref": "#/definitions/v0.BuildTriggerRespModel"
-@@ -5175,7 +5175,7 @@
+@@ -5175,19 +5175,19 @@
                      "$ref": "#/definitions/v0.OwnerAccountResponseModel"
                  },
                  "project_type": {
@@ -17,7 +17,23 @@
 +                    "type": "string"
                  },
                  "provider": {
-                     "$ref": "#/definitions/nulls.String"
+-                    "$ref": "#/definitions/nulls.String"
++                    "type": "string"
+                 },
+                 "repo_owner": {
+-                    "$ref": "#/definitions/nulls.String"
++                    "type": "string"
+                 },
+                 "repo_slug": {
+-                    "$ref": "#/definitions/nulls.String"
++                    "type": "string"
+                 },
+                 "repo_url": {
+-                    "$ref": "#/definitions/nulls.String"
++                    "type": "string"
+                 },
+                 "slug": {
+                     "type": "string"
 @@ -5242,6 +5242,10 @@
                  "type": {
                      "description": "It has to be provided by legacy reasons and has to have the `git` value",

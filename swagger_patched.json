@@ -5178,16 +5178,16 @@
                     "type": "string"
                 },
                 "provider": {
-                    "$ref": "#/definitions/nulls.String"
+                    "type": "string"
                 },
                 "repo_owner": {
-                    "$ref": "#/definitions/nulls.String"
+                    "type": "string"
                 },
                 "repo_slug": {
-                    "$ref": "#/definitions/nulls.String"
+                    "type": "string"
                 },
                 "repo_url": {
-                    "$ref": "#/definitions/nulls.String"
+                    "type": "string"
                 },
                 "slug": {
                     "type": "string"
