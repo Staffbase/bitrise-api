@@ -31,7 +31,7 @@ type V0AppResponseItemModel struct {
 	Owner *V0OwnerAccountResponseModel `json:"owner,omitempty"`
 
 	// project type
-	ProjectType *NullsString `json:"project_type,omitempty"`
+	ProjectType string `json:"project_type,omitempty"`
 
 	// provider
 	Provider *NullsString `json:"provider,omitempty"`
@@ -64,10 +64,6 @@ func (m *V0AppResponseItemModel) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOwner(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateProjectType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -119,23 +115,6 @@ func (m *V0AppResponseItemModel) validateOwner(formats strfmt.Registry) error {
 		if err := m.Owner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) validateProjectType(formats strfmt.Registry) error {
-	if swag.IsZero(m.ProjectType) { // not required
-		return nil
-	}
-
-	if m.ProjectType != nil {
-		if err := m.ProjectType.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("project_type")
 			}
 			return err
 		}
@@ -224,10 +203,6 @@ func (m *V0AppResponseItemModel) ContextValidate(ctx context.Context, formats st
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateProjectType(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.contextValidateProvider(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -270,20 +245,6 @@ func (m *V0AppResponseItemModel) contextValidateOwner(ctx context.Context, forma
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (m *V0AppResponseItemModel) contextValidateProjectType(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.ProjectType != nil {
-		if err := m.ProjectType.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("project_type")
 			}
 			return err
 		}
