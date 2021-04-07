@@ -5175,7 +5175,7 @@
                     "$ref": "#/definitions/v0.OwnerAccountResponseModel"
                 },
                 "project_type": {
-                    "$ref": "#/definitions/nulls.String"
+                    "type": "string"
                 },
                 "provider": {
                     "$ref": "#/definitions/nulls.String"
