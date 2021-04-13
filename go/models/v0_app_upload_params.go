@@ -31,7 +31,7 @@ type V0AppUploadParams struct {
 	// Required: true
 	IsPublic *bool `json:"is_public"`
 
-	// Property added by SouthPark as this is missing within open-api spec. This can be removed/ should be here on (re-)download when bitrise has fixed it
+	// Property added by Staffbase as this is missing within open-api spec. This can be removed when bitrise has fixed it
 	OrganizationSlug string `json:"organization_slug,omitempty"`
 
 	// The git provider you are using, it can be `github`, `bitbucket`, `gitlab`, `gitlab-self-hosted` or `custom`
