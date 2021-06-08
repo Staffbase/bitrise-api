@@ -19,6 +19,9 @@ import (
 // swagger:model v0.BuildTriggerParamsBuildParams
 type V0BuildTriggerParamsBuildParams struct {
 
+	// base repository url
+	BaseRepositoryURL string `json:"base_repository_url,omitempty"`
+
 	// branch
 	Branch string `json:"branch,omitempty"`
 
@@ -48,6 +51,9 @@ type V0BuildTriggerParamsBuildParams struct {
 
 	// environments
 	Environments []*V0BuildParamsEnvironment `json:"environments"`
+
+	// head repository url
+	HeadRepositoryURL string `json:"head_repository_url,omitempty"`
 
 	// pull request author
 	PullRequestAuthor string `json:"pull_request_author,omitempty"`

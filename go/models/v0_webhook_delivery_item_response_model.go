@@ -37,10 +37,10 @@ type V0WebhookDeliveryItemResponseModel struct {
 	ResponseHeaders *NullsString `json:"response_headers,omitempty"`
 
 	// response http status
-	ResponseHTTPStatus NullsInt64 `json:"response_http_status,omitempty"`
+	ResponseHTTPStatus *NullsInt64 `json:"response_http_status,omitempty"`
 
 	// response seconds
-	ResponseSeconds NullsInt64 `json:"response_seconds,omitempty"`
+	ResponseSeconds *NullsInt64 `json:"response_seconds,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -58,6 +58,14 @@ func (m *V0WebhookDeliveryItemResponseModel) Validate(formats strfmt.Registry) e
 	}
 
 	if err := m.validateResponseHeaders(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResponseHTTPStatus(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResponseSeconds(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -101,6 +109,40 @@ func (m *V0WebhookDeliveryItemResponseModel) validateResponseHeaders(formats str
 	return nil
 }
 
+func (m *V0WebhookDeliveryItemResponseModel) validateResponseHTTPStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResponseHTTPStatus) { // not required
+		return nil
+	}
+
+	if m.ResponseHTTPStatus != nil {
+		if err := m.ResponseHTTPStatus.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("response_http_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0WebhookDeliveryItemResponseModel) validateResponseSeconds(formats strfmt.Registry) error {
+	if swag.IsZero(m.ResponseSeconds) { // not required
+		return nil
+	}
+
+	if m.ResponseSeconds != nil {
+		if err := m.ResponseSeconds.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("response_seconds")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this v0 webhook delivery item response model based on the context it is used
 func (m *V0WebhookDeliveryItemResponseModel) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -110,6 +152,14 @@ func (m *V0WebhookDeliveryItemResponseModel) ContextValidate(ctx context.Context
 	}
 
 	if err := m.contextValidateResponseHeaders(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResponseHTTPStatus(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateResponseSeconds(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -139,6 +189,34 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHeaders(ctx 
 		if err := m.ResponseHeaders.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_headers")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHTTPStatus(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResponseHTTPStatus != nil {
+		if err := m.ResponseHTTPStatus.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("response_http_status")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseSeconds(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ResponseSeconds != nil {
+		if err := m.ResponseSeconds.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("response_seconds")
 			}
 			return err
 		}

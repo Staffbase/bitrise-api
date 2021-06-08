@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -30,16 +31,65 @@ type V0PlanDataModel struct {
 	Name string `json:"name,omitempty"`
 
 	// price
-	Price NullsInt64 `json:"price,omitempty"`
+	Price *NullsInt64 `json:"price,omitempty"`
 }
 
 // Validate validates this v0 plan data model
 func (m *V0PlanDataModel) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validatePrice(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this v0 plan data model based on context it is used
+func (m *V0PlanDataModel) validatePrice(formats strfmt.Registry) error {
+	if swag.IsZero(m.Price) { // not required
+		return nil
+	}
+
+	if m.Price != nil {
+		if err := m.Price.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("price")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this v0 plan data model based on the context it is used
 func (m *V0PlanDataModel) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidatePrice(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *V0PlanDataModel) contextValidatePrice(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Price != nil {
+		if err := m.Price.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("price")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
