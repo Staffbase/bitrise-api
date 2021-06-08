@@ -4883,7 +4883,16 @@
             }
         },
         "nulls.Int64": {
-            "type": "object"
+            "type": "object",
+            "properties": {
+                "int64": {
+                    "type": "integer"
+                },
+                "valid": {
+                    "description": "Valid is true if Int64 is not NULL",
+                    "type": "boolean"
+                }
+            }
         },
         "nulls.String": {
             "type": "object",
@@ -6007,6 +6016,9 @@
         "v0.BuildTriggerParamsBuildParams": {
             "type": "object",
             "properties": {
+                "base_repository_url": {
+                    "type": "string"
+                },
                 "branch": {
                     "type": "string"
                 },
@@ -6042,6 +6054,9 @@
                     "items": {
                         "$ref": "#/definitions/v0.BuildParamsEnvironment"
                     }
+                },
+                "head_repository_url": {
+                    "type": "string"
                 },
                 "pull_request_author": {
                     "type": "string"
