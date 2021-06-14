@@ -12,7 +12,7 @@ require (
 	github.com/go-swagger/go-swagger v0.26.1
 	github.com/google/go-cmp v0.5.5 // indirect
 	github.com/jessevdk/go-flags v1.5.0 // indirect
-	github.com/kyoh86/richgo v0.3.6
+	github.com/kyoh86/richgo v0.3.9
 	github.com/magiconair/properties v1.8.5 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/spf13/afero v1.6.0 // indirect
