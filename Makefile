@@ -42,4 +42,4 @@ generate: validate ## Generate the API Go client and the JSON document for the U
 	go generate
 
 validate: deps ## Check that the swagger spec is valid.
-	gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger@v0.26.1 validate $(PATCHED_SWAGGER_SPEC)
+	gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger@v0.27.0 validate $(PATCHED_SWAGGER_SPEC)
