@@ -2,10 +2,12 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: bitrise-api
+  description: Generated openapi golang client library to access bitrise api.
   annotations:
     github.com/project-slug: Staffbase/bitrise-api
   tags:
-    - makefile
+    - go
 spec:
   type: library
   lifecycle: production
+  subcomponentOf: pickle-rick
