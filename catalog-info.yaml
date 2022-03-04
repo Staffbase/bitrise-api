@@ -24,4 +24,3 @@ metadata:
 spec:
   type: library
   lifecycle: production
-  subcomponentOf: pickle-rick
