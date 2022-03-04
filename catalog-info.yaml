@@ -24,3 +24,5 @@ metadata:
 spec:
   type: library
   lifecycle: production
+  consumesApis:
+    - bitrise.io
