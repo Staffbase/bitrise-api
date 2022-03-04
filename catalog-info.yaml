@@ -10,7 +10,7 @@ spec:
   type: openapi
   lifecycle: production
   definition:
-    $text: https://api-docs.bitrise.io/docs/swagger.json
+    $text: ./swagger_patched.json
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
