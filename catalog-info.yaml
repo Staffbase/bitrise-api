@@ -1,11 +1,28 @@
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: bitrise.io
+  description: The Bitrise API allows you to build deep, custom integrations with your preferred tools and processes to create even more efficient development pipelines.
+  tags:
+    - 3rd-party
+spec:
+  type: openapi
+  lifecycle: production
+  definition:
+    $text: ./swagger_patched.json
+---
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: bitrise-api
+  description: Generated openapi golang client library to access bitrise api.
   annotations:
     github.com/project-slug: Staffbase/bitrise-api
   tags:
-    - makefile
+    - go
 spec:
   type: library
   lifecycle: production
+  consumesApis:
+    - bitrise.io
