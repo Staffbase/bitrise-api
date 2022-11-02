@@ -1,5 +1,5 @@
 --- swagger.json	2022-10-27 11:55:24.000000000 +0200
-+++ swagger_patched.json	2022-11-02 11:15:38.203439339 +0100
++++ swagger_patched.json	2022-11-02 13:40:17.346935458 +0100
 @@ -1969,7 +1969,7 @@
                      }
                  ],
@@ -9,6 +9,17 @@
                          "description": "OK",
                          "schema": {
                              "$ref": "#/definitions/v0.BuildTriggerRespModel"
+@@ -4821,8 +4821,8 @@
+                     }
+                 ],
+                 "responses": {
+-                    "204": {
+-                        "description": "No Content"
++                    "201": {
++                        "description": "Created"
+                     },
+                     "400": {
+                         "description": "Bad Request",
 @@ -5309,6 +5309,15 @@
                  ],
                  "summary": "Removes an active addon token of the user",
