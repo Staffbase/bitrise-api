@@ -180,7 +180,7 @@ type ClientService interface {
 
 	SecretList(params *SecretListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretListOK, error)
 
-	SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertNoContent, error)
+	SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertCreated, error)
 
 	SecretValueGet(params *SecretValueGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretValueGetOK, error)
 
@@ -3278,7 +3278,7 @@ SecretUpsert upserts an application secret
 
 Upsert an application secret. Requires administrator level privileges to the app.
 */
-func (a *Client) SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertNoContent, error) {
+func (a *Client) SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSecretUpsertParams()
@@ -3304,7 +3304,7 @@ func (a *Client) SecretUpsert(params *SecretUpsertParams, authInfo runtime.Clien
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*SecretUpsertNoContent)
+	success, ok := result.(*SecretUpsertCreated)
 	if ok {
 		return success, nil
 	}

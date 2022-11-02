@@ -23,8 +23,8 @@ type SecretUpsertReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *SecretUpsertReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 204:
-		result := NewSecretUpsertNoContent()
+	case 201:
+		result := NewSecretUpsertCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -58,53 +58,53 @@ func (o *SecretUpsertReader) ReadResponse(response runtime.ClientResponse, consu
 	}
 }
 
-// NewSecretUpsertNoContent creates a SecretUpsertNoContent with default headers values
-func NewSecretUpsertNoContent() *SecretUpsertNoContent {
-	return &SecretUpsertNoContent{}
+// NewSecretUpsertCreated creates a SecretUpsertCreated with default headers values
+func NewSecretUpsertCreated() *SecretUpsertCreated {
+	return &SecretUpsertCreated{}
 }
 
 /*
-SecretUpsertNoContent describes a response with status code 204, with default header values.
+SecretUpsertCreated describes a response with status code 201, with default header values.
 
-No Content
+Created
 */
-type SecretUpsertNoContent struct {
+type SecretUpsertCreated struct {
 }
 
-// IsSuccess returns true when this secret upsert no content response has a 2xx status code
-func (o *SecretUpsertNoContent) IsSuccess() bool {
+// IsSuccess returns true when this secret upsert created response has a 2xx status code
+func (o *SecretUpsertCreated) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this secret upsert no content response has a 3xx status code
-func (o *SecretUpsertNoContent) IsRedirect() bool {
+// IsRedirect returns true when this secret upsert created response has a 3xx status code
+func (o *SecretUpsertCreated) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this secret upsert no content response has a 4xx status code
-func (o *SecretUpsertNoContent) IsClientError() bool {
+// IsClientError returns true when this secret upsert created response has a 4xx status code
+func (o *SecretUpsertCreated) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this secret upsert no content response has a 5xx status code
-func (o *SecretUpsertNoContent) IsServerError() bool {
+// IsServerError returns true when this secret upsert created response has a 5xx status code
+func (o *SecretUpsertCreated) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this secret upsert no content response a status code equal to that given
-func (o *SecretUpsertNoContent) IsCode(code int) bool {
-	return code == 204
+// IsCode returns true when this secret upsert created response a status code equal to that given
+func (o *SecretUpsertCreated) IsCode(code int) bool {
+	return code == 201
 }
 
-func (o *SecretUpsertNoContent) Error() string {
-	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertNoContent ", 204)
+func (o *SecretUpsertCreated) Error() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertCreated ", 201)
 }
 
-func (o *SecretUpsertNoContent) String() string {
-	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertNoContent ", 204)
+func (o *SecretUpsertCreated) String() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertCreated ", 201)
 }
 
-func (o *SecretUpsertNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *SecretUpsertCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
