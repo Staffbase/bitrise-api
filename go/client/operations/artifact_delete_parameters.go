@@ -52,10 +52,12 @@ func NewArtifactDeleteParamsWithHTTPClient(client *http.Client) *ArtifactDeleteP
 	}
 }
 
-/* ArtifactDeleteParams contains all the parameters to send to the API endpoint
-   for the artifact delete operation.
+/*
+ArtifactDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the artifact delete operation.
+
+	Typically these are written to a http.Request.
 */
 type ArtifactDeleteParams struct {
 

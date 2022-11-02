@@ -63,7 +63,8 @@ func NewAndroidKeystoreFileCreateCreated() *AndroidKeystoreFileCreateCreated {
 	return &AndroidKeystoreFileCreateCreated{}
 }
 
-/* AndroidKeystoreFileCreateCreated describes a response with status code 201, with default header values.
+/*
+AndroidKeystoreFileCreateCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -71,9 +72,39 @@ type AndroidKeystoreFileCreateCreated struct {
 	Payload *models.V0ProjectFileStorageResponseModel
 }
 
+// IsSuccess returns true when this android keystore file create created response has a 2xx status code
+func (o *AndroidKeystoreFileCreateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this android keystore file create created response has a 3xx status code
+func (o *AndroidKeystoreFileCreateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this android keystore file create created response has a 4xx status code
+func (o *AndroidKeystoreFileCreateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this android keystore file create created response has a 5xx status code
+func (o *AndroidKeystoreFileCreateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this android keystore file create created response a status code equal to that given
+func (o *AndroidKeystoreFileCreateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *AndroidKeystoreFileCreateCreated) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateCreated  %+v", 201, o.Payload)
 }
+
+func (o *AndroidKeystoreFileCreateCreated) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateCreated  %+v", 201, o.Payload)
+}
+
 func (o *AndroidKeystoreFileCreateCreated) GetPayload() *models.V0ProjectFileStorageResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAndroidKeystoreFileCreateBadRequest() *AndroidKeystoreFileCreateBadReque
 	return &AndroidKeystoreFileCreateBadRequest{}
 }
 
-/* AndroidKeystoreFileCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AndroidKeystoreFileCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AndroidKeystoreFileCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this android keystore file create bad request response has a 2xx status code
+func (o *AndroidKeystoreFileCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this android keystore file create bad request response has a 3xx status code
+func (o *AndroidKeystoreFileCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this android keystore file create bad request response has a 4xx status code
+func (o *AndroidKeystoreFileCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this android keystore file create bad request response has a 5xx status code
+func (o *AndroidKeystoreFileCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this android keystore file create bad request response a status code equal to that given
+func (o *AndroidKeystoreFileCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AndroidKeystoreFileCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AndroidKeystoreFileCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AndroidKeystoreFileCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAndroidKeystoreFileCreateUnauthorized() *AndroidKeystoreFileCreateUnauth
 	return &AndroidKeystoreFileCreateUnauthorized{}
 }
 
-/* AndroidKeystoreFileCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AndroidKeystoreFileCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AndroidKeystoreFileCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this android keystore file create unauthorized response has a 2xx status code
+func (o *AndroidKeystoreFileCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this android keystore file create unauthorized response has a 3xx status code
+func (o *AndroidKeystoreFileCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this android keystore file create unauthorized response has a 4xx status code
+func (o *AndroidKeystoreFileCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this android keystore file create unauthorized response has a 5xx status code
+func (o *AndroidKeystoreFileCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this android keystore file create unauthorized response a status code equal to that given
+func (o *AndroidKeystoreFileCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AndroidKeystoreFileCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AndroidKeystoreFileCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AndroidKeystoreFileCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAndroidKeystoreFileCreateNotFound() *AndroidKeystoreFileCreateNotFound {
 	return &AndroidKeystoreFileCreateNotFound{}
 }
 
-/* AndroidKeystoreFileCreateNotFound describes a response with status code 404, with default header values.
+/*
+AndroidKeystoreFileCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AndroidKeystoreFileCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this android keystore file create not found response has a 2xx status code
+func (o *AndroidKeystoreFileCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this android keystore file create not found response has a 3xx status code
+func (o *AndroidKeystoreFileCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this android keystore file create not found response has a 4xx status code
+func (o *AndroidKeystoreFileCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this android keystore file create not found response has a 5xx status code
+func (o *AndroidKeystoreFileCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this android keystore file create not found response a status code equal to that given
+func (o *AndroidKeystoreFileCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AndroidKeystoreFileCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AndroidKeystoreFileCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AndroidKeystoreFileCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAndroidKeystoreFileCreateInternalServerError() *AndroidKeystoreFileCreat
 	return &AndroidKeystoreFileCreateInternalServerError{}
 }
 
-/* AndroidKeystoreFileCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AndroidKeystoreFileCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AndroidKeystoreFileCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this android keystore file create internal server error response has a 2xx status code
+func (o *AndroidKeystoreFileCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this android keystore file create internal server error response has a 3xx status code
+func (o *AndroidKeystoreFileCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this android keystore file create internal server error response has a 4xx status code
+func (o *AndroidKeystoreFileCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this android keystore file create internal server error response has a 5xx status code
+func (o *AndroidKeystoreFileCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this android keystore file create internal server error response a status code equal to that given
+func (o *AndroidKeystoreFileCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AndroidKeystoreFileCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AndroidKeystoreFileCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AndroidKeystoreFileCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

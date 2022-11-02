@@ -52,10 +52,12 @@ func NewBuildCertificateShowParamsWithHTTPClient(client *http.Client) *BuildCert
 	}
 }
 
-/* BuildCertificateShowParams contains all the parameters to send to the API endpoint
-   for the build certificate show operation.
+/*
+BuildCertificateShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build certificate show operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildCertificateShowParams struct {
 

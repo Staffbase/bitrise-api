@@ -52,10 +52,12 @@ func NewAppConfigDatastoreShowParamsWithHTTPClient(client *http.Client) *AppConf
 	}
 }
 
-/* AppConfigDatastoreShowParams contains all the parameters to send to the API endpoint
-   for the app config datastore show operation.
+/*
+AppConfigDatastoreShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the app config datastore show operation.
+
+	Typically these are written to a http.Request.
 */
 type AppConfigDatastoreShowParams struct {
 

@@ -63,7 +63,8 @@ func NewAddonListByOrganizationOK() *AddonListByOrganizationOK {
 	return &AddonListByOrganizationOK{}
 }
 
-/* AddonListByOrganizationOK describes a response with status code 200, with default header values.
+/*
+AddonListByOrganizationOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AddonListByOrganizationOK struct {
 	Payload *models.V0OwnerAddOnsListResponseModel
 }
 
+// IsSuccess returns true when this addon list by organization o k response has a 2xx status code
+func (o *AddonListByOrganizationOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this addon list by organization o k response has a 3xx status code
+func (o *AddonListByOrganizationOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by organization o k response has a 4xx status code
+func (o *AddonListByOrganizationOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addon list by organization o k response has a 5xx status code
+func (o *AddonListByOrganizationOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by organization o k response a status code equal to that given
+func (o *AddonListByOrganizationOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AddonListByOrganizationOK) Error() string {
 	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationOK  %+v", 200, o.Payload)
 }
+
+func (o *AddonListByOrganizationOK) String() string {
+	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationOK  %+v", 200, o.Payload)
+}
+
 func (o *AddonListByOrganizationOK) GetPayload() *models.V0OwnerAddOnsListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAddonListByOrganizationBadRequest() *AddonListByOrganizationBadRequest {
 	return &AddonListByOrganizationBadRequest{}
 }
 
-/* AddonListByOrganizationBadRequest describes a response with status code 400, with default header values.
+/*
+AddonListByOrganizationBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AddonListByOrganizationBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by organization bad request response has a 2xx status code
+func (o *AddonListByOrganizationBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by organization bad request response has a 3xx status code
+func (o *AddonListByOrganizationBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by organization bad request response has a 4xx status code
+func (o *AddonListByOrganizationBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by organization bad request response has a 5xx status code
+func (o *AddonListByOrganizationBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by organization bad request response a status code equal to that given
+func (o *AddonListByOrganizationBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AddonListByOrganizationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AddonListByOrganizationBadRequest) String() string {
+	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AddonListByOrganizationBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAddonListByOrganizationUnauthorized() *AddonListByOrganizationUnauthoriz
 	return &AddonListByOrganizationUnauthorized{}
 }
 
-/* AddonListByOrganizationUnauthorized describes a response with status code 401, with default header values.
+/*
+AddonListByOrganizationUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AddonListByOrganizationUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by organization unauthorized response has a 2xx status code
+func (o *AddonListByOrganizationUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by organization unauthorized response has a 3xx status code
+func (o *AddonListByOrganizationUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by organization unauthorized response has a 4xx status code
+func (o *AddonListByOrganizationUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by organization unauthorized response has a 5xx status code
+func (o *AddonListByOrganizationUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by organization unauthorized response a status code equal to that given
+func (o *AddonListByOrganizationUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AddonListByOrganizationUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AddonListByOrganizationUnauthorized) String() string {
+	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AddonListByOrganizationUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAddonListByOrganizationNotFound() *AddonListByOrganizationNotFound {
 	return &AddonListByOrganizationNotFound{}
 }
 
-/* AddonListByOrganizationNotFound describes a response with status code 404, with default header values.
+/*
+AddonListByOrganizationNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AddonListByOrganizationNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by organization not found response has a 2xx status code
+func (o *AddonListByOrganizationNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by organization not found response has a 3xx status code
+func (o *AddonListByOrganizationNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by organization not found response has a 4xx status code
+func (o *AddonListByOrganizationNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by organization not found response has a 5xx status code
+func (o *AddonListByOrganizationNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by organization not found response a status code equal to that given
+func (o *AddonListByOrganizationNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AddonListByOrganizationNotFound) Error() string {
 	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AddonListByOrganizationNotFound) String() string {
+	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AddonListByOrganizationNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAddonListByOrganizationInternalServerError() *AddonListByOrganizationInt
 	return &AddonListByOrganizationInternalServerError{}
 }
 
-/* AddonListByOrganizationInternalServerError describes a response with status code 500, with default header values.
+/*
+AddonListByOrganizationInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AddonListByOrganizationInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by organization internal server error response has a 2xx status code
+func (o *AddonListByOrganizationInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by organization internal server error response has a 3xx status code
+func (o *AddonListByOrganizationInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by organization internal server error response has a 4xx status code
+func (o *AddonListByOrganizationInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addon list by organization internal server error response has a 5xx status code
+func (o *AddonListByOrganizationInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this addon list by organization internal server error response a status code equal to that given
+func (o *AddonListByOrganizationInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AddonListByOrganizationInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AddonListByOrganizationInternalServerError) String() string {
+	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AddonListByOrganizationInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -19,6 +19,9 @@ import (
 // swagger:model v0.AppUploadParams
 type V0AppUploadParams struct {
 
+	// The default branch of the repository. If it's not specified, it will be `master`.
+	DefaultBranchName string `json:"default_branch_name,omitempty"`
+
 	// The slug of the owner of the repository at the git provider
 	// Required: true
 	GitOwner *string `json:"git_owner"`
@@ -31,7 +34,7 @@ type V0AppUploadParams struct {
 	// Required: true
 	IsPublic *bool `json:"is_public"`
 
-	// Property added by Staffbase as this is missing within open-api spec. This can be removed when bitrise has fixed it
+	// The slug of the organization, who will be the owner of the application. If it's not specified, then the authenticated user will be the owner.
 	OrganizationSlug string `json:"organization_slug,omitempty"`
 
 	// The git provider you are using, it can be `github`, `bitbucket`, `gitlab`, `gitlab-self-hosted` or `custom`
@@ -41,6 +44,9 @@ type V0AppUploadParams struct {
 	// The URL of your repository
 	// Required: true
 	RepoURL *string `json:"repo_url"`
+
+	// The title of the application. If it's not specified, it will be the git repository's name.
+	Title string `json:"title,omitempty"`
 
 	// It has to be provided by legacy reasons and has to have the `git` value
 	// Required: true

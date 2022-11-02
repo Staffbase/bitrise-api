@@ -52,10 +52,12 @@ func NewBuildRequestListParamsWithHTTPClient(client *http.Client) *BuildRequestL
 	}
 }
 
-/* BuildRequestListParams contains all the parameters to send to the API endpoint
-   for the build request list operation.
+/*
+BuildRequestListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build request list operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildRequestListParams struct {
 

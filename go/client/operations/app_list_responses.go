@@ -63,7 +63,8 @@ func NewAppListOK() *AppListOK {
 	return &AppListOK{}
 }
 
-/* AppListOK describes a response with status code 200, with default header values.
+/*
+AppListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AppListOK struct {
 	Payload *models.V0AppListResponseModel
 }
 
+// IsSuccess returns true when this app list o k response has a 2xx status code
+func (o *AppListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this app list o k response has a 3xx status code
+func (o *AppListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app list o k response has a 4xx status code
+func (o *AppListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app list o k response has a 5xx status code
+func (o *AppListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app list o k response a status code equal to that given
+func (o *AppListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AppListOK) Error() string {
 	return fmt.Sprintf("[GET /apps][%d] appListOK  %+v", 200, o.Payload)
 }
+
+func (o *AppListOK) String() string {
+	return fmt.Sprintf("[GET /apps][%d] appListOK  %+v", 200, o.Payload)
+}
+
 func (o *AppListOK) GetPayload() *models.V0AppListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAppListBadRequest() *AppListBadRequest {
 	return &AppListBadRequest{}
 }
 
-/* AppListBadRequest describes a response with status code 400, with default header values.
+/*
+AppListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AppListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app list bad request response has a 2xx status code
+func (o *AppListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app list bad request response has a 3xx status code
+func (o *AppListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app list bad request response has a 4xx status code
+func (o *AppListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app list bad request response has a 5xx status code
+func (o *AppListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app list bad request response a status code equal to that given
+func (o *AppListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AppListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps][%d] appListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AppListBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps][%d] appListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AppListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAppListUnauthorized() *AppListUnauthorized {
 	return &AppListUnauthorized{}
 }
 
-/* AppListUnauthorized describes a response with status code 401, with default header values.
+/*
+AppListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AppListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app list unauthorized response has a 2xx status code
+func (o *AppListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app list unauthorized response has a 3xx status code
+func (o *AppListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app list unauthorized response has a 4xx status code
+func (o *AppListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app list unauthorized response has a 5xx status code
+func (o *AppListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app list unauthorized response a status code equal to that given
+func (o *AppListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AppListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps][%d] appListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AppListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps][%d] appListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AppListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAppListNotFound() *AppListNotFound {
 	return &AppListNotFound{}
 }
 
-/* AppListNotFound describes a response with status code 404, with default header values.
+/*
+AppListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AppListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app list not found response has a 2xx status code
+func (o *AppListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app list not found response has a 3xx status code
+func (o *AppListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app list not found response has a 4xx status code
+func (o *AppListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app list not found response has a 5xx status code
+func (o *AppListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app list not found response a status code equal to that given
+func (o *AppListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AppListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps][%d] appListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AppListNotFound) String() string {
+	return fmt.Sprintf("[GET /apps][%d] appListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AppListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAppListInternalServerError() *AppListInternalServerError {
 	return &AppListInternalServerError{}
 }
 
-/* AppListInternalServerError describes a response with status code 500, with default header values.
+/*
+AppListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AppListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app list internal server error response has a 2xx status code
+func (o *AppListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app list internal server error response has a 3xx status code
+func (o *AppListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app list internal server error response has a 4xx status code
+func (o *AppListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app list internal server error response has a 5xx status code
+func (o *AppListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this app list internal server error response a status code equal to that given
+func (o *AppListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AppListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps][%d] appListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AppListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps][%d] appListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AppListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

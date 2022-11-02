@@ -54,10 +54,12 @@ func NewBuildCertificateCreateParamsWithHTTPClient(client *http.Client) *BuildCe
 	}
 }
 
-/* BuildCertificateCreateParams contains all the parameters to send to the API endpoint
-   for the build certificate create operation.
+/*
+BuildCertificateCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build certificate create operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildCertificateCreateParams struct {
 

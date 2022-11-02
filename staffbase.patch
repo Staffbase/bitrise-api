@@ -1,6 +1,6 @@
---- swagger.json	2021-03-10 14:13:25.000000000 +0100
-+++ swagger_patched.json	2021-04-13 13:34:57.023038661 +0200
-@@ -1683,7 +1683,7 @@
+--- swagger.json	2022-10-27 11:55:24.000000000 +0200
++++ swagger_patched.json	2022-11-02 13:40:17.346935458 +0100
+@@ -1969,7 +1969,7 @@
                      }
                  ],
                  "responses": {
@@ -9,39 +9,30 @@
                          "description": "OK",
                          "schema": {
                              "$ref": "#/definitions/v0.BuildTriggerRespModel"
-@@ -5175,19 +5175,19 @@
-                     "$ref": "#/definitions/v0.OwnerAccountResponseModel"
-                 },
-                 "project_type": {
--                    "$ref": "#/definitions/nulls.String"
-+                    "type": "string"
-                 },
-                 "provider": {
--                    "$ref": "#/definitions/nulls.String"
-+                    "type": "string"
-                 },
-                 "repo_owner": {
--                    "$ref": "#/definitions/nulls.String"
-+                    "type": "string"
-                 },
-                 "repo_slug": {
--                    "$ref": "#/definitions/nulls.String"
-+                    "type": "string"
-                 },
-                 "repo_url": {
--                    "$ref": "#/definitions/nulls.String"
-+                    "type": "string"
-                 },
-                 "slug": {
-                     "type": "string"
-@@ -5242,6 +5242,10 @@
-                 "type": {
-                     "description": "It has to be provided by legacy reasons and has to have the `git` value",
-                     "type": "string"
-+                },
-+                "organization_slug": {
-+                    "description": "Property added by Staffbase as this is missing within open-api spec. This can be removed when bitrise has fixed it",
-+                    "type": "string"
-                 }
-             }
-         },
+@@ -4821,8 +4821,8 @@
+                     }
+                 ],
+                 "responses": {
+-                    "204": {
+-                        "description": "No Content"
++                    "201": {
++                        "description": "Created"
+                     },
+                     "400": {
+                         "description": "Bad Request",
+@@ -5309,6 +5309,15 @@
+                 ],
+                 "summary": "Removes an active addon token of the user",
+                 "operationId": "user-addon-tokens-delete",
++                "parameters": [
++                    {
++                        "type": "string",
++                        "description": "Addon ID",
++                        "name": "addon-id",
++                        "in": "path",
++                        "required": true
++                    }
++                ],
+                 "deprecated": true,
+                 "responses": {
+                     "200": {

@@ -54,10 +54,12 @@ func NewBuildTriggerParamsWithHTTPClient(client *http.Client) *BuildTriggerParam
 	}
 }
 
-/* BuildTriggerParams contains all the parameters to send to the API endpoint
-   for the build trigger operation.
+/*
+BuildTriggerParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build trigger operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildTriggerParams struct {
 

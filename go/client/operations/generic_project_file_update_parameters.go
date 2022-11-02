@@ -54,10 +54,12 @@ func NewGenericProjectFileUpdateParamsWithHTTPClient(client *http.Client) *Gener
 	}
 }
 
-/* GenericProjectFileUpdateParams contains all the parameters to send to the API endpoint
-   for the generic project file update operation.
+/*
+GenericProjectFileUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the generic project file update operation.
+
+	Typically these are written to a http.Request.
 */
 type GenericProjectFileUpdateParams struct {
 

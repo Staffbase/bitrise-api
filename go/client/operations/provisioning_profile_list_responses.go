@@ -63,7 +63,8 @@ func NewProvisioningProfileListOK() *ProvisioningProfileListOK {
 	return &ProvisioningProfileListOK{}
 }
 
-/* ProvisioningProfileListOK describes a response with status code 200, with default header values.
+/*
+ProvisioningProfileListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ProvisioningProfileListOK struct {
 	Payload *models.V0ProvisionProfileListResponseModel
 }
 
+// IsSuccess returns true when this provisioning profile list o k response has a 2xx status code
+func (o *ProvisioningProfileListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this provisioning profile list o k response has a 3xx status code
+func (o *ProvisioningProfileListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile list o k response has a 4xx status code
+func (o *ProvisioningProfileListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile list o k response has a 5xx status code
+func (o *ProvisioningProfileListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile list o k response a status code equal to that given
+func (o *ProvisioningProfileListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProvisioningProfileListOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListOK  %+v", 200, o.Payload)
 }
+
+func (o *ProvisioningProfileListOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListOK  %+v", 200, o.Payload)
+}
+
 func (o *ProvisioningProfileListOK) GetPayload() *models.V0ProvisionProfileListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewProvisioningProfileListBadRequest() *ProvisioningProfileListBadRequest {
 	return &ProvisioningProfileListBadRequest{}
 }
 
-/* ProvisioningProfileListBadRequest describes a response with status code 400, with default header values.
+/*
+ProvisioningProfileListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ProvisioningProfileListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile list bad request response has a 2xx status code
+func (o *ProvisioningProfileListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile list bad request response has a 3xx status code
+func (o *ProvisioningProfileListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile list bad request response has a 4xx status code
+func (o *ProvisioningProfileListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile list bad request response has a 5xx status code
+func (o *ProvisioningProfileListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile list bad request response a status code equal to that given
+func (o *ProvisioningProfileListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProvisioningProfileListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProvisioningProfileListBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProvisioningProfileListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewProvisioningProfileListUnauthorized() *ProvisioningProfileListUnauthoriz
 	return &ProvisioningProfileListUnauthorized{}
 }
 
-/* ProvisioningProfileListUnauthorized describes a response with status code 401, with default header values.
+/*
+ProvisioningProfileListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ProvisioningProfileListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile list unauthorized response has a 2xx status code
+func (o *ProvisioningProfileListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile list unauthorized response has a 3xx status code
+func (o *ProvisioningProfileListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile list unauthorized response has a 4xx status code
+func (o *ProvisioningProfileListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile list unauthorized response has a 5xx status code
+func (o *ProvisioningProfileListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile list unauthorized response a status code equal to that given
+func (o *ProvisioningProfileListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProvisioningProfileListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProvisioningProfileListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProvisioningProfileListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewProvisioningProfileListNotFound() *ProvisioningProfileListNotFound {
 	return &ProvisioningProfileListNotFound{}
 }
 
-/* ProvisioningProfileListNotFound describes a response with status code 404, with default header values.
+/*
+ProvisioningProfileListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ProvisioningProfileListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile list not found response has a 2xx status code
+func (o *ProvisioningProfileListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile list not found response has a 3xx status code
+func (o *ProvisioningProfileListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile list not found response has a 4xx status code
+func (o *ProvisioningProfileListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile list not found response has a 5xx status code
+func (o *ProvisioningProfileListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile list not found response a status code equal to that given
+func (o *ProvisioningProfileListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProvisioningProfileListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProvisioningProfileListNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProvisioningProfileListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewProvisioningProfileListInternalServerError() *ProvisioningProfileListInt
 	return &ProvisioningProfileListInternalServerError{}
 }
 
-/* ProvisioningProfileListInternalServerError describes a response with status code 500, with default header values.
+/*
+ProvisioningProfileListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ProvisioningProfileListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile list internal server error response has a 2xx status code
+func (o *ProvisioningProfileListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile list internal server error response has a 3xx status code
+func (o *ProvisioningProfileListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile list internal server error response has a 4xx status code
+func (o *ProvisioningProfileListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile list internal server error response has a 5xx status code
+func (o *ProvisioningProfileListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this provisioning profile list internal server error response a status code equal to that given
+func (o *ProvisioningProfileListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProvisioningProfileListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ProvisioningProfileListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ProvisioningProfileListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -63,7 +63,8 @@ func NewAppConfigDatastoreShowOK() *AppConfigDatastoreShowOK {
 	return &AppConfigDatastoreShowOK{}
 }
 
-/* AppConfigDatastoreShowOK describes a response with status code 200, with default header values.
+/*
+AppConfigDatastoreShowOK describes a response with status code 200, with default header values.
 
 {the bitrise.yml in yml format}
 */
@@ -71,9 +72,39 @@ type AppConfigDatastoreShowOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this app config datastore show o k response has a 2xx status code
+func (o *AppConfigDatastoreShowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this app config datastore show o k response has a 3xx status code
+func (o *AppConfigDatastoreShowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config datastore show o k response has a 4xx status code
+func (o *AppConfigDatastoreShowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app config datastore show o k response has a 5xx status code
+func (o *AppConfigDatastoreShowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config datastore show o k response a status code equal to that given
+func (o *AppConfigDatastoreShowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AppConfigDatastoreShowOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowOK  %+v", 200, o.Payload)
 }
+
+func (o *AppConfigDatastoreShowOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowOK  %+v", 200, o.Payload)
+}
+
 func (o *AppConfigDatastoreShowOK) GetPayload() string {
 	return o.Payload
 }
@@ -93,7 +124,8 @@ func NewAppConfigDatastoreShowBadRequest() *AppConfigDatastoreShowBadRequest {
 	return &AppConfigDatastoreShowBadRequest{}
 }
 
-/* AppConfigDatastoreShowBadRequest describes a response with status code 400, with default header values.
+/*
+AppConfigDatastoreShowBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -101,9 +133,39 @@ type AppConfigDatastoreShowBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app config datastore show bad request response has a 2xx status code
+func (o *AppConfigDatastoreShowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config datastore show bad request response has a 3xx status code
+func (o *AppConfigDatastoreShowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config datastore show bad request response has a 4xx status code
+func (o *AppConfigDatastoreShowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app config datastore show bad request response has a 5xx status code
+func (o *AppConfigDatastoreShowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config datastore show bad request response a status code equal to that given
+func (o *AppConfigDatastoreShowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AppConfigDatastoreShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AppConfigDatastoreShowBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AppConfigDatastoreShowBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -125,7 +187,8 @@ func NewAppConfigDatastoreShowUnauthorized() *AppConfigDatastoreShowUnauthorized
 	return &AppConfigDatastoreShowUnauthorized{}
 }
 
-/* AppConfigDatastoreShowUnauthorized describes a response with status code 401, with default header values.
+/*
+AppConfigDatastoreShowUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -133,9 +196,39 @@ type AppConfigDatastoreShowUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app config datastore show unauthorized response has a 2xx status code
+func (o *AppConfigDatastoreShowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config datastore show unauthorized response has a 3xx status code
+func (o *AppConfigDatastoreShowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config datastore show unauthorized response has a 4xx status code
+func (o *AppConfigDatastoreShowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app config datastore show unauthorized response has a 5xx status code
+func (o *AppConfigDatastoreShowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config datastore show unauthorized response a status code equal to that given
+func (o *AppConfigDatastoreShowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AppConfigDatastoreShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AppConfigDatastoreShowUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AppConfigDatastoreShowUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -157,7 +250,8 @@ func NewAppConfigDatastoreShowNotFound() *AppConfigDatastoreShowNotFound {
 	return &AppConfigDatastoreShowNotFound{}
 }
 
-/* AppConfigDatastoreShowNotFound describes a response with status code 404, with default header values.
+/*
+AppConfigDatastoreShowNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -165,9 +259,39 @@ type AppConfigDatastoreShowNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app config datastore show not found response has a 2xx status code
+func (o *AppConfigDatastoreShowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config datastore show not found response has a 3xx status code
+func (o *AppConfigDatastoreShowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config datastore show not found response has a 4xx status code
+func (o *AppConfigDatastoreShowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app config datastore show not found response has a 5xx status code
+func (o *AppConfigDatastoreShowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config datastore show not found response a status code equal to that given
+func (o *AppConfigDatastoreShowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AppConfigDatastoreShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AppConfigDatastoreShowNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AppConfigDatastoreShowNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -189,7 +313,8 @@ func NewAppConfigDatastoreShowInternalServerError() *AppConfigDatastoreShowInter
 	return &AppConfigDatastoreShowInternalServerError{}
 }
 
-/* AppConfigDatastoreShowInternalServerError describes a response with status code 500, with default header values.
+/*
+AppConfigDatastoreShowInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -197,9 +322,39 @@ type AppConfigDatastoreShowInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app config datastore show internal server error response has a 2xx status code
+func (o *AppConfigDatastoreShowInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config datastore show internal server error response has a 3xx status code
+func (o *AppConfigDatastoreShowInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config datastore show internal server error response has a 4xx status code
+func (o *AppConfigDatastoreShowInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app config datastore show internal server error response has a 5xx status code
+func (o *AppConfigDatastoreShowInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this app config datastore show internal server error response a status code equal to that given
+func (o *AppConfigDatastoreShowInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AppConfigDatastoreShowInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AppConfigDatastoreShowInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml][%d] appConfigDatastoreShowInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AppConfigDatastoreShowInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

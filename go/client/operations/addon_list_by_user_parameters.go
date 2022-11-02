@@ -52,10 +52,12 @@ func NewAddonListByUserParamsWithHTTPClient(client *http.Client) *AddonListByUse
 	}
 }
 
-/* AddonListByUserParams contains all the parameters to send to the API endpoint
-   for the addon list by user operation.
+/*
+AddonListByUserParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the addon list by user operation.
+
+	Typically these are written to a http.Request.
 */
 type AddonListByUserParams struct {
 

@@ -52,10 +52,12 @@ func NewProvisioningProfileDeleteParamsWithHTTPClient(client *http.Client) *Prov
 	}
 }
 
-/* ProvisioningProfileDeleteParams contains all the parameters to send to the API endpoint
-   for the provisioning profile delete operation.
+/*
+ProvisioningProfileDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the provisioning profile delete operation.
+
+	Typically these are written to a http.Request.
 */
 type ProvisioningProfileDeleteParams struct {
 

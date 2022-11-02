@@ -63,7 +63,8 @@ func NewGenericProjectFilesCreateCreated() *GenericProjectFilesCreateCreated {
 	return &GenericProjectFilesCreateCreated{}
 }
 
-/* GenericProjectFilesCreateCreated describes a response with status code 201, with default header values.
+/*
+GenericProjectFilesCreateCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -71,9 +72,39 @@ type GenericProjectFilesCreateCreated struct {
 	Payload *models.V0ProjectFileStorageResponseModel
 }
 
+// IsSuccess returns true when this generic project files create created response has a 2xx status code
+func (o *GenericProjectFilesCreateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this generic project files create created response has a 3xx status code
+func (o *GenericProjectFilesCreateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project files create created response has a 4xx status code
+func (o *GenericProjectFilesCreateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project files create created response has a 5xx status code
+func (o *GenericProjectFilesCreateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project files create created response a status code equal to that given
+func (o *GenericProjectFilesCreateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *GenericProjectFilesCreateCreated) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateCreated  %+v", 201, o.Payload)
 }
+
+func (o *GenericProjectFilesCreateCreated) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateCreated  %+v", 201, o.Payload)
+}
+
 func (o *GenericProjectFilesCreateCreated) GetPayload() *models.V0ProjectFileStorageResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewGenericProjectFilesCreateBadRequest() *GenericProjectFilesCreateBadReque
 	return &GenericProjectFilesCreateBadRequest{}
 }
 
-/* GenericProjectFilesCreateBadRequest describes a response with status code 400, with default header values.
+/*
+GenericProjectFilesCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type GenericProjectFilesCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project files create bad request response has a 2xx status code
+func (o *GenericProjectFilesCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project files create bad request response has a 3xx status code
+func (o *GenericProjectFilesCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project files create bad request response has a 4xx status code
+func (o *GenericProjectFilesCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project files create bad request response has a 5xx status code
+func (o *GenericProjectFilesCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project files create bad request response a status code equal to that given
+func (o *GenericProjectFilesCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GenericProjectFilesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GenericProjectFilesCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GenericProjectFilesCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewGenericProjectFilesCreateUnauthorized() *GenericProjectFilesCreateUnauth
 	return &GenericProjectFilesCreateUnauthorized{}
 }
 
-/* GenericProjectFilesCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+GenericProjectFilesCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type GenericProjectFilesCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project files create unauthorized response has a 2xx status code
+func (o *GenericProjectFilesCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project files create unauthorized response has a 3xx status code
+func (o *GenericProjectFilesCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project files create unauthorized response has a 4xx status code
+func (o *GenericProjectFilesCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project files create unauthorized response has a 5xx status code
+func (o *GenericProjectFilesCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project files create unauthorized response a status code equal to that given
+func (o *GenericProjectFilesCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GenericProjectFilesCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GenericProjectFilesCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GenericProjectFilesCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewGenericProjectFilesCreateNotFound() *GenericProjectFilesCreateNotFound {
 	return &GenericProjectFilesCreateNotFound{}
 }
 
-/* GenericProjectFilesCreateNotFound describes a response with status code 404, with default header values.
+/*
+GenericProjectFilesCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type GenericProjectFilesCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project files create not found response has a 2xx status code
+func (o *GenericProjectFilesCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project files create not found response has a 3xx status code
+func (o *GenericProjectFilesCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project files create not found response has a 4xx status code
+func (o *GenericProjectFilesCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project files create not found response has a 5xx status code
+func (o *GenericProjectFilesCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project files create not found response a status code equal to that given
+func (o *GenericProjectFilesCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GenericProjectFilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GenericProjectFilesCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GenericProjectFilesCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewGenericProjectFilesCreateInternalServerError() *GenericProjectFilesCreat
 	return &GenericProjectFilesCreateInternalServerError{}
 }
 
-/* GenericProjectFilesCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+GenericProjectFilesCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type GenericProjectFilesCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project files create internal server error response has a 2xx status code
+func (o *GenericProjectFilesCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project files create internal server error response has a 3xx status code
+func (o *GenericProjectFilesCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project files create internal server error response has a 4xx status code
+func (o *GenericProjectFilesCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project files create internal server error response has a 5xx status code
+func (o *GenericProjectFilesCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this generic project files create internal server error response a status code equal to that given
+func (o *GenericProjectFilesCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GenericProjectFilesCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *GenericProjectFilesCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *GenericProjectFilesCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

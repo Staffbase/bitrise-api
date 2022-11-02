@@ -52,10 +52,12 @@ func NewWebhookDeliveryItemRedeliverParamsWithHTTPClient(client *http.Client) *W
 	}
 }
 
-/* WebhookDeliveryItemRedeliverParams contains all the parameters to send to the API endpoint
-   for the webhook delivery item redeliver operation.
+/*
+WebhookDeliveryItemRedeliverParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the webhook delivery item redeliver operation.
+
+	Typically these are written to a http.Request.
 */
 type WebhookDeliveryItemRedeliverParams struct {
 

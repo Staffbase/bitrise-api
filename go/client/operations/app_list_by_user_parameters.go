@@ -53,10 +53,12 @@ func NewAppListByUserParamsWithHTTPClient(client *http.Client) *AppListByUserPar
 	}
 }
 
-/* AppListByUserParams contains all the parameters to send to the API endpoint
-   for the app list by user operation.
+/*
+AppListByUserParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the app list by user operation.
+
+	Typically these are written to a http.Request.
 */
 type AppListByUserParams struct {
 
@@ -72,11 +74,23 @@ type AppListByUserParams struct {
 	*/
 	Next *string
 
+	/* ProjectType.
+
+	   The project type of the app (eg. 'ios', 'android')
+	*/
+	ProjectType *string
+
 	/* SortBy.
 
 	   Order of applications
 	*/
 	SortBy *string
+
+	/* Title.
+
+	   The title of the app
+	*/
+	Title *string
 
 	/* UserSlug.
 
@@ -159,6 +173,17 @@ func (o *AppListByUserParams) SetNext(next *string) {
 	o.Next = next
 }
 
+// WithProjectType adds the projectType to the app list by user params
+func (o *AppListByUserParams) WithProjectType(projectType *string) *AppListByUserParams {
+	o.SetProjectType(projectType)
+	return o
+}
+
+// SetProjectType adds the projectType to the app list by user params
+func (o *AppListByUserParams) SetProjectType(projectType *string) {
+	o.ProjectType = projectType
+}
+
 // WithSortBy adds the sortBy to the app list by user params
 func (o *AppListByUserParams) WithSortBy(sortBy *string) *AppListByUserParams {
 	o.SetSortBy(sortBy)
@@ -168,6 +193,17 @@ func (o *AppListByUserParams) WithSortBy(sortBy *string) *AppListByUserParams {
 // SetSortBy adds the sortBy to the app list by user params
 func (o *AppListByUserParams) SetSortBy(sortBy *string) {
 	o.SortBy = sortBy
+}
+
+// WithTitle adds the title to the app list by user params
+func (o *AppListByUserParams) WithTitle(title *string) *AppListByUserParams {
+	o.SetTitle(title)
+	return o
+}
+
+// SetTitle adds the title to the app list by user params
+func (o *AppListByUserParams) SetTitle(title *string) {
+	o.Title = title
 }
 
 // WithUserSlug adds the userSlug to the app list by user params
@@ -223,6 +259,23 @@ func (o *AppListByUserParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		}
 	}
 
+	if o.ProjectType != nil {
+
+		// query param project_type
+		var qrProjectType string
+
+		if o.ProjectType != nil {
+			qrProjectType = *o.ProjectType
+		}
+		qProjectType := qrProjectType
+		if qProjectType != "" {
+
+			if err := r.SetQueryParam("project_type", qProjectType); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.SortBy != nil {
 
 		// query param sort_by
@@ -235,6 +288,23 @@ func (o *AppListByUserParams) WriteToRequest(r runtime.ClientRequest, reg strfmt
 		if qSortBy != "" {
 
 			if err := r.SetQueryParam("sort_by", qSortBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Title != nil {
+
+		// query param title
+		var qrTitle string
+
+		if o.Title != nil {
+			qrTitle = *o.Title
+		}
+		qTitle := qrTitle
+		if qTitle != "" {
+
+			if err := r.SetQueryParam("title", qTitle); err != nil {
 				return err
 			}
 		}

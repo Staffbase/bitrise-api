@@ -54,10 +54,12 @@ func NewProvisioningProfileUpdateParamsWithHTTPClient(client *http.Client) *Prov
 	}
 }
 
-/* ProvisioningProfileUpdateParams contains all the parameters to send to the API endpoint
-   for the provisioning profile update operation.
+/*
+ProvisioningProfileUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the provisioning profile update operation.
+
+	Typically these are written to a http.Request.
 */
 type ProvisioningProfileUpdateParams struct {
 

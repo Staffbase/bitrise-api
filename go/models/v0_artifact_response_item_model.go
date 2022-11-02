@@ -22,13 +22,16 @@ type V0ArtifactResponseItemModel struct {
 	ArtifactMeta []int64 `json:"artifact_meta"`
 
 	// artifact type
-	ArtifactType *NullsString `json:"artifact_type,omitempty"`
+	ArtifactType *GithubComMarkbatesPopNullsString `json:"artifact_type,omitempty"`
 
 	// expiring download url
 	ExpiringDownloadURL string `json:"expiring_download_url,omitempty"`
 
 	// file size bytes
 	FileSizeBytes int64 `json:"file_size_bytes,omitempty"`
+
+	// intermediate file info
+	IntermediateFileInfo []int64 `json:"intermediate_file_info"`
 
 	// is public page enabled
 	IsPublicPageEnabled bool `json:"is_public_page_enabled,omitempty"`
@@ -40,7 +43,7 @@ type V0ArtifactResponseItemModel struct {
 	Slug string `json:"slug,omitempty"`
 
 	// title
-	Title *NullsString `json:"title,omitempty"`
+	Title *GithubComMarkbatesPopNullsString `json:"title,omitempty"`
 }
 
 // Validate validates this v0 artifact response item model
@@ -70,6 +73,8 @@ func (m *V0ArtifactResponseItemModel) validateArtifactType(formats strfmt.Regist
 		if err := m.ArtifactType.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("artifact_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("artifact_type")
 			}
 			return err
 		}
@@ -87,6 +92,8 @@ func (m *V0ArtifactResponseItemModel) validateTitle(formats strfmt.Registry) err
 		if err := m.Title.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("title")
 			}
 			return err
 		}
@@ -119,6 +126,8 @@ func (m *V0ArtifactResponseItemModel) contextValidateArtifactType(ctx context.Co
 		if err := m.ArtifactType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("artifact_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("artifact_type")
 			}
 			return err
 		}
@@ -133,6 +142,8 @@ func (m *V0ArtifactResponseItemModel) contextValidateTitle(ctx context.Context, 
 		if err := m.Title.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("title")
 			}
 			return err
 		}

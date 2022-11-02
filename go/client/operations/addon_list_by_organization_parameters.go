@@ -52,10 +52,12 @@ func NewAddonListByOrganizationParamsWithHTTPClient(client *http.Client) *AddonL
 	}
 }
 
-/* AddonListByOrganizationParams contains all the parameters to send to the API endpoint
-   for the addon list by organization operation.
+/*
+AddonListByOrganizationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the addon list by organization operation.
+
+	Typically these are written to a http.Request.
 */
 type AddonListByOrganizationParams struct {
 

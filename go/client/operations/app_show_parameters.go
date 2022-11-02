@@ -52,10 +52,12 @@ func NewAppShowParamsWithHTTPClient(client *http.Client) *AppShowParams {
 	}
 }
 
-/* AppShowParams contains all the parameters to send to the API endpoint
-   for the app show operation.
+/*
+AppShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the app show operation.
+
+	Typically these are written to a http.Request.
 */
 type AppShowParams struct {
 

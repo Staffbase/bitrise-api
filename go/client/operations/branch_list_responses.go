@@ -63,7 +63,8 @@ func NewBranchListOK() *BranchListOK {
 	return &BranchListOK{}
 }
 
-/* BranchListOK describes a response with status code 200, with default header values.
+/*
+BranchListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type BranchListOK struct {
 	Payload *models.V0BranchListResponseModel
 }
 
+// IsSuccess returns true when this branch list o k response has a 2xx status code
+func (o *BranchListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this branch list o k response has a 3xx status code
+func (o *BranchListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this branch list o k response has a 4xx status code
+func (o *BranchListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this branch list o k response has a 5xx status code
+func (o *BranchListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this branch list o k response a status code equal to that given
+func (o *BranchListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BranchListOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListOK  %+v", 200, o.Payload)
 }
+
+func (o *BranchListOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListOK  %+v", 200, o.Payload)
+}
+
 func (o *BranchListOK) GetPayload() *models.V0BranchListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewBranchListBadRequest() *BranchListBadRequest {
 	return &BranchListBadRequest{}
 }
 
-/* BranchListBadRequest describes a response with status code 400, with default header values.
+/*
+BranchListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type BranchListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this branch list bad request response has a 2xx status code
+func (o *BranchListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this branch list bad request response has a 3xx status code
+func (o *BranchListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this branch list bad request response has a 4xx status code
+func (o *BranchListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this branch list bad request response has a 5xx status code
+func (o *BranchListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this branch list bad request response a status code equal to that given
+func (o *BranchListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BranchListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BranchListBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BranchListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewBranchListUnauthorized() *BranchListUnauthorized {
 	return &BranchListUnauthorized{}
 }
 
-/* BranchListUnauthorized describes a response with status code 401, with default header values.
+/*
+BranchListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type BranchListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this branch list unauthorized response has a 2xx status code
+func (o *BranchListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this branch list unauthorized response has a 3xx status code
+func (o *BranchListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this branch list unauthorized response has a 4xx status code
+func (o *BranchListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this branch list unauthorized response has a 5xx status code
+func (o *BranchListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this branch list unauthorized response a status code equal to that given
+func (o *BranchListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BranchListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BranchListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BranchListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewBranchListNotFound() *BranchListNotFound {
 	return &BranchListNotFound{}
 }
 
-/* BranchListNotFound describes a response with status code 404, with default header values.
+/*
+BranchListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type BranchListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this branch list not found response has a 2xx status code
+func (o *BranchListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this branch list not found response has a 3xx status code
+func (o *BranchListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this branch list not found response has a 4xx status code
+func (o *BranchListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this branch list not found response has a 5xx status code
+func (o *BranchListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this branch list not found response a status code equal to that given
+func (o *BranchListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BranchListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BranchListNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BranchListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewBranchListInternalServerError() *BranchListInternalServerError {
 	return &BranchListInternalServerError{}
 }
 
-/* BranchListInternalServerError describes a response with status code 500, with default header values.
+/*
+BranchListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type BranchListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this branch list internal server error response has a 2xx status code
+func (o *BranchListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this branch list internal server error response has a 3xx status code
+func (o *BranchListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this branch list internal server error response has a 4xx status code
+func (o *BranchListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this branch list internal server error response has a 5xx status code
+func (o *BranchListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this branch list internal server error response a status code equal to that given
+func (o *BranchListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BranchListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BranchListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BranchListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

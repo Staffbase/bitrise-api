@@ -19,7 +19,7 @@ import (
 // swagger:model v0.AppConfigRequestParam
 type V0AppConfigRequestParam struct {
 
-	// app config datastore yaml
+	// The bitrise.yml of your application, defined in JSON format
 	// Required: true
 	AppConfigDatastoreYaml *string `json:"app_config_datastore_yaml"`
 }

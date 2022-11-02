@@ -54,10 +54,12 @@ func NewGenericProjectFilesCreateParamsWithHTTPClient(client *http.Client) *Gene
 	}
 }
 
-/* GenericProjectFilesCreateParams contains all the parameters to send to the API endpoint
-   for the generic project files create operation.
+/*
+GenericProjectFilesCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the generic project files create operation.
+
+	Typically these are written to a http.Request.
 */
 type GenericProjectFilesCreateParams struct {
 

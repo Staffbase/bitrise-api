@@ -63,7 +63,8 @@ func NewAddonListByAppOK() *AddonListByAppOK {
 	return &AddonListByAppOK{}
 }
 
-/* AddonListByAppOK describes a response with status code 200, with default header values.
+/*
+AddonListByAppOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AddonListByAppOK struct {
 	Payload *models.V0AppAddOnsListResponseModel
 }
 
+// IsSuccess returns true when this addon list by app o k response has a 2xx status code
+func (o *AddonListByAppOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this addon list by app o k response has a 3xx status code
+func (o *AddonListByAppOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by app o k response has a 4xx status code
+func (o *AddonListByAppOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addon list by app o k response has a 5xx status code
+func (o *AddonListByAppOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by app o k response a status code equal to that given
+func (o *AddonListByAppOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AddonListByAppOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppOK  %+v", 200, o.Payload)
 }
+
+func (o *AddonListByAppOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppOK  %+v", 200, o.Payload)
+}
+
 func (o *AddonListByAppOK) GetPayload() *models.V0AppAddOnsListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAddonListByAppBadRequest() *AddonListByAppBadRequest {
 	return &AddonListByAppBadRequest{}
 }
 
-/* AddonListByAppBadRequest describes a response with status code 400, with default header values.
+/*
+AddonListByAppBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AddonListByAppBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by app bad request response has a 2xx status code
+func (o *AddonListByAppBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by app bad request response has a 3xx status code
+func (o *AddonListByAppBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by app bad request response has a 4xx status code
+func (o *AddonListByAppBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by app bad request response has a 5xx status code
+func (o *AddonListByAppBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by app bad request response a status code equal to that given
+func (o *AddonListByAppBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AddonListByAppBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AddonListByAppBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AddonListByAppBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAddonListByAppUnauthorized() *AddonListByAppUnauthorized {
 	return &AddonListByAppUnauthorized{}
 }
 
-/* AddonListByAppUnauthorized describes a response with status code 401, with default header values.
+/*
+AddonListByAppUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AddonListByAppUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by app unauthorized response has a 2xx status code
+func (o *AddonListByAppUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by app unauthorized response has a 3xx status code
+func (o *AddonListByAppUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by app unauthorized response has a 4xx status code
+func (o *AddonListByAppUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by app unauthorized response has a 5xx status code
+func (o *AddonListByAppUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by app unauthorized response a status code equal to that given
+func (o *AddonListByAppUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AddonListByAppUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AddonListByAppUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AddonListByAppUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAddonListByAppNotFound() *AddonListByAppNotFound {
 	return &AddonListByAppNotFound{}
 }
 
-/* AddonListByAppNotFound describes a response with status code 404, with default header values.
+/*
+AddonListByAppNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AddonListByAppNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by app not found response has a 2xx status code
+func (o *AddonListByAppNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by app not found response has a 3xx status code
+func (o *AddonListByAppNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by app not found response has a 4xx status code
+func (o *AddonListByAppNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by app not found response has a 5xx status code
+func (o *AddonListByAppNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by app not found response a status code equal to that given
+func (o *AddonListByAppNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AddonListByAppNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AddonListByAppNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AddonListByAppNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAddonListByAppInternalServerError() *AddonListByAppInternalServerError {
 	return &AddonListByAppInternalServerError{}
 }
 
-/* AddonListByAppInternalServerError describes a response with status code 500, with default header values.
+/*
+AddonListByAppInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AddonListByAppInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by app internal server error response has a 2xx status code
+func (o *AddonListByAppInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by app internal server error response has a 3xx status code
+func (o *AddonListByAppInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by app internal server error response has a 4xx status code
+func (o *AddonListByAppInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addon list by app internal server error response has a 5xx status code
+func (o *AddonListByAppInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this addon list by app internal server error response a status code equal to that given
+func (o *AddonListByAppInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AddonListByAppInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AddonListByAppInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AddonListByAppInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

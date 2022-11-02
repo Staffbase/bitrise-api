@@ -54,10 +54,12 @@ func NewAppConfigCreateParamsWithHTTPClient(client *http.Client) *AppConfigCreat
 	}
 }
 
-/* AppConfigCreateParams contains all the parameters to send to the API endpoint
-   for the app config create operation.
+/*
+AppConfigCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the app config create operation.
+
+	Typically these are written to a http.Request.
 */
 type AppConfigCreateParams struct {
 

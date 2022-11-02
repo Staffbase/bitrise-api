@@ -53,10 +53,12 @@ func NewAppListByOrganizationParamsWithHTTPClient(client *http.Client) *AppListB
 	}
 }
 
-/* AppListByOrganizationParams contains all the parameters to send to the API endpoint
-   for the app list by organization operation.
+/*
+AppListByOrganizationParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the app list by organization operation.
+
+	Typically these are written to a http.Request.
 */
 type AppListByOrganizationParams struct {
 
@@ -78,11 +80,23 @@ type AppListByOrganizationParams struct {
 	*/
 	OrgSlug string
 
+	/* ProjectType.
+
+	   The project type of the app (eg. 'ios', 'android')
+	*/
+	ProjectType *string
+
 	/* SortBy.
 
 	   Order of applications: sort them based on when they were created or the time of their last build
 	*/
 	SortBy *string
+
+	/* Title.
+
+	   The title of the app
+	*/
+	Title *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -170,6 +184,17 @@ func (o *AppListByOrganizationParams) SetOrgSlug(orgSlug string) {
 	o.OrgSlug = orgSlug
 }
 
+// WithProjectType adds the projectType to the app list by organization params
+func (o *AppListByOrganizationParams) WithProjectType(projectType *string) *AppListByOrganizationParams {
+	o.SetProjectType(projectType)
+	return o
+}
+
+// SetProjectType adds the projectType to the app list by organization params
+func (o *AppListByOrganizationParams) SetProjectType(projectType *string) {
+	o.ProjectType = projectType
+}
+
 // WithSortBy adds the sortBy to the app list by organization params
 func (o *AppListByOrganizationParams) WithSortBy(sortBy *string) *AppListByOrganizationParams {
 	o.SetSortBy(sortBy)
@@ -179,6 +204,17 @@ func (o *AppListByOrganizationParams) WithSortBy(sortBy *string) *AppListByOrgan
 // SetSortBy adds the sortBy to the app list by organization params
 func (o *AppListByOrganizationParams) SetSortBy(sortBy *string) {
 	o.SortBy = sortBy
+}
+
+// WithTitle adds the title to the app list by organization params
+func (o *AppListByOrganizationParams) WithTitle(title *string) *AppListByOrganizationParams {
+	o.SetTitle(title)
+	return o
+}
+
+// SetTitle adds the title to the app list by organization params
+func (o *AppListByOrganizationParams) SetTitle(title *string) {
+	o.Title = title
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -228,6 +264,23 @@ func (o *AppListByOrganizationParams) WriteToRequest(r runtime.ClientRequest, re
 		return err
 	}
 
+	if o.ProjectType != nil {
+
+		// query param project_type
+		var qrProjectType string
+
+		if o.ProjectType != nil {
+			qrProjectType = *o.ProjectType
+		}
+		qProjectType := qrProjectType
+		if qProjectType != "" {
+
+			if err := r.SetQueryParam("project_type", qProjectType); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.SortBy != nil {
 
 		// query param sort_by
@@ -240,6 +293,23 @@ func (o *AppListByOrganizationParams) WriteToRequest(r runtime.ClientRequest, re
 		if qSortBy != "" {
 
 			if err := r.SetQueryParam("sort_by", qSortBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Title != nil {
+
+		// query param title
+		var qrTitle string
+
+		if o.Title != nil {
+			qrTitle = *o.Title
+		}
+		qTitle := qrTitle
+		if qTitle != "" {
+
+			if err := r.SetQueryParam("title", qTitle); err != nil {
 				return err
 			}
 		}

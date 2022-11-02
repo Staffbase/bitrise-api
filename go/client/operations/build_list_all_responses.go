@@ -63,7 +63,8 @@ func NewBuildListAllOK() *BuildListAllOK {
 	return &BuildListAllOK{}
 }
 
-/* BuildListAllOK describes a response with status code 200, with default header values.
+/*
+BuildListAllOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type BuildListAllOK struct {
 	Payload *models.V0BuildListAllResponseModel
 }
 
+// IsSuccess returns true when this build list all o k response has a 2xx status code
+func (o *BuildListAllOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build list all o k response has a 3xx status code
+func (o *BuildListAllOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build list all o k response has a 4xx status code
+func (o *BuildListAllOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build list all o k response has a 5xx status code
+func (o *BuildListAllOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build list all o k response a status code equal to that given
+func (o *BuildListAllOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BuildListAllOK) Error() string {
 	return fmt.Sprintf("[GET /builds][%d] buildListAllOK  %+v", 200, o.Payload)
 }
+
+func (o *BuildListAllOK) String() string {
+	return fmt.Sprintf("[GET /builds][%d] buildListAllOK  %+v", 200, o.Payload)
+}
+
 func (o *BuildListAllOK) GetPayload() *models.V0BuildListAllResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewBuildListAllBadRequest() *BuildListAllBadRequest {
 	return &BuildListAllBadRequest{}
 }
 
-/* BuildListAllBadRequest describes a response with status code 400, with default header values.
+/*
+BuildListAllBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type BuildListAllBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build list all bad request response has a 2xx status code
+func (o *BuildListAllBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build list all bad request response has a 3xx status code
+func (o *BuildListAllBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build list all bad request response has a 4xx status code
+func (o *BuildListAllBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build list all bad request response has a 5xx status code
+func (o *BuildListAllBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build list all bad request response a status code equal to that given
+func (o *BuildListAllBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildListAllBadRequest) Error() string {
 	return fmt.Sprintf("[GET /builds][%d] buildListAllBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildListAllBadRequest) String() string {
+	return fmt.Sprintf("[GET /builds][%d] buildListAllBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildListAllBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewBuildListAllUnauthorized() *BuildListAllUnauthorized {
 	return &BuildListAllUnauthorized{}
 }
 
-/* BuildListAllUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildListAllUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type BuildListAllUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build list all unauthorized response has a 2xx status code
+func (o *BuildListAllUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build list all unauthorized response has a 3xx status code
+func (o *BuildListAllUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build list all unauthorized response has a 4xx status code
+func (o *BuildListAllUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build list all unauthorized response has a 5xx status code
+func (o *BuildListAllUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build list all unauthorized response a status code equal to that given
+func (o *BuildListAllUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildListAllUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /builds][%d] buildListAllUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildListAllUnauthorized) String() string {
+	return fmt.Sprintf("[GET /builds][%d] buildListAllUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildListAllUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewBuildListAllNotFound() *BuildListAllNotFound {
 	return &BuildListAllNotFound{}
 }
 
-/* BuildListAllNotFound describes a response with status code 404, with default header values.
+/*
+BuildListAllNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type BuildListAllNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build list all not found response has a 2xx status code
+func (o *BuildListAllNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build list all not found response has a 3xx status code
+func (o *BuildListAllNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build list all not found response has a 4xx status code
+func (o *BuildListAllNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build list all not found response has a 5xx status code
+func (o *BuildListAllNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build list all not found response a status code equal to that given
+func (o *BuildListAllNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildListAllNotFound) Error() string {
 	return fmt.Sprintf("[GET /builds][%d] buildListAllNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildListAllNotFound) String() string {
+	return fmt.Sprintf("[GET /builds][%d] buildListAllNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildListAllNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewBuildListAllInternalServerError() *BuildListAllInternalServerError {
 	return &BuildListAllInternalServerError{}
 }
 
-/* BuildListAllInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildListAllInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type BuildListAllInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build list all internal server error response has a 2xx status code
+func (o *BuildListAllInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build list all internal server error response has a 3xx status code
+func (o *BuildListAllInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build list all internal server error response has a 4xx status code
+func (o *BuildListAllInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build list all internal server error response has a 5xx status code
+func (o *BuildListAllInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build list all internal server error response a status code equal to that given
+func (o *BuildListAllInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildListAllInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /builds][%d] buildListAllInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildListAllInternalServerError) String() string {
+	return fmt.Sprintf("[GET /builds][%d] buildListAllInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildListAllInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

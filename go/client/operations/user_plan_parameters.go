@@ -52,10 +52,12 @@ func NewUserPlanParamsWithHTTPClient(client *http.Client) *UserPlanParams {
 	}
 }
 
-/* UserPlanParams contains all the parameters to send to the API endpoint
-   for the user plan operation.
+/*
+UserPlanParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user plan operation.
+
+	Typically these are written to a http.Request.
 */
 type UserPlanParams struct {
 	timeout    time.Duration

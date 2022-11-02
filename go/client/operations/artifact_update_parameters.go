@@ -54,10 +54,12 @@ func NewArtifactUpdateParamsWithHTTPClient(client *http.Client) *ArtifactUpdateP
 	}
 }
 
-/* ArtifactUpdateParams contains all the parameters to send to the API endpoint
-   for the artifact update operation.
+/*
+ArtifactUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the artifact update operation.
+
+	Typically these are written to a http.Request.
 */
 type ArtifactUpdateParams struct {
 

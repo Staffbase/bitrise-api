@@ -58,6 +58,8 @@ func (m *V0AppWebhookListResponseModel) validateData(formats strfmt.Registry) er
 			if err := m.Data[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -77,6 +79,8 @@ func (m *V0AppWebhookListResponseModel) validatePaging(formats strfmt.Registry) 
 		if err := m.Paging.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("paging")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("paging")
 			}
 			return err
 		}
@@ -111,6 +115,8 @@ func (m *V0AppWebhookListResponseModel) contextValidateData(ctx context.Context,
 			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -127,6 +133,8 @@ func (m *V0AppWebhookListResponseModel) contextValidatePaging(ctx context.Contex
 		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("paging")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("paging")
 			}
 			return err
 		}

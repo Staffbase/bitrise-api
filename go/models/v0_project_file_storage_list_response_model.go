@@ -58,6 +58,8 @@ func (m *V0ProjectFileStorageListResponseModel) validateData(formats strfmt.Regi
 			if err := m.Data[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -77,6 +79,8 @@ func (m *V0ProjectFileStorageListResponseModel) validatePaging(formats strfmt.Re
 		if err := m.Paging.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("paging")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("paging")
 			}
 			return err
 		}
@@ -111,6 +115,8 @@ func (m *V0ProjectFileStorageListResponseModel) contextValidateData(ctx context.
 			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("data" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -127,6 +133,8 @@ func (m *V0ProjectFileStorageListResponseModel) contextValidatePaging(ctx contex
 		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("paging")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("paging")
 			}
 			return err
 		}

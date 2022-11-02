@@ -52,10 +52,12 @@ func NewBuildShowParamsWithHTTPClient(client *http.Client) *BuildShowParams {
 	}
 }
 
-/* BuildShowParams contains all the parameters to send to the API endpoint
-   for the build show operation.
+/*
+BuildShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build show operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildShowParams struct {
 

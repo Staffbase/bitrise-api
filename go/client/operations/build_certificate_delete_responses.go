@@ -63,7 +63,8 @@ func NewBuildCertificateDeleteOK() *BuildCertificateDeleteOK {
 	return &BuildCertificateDeleteOK{}
 }
 
-/* BuildCertificateDeleteOK describes a response with status code 200, with default header values.
+/*
+BuildCertificateDeleteOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type BuildCertificateDeleteOK struct {
 	Payload *models.V0BuildCertificateResponseModel
 }
 
+// IsSuccess returns true when this build certificate delete o k response has a 2xx status code
+func (o *BuildCertificateDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build certificate delete o k response has a 3xx status code
+func (o *BuildCertificateDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate delete o k response has a 4xx status code
+func (o *BuildCertificateDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build certificate delete o k response has a 5xx status code
+func (o *BuildCertificateDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate delete o k response a status code equal to that given
+func (o *BuildCertificateDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BuildCertificateDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *BuildCertificateDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *BuildCertificateDeleteOK) GetPayload() *models.V0BuildCertificateResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewBuildCertificateDeleteBadRequest() *BuildCertificateDeleteBadRequest {
 	return &BuildCertificateDeleteBadRequest{}
 }
 
-/* BuildCertificateDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+BuildCertificateDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type BuildCertificateDeleteBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate delete bad request response has a 2xx status code
+func (o *BuildCertificateDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate delete bad request response has a 3xx status code
+func (o *BuildCertificateDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate delete bad request response has a 4xx status code
+func (o *BuildCertificateDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build certificate delete bad request response has a 5xx status code
+func (o *BuildCertificateDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate delete bad request response a status code equal to that given
+func (o *BuildCertificateDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildCertificateDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildCertificateDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildCertificateDeleteBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewBuildCertificateDeleteUnauthorized() *BuildCertificateDeleteUnauthorized
 	return &BuildCertificateDeleteUnauthorized{}
 }
 
-/* BuildCertificateDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildCertificateDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type BuildCertificateDeleteUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate delete unauthorized response has a 2xx status code
+func (o *BuildCertificateDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate delete unauthorized response has a 3xx status code
+func (o *BuildCertificateDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate delete unauthorized response has a 4xx status code
+func (o *BuildCertificateDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build certificate delete unauthorized response has a 5xx status code
+func (o *BuildCertificateDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate delete unauthorized response a status code equal to that given
+func (o *BuildCertificateDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildCertificateDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildCertificateDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildCertificateDeleteUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewBuildCertificateDeleteNotFound() *BuildCertificateDeleteNotFound {
 	return &BuildCertificateDeleteNotFound{}
 }
 
-/* BuildCertificateDeleteNotFound describes a response with status code 404, with default header values.
+/*
+BuildCertificateDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type BuildCertificateDeleteNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate delete not found response has a 2xx status code
+func (o *BuildCertificateDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate delete not found response has a 3xx status code
+func (o *BuildCertificateDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate delete not found response has a 4xx status code
+func (o *BuildCertificateDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build certificate delete not found response has a 5xx status code
+func (o *BuildCertificateDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate delete not found response a status code equal to that given
+func (o *BuildCertificateDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildCertificateDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildCertificateDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildCertificateDeleteNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewBuildCertificateDeleteInternalServerError() *BuildCertificateDeleteInter
 	return &BuildCertificateDeleteInternalServerError{}
 }
 
-/* BuildCertificateDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildCertificateDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type BuildCertificateDeleteInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate delete internal server error response has a 2xx status code
+func (o *BuildCertificateDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate delete internal server error response has a 3xx status code
+func (o *BuildCertificateDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate delete internal server error response has a 4xx status code
+func (o *BuildCertificateDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build certificate delete internal server error response has a 5xx status code
+func (o *BuildCertificateDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build certificate delete internal server error response a status code equal to that given
+func (o *BuildCertificateDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildCertificateDeleteInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildCertificateDeleteInternalServerError) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildCertificateDeleteInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewAppleAPICredentialListParamsWithHTTPClient(client *http.Client) *AppleAP
 	}
 }
 
-/* AppleAPICredentialListParams contains all the parameters to send to the API endpoint
-   for the apple api credential list operation.
+/*
+AppleAPICredentialListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the apple api credential list operation.
+
+	Typically these are written to a http.Request.
 */
 type AppleAPICredentialListParams struct {
 

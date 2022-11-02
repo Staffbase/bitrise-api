@@ -63,7 +63,8 @@ func NewAvatarCandidatePromoteOK() *AvatarCandidatePromoteOK {
 	return &AvatarCandidatePromoteOK{}
 }
 
-/* AvatarCandidatePromoteOK describes a response with status code 200, with default header values.
+/*
+AvatarCandidatePromoteOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AvatarCandidatePromoteOK struct {
 	Payload *models.V0AvatarPromoteResponseModel
 }
 
+// IsSuccess returns true when this avatar candidate promote o k response has a 2xx status code
+func (o *AvatarCandidatePromoteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this avatar candidate promote o k response has a 3xx status code
+func (o *AvatarCandidatePromoteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate promote o k response has a 4xx status code
+func (o *AvatarCandidatePromoteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this avatar candidate promote o k response has a 5xx status code
+func (o *AvatarCandidatePromoteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate promote o k response a status code equal to that given
+func (o *AvatarCandidatePromoteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AvatarCandidatePromoteOK) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteOK  %+v", 200, o.Payload)
 }
+
+func (o *AvatarCandidatePromoteOK) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteOK  %+v", 200, o.Payload)
+}
+
 func (o *AvatarCandidatePromoteOK) GetPayload() *models.V0AvatarPromoteResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAvatarCandidatePromoteBadRequest() *AvatarCandidatePromoteBadRequest {
 	return &AvatarCandidatePromoteBadRequest{}
 }
 
-/* AvatarCandidatePromoteBadRequest describes a response with status code 400, with default header values.
+/*
+AvatarCandidatePromoteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AvatarCandidatePromoteBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate promote bad request response has a 2xx status code
+func (o *AvatarCandidatePromoteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate promote bad request response has a 3xx status code
+func (o *AvatarCandidatePromoteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate promote bad request response has a 4xx status code
+func (o *AvatarCandidatePromoteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate promote bad request response has a 5xx status code
+func (o *AvatarCandidatePromoteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate promote bad request response a status code equal to that given
+func (o *AvatarCandidatePromoteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AvatarCandidatePromoteBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AvatarCandidatePromoteBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AvatarCandidatePromoteBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAvatarCandidatePromoteUnauthorized() *AvatarCandidatePromoteUnauthorized
 	return &AvatarCandidatePromoteUnauthorized{}
 }
 
-/* AvatarCandidatePromoteUnauthorized describes a response with status code 401, with default header values.
+/*
+AvatarCandidatePromoteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AvatarCandidatePromoteUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate promote unauthorized response has a 2xx status code
+func (o *AvatarCandidatePromoteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate promote unauthorized response has a 3xx status code
+func (o *AvatarCandidatePromoteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate promote unauthorized response has a 4xx status code
+func (o *AvatarCandidatePromoteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate promote unauthorized response has a 5xx status code
+func (o *AvatarCandidatePromoteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate promote unauthorized response a status code equal to that given
+func (o *AvatarCandidatePromoteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AvatarCandidatePromoteUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AvatarCandidatePromoteUnauthorized) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AvatarCandidatePromoteUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAvatarCandidatePromoteNotFound() *AvatarCandidatePromoteNotFound {
 	return &AvatarCandidatePromoteNotFound{}
 }
 
-/* AvatarCandidatePromoteNotFound describes a response with status code 404, with default header values.
+/*
+AvatarCandidatePromoteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AvatarCandidatePromoteNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate promote not found response has a 2xx status code
+func (o *AvatarCandidatePromoteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate promote not found response has a 3xx status code
+func (o *AvatarCandidatePromoteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate promote not found response has a 4xx status code
+func (o *AvatarCandidatePromoteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate promote not found response has a 5xx status code
+func (o *AvatarCandidatePromoteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate promote not found response a status code equal to that given
+func (o *AvatarCandidatePromoteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AvatarCandidatePromoteNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AvatarCandidatePromoteNotFound) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AvatarCandidatePromoteNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAvatarCandidatePromoteInternalServerError() *AvatarCandidatePromoteInter
 	return &AvatarCandidatePromoteInternalServerError{}
 }
 
-/* AvatarCandidatePromoteInternalServerError describes a response with status code 500, with default header values.
+/*
+AvatarCandidatePromoteInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AvatarCandidatePromoteInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate promote internal server error response has a 2xx status code
+func (o *AvatarCandidatePromoteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate promote internal server error response has a 3xx status code
+func (o *AvatarCandidatePromoteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate promote internal server error response has a 4xx status code
+func (o *AvatarCandidatePromoteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this avatar candidate promote internal server error response has a 5xx status code
+func (o *AvatarCandidatePromoteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this avatar candidate promote internal server error response a status code equal to that given
+func (o *AvatarCandidatePromoteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AvatarCandidatePromoteInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AvatarCandidatePromoteInternalServerError) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/avatar-candidates/{avatar-slug}][%d] avatarCandidatePromoteInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AvatarCandidatePromoteInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

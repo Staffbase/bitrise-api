@@ -63,7 +63,8 @@ func NewBuildTriggerCreated() *BuildTriggerCreated {
 	return &BuildTriggerCreated{}
 }
 
-/* BuildTriggerCreated describes a response with status code 201, with default header values.
+/*
+BuildTriggerCreated describes a response with status code 201, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type BuildTriggerCreated struct {
 	Payload *models.V0BuildTriggerRespModel
 }
 
+// IsSuccess returns true when this build trigger created response has a 2xx status code
+func (o *BuildTriggerCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build trigger created response has a 3xx status code
+func (o *BuildTriggerCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build trigger created response has a 4xx status code
+func (o *BuildTriggerCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build trigger created response has a 5xx status code
+func (o *BuildTriggerCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build trigger created response a status code equal to that given
+func (o *BuildTriggerCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *BuildTriggerCreated) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerCreated  %+v", 201, o.Payload)
 }
+
+func (o *BuildTriggerCreated) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerCreated  %+v", 201, o.Payload)
+}
+
 func (o *BuildTriggerCreated) GetPayload() *models.V0BuildTriggerRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewBuildTriggerBadRequest() *BuildTriggerBadRequest {
 	return &BuildTriggerBadRequest{}
 }
 
-/* BuildTriggerBadRequest describes a response with status code 400, with default header values.
+/*
+BuildTriggerBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type BuildTriggerBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build trigger bad request response has a 2xx status code
+func (o *BuildTriggerBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build trigger bad request response has a 3xx status code
+func (o *BuildTriggerBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build trigger bad request response has a 4xx status code
+func (o *BuildTriggerBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build trigger bad request response has a 5xx status code
+func (o *BuildTriggerBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build trigger bad request response a status code equal to that given
+func (o *BuildTriggerBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildTriggerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildTriggerBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildTriggerBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewBuildTriggerUnauthorized() *BuildTriggerUnauthorized {
 	return &BuildTriggerUnauthorized{}
 }
 
-/* BuildTriggerUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildTriggerUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type BuildTriggerUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build trigger unauthorized response has a 2xx status code
+func (o *BuildTriggerUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build trigger unauthorized response has a 3xx status code
+func (o *BuildTriggerUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build trigger unauthorized response has a 4xx status code
+func (o *BuildTriggerUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build trigger unauthorized response has a 5xx status code
+func (o *BuildTriggerUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build trigger unauthorized response a status code equal to that given
+func (o *BuildTriggerUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildTriggerUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildTriggerUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildTriggerUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewBuildTriggerNotFound() *BuildTriggerNotFound {
 	return &BuildTriggerNotFound{}
 }
 
-/* BuildTriggerNotFound describes a response with status code 404, with default header values.
+/*
+BuildTriggerNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type BuildTriggerNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build trigger not found response has a 2xx status code
+func (o *BuildTriggerNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build trigger not found response has a 3xx status code
+func (o *BuildTriggerNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build trigger not found response has a 4xx status code
+func (o *BuildTriggerNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build trigger not found response has a 5xx status code
+func (o *BuildTriggerNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build trigger not found response a status code equal to that given
+func (o *BuildTriggerNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildTriggerNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildTriggerNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildTriggerNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewBuildTriggerInternalServerError() *BuildTriggerInternalServerError {
 	return &BuildTriggerInternalServerError{}
 }
 
-/* BuildTriggerInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildTriggerInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type BuildTriggerInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build trigger internal server error response has a 2xx status code
+func (o *BuildTriggerInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build trigger internal server error response has a 3xx status code
+func (o *BuildTriggerInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build trigger internal server error response has a 4xx status code
+func (o *BuildTriggerInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build trigger internal server error response has a 5xx status code
+func (o *BuildTriggerInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build trigger internal server error response a status code equal to that given
+func (o *BuildTriggerInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildTriggerInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildTriggerInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildTriggerInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

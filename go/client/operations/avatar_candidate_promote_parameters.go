@@ -54,10 +54,12 @@ func NewAvatarCandidatePromoteParamsWithHTTPClient(client *http.Client) *AvatarC
 	}
 }
 
-/* AvatarCandidatePromoteParams contains all the parameters to send to the API endpoint
-   for the avatar candidate promote operation.
+/*
+AvatarCandidatePromoteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the avatar candidate promote operation.
+
+	Typically these are written to a http.Request.
 */
 type AvatarCandidatePromoteParams struct {
 

@@ -52,10 +52,12 @@ func NewOrgListParamsWithHTTPClient(client *http.Client) *OrgListParams {
 	}
 }
 
-/* OrgListParams contains all the parameters to send to the API endpoint
-   for the org list operation.
+/*
+OrgListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the org list operation.
+
+	Typically these are written to a http.Request.
 */
 type OrgListParams struct {
 	timeout    time.Duration

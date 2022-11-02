@@ -69,7 +69,8 @@ func NewBuildAbortOK() *BuildAbortOK {
 	return &BuildAbortOK{}
 }
 
-/* BuildAbortOK describes a response with status code 200, with default header values.
+/*
+BuildAbortOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -77,9 +78,39 @@ type BuildAbortOK struct {
 	Payload *models.V0BuildAbortResponseModel
 }
 
+// IsSuccess returns true when this build abort o k response has a 2xx status code
+func (o *BuildAbortOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build abort o k response has a 3xx status code
+func (o *BuildAbortOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build abort o k response has a 4xx status code
+func (o *BuildAbortOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build abort o k response has a 5xx status code
+func (o *BuildAbortOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build abort o k response a status code equal to that given
+func (o *BuildAbortOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BuildAbortOK) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortOK  %+v", 200, o.Payload)
 }
+
+func (o *BuildAbortOK) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortOK  %+v", 200, o.Payload)
+}
+
 func (o *BuildAbortOK) GetPayload() *models.V0BuildAbortResponseModel {
 	return o.Payload
 }
@@ -101,7 +132,8 @@ func NewBuildAbortBadRequest() *BuildAbortBadRequest {
 	return &BuildAbortBadRequest{}
 }
 
-/* BuildAbortBadRequest describes a response with status code 400, with default header values.
+/*
+BuildAbortBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -109,9 +141,39 @@ type BuildAbortBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build abort bad request response has a 2xx status code
+func (o *BuildAbortBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build abort bad request response has a 3xx status code
+func (o *BuildAbortBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build abort bad request response has a 4xx status code
+func (o *BuildAbortBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build abort bad request response has a 5xx status code
+func (o *BuildAbortBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build abort bad request response a status code equal to that given
+func (o *BuildAbortBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildAbortBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildAbortBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildAbortBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -133,7 +195,8 @@ func NewBuildAbortUnauthorized() *BuildAbortUnauthorized {
 	return &BuildAbortUnauthorized{}
 }
 
-/* BuildAbortUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildAbortUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -141,9 +204,39 @@ type BuildAbortUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build abort unauthorized response has a 2xx status code
+func (o *BuildAbortUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build abort unauthorized response has a 3xx status code
+func (o *BuildAbortUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build abort unauthorized response has a 4xx status code
+func (o *BuildAbortUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build abort unauthorized response has a 5xx status code
+func (o *BuildAbortUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build abort unauthorized response a status code equal to that given
+func (o *BuildAbortUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildAbortUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildAbortUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildAbortUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -165,7 +258,8 @@ func NewBuildAbortNotFound() *BuildAbortNotFound {
 	return &BuildAbortNotFound{}
 }
 
-/* BuildAbortNotFound describes a response with status code 404, with default header values.
+/*
+BuildAbortNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -173,9 +267,39 @@ type BuildAbortNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build abort not found response has a 2xx status code
+func (o *BuildAbortNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build abort not found response has a 3xx status code
+func (o *BuildAbortNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build abort not found response has a 4xx status code
+func (o *BuildAbortNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build abort not found response has a 5xx status code
+func (o *BuildAbortNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build abort not found response a status code equal to that given
+func (o *BuildAbortNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildAbortNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildAbortNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildAbortNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -197,7 +321,8 @@ func NewBuildAbortTooManyRequests() *BuildAbortTooManyRequests {
 	return &BuildAbortTooManyRequests{}
 }
 
-/* BuildAbortTooManyRequests describes a response with status code 429, with default header values.
+/*
+BuildAbortTooManyRequests describes a response with status code 429, with default header values.
 
 Too Many Requests
 */
@@ -205,9 +330,39 @@ type BuildAbortTooManyRequests struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build abort too many requests response has a 2xx status code
+func (o *BuildAbortTooManyRequests) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build abort too many requests response has a 3xx status code
+func (o *BuildAbortTooManyRequests) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build abort too many requests response has a 4xx status code
+func (o *BuildAbortTooManyRequests) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build abort too many requests response has a 5xx status code
+func (o *BuildAbortTooManyRequests) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build abort too many requests response a status code equal to that given
+func (o *BuildAbortTooManyRequests) IsCode(code int) bool {
+	return code == 429
+}
+
 func (o *BuildAbortTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortTooManyRequests  %+v", 429, o.Payload)
 }
+
+func (o *BuildAbortTooManyRequests) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortTooManyRequests  %+v", 429, o.Payload)
+}
+
 func (o *BuildAbortTooManyRequests) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -229,7 +384,8 @@ func NewBuildAbortInternalServerError() *BuildAbortInternalServerError {
 	return &BuildAbortInternalServerError{}
 }
 
-/* BuildAbortInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildAbortInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -237,9 +393,39 @@ type BuildAbortInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build abort internal server error response has a 2xx status code
+func (o *BuildAbortInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build abort internal server error response has a 3xx status code
+func (o *BuildAbortInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build abort internal server error response has a 4xx status code
+func (o *BuildAbortInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build abort internal server error response has a 5xx status code
+func (o *BuildAbortInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build abort internal server error response a status code equal to that given
+func (o *BuildAbortInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildAbortInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildAbortInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildAbortInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

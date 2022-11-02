@@ -54,10 +54,12 @@ func NewBuildAbortParamsWithHTTPClient(client *http.Client) *BuildAbortParams {
 	}
 }
 
-/* BuildAbortParams contains all the parameters to send to the API endpoint
-   for the build abort operation.
+/*
+BuildAbortParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build abort operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildAbortParams struct {
 

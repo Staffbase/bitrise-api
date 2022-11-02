@@ -21,11 +21,6 @@
     "paths": {
         "/addons": {
             "get": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
                 "description": "List all the available Bitrise addons",
                 "produces": [
                     "application/json"
@@ -71,11 +66,6 @@
         },
         "/addons/{addon-id}": {
             "get": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
                 "description": "Show details of a specific Bitrise addon",
                 "produces": [
                     "application/json"
@@ -166,6 +156,18 @@
                         "type": "integer",
                         "description": "Max number of elements per page (default: 50)",
                         "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The title of the app",
+                        "name": "title",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The project type of the app (eg. 'ios', 'android')",
+                        "name": "project_type",
                         "in": "query"
                     }
                 ],
@@ -300,6 +302,75 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/v0.AppShowResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Updates an app by slug. Only updates the fields specified in the body.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "application"
+                ],
+                "summary": "Updates an app",
+                "operationId": "app-update",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "App update params. All fields are optional, omit the fields you don't wish to update.",
+                        "name": "app",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppUpdateParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppUpdateRespModel"
                         }
                     },
                     "400": {
@@ -506,6 +577,215 @@
                         "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/v0.ProjectFileStorageResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}": {
+            "post": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "This is the last step of uploading an android keystore file to Bitrise. Confirm the android keystore file upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the upload](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#confirming-the-file-upload) guide.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "android-keystore-file"
+                ],
+                "summary": "Confirm an android keystore file upload",
+                "operationId": "android-keystore-file-confirm",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Android keystore file slug",
+                        "name": "android-keystore-file-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.ProjectFileStorageResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Delete an app's android keystore file. You can fetch an app's android keystore file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/android-keystore-files](https://api-docs.bitrise.io/#/android-keystore-file/android-keystore-file-list) endpoint. Read more in our [Deleting a file](https://devcenter.bitrise.io/api/managing-android-keystore-files.html) guide.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "android-keystore-file"
+                ],
+                "summary": "Delete an android keystore file",
+                "operationId": "android-keystore-file-delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Android keystore file slug",
+                        "name": "android-keystore-file-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.ProjectFileStorageResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/archived-builds": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    },
+                    {
+                        "AddonAuthToken": []
+                    }
+                ],
+                "description": "List the first 1000 archived builds of a specified Bitrise app. Set parameters to filter builds:",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "builds"
+                ],
+                "summary": "List 1000 archived builds of an app",
+                "operationId": "archived-builds-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Listed builds should only be the ones which ran after the given date (Unix Timestamp)",
+                        "name": "after",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Listed builds should only be the ones which ran before the given date (Unix Timestamp)",
+                        "name": "before",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.ArchivedBuildListResponseModel"
                         }
                     },
                     "400": {
@@ -1597,6 +1877,12 @@
                         "in": "query"
                     },
                     {
+                        "type": "boolean",
+                        "description": "Whether the builds are part of a pipeline or not",
+                        "name": "is_pipeline_build",
+                        "in": "query"
+                    },
+                    {
                         "type": "string",
                         "description": "Slug of the first build in the response",
                         "name": "next",
@@ -1652,7 +1938,7 @@
                         "AddonAuthToken": []
                     }
                 ],
-                "description": "Trigger a new build. Specify an app slug and at least one parameter out of three: a git tag or git commit hash, a branch, or a workflow ID. You can also set specific parameters for Pull Request builds and define additional environment variables for your build. [Check out our detailed guide](https://devcenter.bitrise.io/api/build-trigger/).",
+                "description": "Trigger a new build/pipeline. Specify an app slug and at least one parameter out of three: a git tag or git commit hash, a branch, or a workflow/pipeline ID. You can also set specific parameters for Pull Request builds/pipelines and define additional environment variables for your build/pipeline. [Check out our detailed guide](https://devcenter.bitrise.io/api/build-trigger/).",
                 "consumes": [
                     "application/json"
                 ],
@@ -1662,7 +1948,7 @@
                 "tags": [
                     "builds"
                 ],
-                "summary": "Trigger a new build",
+                "summary": "Trigger a new build/pipeline",
                 "operationId": "build-trigger",
                 "parameters": [
                     {
@@ -1882,7 +2168,7 @@
                         "AddonAuthToken": []
                     }
                 ],
-                "description": "List all build artifacts that have been generated for an app's build. You can use the created build artifact slugs from the response output to retrieve data of a specific build artifact with the [GET/apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-show) endpoint or update a build artifact with the [PATCH/apps](https://api-docs.bitrise.io/#/build-artifact/artifact-update) endpoint.",
+                "description": "List all build artifacts that have been generated for an app's build. This endpoint can retrieve artifacts from the archive as well. You can use the created build artifact slugs from the response output to retrieve data of a specific build artifact with the [GET/apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-show) endpoint or update a build artifact with the [PATCH/apps](https://api-docs.bitrise.io/#/build-artifact/artifact-update) endpoint.",
                 "produces": [
                     "application/json"
                 ],
@@ -1964,7 +2250,7 @@
                         "AddonAuthToken": []
                     }
                 ],
-                "description": "Retrieve data of a specific build artifact. The response output contains a time-limited download url (expires in 10 minutes) and a public install page URL. You can view the build artifact with both URLs, but the public install page url will not work unless you [enable it](https://devcenter.bitrise.io/tutorials/deploy/bitrise-app-deployment/#enabling-public-page-for-the-app).",
+                "description": "Retrieve data of a specific build artifact. The endpoint can retrieve archived artifacts as well. The response output contains a time-limited download url (expires in 10 minutes) and a public install-page URL. You can view the build artifact with both URLs, but the public install-page url will not work unless you [enable it](https://devcenter.bitrise.io/tutorials/deploy/bitrise-app-deployment/#enabling-public-page-for-the-app).",
                 "produces": [
                     "application/json"
                 ],
@@ -2269,7 +2555,7 @@
                         "AddonAuthToken": []
                     }
                 ],
-                "description": "Get the build log of a specified build of a Bitrise app. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL.",
+                "description": "Get the build log of a specified build of a Bitrise app. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL. Preview of the log is returned in `log_chunks` field in JSON format. You can download the full raw log in txt by using the signed url returned in `expiring_raw_log_url`. Be aware that this url is expiring in 10 minutes!",
                 "produces": [
                     "application/json"
                 ],
@@ -2295,10 +2581,252 @@
                     }
                 ],
                 "responses": {
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/cache-items": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "List all the available cache items that the builds of the app created via the save-cache step.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "key-value-cache"
+                ],
+                "summary": "List the key-value cache items belonging to an app",
+                "operationId": "cache-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Max number of elements per page (default: 100)",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/v0.BuildLogInfoResponseModel"
+                            "$ref": "#/definitions/v0.CacheItemListResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Deletes all key-value cache items created by the builds of an app. Deleted cache items are no longer accessible and cannot be restored.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "key-value-cache"
+                ],
+                "summary": "Deletes all key-value cache items belonging to an app",
+                "operationId": "cache-item-delete-all",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/cache-items/{cache-item-id}": {
+            "delete": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Deletes a key-value cache item. Deleted cache items are no longer accessible and cannot be restored.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "key-value-cache"
+                ],
+                "summary": "Deletes a key-value cache item",
+                "operationId": "cache-item-delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "The ID of the cache item to be deleted",
+                        "name": "cache-item-id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/cache-items/{cache-item-id}/download": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Gets a download URL of a cache item.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "key-value-cache"
+                ],
+                "summary": "Gets the download URL of a key-value cache item",
+                "operationId": "cache-item-download",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "The ID of the cache item to be downloaded",
+                        "name": "cache-item-id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.CacheItemDownloadResponseModel"
                         }
                     },
                     "400": {
@@ -3302,6 +3830,338 @@
                 }
             }
         },
+        "/apps/{app-slug}/pipelines": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    },
+                    {
+                        "AddonAuthToken": []
+                    }
+                ],
+                "description": "List all the pipelines and standalone builds of a specified Bitrise app. Set parameters to filter pipelines: for example, you can search for pipelines/standalone builds run with a given workflow name or all pipelines/standalone builds that were triggered by Pull Requests. It returns all the relevant data of the pipelines/standalone builds.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pipelines"
+                ],
+                "summary": "List all pipelines and standalone builds of an app",
+                "operationId": "pipeline-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "The branch which was built",
+                        "name": "branch",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The name of the workflow used for the pipeline/standalone build",
+                        "name": "workflow",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The commit message of the pipeline/standalone build",
+                        "name": "commit_message",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The event that triggered the pipeline/standalone build (push, pull-request, tag)",
+                        "name": "trigger_event_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The pipeline/standalone build number",
+                        "name": "build_number",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "List pipelines/standalone builds run before a given date (RFC3339 time format)",
+                        "name": "next",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The status of the pipeline/standalone build: initializing, on_hold, running, succeeded, failed, aborted, succeeded_with_abort",
+                        "name": "status",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Max number of elements per page (default: 10)",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.PipelineListResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/pipelines/{pipeline-id}": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    },
+                    {
+                        "AddonAuthToken": []
+                    }
+                ],
+                "description": "Get the specified pipeline of a given Bitrise app. You need to provide both an app slug and a pipeline id. You can get the pipeline id either by calling the [/pipelines](https://api-docs.bitrise.io/#/pipelines/pipeline-list) endpoint or by clicking on the pipeline on bitrise.io and copying the id from the URL. The endpoint returns all the relevant data of the pipeline.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pipelines"
+                ],
+                "summary": "Get a pipeline of a given app",
+                "operationId": "pipeline-show",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Pipeline id",
+                        "name": "pipeline-id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.PipelineShowResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/pipelines/{pipeline-id}/abort": {
+            "post": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    },
+                    {
+                        "AddonAuthToken": []
+                    }
+                ],
+                "description": "Aborts a pipeline. You need to provide the app slug and the id of the pipeline. You can add an abort reason, choose to skip notifications and make the abort with success state.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pipelines"
+                ],
+                "summary": "Aborts a pipeline",
+                "operationId": "pipeline-abort",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Pipeline id",
+                        "name": "pipeline-id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Pipeline abort parameters",
+                        "name": "pipeline-abort-params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.PipelineAbortParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/pipelines/{pipeline-id}/rebuild": {
+            "post": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Rebuilds a pipeline. You can rebuild the whole pipeline or only the unsuccessful and subsequent workflows by setting the partial flag to true.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pipelines"
+                ],
+                "summary": "Rebuilds a pipeline",
+                "operationId": "pipeline-rebuild",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Pipeline id",
+                        "name": "pipeline-id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Pipeline rebuild parameters",
+                        "name": "pipeline-rebuild-params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.PipelineRebuildParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "412": {
+                        "description": "Precondition Failed",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
         "/apps/{app-slug}/provisioning-profiles": {
             "get": {
                 "security": [
@@ -3854,6 +4714,276 @@
                 }
             }
         },
+        "/apps/{app-slug}/secrets": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "List the application secrets (with no values). Requires administrator level privileges to the app.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "secrets"
+                ],
+                "summary": "List the application secrets (with no values)",
+                "operationId": "secret-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppSecretListResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/secrets/{secret-name}": {
+            "put": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Upsert an application secret. Requires administrator level privileges to the app.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "secrets"
+                ],
+                "summary": "Upsert an application secret",
+                "operationId": "secret-upsert",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Secret name",
+                        "name": "secret-name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Secret parameters",
+                        "name": "app",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppSecretUpsertParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Delete an application secret. Requires administrator level privileges to the app.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "secrets"
+                ],
+                "summary": "Delete an application secret",
+                "operationId": "secret-delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Secret name",
+                        "name": "secret-name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/secrets/{secret-name}/value": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Get the value of an (unprotected) application secrets. Requires administrator level privileges to the app.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "secrets"
+                ],
+                "summary": "Get the value of an (unprotected) application secrets",
+                "operationId": "secret-value-get",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "Secret name",
+                        "name": "secret-name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppSecretGetValueResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
         "/apps/{app-slug}/test-devices": {
             "get": {
                 "security": [
@@ -4007,14 +5137,14 @@
                         "PersonalAccessToken": []
                     }
                 ],
-                "description": "Shows the authenticated users profile data",
+                "description": "Shows the authenticated users profile info",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "user"
                 ],
-                "summary": "Get your profile data",
+                "summary": "Get your profile info",
                 "operationId": "user-profile",
                 "responses": {
                     "200": {
@@ -4081,6 +5211,117 @@
                         "schema": {
                             "$ref": "#/definitions/v0.ActivityEventListResponseModel"
                         }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/me/addon-tokens": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Lists the active addon tokens of the user with some extra details.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "The active addon tokens of the user",
+                "operationId": "user-addon-tokens",
+                "deprecated": true,
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/me/addon-tokens/{addon-id}": {
+            "delete": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Removes the active addon token of the user.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Removes an active addon token of the user",
+                "operationId": "user-addon-tokens-delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Addon ID",
+                        "name": "addon-id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "deprecated": true,
+                "responses": {
+                    "200": {
+                        "description": "OK"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -4317,6 +5558,18 @@
                         "description": "Max number of elements per page (default: 50)",
                         "name": "limit",
                         "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The title of the app",
+                        "name": "title",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The project type of the app (eg. 'ios', 'android')",
+                        "name": "project_type",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -4383,6 +5636,82 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/v0.OwnerAddOnsListResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/pipelines": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "List all the Bitrise pipelines/standalone builds that can be accessed with the authenticated account. Filter pipelines/standalone builds based on their owner, using the owner slug, or the status of the pipeline/standalone build.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "pipelines"
+                ],
+                "summary": "List all pipelines/standalone builds",
+                "operationId": "pipeline-list-all",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "The slug of the owner of the app or apps",
+                        "name": "owner_slug",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "The status of the pipelines/standalone build: initializing, on_hold, running, succeeded, failed, aborted, succeeded_with_abort",
+                        "name": "status",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Getting pipelines/standalone builds before the given parameter (RFC3339 time format)",
+                        "name": "next",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Max number of elements per page (default: 10)",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.PipelineListAllResponseModel"
                         }
                     },
                     "400": {
@@ -4635,6 +5964,18 @@
                         "description": "Max number of elements per page (default: 50)",
                         "name": "limit",
                         "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The title of the app",
+                        "name": "title",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The project type of the app (eg. 'ios', 'android')",
+                        "name": "project_type",
+                        "in": "query"
                     }
                 ],
                 "responses": {
@@ -4882,7 +6223,7 @@
                 }
             }
         },
-        "nulls.Int64": {
+        "github.com_gobuffalo_nulls.Int64": {
             "type": "object",
             "properties": {
                 "int64": {
@@ -4894,7 +6235,7 @@
                 }
             }
         },
-        "nulls.String": {
+        "github.com_gobuffalo_nulls.String": {
             "type": "object",
             "properties": {
                 "string": {
@@ -4903,6 +6244,86 @@
                 "valid": {
                     "description": "Valid is true if String is not NULL",
                     "type": "boolean"
+                }
+            }
+        },
+        "github.com_markbates_pop_nulls.Int64": {
+            "type": "object",
+            "properties": {
+                "int64": {
+                    "type": "integer"
+                },
+                "valid": {
+                    "description": "Valid is true if Int64 is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "github.com_markbates_pop_nulls.String": {
+            "type": "object",
+            "properties": {
+                "string": {
+                    "type": "string"
+                },
+                "valid": {
+                    "description": "Valid is true if String is not NULL",
+                    "type": "boolean"
+                }
+            }
+        },
+        "pipelineabledomain.Environments": {
+            "type": "object",
+            "properties": {
+                "is_expand": {},
+                "key": {
+                    "type": "string"
+                },
+                "value": {}
+            }
+        },
+        "pipelineabledomain.TriggerParams": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "branch_dest": {
+                    "type": "string"
+                },
+                "branch_dest_repo_owner": {
+                    "type": "string"
+                },
+                "branch_repo_owner": {
+                    "type": "string"
+                },
+                "commit_hash": {
+                    "type": "string"
+                },
+                "commit_message": {
+                    "type": "string"
+                },
+                "commit_paths": {},
+                "diff_url": {
+                    "type": "string"
+                },
+                "environments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/pipelineabledomain.Environments"
+                    }
+                },
+                "pull_request_author": {
+                    "type": "string"
+                },
+                "pull_request_head_branch": {
+                    "type": "string"
+                },
+                "pull_request_id": {},
+                "pull_request_repository_url": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
                 }
             }
         },
@@ -4935,13 +6356,13 @@
                     "type": "string"
                 },
                 "description": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "event_icon": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "event_stype": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "repository_avatar_icon_url": {
                     "type": "string"
@@ -4953,10 +6374,10 @@
                     "type": "string"
                 },
                 "target_path_string": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "title": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -4964,7 +6385,7 @@
             "type": "object",
             "properties": {
                 "icon": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "plan": {
                     "$ref": "#/definitions/addons.Plan"
@@ -5012,6 +6433,9 @@
                 "alias": {
                     "type": "string"
                 },
+                "keystore_file_name": {
+                    "type": "string"
+                },
                 "password": {
                     "type": "string"
                 },
@@ -5047,13 +6471,28 @@
                 "is_beta": {
                     "type": "boolean"
                 },
+                "is_enabled": {
+                    "type": "boolean"
+                },
+                "login_url": {
+                    "type": "string"
+                },
                 "plan": {
                     "$ref": "#/definitions/addons.Plan"
+                },
+                "scopes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 "setup_guide": {
                     "$ref": "#/definitions/addons.SetupGuide"
                 },
                 "summary": {
+                    "type": "string"
+                },
+                "terms_url": {
                     "type": "string"
                 },
                 "title": {
@@ -5079,6 +6518,7 @@
             ],
             "properties": {
                 "app_config_datastore_yaml": {
+                    "description": "The bitrise.yml of your application, defined in JSON format",
                     "type": "string"
                 }
             }
@@ -5097,7 +6537,7 @@
             ],
             "properties": {
                 "config": {
-                    "description": "Which config to use `default-android-config`, `default-cordova-config`, `default-fastlane-config`, `default-ionic-config`, `default-ios-config`,`default-macos-config`, `default-react-native-config`, `default-xamarin-config`, `other-config` (default if parameter is not speficied)",
+                    "description": "Which config to use. Specify a config that matches your project type (e. g. `default-android-config` for `android`, etc.). If not speficied, default value is `other-config`. The available values are `default-android-config`, `default-cordova-config`, `default-fastlane-android-config`, `default-fastlane-ios-config`, `flutter-config-notest-app-android`, `flutter-config-notest-app-both`, `flutter-config-notest-app-ios`, `flutter-config-test-app-android`, `flutter-config-test-app-both`, `flutter-config-test-app-ios`, `default-ionic-config`, `default-ios-config`, `default-macos-config`, `default-react-native-config`, `default-react-native-expo-config`, `other-config`.",
                     "type": "string"
                 },
                 "envs": {
@@ -5172,9 +6612,12 @@
             "type": "object",
             "properties": {
                 "avatar_url": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "is_disabled": {
+                    "type": "boolean"
+                },
+                "is_github_checks_enabled": {
                     "type": "boolean"
                 },
                 "is_public": {
@@ -5184,19 +6627,19 @@
                     "$ref": "#/definitions/v0.OwnerAccountResponseModel"
                 },
                 "project_type": {
-                    "type": "string"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "provider": {
-                    "type": "string"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "repo_owner": {
-                    "type": "string"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "repo_slug": {
-                    "type": "string"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "repo_url": {
-                    "type": "string"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "slug": {
                     "type": "string"
@@ -5209,11 +6652,113 @@
                 }
             }
         },
+        "v0.AppSecret": {
+            "type": "object",
+            "properties": {
+                "expand_in_step_inputs": {
+                    "description": "Replace variable in inputs? https://devcenter.bitrise.io/en/references/steps-reference/step-inputs-reference.html#step-input-properties",
+                    "type": "boolean"
+                },
+                "is_exposed_for_pull_requests": {
+                    "description": "Expose for Pull Requests?",
+                    "type": "boolean"
+                },
+                "is_protected": {
+                    "description": "Secret marked as protected?",
+                    "type": "boolean"
+                },
+                "name": {
+                    "description": "Name of the secret",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.AppSecretGetValueResponse": {
+            "type": "object",
+            "properties": {
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.AppSecretListResponse": {
+            "type": "object",
+            "properties": {
+                "secrets": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.AppSecret"
+                    }
+                }
+            }
+        },
+        "v0.AppSecretUpsertParams": {
+            "type": "object",
+            "properties": {
+                "expand_in_step_inputs": {
+                    "description": "Replace variable in inputs? https://devcenter.bitrise.io/en/references/steps-reference/step-inputs-reference.html#step-input-properties",
+                    "type": "boolean"
+                },
+                "is_exposed_for_pull_requests": {
+                    "description": "Expose for Pull Requests?",
+                    "type": "boolean"
+                },
+                "is_protected": {
+                    "description": "Secret marked as protected?",
+                    "type": "boolean"
+                },
+                "value": {
+                    "description": "Value of the secret",
+                    "type": "string"
+                }
+            }
+        },
         "v0.AppShowResponseModel": {
             "type": "object",
             "properties": {
                 "data": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
+                }
+            }
+        },
+        "v0.AppUpdateParams": {
+            "type": "object",
+            "properties": {
+                "apple_credential_user_id": {
+                    "description": "The new apple credential user ID (recommendation: use the UI to set this)",
+                    "type": "integer"
+                },
+                "apple_credential_user_slug": {
+                    "description": "The new apple credential user slug (recommendation: use the UI to set this)",
+                    "type": "string"
+                },
+                "default_branch": {
+                    "description": "The new default branch for the application.",
+                    "type": "string"
+                },
+                "is_public": {
+                    "description": "The new value of whether an application should be publicly visible",
+                    "type": "boolean"
+                },
+                "repository_url": {
+                    "description": "The new repository URL for the application.",
+                    "type": "string"
+                },
+                "services_credential_user_id": {
+                    "description": "The new service credential user ID (recommendation: use the UI to set this)",
+                    "type": "integer"
+                },
+                "title": {
+                    "description": "The new title of the application.",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.AppUpdateRespModel": {
+            "type": "object",
+            "properties": {
+                "status": {
+                    "type": "string"
                 }
             }
         },
@@ -5228,6 +6773,10 @@
                 "type"
             ],
             "properties": {
+                "default_branch_name": {
+                    "description": "The default branch of the repository. If it's not specified, it will be `master`.",
+                    "type": "string"
+                },
                 "git_owner": {
                     "description": "The slug of the owner of the repository at the git provider",
                     "type": "string"
@@ -5240,6 +6789,10 @@
                     "description": "If `true` then the repository visibility setting will be public, in case of `false` it will be private",
                     "type": "boolean"
                 },
+                "organization_slug": {
+                    "description": "The slug of the organization, who will be the owner of the application. If it's not specified, then the authenticated user will be the owner.",
+                    "type": "string"
+                },
                 "provider": {
                     "description": "The git provider you are using, it can be `github`, `bitbucket`, `gitlab`, `gitlab-self-hosted` or `custom`",
                     "type": "string"
@@ -5248,12 +6801,12 @@
                     "description": "The URL of your repository",
                     "type": "string"
                 },
-                "type": {
-                    "description": "It has to be provided by legacy reasons and has to have the `git` value",
+                "title": {
+                    "description": "The title of the application. If it's not specified, it will be the git repository's name.",
                     "type": "string"
                 },
-                "organization_slug": {
-                    "description": "Property added by Staffbase as this is missing within open-api spec. This can be removed when bitrise has fixed it",
+                "type": {
+                    "description": "It has to be provided by legacy reasons and has to have the `git` value",
                     "type": "string"
                 }
             }
@@ -5415,6 +6968,128 @@
                 }
             }
         },
+        "v0.ArchivedBuildArtifact": {
+            "type": "object",
+            "properties": {
+                "artifact_meta": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "artifact_type": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "file_size_bytes": {
+                    "type": "integer"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_public_page_enabled": {
+                    "type": "boolean"
+                },
+                "public_page_token": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.ArchivedBuildListResponseModel": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.ArchivedBuildResponseItemModel"
+                    }
+                },
+                "paging": {
+                    "description": "pagination",
+                    "$ref": "#/definitions/v0.PagingResponseModel"
+                }
+            }
+        },
+        "v0.ArchivedBuildResponseItemModel": {
+            "type": "object",
+            "properties": {
+                "abort_reason": {
+                    "type": "string"
+                },
+                "branch": {
+                    "type": "string"
+                },
+                "build_artifacts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.ArchivedBuildArtifact"
+                    }
+                },
+                "build_number": {
+                    "type": "integer"
+                },
+                "commit_hash": {
+                    "type": "string"
+                },
+                "commit_message": {
+                    "type": "string"
+                },
+                "credit_cost": {
+                    "type": "integer"
+                },
+                "finished_at": {
+                    "type": "string"
+                },
+                "machine_type_id": {
+                    "type": "string"
+                },
+                "original_build_params": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "pipeline_workflow_id": {
+                    "type": "string"
+                },
+                "pull_request_id": {
+                    "type": "integer"
+                },
+                "pull_request_target_branch": {
+                    "type": "string"
+                },
+                "pull_request_view_url": {
+                    "type": "string"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "stack_identifier": {
+                    "type": "string"
+                },
+                "started_on_worker_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "status_text": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "triggered_by": {
+                    "type": "string"
+                },
+                "triggered_workflow": {
+                    "type": "string"
+                }
+            }
+        },
         "v0.ArtifactDeleteResponseModel": {
             "type": "object",
             "properties": {
@@ -5433,10 +7108,16 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "file_size_bytes": {
                     "type": "integer"
+                },
+                "intermediate_file_info": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 },
                 "is_public_page_enabled": {
                     "type": "boolean"
@@ -5445,7 +7126,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -5474,13 +7155,19 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "expiring_download_url": {
                     "type": "string"
                 },
                 "file_size_bytes": {
                     "type": "integer"
+                },
+                "intermediate_file_info": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
                 },
                 "is_public_page_enabled": {
                     "type": "boolean"
@@ -5492,7 +7179,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -5712,22 +7399,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                },
+                "credit_cost": {
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -5738,8 +7428,11 @@
                 "is_on_hold": {
                     "type": "boolean"
                 },
+                "is_processed": {
+                    "type": "boolean"
+                },
                 "machine_type_id": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -5751,10 +7444,10 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "repository": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
@@ -5763,7 +7456,7 @@
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -5775,13 +7468,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -5815,40 +7508,6 @@
                 "paging": {
                     "description": "pagination",
                     "$ref": "#/definitions/v0.PagingResponseModel"
-                }
-            }
-        },
-        "v0.BuildLogChunkItemResponseModel": {
-            "type": "object",
-            "properties": {
-                "chunk": {
-                    "type": "string"
-                },
-                "position": {
-                    "type": "integer"
-                }
-            }
-        },
-        "v0.BuildLogInfoResponseModel": {
-            "type": "object",
-            "properties": {
-                "expiring_raw_log_url": {
-                    "type": "string"
-                },
-                "generated_log_chunks_num": {
-                    "type": "integer"
-                },
-                "is_archived": {
-                    "type": "boolean"
-                },
-                "log_chunks": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/v0.BuildLogChunkItemResponseModel"
-                    }
-                },
-                "timestamp": {
-                    "$ref": "#/definitions/nulls.String"
                 }
             }
         },
@@ -5920,22 +7579,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                },
+                "credit_cost": {
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -5946,8 +7608,14 @@
                 "is_on_hold": {
                     "type": "boolean"
                 },
+                "is_processed": {
+                    "type": "boolean"
+                },
+                "is_status_sent": {
+                    "type": "boolean"
+                },
                 "machine_type_id": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -5955,20 +7623,23 @@
                         "type": "integer"
                     }
                 },
+                "pipeline_workflow_id": {
+                    "type": "string"
+                },
                 "pull_request_id": {
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "slug": {
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -5980,13 +7651,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -6058,15 +7729,16 @@
                 "head_repository_url": {
                     "type": "string"
                 },
+                "pipeline_id": {
+                    "type": "string"
+                },
                 "pull_request_author": {
                     "type": "string"
                 },
                 "pull_request_head_branch": {
                     "type": "string"
                 },
-                "pull_request_id": {
-                    "type": "object"
-                },
+                "pull_request_id": {},
                 "pull_request_merge_branch": {
                     "type": "string"
                 },
@@ -6134,6 +7806,62 @@
                 }
             }
         },
+        "v0.CacheItemDownloadResponseModel": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "$ref": "#/definitions/v0.CacheItemDownloadURLResponseModel"
+                }
+            }
+        },
+        "v0.CacheItemDownloadURLResponseModel": {
+            "type": "object",
+            "properties": {
+                "download_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.CacheItemListResponseItemModel": {
+            "type": "object",
+            "properties": {
+                "app_id": {
+                    "type": "string"
+                },
+                "archive_filename": {
+                    "type": "string"
+                },
+                "archive_size": {
+                    "type": "integer"
+                },
+                "cache_key": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "expires_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.CacheItemListResponseModel": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.CacheItemListResponseItemModel"
+                    }
+                },
+                "paging": {
+                    "$ref": "#/definitions/v0.PagingResponseModel"
+                }
+            }
+        },
         "v0.CommitPaths": {
             "type": "object",
             "properties": {
@@ -6186,7 +7914,7 @@
             "type": "object",
             "properties": {
                 "avatar_icon_url": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "concurrency_count": {
                     "type": "integer"
@@ -6312,6 +8040,367 @@
                 }
             }
         },
+        "v0.PipelineAbortParams": {
+            "type": "object",
+            "required": [
+                "abort_reason",
+                "abort_with_success",
+                "skip_notifications"
+            ],
+            "properties": {
+                "abort_reason": {
+                    "type": "string"
+                },
+                "abort_with_success": {
+                    "type": "boolean"
+                },
+                "skip_notifications": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "v0.PipelineListAllResponseItemModel": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "build_number": {
+                    "type": "integer"
+                },
+                "commit_hash": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "commit_message": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "finished_at": {
+                    "type": "string"
+                },
+                "is_on_hold": {
+                    "type": "boolean"
+                },
+                "is_pipeline": {
+                    "type": "boolean"
+                },
+                "is_processed": {
+                    "type": "boolean"
+                },
+                "pull_request_id": {
+                    "type": "integer"
+                },
+                "pull_request_target_branch": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "repository": {
+                    "$ref": "#/definitions/v0.AppResponseItemModel"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "started_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "tag": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "triggered_at": {
+                    "type": "string"
+                },
+                "triggered_by": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "triggered_workflow": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.PipelineListAllResponseModel": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.PipelineListAllResponseItemModel"
+                    }
+                },
+                "paging": {
+                    "$ref": "#/definitions/v0.PagingResponseModel"
+                }
+            }
+        },
+        "v0.PipelineListResponseItemModel": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "build_number": {
+                    "type": "integer"
+                },
+                "commit_hash": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "commit_message": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "credit_cost": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.Int64"
+                },
+                "finished_at": {
+                    "type": "string"
+                },
+                "is_on_hold": {
+                    "type": "boolean"
+                },
+                "is_pipeline": {
+                    "type": "boolean"
+                },
+                "is_processed": {
+                    "type": "boolean"
+                },
+                "pull_request_id": {
+                    "type": "integer"
+                },
+                "pull_request_target_branch": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "started_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "tag": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "trigger_params": {
+                    "$ref": "#/definitions/pipelineabledomain.TriggerParams"
+                },
+                "triggered_at": {
+                    "type": "string"
+                },
+                "triggered_by": {
+                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                },
+                "triggered_workflow": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.PipelineListResponseModel": {
+            "type": "object",
+            "properties": {
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.PipelineListResponseItemModel"
+                    }
+                },
+                "paging": {
+                    "description": "pagination",
+                    "$ref": "#/definitions/v0.PagingResponseModel"
+                }
+            }
+        },
+        "v0.PipelineRebuildParams": {
+            "type": "object",
+            "properties": {
+                "partial": {
+                    "type": "boolean"
+                },
+                "triggered_by": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.PipelineShowAppResponseModel": {
+            "type": "object",
+            "properties": {
+                "slug": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.PipelineShowAttemptResponseModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "number_in_pipeline_build_scope": {
+                    "type": "integer"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "triggered_at": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.PipelineShowEnvironmentsResponseModel": {
+            "type": "object",
+            "properties": {
+                "is_expand": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "value": {}
+            }
+        },
+        "v0.PipelineShowResponseModel": {
+            "type": "object",
+            "properties": {
+                "abort_reason": {
+                    "type": "string"
+                },
+                "app": {
+                    "$ref": "#/definitions/v0.PipelineShowAppResponseModel"
+                },
+                "attempts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.PipelineShowAttemptResponseModel"
+                    }
+                },
+                "credit_cost": {},
+                "current_attempt_id": {
+                    "type": "string"
+                },
+                "finished_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "number_in_app_scope": {
+                    "type": "integer"
+                },
+                "put_on_hold_at": {},
+                "stages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.PipelineShowStageResponseModel"
+                    }
+                },
+                "started_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "trigger_params": {
+                    "$ref": "#/definitions/v0.PipelineShowTriggerParamsResponseModel"
+                },
+                "triggered_at": {
+                    "type": "string"
+                },
+                "triggered_by": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.PipelineShowStageResponseModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "workflows": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.PipelineShowWorkflowResponseModel"
+                    }
+                }
+            }
+        },
+        "v0.PipelineShowTriggerParamsResponseModel": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "branch_dest": {
+                    "type": "string"
+                },
+                "branch_dest_repo_owner": {
+                    "type": "string"
+                },
+                "branch_repo_owner": {
+                    "type": "string"
+                },
+                "commit_hash": {
+                    "type": "string"
+                },
+                "commit_message": {
+                    "type": "string"
+                },
+                "commit_paths": {},
+                "diff_url": {
+                    "type": "string"
+                },
+                "environments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/v0.PipelineShowEnvironmentsResponseModel"
+                    }
+                },
+                "pull_request_author": {
+                    "type": "string"
+                },
+                "pull_request_head_branch": {
+                    "type": "string"
+                },
+                "pull_request_id": {
+                    "type": "string"
+                },
+                "pull_request_repository_url": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "v0.PipelineShowWorkflowResponseModel": {
+            "type": "object",
+            "properties": {
+                "credit_cost": {},
+                "external_id": {
+                    "type": "string"
+                },
+                "finished_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "started_at": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        },
         "v0.PlanDataModel": {
             "type": "object",
             "properties": {
@@ -6328,7 +8417,7 @@
                     "type": "string"
                 },
                 "price": {
-                    "$ref": "#/definitions/nulls.Int64"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
                 }
             }
         },
@@ -6656,16 +8745,16 @@
                     "type": "string"
                 },
                 "response_body": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "response_headers": {
-                    "$ref": "#/definitions/nulls.String"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
                 },
                 "response_http_status": {
-                    "$ref": "#/definitions/nulls.Int64"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
                 },
                 "response_seconds": {
-                    "$ref": "#/definitions/nulls.Int64"
+                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
                 },
                 "slug": {
                     "type": "string"

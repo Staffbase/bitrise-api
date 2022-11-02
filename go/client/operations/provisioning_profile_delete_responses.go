@@ -63,7 +63,8 @@ func NewProvisioningProfileDeleteOK() *ProvisioningProfileDeleteOK {
 	return &ProvisioningProfileDeleteOK{}
 }
 
-/* ProvisioningProfileDeleteOK describes a response with status code 200, with default header values.
+/*
+ProvisioningProfileDeleteOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ProvisioningProfileDeleteOK struct {
 	Payload *models.V0ProvisionProfileResponseModel
 }
 
+// IsSuccess returns true when this provisioning profile delete o k response has a 2xx status code
+func (o *ProvisioningProfileDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this provisioning profile delete o k response has a 3xx status code
+func (o *ProvisioningProfileDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile delete o k response has a 4xx status code
+func (o *ProvisioningProfileDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile delete o k response has a 5xx status code
+func (o *ProvisioningProfileDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile delete o k response a status code equal to that given
+func (o *ProvisioningProfileDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProvisioningProfileDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *ProvisioningProfileDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *ProvisioningProfileDeleteOK) GetPayload() *models.V0ProvisionProfileResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewProvisioningProfileDeleteBadRequest() *ProvisioningProfileDeleteBadReque
 	return &ProvisioningProfileDeleteBadRequest{}
 }
 
-/* ProvisioningProfileDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+ProvisioningProfileDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ProvisioningProfileDeleteBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile delete bad request response has a 2xx status code
+func (o *ProvisioningProfileDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile delete bad request response has a 3xx status code
+func (o *ProvisioningProfileDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile delete bad request response has a 4xx status code
+func (o *ProvisioningProfileDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile delete bad request response has a 5xx status code
+func (o *ProvisioningProfileDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile delete bad request response a status code equal to that given
+func (o *ProvisioningProfileDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProvisioningProfileDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProvisioningProfileDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProvisioningProfileDeleteBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewProvisioningProfileDeleteUnauthorized() *ProvisioningProfileDeleteUnauth
 	return &ProvisioningProfileDeleteUnauthorized{}
 }
 
-/* ProvisioningProfileDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+ProvisioningProfileDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ProvisioningProfileDeleteUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile delete unauthorized response has a 2xx status code
+func (o *ProvisioningProfileDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile delete unauthorized response has a 3xx status code
+func (o *ProvisioningProfileDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile delete unauthorized response has a 4xx status code
+func (o *ProvisioningProfileDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile delete unauthorized response has a 5xx status code
+func (o *ProvisioningProfileDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile delete unauthorized response a status code equal to that given
+func (o *ProvisioningProfileDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProvisioningProfileDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProvisioningProfileDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProvisioningProfileDeleteUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewProvisioningProfileDeleteNotFound() *ProvisioningProfileDeleteNotFound {
 	return &ProvisioningProfileDeleteNotFound{}
 }
 
-/* ProvisioningProfileDeleteNotFound describes a response with status code 404, with default header values.
+/*
+ProvisioningProfileDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ProvisioningProfileDeleteNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile delete not found response has a 2xx status code
+func (o *ProvisioningProfileDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile delete not found response has a 3xx status code
+func (o *ProvisioningProfileDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile delete not found response has a 4xx status code
+func (o *ProvisioningProfileDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile delete not found response has a 5xx status code
+func (o *ProvisioningProfileDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile delete not found response a status code equal to that given
+func (o *ProvisioningProfileDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProvisioningProfileDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProvisioningProfileDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProvisioningProfileDeleteNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewProvisioningProfileDeleteInternalServerError() *ProvisioningProfileDelet
 	return &ProvisioningProfileDeleteInternalServerError{}
 }
 
-/* ProvisioningProfileDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+ProvisioningProfileDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ProvisioningProfileDeleteInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile delete internal server error response has a 2xx status code
+func (o *ProvisioningProfileDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile delete internal server error response has a 3xx status code
+func (o *ProvisioningProfileDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile delete internal server error response has a 4xx status code
+func (o *ProvisioningProfileDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile delete internal server error response has a 5xx status code
+func (o *ProvisioningProfileDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this provisioning profile delete internal server error response a status code equal to that given
+func (o *ProvisioningProfileDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProvisioningProfileDeleteInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ProvisioningProfileDeleteInternalServerError) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ProvisioningProfileDeleteInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

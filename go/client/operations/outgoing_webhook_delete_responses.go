@@ -63,7 +63,8 @@ func NewOutgoingWebhookDeleteOK() *OutgoingWebhookDeleteOK {
 	return &OutgoingWebhookDeleteOK{}
 }
 
-/* OutgoingWebhookDeleteOK describes a response with status code 200, with default header values.
+/*
+OutgoingWebhookDeleteOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type OutgoingWebhookDeleteOK struct {
 	Payload *models.V0AppWebhookDeletedResponseModel
 }
 
+// IsSuccess returns true when this outgoing webhook delete o k response has a 2xx status code
+func (o *OutgoingWebhookDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this outgoing webhook delete o k response has a 3xx status code
+func (o *OutgoingWebhookDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook delete o k response has a 4xx status code
+func (o *OutgoingWebhookDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this outgoing webhook delete o k response has a 5xx status code
+func (o *OutgoingWebhookDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook delete o k response a status code equal to that given
+func (o *OutgoingWebhookDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OutgoingWebhookDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *OutgoingWebhookDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *OutgoingWebhookDeleteOK) GetPayload() *models.V0AppWebhookDeletedResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewOutgoingWebhookDeleteBadRequest() *OutgoingWebhookDeleteBadRequest {
 	return &OutgoingWebhookDeleteBadRequest{}
 }
 
-/* OutgoingWebhookDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+OutgoingWebhookDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type OutgoingWebhookDeleteBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook delete bad request response has a 2xx status code
+func (o *OutgoingWebhookDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook delete bad request response has a 3xx status code
+func (o *OutgoingWebhookDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook delete bad request response has a 4xx status code
+func (o *OutgoingWebhookDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this outgoing webhook delete bad request response has a 5xx status code
+func (o *OutgoingWebhookDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook delete bad request response a status code equal to that given
+func (o *OutgoingWebhookDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OutgoingWebhookDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OutgoingWebhookDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OutgoingWebhookDeleteBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewOutgoingWebhookDeleteUnauthorized() *OutgoingWebhookDeleteUnauthorized {
 	return &OutgoingWebhookDeleteUnauthorized{}
 }
 
-/* OutgoingWebhookDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+OutgoingWebhookDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type OutgoingWebhookDeleteUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook delete unauthorized response has a 2xx status code
+func (o *OutgoingWebhookDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook delete unauthorized response has a 3xx status code
+func (o *OutgoingWebhookDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook delete unauthorized response has a 4xx status code
+func (o *OutgoingWebhookDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this outgoing webhook delete unauthorized response has a 5xx status code
+func (o *OutgoingWebhookDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook delete unauthorized response a status code equal to that given
+func (o *OutgoingWebhookDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OutgoingWebhookDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OutgoingWebhookDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OutgoingWebhookDeleteUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewOutgoingWebhookDeleteNotFound() *OutgoingWebhookDeleteNotFound {
 	return &OutgoingWebhookDeleteNotFound{}
 }
 
-/* OutgoingWebhookDeleteNotFound describes a response with status code 404, with default header values.
+/*
+OutgoingWebhookDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type OutgoingWebhookDeleteNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook delete not found response has a 2xx status code
+func (o *OutgoingWebhookDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook delete not found response has a 3xx status code
+func (o *OutgoingWebhookDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook delete not found response has a 4xx status code
+func (o *OutgoingWebhookDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this outgoing webhook delete not found response has a 5xx status code
+func (o *OutgoingWebhookDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook delete not found response a status code equal to that given
+func (o *OutgoingWebhookDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OutgoingWebhookDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OutgoingWebhookDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OutgoingWebhookDeleteNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewOutgoingWebhookDeleteInternalServerError() *OutgoingWebhookDeleteInterna
 	return &OutgoingWebhookDeleteInternalServerError{}
 }
 
-/* OutgoingWebhookDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+OutgoingWebhookDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type OutgoingWebhookDeleteInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook delete internal server error response has a 2xx status code
+func (o *OutgoingWebhookDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook delete internal server error response has a 3xx status code
+func (o *OutgoingWebhookDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook delete internal server error response has a 4xx status code
+func (o *OutgoingWebhookDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this outgoing webhook delete internal server error response has a 5xx status code
+func (o *OutgoingWebhookDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this outgoing webhook delete internal server error response a status code equal to that given
+func (o *OutgoingWebhookDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OutgoingWebhookDeleteInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *OutgoingWebhookDeleteInternalServerError) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *OutgoingWebhookDeleteInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

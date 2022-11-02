@@ -63,7 +63,8 @@ func NewOrgShowOK() *OrgShowOK {
 	return &OrgShowOK{}
 }
 
-/* OrgShowOK describes a response with status code 200, with default header values.
+/*
+OrgShowOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type OrgShowOK struct {
 	Payload *models.V0OrganizationRespModel
 }
 
+// IsSuccess returns true when this org show o k response has a 2xx status code
+func (o *OrgShowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this org show o k response has a 3xx status code
+func (o *OrgShowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org show o k response has a 4xx status code
+func (o *OrgShowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this org show o k response has a 5xx status code
+func (o *OrgShowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org show o k response a status code equal to that given
+func (o *OrgShowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrgShowOK) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowOK  %+v", 200, o.Payload)
 }
+
+func (o *OrgShowOK) String() string {
+	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowOK  %+v", 200, o.Payload)
+}
+
 func (o *OrgShowOK) GetPayload() *models.V0OrganizationRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewOrgShowBadRequest() *OrgShowBadRequest {
 	return &OrgShowBadRequest{}
 }
 
-/* OrgShowBadRequest describes a response with status code 400, with default header values.
+/*
+OrgShowBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type OrgShowBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org show bad request response has a 2xx status code
+func (o *OrgShowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org show bad request response has a 3xx status code
+func (o *OrgShowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org show bad request response has a 4xx status code
+func (o *OrgShowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this org show bad request response has a 5xx status code
+func (o *OrgShowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org show bad request response a status code equal to that given
+func (o *OrgShowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrgShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrgShowBadRequest) String() string {
+	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrgShowBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewOrgShowUnauthorized() *OrgShowUnauthorized {
 	return &OrgShowUnauthorized{}
 }
 
-/* OrgShowUnauthorized describes a response with status code 401, with default header values.
+/*
+OrgShowUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type OrgShowUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org show unauthorized response has a 2xx status code
+func (o *OrgShowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org show unauthorized response has a 3xx status code
+func (o *OrgShowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org show unauthorized response has a 4xx status code
+func (o *OrgShowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this org show unauthorized response has a 5xx status code
+func (o *OrgShowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org show unauthorized response a status code equal to that given
+func (o *OrgShowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrgShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrgShowUnauthorized) String() string {
+	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrgShowUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewOrgShowNotFound() *OrgShowNotFound {
 	return &OrgShowNotFound{}
 }
 
-/* OrgShowNotFound describes a response with status code 404, with default header values.
+/*
+OrgShowNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type OrgShowNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org show not found response has a 2xx status code
+func (o *OrgShowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org show not found response has a 3xx status code
+func (o *OrgShowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org show not found response has a 4xx status code
+func (o *OrgShowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this org show not found response has a 5xx status code
+func (o *OrgShowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org show not found response a status code equal to that given
+func (o *OrgShowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrgShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrgShowNotFound) String() string {
+	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrgShowNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewOrgShowInternalServerError() *OrgShowInternalServerError {
 	return &OrgShowInternalServerError{}
 }
 
-/* OrgShowInternalServerError describes a response with status code 500, with default header values.
+/*
+OrgShowInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type OrgShowInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org show internal server error response has a 2xx status code
+func (o *OrgShowInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org show internal server error response has a 3xx status code
+func (o *OrgShowInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org show internal server error response has a 4xx status code
+func (o *OrgShowInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this org show internal server error response has a 5xx status code
+func (o *OrgShowInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this org show internal server error response a status code equal to that given
+func (o *OrgShowInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrgShowInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *OrgShowInternalServerError) String() string {
+	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *OrgShowInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

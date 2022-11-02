@@ -63,7 +63,8 @@ func NewAppCreateOK() *AppCreateOK {
 	return &AppCreateOK{}
 }
 
-/* AppCreateOK describes a response with status code 200, with default header values.
+/*
+AppCreateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AppCreateOK struct {
 	Payload *models.V0AppRespModel
 }
 
+// IsSuccess returns true when this app create o k response has a 2xx status code
+func (o *AppCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this app create o k response has a 3xx status code
+func (o *AppCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app create o k response has a 4xx status code
+func (o *AppCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app create o k response has a 5xx status code
+func (o *AppCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app create o k response a status code equal to that given
+func (o *AppCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AppCreateOK) Error() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *AppCreateOK) String() string {
+	return fmt.Sprintf("[POST /apps/register][%d] appCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *AppCreateOK) GetPayload() *models.V0AppRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAppCreateBadRequest() *AppCreateBadRequest {
 	return &AppCreateBadRequest{}
 }
 
-/* AppCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AppCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AppCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app create bad request response has a 2xx status code
+func (o *AppCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app create bad request response has a 3xx status code
+func (o *AppCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app create bad request response has a 4xx status code
+func (o *AppCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app create bad request response has a 5xx status code
+func (o *AppCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app create bad request response a status code equal to that given
+func (o *AppCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AppCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AppCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/register][%d] appCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AppCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAppCreateUnauthorized() *AppCreateUnauthorized {
 	return &AppCreateUnauthorized{}
 }
 
-/* AppCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AppCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AppCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app create unauthorized response has a 2xx status code
+func (o *AppCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app create unauthorized response has a 3xx status code
+func (o *AppCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app create unauthorized response has a 4xx status code
+func (o *AppCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app create unauthorized response has a 5xx status code
+func (o *AppCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app create unauthorized response a status code equal to that given
+func (o *AppCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AppCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AppCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/register][%d] appCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AppCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAppCreateNotFound() *AppCreateNotFound {
 	return &AppCreateNotFound{}
 }
 
-/* AppCreateNotFound describes a response with status code 404, with default header values.
+/*
+AppCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AppCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app create not found response has a 2xx status code
+func (o *AppCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app create not found response has a 3xx status code
+func (o *AppCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app create not found response has a 4xx status code
+func (o *AppCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app create not found response has a 5xx status code
+func (o *AppCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app create not found response a status code equal to that given
+func (o *AppCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AppCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AppCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/register][%d] appCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AppCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAppCreateInternalServerError() *AppCreateInternalServerError {
 	return &AppCreateInternalServerError{}
 }
 
-/* AppCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AppCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AppCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app create internal server error response has a 2xx status code
+func (o *AppCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app create internal server error response has a 3xx status code
+func (o *AppCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app create internal server error response has a 4xx status code
+func (o *AppCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app create internal server error response has a 5xx status code
+func (o *AppCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this app create internal server error response a status code equal to that given
+func (o *AppCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AppCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AppCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/register][%d] appCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AppCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

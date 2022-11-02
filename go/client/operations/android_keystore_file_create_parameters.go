@@ -54,10 +54,12 @@ func NewAndroidKeystoreFileCreateParamsWithHTTPClient(client *http.Client) *Andr
 	}
 }
 
-/* AndroidKeystoreFileCreateParams contains all the parameters to send to the API endpoint
-   for the android keystore file create operation.
+/*
+AndroidKeystoreFileCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the android keystore file create operation.
+
+	Typically these are written to a http.Request.
 */
 type AndroidKeystoreFileCreateParams struct {
 

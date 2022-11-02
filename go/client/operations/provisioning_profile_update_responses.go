@@ -63,7 +63,8 @@ func NewProvisioningProfileUpdateOK() *ProvisioningProfileUpdateOK {
 	return &ProvisioningProfileUpdateOK{}
 }
 
-/* ProvisioningProfileUpdateOK describes a response with status code 200, with default header values.
+/*
+ProvisioningProfileUpdateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ProvisioningProfileUpdateOK struct {
 	Payload *models.V0ProvisionProfileResponseModel
 }
 
+// IsSuccess returns true when this provisioning profile update o k response has a 2xx status code
+func (o *ProvisioningProfileUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this provisioning profile update o k response has a 3xx status code
+func (o *ProvisioningProfileUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile update o k response has a 4xx status code
+func (o *ProvisioningProfileUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile update o k response has a 5xx status code
+func (o *ProvisioningProfileUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile update o k response a status code equal to that given
+func (o *ProvisioningProfileUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ProvisioningProfileUpdateOK) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *ProvisioningProfileUpdateOK) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *ProvisioningProfileUpdateOK) GetPayload() *models.V0ProvisionProfileResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewProvisioningProfileUpdateBadRequest() *ProvisioningProfileUpdateBadReque
 	return &ProvisioningProfileUpdateBadRequest{}
 }
 
-/* ProvisioningProfileUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+ProvisioningProfileUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ProvisioningProfileUpdateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile update bad request response has a 2xx status code
+func (o *ProvisioningProfileUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile update bad request response has a 3xx status code
+func (o *ProvisioningProfileUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile update bad request response has a 4xx status code
+func (o *ProvisioningProfileUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile update bad request response has a 5xx status code
+func (o *ProvisioningProfileUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile update bad request response a status code equal to that given
+func (o *ProvisioningProfileUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProvisioningProfileUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProvisioningProfileUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProvisioningProfileUpdateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewProvisioningProfileUpdateUnauthorized() *ProvisioningProfileUpdateUnauth
 	return &ProvisioningProfileUpdateUnauthorized{}
 }
 
-/* ProvisioningProfileUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+ProvisioningProfileUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ProvisioningProfileUpdateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile update unauthorized response has a 2xx status code
+func (o *ProvisioningProfileUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile update unauthorized response has a 3xx status code
+func (o *ProvisioningProfileUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile update unauthorized response has a 4xx status code
+func (o *ProvisioningProfileUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile update unauthorized response has a 5xx status code
+func (o *ProvisioningProfileUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile update unauthorized response a status code equal to that given
+func (o *ProvisioningProfileUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProvisioningProfileUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProvisioningProfileUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProvisioningProfileUpdateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewProvisioningProfileUpdateNotFound() *ProvisioningProfileUpdateNotFound {
 	return &ProvisioningProfileUpdateNotFound{}
 }
 
-/* ProvisioningProfileUpdateNotFound describes a response with status code 404, with default header values.
+/*
+ProvisioningProfileUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ProvisioningProfileUpdateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile update not found response has a 2xx status code
+func (o *ProvisioningProfileUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile update not found response has a 3xx status code
+func (o *ProvisioningProfileUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile update not found response has a 4xx status code
+func (o *ProvisioningProfileUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile update not found response has a 5xx status code
+func (o *ProvisioningProfileUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile update not found response a status code equal to that given
+func (o *ProvisioningProfileUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProvisioningProfileUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProvisioningProfileUpdateNotFound) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProvisioningProfileUpdateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewProvisioningProfileUpdateInternalServerError() *ProvisioningProfileUpdat
 	return &ProvisioningProfileUpdateInternalServerError{}
 }
 
-/* ProvisioningProfileUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+ProvisioningProfileUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ProvisioningProfileUpdateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile update internal server error response has a 2xx status code
+func (o *ProvisioningProfileUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile update internal server error response has a 3xx status code
+func (o *ProvisioningProfileUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile update internal server error response has a 4xx status code
+func (o *ProvisioningProfileUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile update internal server error response has a 5xx status code
+func (o *ProvisioningProfileUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this provisioning profile update internal server error response a status code equal to that given
+func (o *ProvisioningProfileUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProvisioningProfileUpdateInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ProvisioningProfileUpdateInternalServerError) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ProvisioningProfileUpdateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

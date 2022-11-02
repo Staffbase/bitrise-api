@@ -63,7 +63,8 @@ func NewAddonsShowOK() *AddonsShowOK {
 	return &AddonsShowOK{}
 }
 
-/* AddonsShowOK describes a response with status code 200, with default header values.
+/*
+AddonsShowOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AddonsShowOK struct {
 	Payload *models.V0AddonsShowResponseModel
 }
 
+// IsSuccess returns true when this addons show o k response has a 2xx status code
+func (o *AddonsShowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this addons show o k response has a 3xx status code
+func (o *AddonsShowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addons show o k response has a 4xx status code
+func (o *AddonsShowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addons show o k response has a 5xx status code
+func (o *AddonsShowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addons show o k response a status code equal to that given
+func (o *AddonsShowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AddonsShowOK) Error() string {
 	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowOK  %+v", 200, o.Payload)
 }
+
+func (o *AddonsShowOK) String() string {
+	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowOK  %+v", 200, o.Payload)
+}
+
 func (o *AddonsShowOK) GetPayload() *models.V0AddonsShowResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAddonsShowBadRequest() *AddonsShowBadRequest {
 	return &AddonsShowBadRequest{}
 }
 
-/* AddonsShowBadRequest describes a response with status code 400, with default header values.
+/*
+AddonsShowBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AddonsShowBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addons show bad request response has a 2xx status code
+func (o *AddonsShowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addons show bad request response has a 3xx status code
+func (o *AddonsShowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addons show bad request response has a 4xx status code
+func (o *AddonsShowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addons show bad request response has a 5xx status code
+func (o *AddonsShowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addons show bad request response a status code equal to that given
+func (o *AddonsShowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AddonsShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AddonsShowBadRequest) String() string {
+	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AddonsShowBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAddonsShowUnauthorized() *AddonsShowUnauthorized {
 	return &AddonsShowUnauthorized{}
 }
 
-/* AddonsShowUnauthorized describes a response with status code 401, with default header values.
+/*
+AddonsShowUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AddonsShowUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addons show unauthorized response has a 2xx status code
+func (o *AddonsShowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addons show unauthorized response has a 3xx status code
+func (o *AddonsShowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addons show unauthorized response has a 4xx status code
+func (o *AddonsShowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addons show unauthorized response has a 5xx status code
+func (o *AddonsShowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addons show unauthorized response a status code equal to that given
+func (o *AddonsShowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AddonsShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AddonsShowUnauthorized) String() string {
+	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AddonsShowUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAddonsShowNotFound() *AddonsShowNotFound {
 	return &AddonsShowNotFound{}
 }
 
-/* AddonsShowNotFound describes a response with status code 404, with default header values.
+/*
+AddonsShowNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AddonsShowNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addons show not found response has a 2xx status code
+func (o *AddonsShowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addons show not found response has a 3xx status code
+func (o *AddonsShowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addons show not found response has a 4xx status code
+func (o *AddonsShowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addons show not found response has a 5xx status code
+func (o *AddonsShowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addons show not found response a status code equal to that given
+func (o *AddonsShowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AddonsShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AddonsShowNotFound) String() string {
+	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AddonsShowNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAddonsShowInternalServerError() *AddonsShowInternalServerError {
 	return &AddonsShowInternalServerError{}
 }
 
-/* AddonsShowInternalServerError describes a response with status code 500, with default header values.
+/*
+AddonsShowInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AddonsShowInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addons show internal server error response has a 2xx status code
+func (o *AddonsShowInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addons show internal server error response has a 3xx status code
+func (o *AddonsShowInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addons show internal server error response has a 4xx status code
+func (o *AddonsShowInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addons show internal server error response has a 5xx status code
+func (o *AddonsShowInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this addons show internal server error response a status code equal to that given
+func (o *AddonsShowInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AddonsShowInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AddonsShowInternalServerError) String() string {
+	return fmt.Sprintf("[GET /addons/{addon-id}][%d] addonsShowInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AddonsShowInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewAddonsShowParamsWithHTTPClient(client *http.Client) *AddonsShowParams {
 	}
 }
 
-/* AddonsShowParams contains all the parameters to send to the API endpoint
-   for the addons show operation.
+/*
+AddonsShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the addons show operation.
+
+	Typically these are written to a http.Request.
 */
 type AddonsShowParams struct {
 

@@ -52,10 +52,12 @@ func NewBuildLogParamsWithHTTPClient(client *http.Client) *BuildLogParams {
 	}
 }
 
-/* BuildLogParams contains all the parameters to send to the API endpoint
-   for the build log operation.
+/*
+BuildLogParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build log operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildLogParams struct {
 

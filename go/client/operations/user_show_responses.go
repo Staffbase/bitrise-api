@@ -63,7 +63,8 @@ func NewUserShowOK() *UserShowOK {
 	return &UserShowOK{}
 }
 
-/* UserShowOK describes a response with status code 200, with default header values.
+/*
+UserShowOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type UserShowOK struct {
 	Payload *models.V0UserProfileRespModel
 }
 
+// IsSuccess returns true when this user show o k response has a 2xx status code
+func (o *UserShowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user show o k response has a 3xx status code
+func (o *UserShowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user show o k response has a 4xx status code
+func (o *UserShowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user show o k response has a 5xx status code
+func (o *UserShowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user show o k response a status code equal to that given
+func (o *UserShowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserShowOK) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowOK  %+v", 200, o.Payload)
 }
+
+func (o *UserShowOK) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowOK  %+v", 200, o.Payload)
+}
+
 func (o *UserShowOK) GetPayload() *models.V0UserProfileRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewUserShowBadRequest() *UserShowBadRequest {
 	return &UserShowBadRequest{}
 }
 
-/* UserShowBadRequest describes a response with status code 400, with default header values.
+/*
+UserShowBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type UserShowBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user show bad request response has a 2xx status code
+func (o *UserShowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user show bad request response has a 3xx status code
+func (o *UserShowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user show bad request response has a 4xx status code
+func (o *UserShowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user show bad request response has a 5xx status code
+func (o *UserShowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user show bad request response a status code equal to that given
+func (o *UserShowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserShowBadRequest) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserShowBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewUserShowUnauthorized() *UserShowUnauthorized {
 	return &UserShowUnauthorized{}
 }
 
-/* UserShowUnauthorized describes a response with status code 401, with default header values.
+/*
+UserShowUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type UserShowUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user show unauthorized response has a 2xx status code
+func (o *UserShowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user show unauthorized response has a 3xx status code
+func (o *UserShowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user show unauthorized response has a 4xx status code
+func (o *UserShowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user show unauthorized response has a 5xx status code
+func (o *UserShowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user show unauthorized response a status code equal to that given
+func (o *UserShowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserShowUnauthorized) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserShowUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewUserShowNotFound() *UserShowNotFound {
 	return &UserShowNotFound{}
 }
 
-/* UserShowNotFound describes a response with status code 404, with default header values.
+/*
+UserShowNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type UserShowNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user show not found response has a 2xx status code
+func (o *UserShowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user show not found response has a 3xx status code
+func (o *UserShowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user show not found response has a 4xx status code
+func (o *UserShowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user show not found response has a 5xx status code
+func (o *UserShowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user show not found response a status code equal to that given
+func (o *UserShowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserShowNotFound) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserShowNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewUserShowInternalServerError() *UserShowInternalServerError {
 	return &UserShowInternalServerError{}
 }
 
-/* UserShowInternalServerError describes a response with status code 500, with default header values.
+/*
+UserShowInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type UserShowInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user show internal server error response has a 2xx status code
+func (o *UserShowInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user show internal server error response has a 3xx status code
+func (o *UserShowInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user show internal server error response has a 4xx status code
+func (o *UserShowInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user show internal server error response has a 5xx status code
+func (o *UserShowInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user show internal server error response a status code equal to that given
+func (o *UserShowInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserShowInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *UserShowInternalServerError) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *UserShowInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

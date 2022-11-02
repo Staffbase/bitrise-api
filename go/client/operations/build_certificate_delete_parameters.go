@@ -52,10 +52,12 @@ func NewBuildCertificateDeleteParamsWithHTTPClient(client *http.Client) *BuildCe
 	}
 }
 
-/* BuildCertificateDeleteParams contains all the parameters to send to the API endpoint
-   for the build certificate delete operation.
+/*
+BuildCertificateDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build certificate delete operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildCertificateDeleteParams struct {
 

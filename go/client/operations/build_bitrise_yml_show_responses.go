@@ -63,7 +63,8 @@ func NewBuildBitriseYmlShowOK() *BuildBitriseYmlShowOK {
 	return &BuildBitriseYmlShowOK{}
 }
 
-/* BuildBitriseYmlShowOK describes a response with status code 200, with default header values.
+/*
+BuildBitriseYmlShowOK describes a response with status code 200, with default header values.
 
 {the bitrise.yml in yml format}
 */
@@ -71,9 +72,39 @@ type BuildBitriseYmlShowOK struct {
 	Payload string
 }
 
+// IsSuccess returns true when this build bitrise yml show o k response has a 2xx status code
+func (o *BuildBitriseYmlShowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build bitrise yml show o k response has a 3xx status code
+func (o *BuildBitriseYmlShowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build bitrise yml show o k response has a 4xx status code
+func (o *BuildBitriseYmlShowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build bitrise yml show o k response has a 5xx status code
+func (o *BuildBitriseYmlShowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build bitrise yml show o k response a status code equal to that given
+func (o *BuildBitriseYmlShowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BuildBitriseYmlShowOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowOK  %+v", 200, o.Payload)
 }
+
+func (o *BuildBitriseYmlShowOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowOK  %+v", 200, o.Payload)
+}
+
 func (o *BuildBitriseYmlShowOK) GetPayload() string {
 	return o.Payload
 }
@@ -93,7 +124,8 @@ func NewBuildBitriseYmlShowBadRequest() *BuildBitriseYmlShowBadRequest {
 	return &BuildBitriseYmlShowBadRequest{}
 }
 
-/* BuildBitriseYmlShowBadRequest describes a response with status code 400, with default header values.
+/*
+BuildBitriseYmlShowBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -101,9 +133,39 @@ type BuildBitriseYmlShowBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build bitrise yml show bad request response has a 2xx status code
+func (o *BuildBitriseYmlShowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build bitrise yml show bad request response has a 3xx status code
+func (o *BuildBitriseYmlShowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build bitrise yml show bad request response has a 4xx status code
+func (o *BuildBitriseYmlShowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build bitrise yml show bad request response has a 5xx status code
+func (o *BuildBitriseYmlShowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build bitrise yml show bad request response a status code equal to that given
+func (o *BuildBitriseYmlShowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildBitriseYmlShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildBitriseYmlShowBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildBitriseYmlShowBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -125,7 +187,8 @@ func NewBuildBitriseYmlShowUnauthorized() *BuildBitriseYmlShowUnauthorized {
 	return &BuildBitriseYmlShowUnauthorized{}
 }
 
-/* BuildBitriseYmlShowUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildBitriseYmlShowUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -133,9 +196,39 @@ type BuildBitriseYmlShowUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build bitrise yml show unauthorized response has a 2xx status code
+func (o *BuildBitriseYmlShowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build bitrise yml show unauthorized response has a 3xx status code
+func (o *BuildBitriseYmlShowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build bitrise yml show unauthorized response has a 4xx status code
+func (o *BuildBitriseYmlShowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build bitrise yml show unauthorized response has a 5xx status code
+func (o *BuildBitriseYmlShowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build bitrise yml show unauthorized response a status code equal to that given
+func (o *BuildBitriseYmlShowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildBitriseYmlShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildBitriseYmlShowUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildBitriseYmlShowUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -157,7 +250,8 @@ func NewBuildBitriseYmlShowNotFound() *BuildBitriseYmlShowNotFound {
 	return &BuildBitriseYmlShowNotFound{}
 }
 
-/* BuildBitriseYmlShowNotFound describes a response with status code 404, with default header values.
+/*
+BuildBitriseYmlShowNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -165,9 +259,39 @@ type BuildBitriseYmlShowNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build bitrise yml show not found response has a 2xx status code
+func (o *BuildBitriseYmlShowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build bitrise yml show not found response has a 3xx status code
+func (o *BuildBitriseYmlShowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build bitrise yml show not found response has a 4xx status code
+func (o *BuildBitriseYmlShowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build bitrise yml show not found response has a 5xx status code
+func (o *BuildBitriseYmlShowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build bitrise yml show not found response a status code equal to that given
+func (o *BuildBitriseYmlShowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildBitriseYmlShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildBitriseYmlShowNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildBitriseYmlShowNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -189,7 +313,8 @@ func NewBuildBitriseYmlShowInternalServerError() *BuildBitriseYmlShowInternalSer
 	return &BuildBitriseYmlShowInternalServerError{}
 }
 
-/* BuildBitriseYmlShowInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildBitriseYmlShowInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -197,9 +322,39 @@ type BuildBitriseYmlShowInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build bitrise yml show internal server error response has a 2xx status code
+func (o *BuildBitriseYmlShowInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build bitrise yml show internal server error response has a 3xx status code
+func (o *BuildBitriseYmlShowInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build bitrise yml show internal server error response has a 4xx status code
+func (o *BuildBitriseYmlShowInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build bitrise yml show internal server error response has a 5xx status code
+func (o *BuildBitriseYmlShowInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build bitrise yml show internal server error response a status code equal to that given
+func (o *BuildBitriseYmlShowInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildBitriseYmlShowInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildBitriseYmlShowInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildBitriseYmlShowInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

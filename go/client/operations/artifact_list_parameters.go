@@ -53,10 +53,12 @@ func NewArtifactListParamsWithHTTPClient(client *http.Client) *ArtifactListParam
 	}
 }
 
-/* ArtifactListParams contains all the parameters to send to the API endpoint
-   for the artifact list operation.
+/*
+ArtifactListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the artifact list operation.
+
+	Typically these are written to a http.Request.
 */
 type ArtifactListParams struct {
 

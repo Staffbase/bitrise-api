@@ -53,10 +53,12 @@ func NewBuildListParamsWithHTTPClient(client *http.Client) *BuildListParams {
 	}
 }
 
-/* BuildListParams contains all the parameters to send to the API endpoint
-   for the build list operation.
+/*
+BuildListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build list operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildListParams struct {
 
@@ -95,6 +97,12 @@ type BuildListParams struct {
 	   The commit message of the build
 	*/
 	CommitMessage *string
+
+	/* IsPipelineBuild.
+
+	   Whether the builds are part of a pipeline or not
+	*/
+	IsPipelineBuild *bool
 
 	/* Limit.
 
@@ -255,6 +263,17 @@ func (o *BuildListParams) WithCommitMessage(commitMessage *string) *BuildListPar
 // SetCommitMessage adds the commitMessage to the build list params
 func (o *BuildListParams) SetCommitMessage(commitMessage *string) {
 	o.CommitMessage = commitMessage
+}
+
+// WithIsPipelineBuild adds the isPipelineBuild to the build list params
+func (o *BuildListParams) WithIsPipelineBuild(isPipelineBuild *bool) *BuildListParams {
+	o.SetIsPipelineBuild(isPipelineBuild)
+	return o
+}
+
+// SetIsPipelineBuild adds the isPipelineBuild to the build list params
+func (o *BuildListParams) SetIsPipelineBuild(isPipelineBuild *bool) {
+	o.IsPipelineBuild = isPipelineBuild
 }
 
 // WithLimit adds the limit to the build list params
@@ -427,6 +446,23 @@ func (o *BuildListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		if qCommitMessage != "" {
 
 			if err := r.SetQueryParam("commit_message", qCommitMessage); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.IsPipelineBuild != nil {
+
+		// query param is_pipeline_build
+		var qrIsPipelineBuild bool
+
+		if o.IsPipelineBuild != nil {
+			qrIsPipelineBuild = *o.IsPipelineBuild
+		}
+		qIsPipelineBuild := swag.FormatBool(qrIsPipelineBuild)
+		if qIsPipelineBuild != "" {
+
+			if err := r.SetQueryParam("is_pipeline_build", qIsPipelineBuild); err != nil {
 				return err
 			}
 		}
