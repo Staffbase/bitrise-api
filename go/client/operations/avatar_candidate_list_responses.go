@@ -63,7 +63,8 @@ func NewAvatarCandidateListOK() *AvatarCandidateListOK {
 	return &AvatarCandidateListOK{}
 }
 
-/* AvatarCandidateListOK describes a response with status code 200, with default header values.
+/*
+AvatarCandidateListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AvatarCandidateListOK struct {
 	Payload *models.V0FindAvatarCandidateResponse
 }
 
+// IsSuccess returns true when this avatar candidate list o k response has a 2xx status code
+func (o *AvatarCandidateListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this avatar candidate list o k response has a 3xx status code
+func (o *AvatarCandidateListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate list o k response has a 4xx status code
+func (o *AvatarCandidateListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this avatar candidate list o k response has a 5xx status code
+func (o *AvatarCandidateListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate list o k response a status code equal to that given
+func (o *AvatarCandidateListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AvatarCandidateListOK) Error() string {
 	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListOK  %+v", 200, o.Payload)
 }
+
+func (o *AvatarCandidateListOK) String() string {
+	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListOK  %+v", 200, o.Payload)
+}
+
 func (o *AvatarCandidateListOK) GetPayload() *models.V0FindAvatarCandidateResponse {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAvatarCandidateListBadRequest() *AvatarCandidateListBadRequest {
 	return &AvatarCandidateListBadRequest{}
 }
 
-/* AvatarCandidateListBadRequest describes a response with status code 400, with default header values.
+/*
+AvatarCandidateListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AvatarCandidateListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate list bad request response has a 2xx status code
+func (o *AvatarCandidateListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate list bad request response has a 3xx status code
+func (o *AvatarCandidateListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate list bad request response has a 4xx status code
+func (o *AvatarCandidateListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate list bad request response has a 5xx status code
+func (o *AvatarCandidateListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate list bad request response a status code equal to that given
+func (o *AvatarCandidateListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AvatarCandidateListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AvatarCandidateListBadRequest) String() string {
+	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AvatarCandidateListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAvatarCandidateListUnauthorized() *AvatarCandidateListUnauthorized {
 	return &AvatarCandidateListUnauthorized{}
 }
 
-/* AvatarCandidateListUnauthorized describes a response with status code 401, with default header values.
+/*
+AvatarCandidateListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AvatarCandidateListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate list unauthorized response has a 2xx status code
+func (o *AvatarCandidateListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate list unauthorized response has a 3xx status code
+func (o *AvatarCandidateListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate list unauthorized response has a 4xx status code
+func (o *AvatarCandidateListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate list unauthorized response has a 5xx status code
+func (o *AvatarCandidateListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate list unauthorized response a status code equal to that given
+func (o *AvatarCandidateListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AvatarCandidateListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AvatarCandidateListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AvatarCandidateListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAvatarCandidateListNotFound() *AvatarCandidateListNotFound {
 	return &AvatarCandidateListNotFound{}
 }
 
-/* AvatarCandidateListNotFound describes a response with status code 404, with default header values.
+/*
+AvatarCandidateListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AvatarCandidateListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate list not found response has a 2xx status code
+func (o *AvatarCandidateListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate list not found response has a 3xx status code
+func (o *AvatarCandidateListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate list not found response has a 4xx status code
+func (o *AvatarCandidateListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate list not found response has a 5xx status code
+func (o *AvatarCandidateListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate list not found response a status code equal to that given
+func (o *AvatarCandidateListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AvatarCandidateListNotFound) Error() string {
 	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AvatarCandidateListNotFound) String() string {
+	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AvatarCandidateListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAvatarCandidateListInternalServerError() *AvatarCandidateListInternalSer
 	return &AvatarCandidateListInternalServerError{}
 }
 
-/* AvatarCandidateListInternalServerError describes a response with status code 500, with default header values.
+/*
+AvatarCandidateListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AvatarCandidateListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate list internal server error response has a 2xx status code
+func (o *AvatarCandidateListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate list internal server error response has a 3xx status code
+func (o *AvatarCandidateListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate list internal server error response has a 4xx status code
+func (o *AvatarCandidateListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this avatar candidate list internal server error response has a 5xx status code
+func (o *AvatarCandidateListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this avatar candidate list internal server error response a status code equal to that given
+func (o *AvatarCandidateListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AvatarCandidateListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AvatarCandidateListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /v0.1/apps/{app-slug}/avatar-candidates][%d] avatarCandidateListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AvatarCandidateListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

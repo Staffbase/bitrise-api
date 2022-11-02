@@ -52,10 +52,12 @@ func NewUserProfileParamsWithHTTPClient(client *http.Client) *UserProfileParams 
 	}
 }
 
-/* UserProfileParams contains all the parameters to send to the API endpoint
-   for the user profile operation.
+/*
+UserProfileParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user profile operation.
+
+	Typically these are written to a http.Request.
 */
 type UserProfileParams struct {
 	timeout    time.Duration

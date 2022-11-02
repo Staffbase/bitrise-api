@@ -54,10 +54,12 @@ func NewProvisioningProfileCreateParamsWithHTTPClient(client *http.Client) *Prov
 	}
 }
 
-/* ProvisioningProfileCreateParams contains all the parameters to send to the API endpoint
-   for the provisioning profile create operation.
+/*
+ProvisioningProfileCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the provisioning profile create operation.
+
+	Typically these are written to a http.Request.
 */
 type ProvisioningProfileCreateParams struct {
 

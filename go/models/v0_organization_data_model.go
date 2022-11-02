@@ -20,7 +20,7 @@ import (
 type V0OrganizationDataModel struct {
 
 	// avatar icon url
-	AvatarIconURL *NullsString `json:"avatar_icon_url,omitempty"`
+	AvatarIconURL *GithubComMarkbatesPopNullsString `json:"avatar_icon_url,omitempty"`
 
 	// concurrency count
 	ConcurrencyCount int64 `json:"concurrency_count,omitempty"`
@@ -62,6 +62,8 @@ func (m *V0OrganizationDataModel) validateAvatarIconURL(formats strfmt.Registry)
 		if err := m.AvatarIconURL.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("avatar_icon_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("avatar_icon_url")
 			}
 			return err
 		}
@@ -84,6 +86,8 @@ func (m *V0OrganizationDataModel) validateOwners(formats strfmt.Registry) error 
 			if err := m.Owners[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("owners" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owners" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -118,6 +122,8 @@ func (m *V0OrganizationDataModel) contextValidateAvatarIconURL(ctx context.Conte
 		if err := m.AvatarIconURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("avatar_icon_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("avatar_icon_url")
 			}
 			return err
 		}
@@ -134,6 +140,8 @@ func (m *V0OrganizationDataModel) contextValidateOwners(ctx context.Context, for
 			if err := m.Owners[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("owners" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("owners" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -19,22 +19,25 @@ import (
 type V0BuildResponseItemModel struct {
 
 	// abort reason
-	AbortReason *NullsString `json:"abort_reason,omitempty"`
+	AbortReason *GithubComMarkbatesPopNullsString `json:"abort_reason,omitempty"`
 
 	// branch
-	Branch *NullsString `json:"branch,omitempty"`
+	Branch *GithubComMarkbatesPopNullsString `json:"branch,omitempty"`
 
 	// build number
 	BuildNumber int64 `json:"build_number,omitempty"`
 
 	// commit hash
-	CommitHash *NullsString `json:"commit_hash,omitempty"`
+	CommitHash *GithubComMarkbatesPopNullsString `json:"commit_hash,omitempty"`
 
 	// commit message
-	CommitMessage *NullsString `json:"commit_message,omitempty"`
+	CommitMessage *GithubComMarkbatesPopNullsString `json:"commit_message,omitempty"`
 
 	// commit view url
-	CommitViewURL *NullsString `json:"commit_view_url,omitempty"`
+	CommitViewURL *GithubComMarkbatesPopNullsString `json:"commit_view_url,omitempty"`
+
+	// credit cost
+	CreditCost *GithubComMarkbatesPopNullsInt64 `json:"credit_cost,omitempty"`
 
 	// environment prepare finished at
 	EnvironmentPrepareFinishedAt string `json:"environment_prepare_finished_at,omitempty"`
@@ -45,26 +48,35 @@ type V0BuildResponseItemModel struct {
 	// is on hold
 	IsOnHold bool `json:"is_on_hold,omitempty"`
 
+	// is processed
+	IsProcessed bool `json:"is_processed,omitempty"`
+
+	// is status sent
+	IsStatusSent bool `json:"is_status_sent,omitempty"`
+
 	// machine type id
-	MachineTypeID *NullsString `json:"machine_type_id,omitempty"`
+	MachineTypeID *GithubComMarkbatesPopNullsString `json:"machine_type_id,omitempty"`
 
 	// original build params
 	OriginalBuildParams []int64 `json:"original_build_params"`
+
+	// pipeline workflow id
+	PipelineWorkflowID string `json:"pipeline_workflow_id,omitempty"`
 
 	// pull request id
 	PullRequestID int64 `json:"pull_request_id,omitempty"`
 
 	// pull request target branch
-	PullRequestTargetBranch *NullsString `json:"pull_request_target_branch,omitempty"`
+	PullRequestTargetBranch *GithubComMarkbatesPopNullsString `json:"pull_request_target_branch,omitempty"`
 
 	// pull request view url
-	PullRequestViewURL *NullsString `json:"pull_request_view_url,omitempty"`
+	PullRequestViewURL *GithubComMarkbatesPopNullsString `json:"pull_request_view_url,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
 
 	// stack identifier
-	StackIdentifier *NullsString `json:"stack_identifier,omitempty"`
+	StackIdentifier *GithubComMarkbatesPopNullsString `json:"stack_identifier,omitempty"`
 
 	// started on worker at
 	StartedOnWorkerAt string `json:"started_on_worker_at,omitempty"`
@@ -76,13 +88,13 @@ type V0BuildResponseItemModel struct {
 	StatusText string `json:"status_text,omitempty"`
 
 	// tag
-	Tag *NullsString `json:"tag,omitempty"`
+	Tag *GithubComMarkbatesPopNullsString `json:"tag,omitempty"`
 
 	// triggered at
 	TriggeredAt string `json:"triggered_at,omitempty"`
 
 	// triggered by
-	TriggeredBy *NullsString `json:"triggered_by,omitempty"`
+	TriggeredBy *GithubComMarkbatesPopNullsString `json:"triggered_by,omitempty"`
 
 	// triggered workflow
 	TriggeredWorkflow string `json:"triggered_workflow,omitempty"`
@@ -109,6 +121,10 @@ func (m *V0BuildResponseItemModel) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCommitViewURL(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCreditCost(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -151,6 +167,8 @@ func (m *V0BuildResponseItemModel) validateAbortReason(formats strfmt.Registry) 
 		if err := m.AbortReason.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("abort_reason")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("abort_reason")
 			}
 			return err
 		}
@@ -168,6 +186,8 @@ func (m *V0BuildResponseItemModel) validateBranch(formats strfmt.Registry) error
 		if err := m.Branch.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("branch")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("branch")
 			}
 			return err
 		}
@@ -185,6 +205,8 @@ func (m *V0BuildResponseItemModel) validateCommitHash(formats strfmt.Registry) e
 		if err := m.CommitHash.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_hash")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("commit_hash")
 			}
 			return err
 		}
@@ -202,6 +224,8 @@ func (m *V0BuildResponseItemModel) validateCommitMessage(formats strfmt.Registry
 		if err := m.CommitMessage.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_message")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("commit_message")
 			}
 			return err
 		}
@@ -219,6 +243,27 @@ func (m *V0BuildResponseItemModel) validateCommitViewURL(formats strfmt.Registry
 		if err := m.CommitViewURL.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_view_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("commit_view_url")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0BuildResponseItemModel) validateCreditCost(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreditCost) { // not required
+		return nil
+	}
+
+	if m.CreditCost != nil {
+		if err := m.CreditCost.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("credit_cost")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credit_cost")
 			}
 			return err
 		}
@@ -236,6 +281,8 @@ func (m *V0BuildResponseItemModel) validateMachineTypeID(formats strfmt.Registry
 		if err := m.MachineTypeID.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("machine_type_id")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("machine_type_id")
 			}
 			return err
 		}
@@ -253,6 +300,8 @@ func (m *V0BuildResponseItemModel) validatePullRequestTargetBranch(formats strfm
 		if err := m.PullRequestTargetBranch.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pull_request_target_branch")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pull_request_target_branch")
 			}
 			return err
 		}
@@ -270,6 +319,8 @@ func (m *V0BuildResponseItemModel) validatePullRequestViewURL(formats strfmt.Reg
 		if err := m.PullRequestViewURL.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pull_request_view_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pull_request_view_url")
 			}
 			return err
 		}
@@ -287,6 +338,8 @@ func (m *V0BuildResponseItemModel) validateStackIdentifier(formats strfmt.Regist
 		if err := m.StackIdentifier.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stack_identifier")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stack_identifier")
 			}
 			return err
 		}
@@ -304,6 +357,8 @@ func (m *V0BuildResponseItemModel) validateTag(formats strfmt.Registry) error {
 		if err := m.Tag.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tag")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tag")
 			}
 			return err
 		}
@@ -321,6 +376,8 @@ func (m *V0BuildResponseItemModel) validateTriggeredBy(formats strfmt.Registry) 
 		if err := m.TriggeredBy.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("triggered_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("triggered_by")
 			}
 			return err
 		}
@@ -350,6 +407,10 @@ func (m *V0BuildResponseItemModel) ContextValidate(ctx context.Context, formats 
 	}
 
 	if err := m.contextValidateCommitViewURL(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateCreditCost(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -389,6 +450,8 @@ func (m *V0BuildResponseItemModel) contextValidateAbortReason(ctx context.Contex
 		if err := m.AbortReason.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("abort_reason")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("abort_reason")
 			}
 			return err
 		}
@@ -403,6 +466,8 @@ func (m *V0BuildResponseItemModel) contextValidateBranch(ctx context.Context, fo
 		if err := m.Branch.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("branch")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("branch")
 			}
 			return err
 		}
@@ -417,6 +482,8 @@ func (m *V0BuildResponseItemModel) contextValidateCommitHash(ctx context.Context
 		if err := m.CommitHash.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_hash")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("commit_hash")
 			}
 			return err
 		}
@@ -431,6 +498,8 @@ func (m *V0BuildResponseItemModel) contextValidateCommitMessage(ctx context.Cont
 		if err := m.CommitMessage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_message")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("commit_message")
 			}
 			return err
 		}
@@ -445,6 +514,24 @@ func (m *V0BuildResponseItemModel) contextValidateCommitViewURL(ctx context.Cont
 		if err := m.CommitViewURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_view_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("commit_view_url")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0BuildResponseItemModel) contextValidateCreditCost(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CreditCost != nil {
+		if err := m.CreditCost.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("credit_cost")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credit_cost")
 			}
 			return err
 		}
@@ -459,6 +546,8 @@ func (m *V0BuildResponseItemModel) contextValidateMachineTypeID(ctx context.Cont
 		if err := m.MachineTypeID.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("machine_type_id")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("machine_type_id")
 			}
 			return err
 		}
@@ -473,6 +562,8 @@ func (m *V0BuildResponseItemModel) contextValidatePullRequestTargetBranch(ctx co
 		if err := m.PullRequestTargetBranch.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pull_request_target_branch")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pull_request_target_branch")
 			}
 			return err
 		}
@@ -487,6 +578,8 @@ func (m *V0BuildResponseItemModel) contextValidatePullRequestViewURL(ctx context
 		if err := m.PullRequestViewURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pull_request_view_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pull_request_view_url")
 			}
 			return err
 		}
@@ -501,6 +594,8 @@ func (m *V0BuildResponseItemModel) contextValidateStackIdentifier(ctx context.Co
 		if err := m.StackIdentifier.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stack_identifier")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("stack_identifier")
 			}
 			return err
 		}
@@ -515,6 +610,8 @@ func (m *V0BuildResponseItemModel) contextValidateTag(ctx context.Context, forma
 		if err := m.Tag.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tag")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("tag")
 			}
 			return err
 		}
@@ -529,6 +626,8 @@ func (m *V0BuildResponseItemModel) contextValidateTriggeredBy(ctx context.Contex
 		if err := m.TriggeredBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("triggered_by")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("triggered_by")
 			}
 			return err
 		}

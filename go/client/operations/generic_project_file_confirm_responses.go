@@ -63,7 +63,8 @@ func NewGenericProjectFileConfirmOK() *GenericProjectFileConfirmOK {
 	return &GenericProjectFileConfirmOK{}
 }
 
-/* GenericProjectFileConfirmOK describes a response with status code 200, with default header values.
+/*
+GenericProjectFileConfirmOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type GenericProjectFileConfirmOK struct {
 	Payload *models.V0ProjectFileStorageResponseModel
 }
 
+// IsSuccess returns true when this generic project file confirm o k response has a 2xx status code
+func (o *GenericProjectFileConfirmOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this generic project file confirm o k response has a 3xx status code
+func (o *GenericProjectFileConfirmOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file confirm o k response has a 4xx status code
+func (o *GenericProjectFileConfirmOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file confirm o k response has a 5xx status code
+func (o *GenericProjectFileConfirmOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file confirm o k response a status code equal to that given
+func (o *GenericProjectFileConfirmOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GenericProjectFileConfirmOK) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmOK  %+v", 200, o.Payload)
 }
+
+func (o *GenericProjectFileConfirmOK) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmOK  %+v", 200, o.Payload)
+}
+
 func (o *GenericProjectFileConfirmOK) GetPayload() *models.V0ProjectFileStorageResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewGenericProjectFileConfirmBadRequest() *GenericProjectFileConfirmBadReque
 	return &GenericProjectFileConfirmBadRequest{}
 }
 
-/* GenericProjectFileConfirmBadRequest describes a response with status code 400, with default header values.
+/*
+GenericProjectFileConfirmBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type GenericProjectFileConfirmBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file confirm bad request response has a 2xx status code
+func (o *GenericProjectFileConfirmBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file confirm bad request response has a 3xx status code
+func (o *GenericProjectFileConfirmBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file confirm bad request response has a 4xx status code
+func (o *GenericProjectFileConfirmBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file confirm bad request response has a 5xx status code
+func (o *GenericProjectFileConfirmBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file confirm bad request response a status code equal to that given
+func (o *GenericProjectFileConfirmBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GenericProjectFileConfirmBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GenericProjectFileConfirmBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GenericProjectFileConfirmBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewGenericProjectFileConfirmUnauthorized() *GenericProjectFileConfirmUnauth
 	return &GenericProjectFileConfirmUnauthorized{}
 }
 
-/* GenericProjectFileConfirmUnauthorized describes a response with status code 401, with default header values.
+/*
+GenericProjectFileConfirmUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type GenericProjectFileConfirmUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file confirm unauthorized response has a 2xx status code
+func (o *GenericProjectFileConfirmUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file confirm unauthorized response has a 3xx status code
+func (o *GenericProjectFileConfirmUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file confirm unauthorized response has a 4xx status code
+func (o *GenericProjectFileConfirmUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file confirm unauthorized response has a 5xx status code
+func (o *GenericProjectFileConfirmUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file confirm unauthorized response a status code equal to that given
+func (o *GenericProjectFileConfirmUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GenericProjectFileConfirmUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GenericProjectFileConfirmUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GenericProjectFileConfirmUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewGenericProjectFileConfirmNotFound() *GenericProjectFileConfirmNotFound {
 	return &GenericProjectFileConfirmNotFound{}
 }
 
-/* GenericProjectFileConfirmNotFound describes a response with status code 404, with default header values.
+/*
+GenericProjectFileConfirmNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type GenericProjectFileConfirmNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file confirm not found response has a 2xx status code
+func (o *GenericProjectFileConfirmNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file confirm not found response has a 3xx status code
+func (o *GenericProjectFileConfirmNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file confirm not found response has a 4xx status code
+func (o *GenericProjectFileConfirmNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file confirm not found response has a 5xx status code
+func (o *GenericProjectFileConfirmNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file confirm not found response a status code equal to that given
+func (o *GenericProjectFileConfirmNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GenericProjectFileConfirmNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GenericProjectFileConfirmNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GenericProjectFileConfirmNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewGenericProjectFileConfirmInternalServerError() *GenericProjectFileConfir
 	return &GenericProjectFileConfirmInternalServerError{}
 }
 
-/* GenericProjectFileConfirmInternalServerError describes a response with status code 500, with default header values.
+/*
+GenericProjectFileConfirmInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type GenericProjectFileConfirmInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file confirm internal server error response has a 2xx status code
+func (o *GenericProjectFileConfirmInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file confirm internal server error response has a 3xx status code
+func (o *GenericProjectFileConfirmInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file confirm internal server error response has a 4xx status code
+func (o *GenericProjectFileConfirmInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file confirm internal server error response has a 5xx status code
+func (o *GenericProjectFileConfirmInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this generic project file confirm internal server error response a status code equal to that given
+func (o *GenericProjectFileConfirmInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GenericProjectFileConfirmInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *GenericProjectFileConfirmInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *GenericProjectFileConfirmInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

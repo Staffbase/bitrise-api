@@ -63,7 +63,8 @@ func NewAppleAPICredentialListOK() *AppleAPICredentialListOK {
 	return &AppleAPICredentialListOK{}
 }
 
-/* AppleAPICredentialListOK describes a response with status code 200, with default header values.
+/*
+AppleAPICredentialListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AppleAPICredentialListOK struct {
 	Payload *models.V0AppleAPICredentialsListResponse
 }
 
+// IsSuccess returns true when this apple Api credential list o k response has a 2xx status code
+func (o *AppleAPICredentialListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this apple Api credential list o k response has a 3xx status code
+func (o *AppleAPICredentialListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this apple Api credential list o k response has a 4xx status code
+func (o *AppleAPICredentialListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this apple Api credential list o k response has a 5xx status code
+func (o *AppleAPICredentialListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this apple Api credential list o k response a status code equal to that given
+func (o *AppleAPICredentialListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AppleAPICredentialListOK) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListOK  %+v", 200, o.Payload)
 }
+
+func (o *AppleAPICredentialListOK) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListOK  %+v", 200, o.Payload)
+}
+
 func (o *AppleAPICredentialListOK) GetPayload() *models.V0AppleAPICredentialsListResponse {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAppleAPICredentialListBadRequest() *AppleAPICredentialListBadRequest {
 	return &AppleAPICredentialListBadRequest{}
 }
 
-/* AppleAPICredentialListBadRequest describes a response with status code 400, with default header values.
+/*
+AppleAPICredentialListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AppleAPICredentialListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this apple Api credential list bad request response has a 2xx status code
+func (o *AppleAPICredentialListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this apple Api credential list bad request response has a 3xx status code
+func (o *AppleAPICredentialListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this apple Api credential list bad request response has a 4xx status code
+func (o *AppleAPICredentialListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this apple Api credential list bad request response has a 5xx status code
+func (o *AppleAPICredentialListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this apple Api credential list bad request response a status code equal to that given
+func (o *AppleAPICredentialListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AppleAPICredentialListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AppleAPICredentialListBadRequest) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AppleAPICredentialListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAppleAPICredentialListUnauthorized() *AppleAPICredentialListUnauthorized
 	return &AppleAPICredentialListUnauthorized{}
 }
 
-/* AppleAPICredentialListUnauthorized describes a response with status code 401, with default header values.
+/*
+AppleAPICredentialListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AppleAPICredentialListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this apple Api credential list unauthorized response has a 2xx status code
+func (o *AppleAPICredentialListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this apple Api credential list unauthorized response has a 3xx status code
+func (o *AppleAPICredentialListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this apple Api credential list unauthorized response has a 4xx status code
+func (o *AppleAPICredentialListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this apple Api credential list unauthorized response has a 5xx status code
+func (o *AppleAPICredentialListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this apple Api credential list unauthorized response a status code equal to that given
+func (o *AppleAPICredentialListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AppleAPICredentialListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AppleAPICredentialListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AppleAPICredentialListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAppleAPICredentialListNotFound() *AppleAPICredentialListNotFound {
 	return &AppleAPICredentialListNotFound{}
 }
 
-/* AppleAPICredentialListNotFound describes a response with status code 404, with default header values.
+/*
+AppleAPICredentialListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AppleAPICredentialListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this apple Api credential list not found response has a 2xx status code
+func (o *AppleAPICredentialListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this apple Api credential list not found response has a 3xx status code
+func (o *AppleAPICredentialListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this apple Api credential list not found response has a 4xx status code
+func (o *AppleAPICredentialListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this apple Api credential list not found response has a 5xx status code
+func (o *AppleAPICredentialListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this apple Api credential list not found response a status code equal to that given
+func (o *AppleAPICredentialListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AppleAPICredentialListNotFound) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AppleAPICredentialListNotFound) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AppleAPICredentialListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAppleAPICredentialListInternalServerError() *AppleAPICredentialListInter
 	return &AppleAPICredentialListInternalServerError{}
 }
 
-/* AppleAPICredentialListInternalServerError describes a response with status code 500, with default header values.
+/*
+AppleAPICredentialListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AppleAPICredentialListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this apple Api credential list internal server error response has a 2xx status code
+func (o *AppleAPICredentialListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this apple Api credential list internal server error response has a 3xx status code
+func (o *AppleAPICredentialListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this apple Api credential list internal server error response has a 4xx status code
+func (o *AppleAPICredentialListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this apple Api credential list internal server error response has a 5xx status code
+func (o *AppleAPICredentialListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this apple Api credential list internal server error response a status code equal to that given
+func (o *AppleAPICredentialListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AppleAPICredentialListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AppleAPICredentialListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AppleAPICredentialListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

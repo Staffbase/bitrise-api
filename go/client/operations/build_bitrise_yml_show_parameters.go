@@ -52,10 +52,12 @@ func NewBuildBitriseYmlShowParamsWithHTTPClient(client *http.Client) *BuildBitri
 	}
 }
 
-/* BuildBitriseYmlShowParams contains all the parameters to send to the API endpoint
-   for the build bitrise yml show operation.
+/*
+BuildBitriseYmlShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build bitrise yml show operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildBitriseYmlShowParams struct {
 

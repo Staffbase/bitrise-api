@@ -53,10 +53,12 @@ func NewAppListParamsWithHTTPClient(client *http.Client) *AppListParams {
 	}
 }
 
-/* AppListParams contains all the parameters to send to the API endpoint
-   for the app list operation.
+/*
+AppListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the app list operation.
+
+	Typically these are written to a http.Request.
 */
 type AppListParams struct {
 
@@ -72,11 +74,23 @@ type AppListParams struct {
 	*/
 	Next *string
 
+	/* ProjectType.
+
+	   The project type of the app (eg. 'ios', 'android')
+	*/
+	ProjectType *string
+
 	/* SortBy.
 
 	   Order of the applications: sort them based on when they were created or the time of their last build
 	*/
 	SortBy *string
+
+	/* Title.
+
+	   The title of the app
+	*/
+	Title *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -153,6 +167,17 @@ func (o *AppListParams) SetNext(next *string) {
 	o.Next = next
 }
 
+// WithProjectType adds the projectType to the app list params
+func (o *AppListParams) WithProjectType(projectType *string) *AppListParams {
+	o.SetProjectType(projectType)
+	return o
+}
+
+// SetProjectType adds the projectType to the app list params
+func (o *AppListParams) SetProjectType(projectType *string) {
+	o.ProjectType = projectType
+}
+
 // WithSortBy adds the sortBy to the app list params
 func (o *AppListParams) WithSortBy(sortBy *string) *AppListParams {
 	o.SetSortBy(sortBy)
@@ -162,6 +187,17 @@ func (o *AppListParams) WithSortBy(sortBy *string) *AppListParams {
 // SetSortBy adds the sortBy to the app list params
 func (o *AppListParams) SetSortBy(sortBy *string) {
 	o.SortBy = sortBy
+}
+
+// WithTitle adds the title to the app list params
+func (o *AppListParams) WithTitle(title *string) *AppListParams {
+	o.SetTitle(title)
+	return o
+}
+
+// SetTitle adds the title to the app list params
+func (o *AppListParams) SetTitle(title *string) {
+	o.Title = title
 }
 
 // WriteToRequest writes these params to a swagger request
@@ -206,6 +242,23 @@ func (o *AppListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 		}
 	}
 
+	if o.ProjectType != nil {
+
+		// query param project_type
+		var qrProjectType string
+
+		if o.ProjectType != nil {
+			qrProjectType = *o.ProjectType
+		}
+		qProjectType := qrProjectType
+		if qProjectType != "" {
+
+			if err := r.SetQueryParam("project_type", qProjectType); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.SortBy != nil {
 
 		// query param sort_by
@@ -218,6 +271,23 @@ func (o *AppListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Regis
 		if qSortBy != "" {
 
 			if err := r.SetQueryParam("sort_by", qSortBy); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Title != nil {
+
+		// query param title
+		var qrTitle string
+
+		if o.Title != nil {
+			qrTitle = *o.Title
+		}
+		qTitle := qrTitle
+		if qTitle != "" {
+
+			if err := r.SetQueryParam("title", qTitle); err != nil {
 				return err
 			}
 		}

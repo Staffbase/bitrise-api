@@ -19,7 +19,7 @@ import (
 type V0AddOnAppResponseItemModel struct {
 
 	// icon
-	Icon *NullsString `json:"icon,omitempty"`
+	Icon *GithubComMarkbatesPopNullsString `json:"icon,omitempty"`
 
 	// plan
 	Plan *AddonsPlan `json:"plan,omitempty"`
@@ -61,6 +61,8 @@ func (m *V0AddOnAppResponseItemModel) validateIcon(formats strfmt.Registry) erro
 		if err := m.Icon.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("icon")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("icon")
 			}
 			return err
 		}
@@ -78,6 +80,8 @@ func (m *V0AddOnAppResponseItemModel) validatePlan(formats strfmt.Registry) erro
 		if err := m.Plan.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("plan")
 			}
 			return err
 		}
@@ -110,6 +114,8 @@ func (m *V0AddOnAppResponseItemModel) contextValidateIcon(ctx context.Context, f
 		if err := m.Icon.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("icon")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("icon")
 			}
 			return err
 		}
@@ -124,6 +130,8 @@ func (m *V0AddOnAppResponseItemModel) contextValidatePlan(ctx context.Context, f
 		if err := m.Plan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("plan")
 			}
 			return err
 		}

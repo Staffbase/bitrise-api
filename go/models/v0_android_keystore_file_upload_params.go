@@ -23,6 +23,9 @@ type V0AndroidKeystoreFileUploadParams struct {
 	// Required: true
 	Alias *string `json:"alias"`
 
+	// keystore file name
+	KeystoreFileName string `json:"keystore_file_name,omitempty"`
+
 	// password
 	// Required: true
 	Password *string `json:"password"`

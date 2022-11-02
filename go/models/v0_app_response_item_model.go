@@ -19,10 +19,13 @@ import (
 type V0AppResponseItemModel struct {
 
 	// avatar url
-	AvatarURL *NullsString `json:"avatar_url,omitempty"`
+	AvatarURL *GithubComMarkbatesPopNullsString `json:"avatar_url,omitempty"`
 
 	// is disabled
 	IsDisabled bool `json:"is_disabled,omitempty"`
+
+	// is github checks enabled
+	IsGithubChecksEnabled bool `json:"is_github_checks_enabled,omitempty"`
 
 	// is public
 	IsPublic bool `json:"is_public,omitempty"`
@@ -31,19 +34,19 @@ type V0AppResponseItemModel struct {
 	Owner *V0OwnerAccountResponseModel `json:"owner,omitempty"`
 
 	// project type
-	ProjectType string `json:"project_type,omitempty"`
+	ProjectType *GithubComMarkbatesPopNullsString `json:"project_type,omitempty"`
 
 	// provider
-	Provider string `json:"provider,omitempty"`
+	Provider *GithubComMarkbatesPopNullsString `json:"provider,omitempty"`
 
 	// repo owner
-	RepoOwner string `json:"repo_owner,omitempty"`
+	RepoOwner *GithubComMarkbatesPopNullsString `json:"repo_owner,omitempty"`
 
 	// repo slug
-	RepoSlug string `json:"repo_slug,omitempty"`
+	RepoSlug *GithubComMarkbatesPopNullsString `json:"repo_slug,omitempty"`
 
 	// repo url
-	RepoURL string `json:"repo_url,omitempty"`
+	RepoURL *GithubComMarkbatesPopNullsString `json:"repo_url,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -67,6 +70,26 @@ func (m *V0AppResponseItemModel) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateProjectType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProvider(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRepoOwner(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRepoSlug(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRepoURL(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -82,6 +105,8 @@ func (m *V0AppResponseItemModel) validateAvatarURL(formats strfmt.Registry) erro
 		if err := m.AvatarURL.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("avatar_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("avatar_url")
 			}
 			return err
 		}
@@ -99,6 +124,103 @@ func (m *V0AppResponseItemModel) validateOwner(formats strfmt.Registry) error {
 		if err := m.Owner.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) validateProjectType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProjectType) { // not required
+		return nil
+	}
+
+	if m.ProjectType != nil {
+		if err := m.ProjectType.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("project_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("project_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) validateProvider(formats strfmt.Registry) error {
+	if swag.IsZero(m.Provider) { // not required
+		return nil
+	}
+
+	if m.Provider != nil {
+		if err := m.Provider.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provider")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provider")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) validateRepoOwner(formats strfmt.Registry) error {
+	if swag.IsZero(m.RepoOwner) { // not required
+		return nil
+	}
+
+	if m.RepoOwner != nil {
+		if err := m.RepoOwner.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repo_owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repo_owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) validateRepoSlug(formats strfmt.Registry) error {
+	if swag.IsZero(m.RepoSlug) { // not required
+		return nil
+	}
+
+	if m.RepoSlug != nil {
+		if err := m.RepoSlug.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repo_slug")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repo_slug")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) validateRepoURL(formats strfmt.Registry) error {
+	if swag.IsZero(m.RepoURL) { // not required
+		return nil
+	}
+
+	if m.RepoURL != nil {
+		if err := m.RepoURL.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repo_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repo_url")
 			}
 			return err
 		}
@@ -119,6 +241,26 @@ func (m *V0AppResponseItemModel) ContextValidate(ctx context.Context, formats st
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateProjectType(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateProvider(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRepoOwner(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRepoSlug(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateRepoURL(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -131,6 +273,8 @@ func (m *V0AppResponseItemModel) contextValidateAvatarURL(ctx context.Context, f
 		if err := m.AvatarURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("avatar_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("avatar_url")
 			}
 			return err
 		}
@@ -145,6 +289,88 @@ func (m *V0AppResponseItemModel) contextValidateOwner(ctx context.Context, forma
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) contextValidateProjectType(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ProjectType != nil {
+		if err := m.ProjectType.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("project_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("project_type")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) contextValidateProvider(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Provider != nil {
+		if err := m.Provider.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("provider")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("provider")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) contextValidateRepoOwner(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.RepoOwner != nil {
+		if err := m.RepoOwner.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repo_owner")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repo_owner")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) contextValidateRepoSlug(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.RepoSlug != nil {
+		if err := m.RepoSlug.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repo_slug")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repo_slug")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0AppResponseItemModel) contextValidateRepoURL(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.RepoURL != nil {
+		if err := m.RepoURL.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("repo_url")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("repo_url")
 			}
 			return err
 		}

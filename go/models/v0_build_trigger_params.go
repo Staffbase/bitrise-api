@@ -52,6 +52,8 @@ func (m *V0BuildTriggerParams) validateBuildParams(formats strfmt.Registry) erro
 		if err := m.BuildParams.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("build_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("build_params")
 			}
 			return err
 		}
@@ -69,6 +71,8 @@ func (m *V0BuildTriggerParams) validateHookInfo(formats strfmt.Registry) error {
 		if err := m.HookInfo.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("hook_info")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hook_info")
 			}
 			return err
 		}
@@ -101,6 +105,8 @@ func (m *V0BuildTriggerParams) contextValidateBuildParams(ctx context.Context, f
 		if err := m.BuildParams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("build_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("build_params")
 			}
 			return err
 		}
@@ -115,6 +121,8 @@ func (m *V0BuildTriggerParams) contextValidateHookInfo(ctx context.Context, form
 		if err := m.HookInfo.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("hook_info")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hook_info")
 			}
 			return err
 		}

@@ -63,7 +63,8 @@ func NewBuildRequestUpdateOK() *BuildRequestUpdateOK {
 	return &BuildRequestUpdateOK{}
 }
 
-/* BuildRequestUpdateOK describes a response with status code 200, with default header values.
+/*
+BuildRequestUpdateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type BuildRequestUpdateOK struct {
 	Payload *models.V0BuildRequestUpdateResponseModel
 }
 
+// IsSuccess returns true when this build request update o k response has a 2xx status code
+func (o *BuildRequestUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build request update o k response has a 3xx status code
+func (o *BuildRequestUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build request update o k response has a 4xx status code
+func (o *BuildRequestUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build request update o k response has a 5xx status code
+func (o *BuildRequestUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build request update o k response a status code equal to that given
+func (o *BuildRequestUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BuildRequestUpdateOK) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *BuildRequestUpdateOK) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *BuildRequestUpdateOK) GetPayload() *models.V0BuildRequestUpdateResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewBuildRequestUpdateBadRequest() *BuildRequestUpdateBadRequest {
 	return &BuildRequestUpdateBadRequest{}
 }
 
-/* BuildRequestUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+BuildRequestUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type BuildRequestUpdateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build request update bad request response has a 2xx status code
+func (o *BuildRequestUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build request update bad request response has a 3xx status code
+func (o *BuildRequestUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build request update bad request response has a 4xx status code
+func (o *BuildRequestUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build request update bad request response has a 5xx status code
+func (o *BuildRequestUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build request update bad request response a status code equal to that given
+func (o *BuildRequestUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildRequestUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildRequestUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildRequestUpdateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewBuildRequestUpdateUnauthorized() *BuildRequestUpdateUnauthorized {
 	return &BuildRequestUpdateUnauthorized{}
 }
 
-/* BuildRequestUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildRequestUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type BuildRequestUpdateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build request update unauthorized response has a 2xx status code
+func (o *BuildRequestUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build request update unauthorized response has a 3xx status code
+func (o *BuildRequestUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build request update unauthorized response has a 4xx status code
+func (o *BuildRequestUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build request update unauthorized response has a 5xx status code
+func (o *BuildRequestUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build request update unauthorized response a status code equal to that given
+func (o *BuildRequestUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildRequestUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildRequestUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildRequestUpdateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewBuildRequestUpdateNotFound() *BuildRequestUpdateNotFound {
 	return &BuildRequestUpdateNotFound{}
 }
 
-/* BuildRequestUpdateNotFound describes a response with status code 404, with default header values.
+/*
+BuildRequestUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type BuildRequestUpdateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build request update not found response has a 2xx status code
+func (o *BuildRequestUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build request update not found response has a 3xx status code
+func (o *BuildRequestUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build request update not found response has a 4xx status code
+func (o *BuildRequestUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build request update not found response has a 5xx status code
+func (o *BuildRequestUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build request update not found response a status code equal to that given
+func (o *BuildRequestUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildRequestUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildRequestUpdateNotFound) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildRequestUpdateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewBuildRequestUpdateInternalServerError() *BuildRequestUpdateInternalServe
 	return &BuildRequestUpdateInternalServerError{}
 }
 
-/* BuildRequestUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildRequestUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type BuildRequestUpdateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build request update internal server error response has a 2xx status code
+func (o *BuildRequestUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build request update internal server error response has a 3xx status code
+func (o *BuildRequestUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build request update internal server error response has a 4xx status code
+func (o *BuildRequestUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build request update internal server error response has a 5xx status code
+func (o *BuildRequestUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build request update internal server error response a status code equal to that given
+func (o *BuildRequestUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildRequestUpdateInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildRequestUpdateInternalServerError) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildRequestUpdateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

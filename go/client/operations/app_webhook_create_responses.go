@@ -63,7 +63,8 @@ func NewAppWebhookCreateOK() *AppWebhookCreateOK {
 	return &AppWebhookCreateOK{}
 }
 
-/* AppWebhookCreateOK describes a response with status code 200, with default header values.
+/*
+AppWebhookCreateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AppWebhookCreateOK struct {
 	Payload *models.V0WebhookRespModel
 }
 
+// IsSuccess returns true when this app webhook create o k response has a 2xx status code
+func (o *AppWebhookCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this app webhook create o k response has a 3xx status code
+func (o *AppWebhookCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app webhook create o k response has a 4xx status code
+func (o *AppWebhookCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app webhook create o k response has a 5xx status code
+func (o *AppWebhookCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app webhook create o k response a status code equal to that given
+func (o *AppWebhookCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AppWebhookCreateOK) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *AppWebhookCreateOK) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *AppWebhookCreateOK) GetPayload() *models.V0WebhookRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAppWebhookCreateBadRequest() *AppWebhookCreateBadRequest {
 	return &AppWebhookCreateBadRequest{}
 }
 
-/* AppWebhookCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AppWebhookCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AppWebhookCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app webhook create bad request response has a 2xx status code
+func (o *AppWebhookCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app webhook create bad request response has a 3xx status code
+func (o *AppWebhookCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app webhook create bad request response has a 4xx status code
+func (o *AppWebhookCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app webhook create bad request response has a 5xx status code
+func (o *AppWebhookCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app webhook create bad request response a status code equal to that given
+func (o *AppWebhookCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AppWebhookCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AppWebhookCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AppWebhookCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAppWebhookCreateUnauthorized() *AppWebhookCreateUnauthorized {
 	return &AppWebhookCreateUnauthorized{}
 }
 
-/* AppWebhookCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AppWebhookCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AppWebhookCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app webhook create unauthorized response has a 2xx status code
+func (o *AppWebhookCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app webhook create unauthorized response has a 3xx status code
+func (o *AppWebhookCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app webhook create unauthorized response has a 4xx status code
+func (o *AppWebhookCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app webhook create unauthorized response has a 5xx status code
+func (o *AppWebhookCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app webhook create unauthorized response a status code equal to that given
+func (o *AppWebhookCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AppWebhookCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AppWebhookCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AppWebhookCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAppWebhookCreateNotFound() *AppWebhookCreateNotFound {
 	return &AppWebhookCreateNotFound{}
 }
 
-/* AppWebhookCreateNotFound describes a response with status code 404, with default header values.
+/*
+AppWebhookCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AppWebhookCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app webhook create not found response has a 2xx status code
+func (o *AppWebhookCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app webhook create not found response has a 3xx status code
+func (o *AppWebhookCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app webhook create not found response has a 4xx status code
+func (o *AppWebhookCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app webhook create not found response has a 5xx status code
+func (o *AppWebhookCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app webhook create not found response a status code equal to that given
+func (o *AppWebhookCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AppWebhookCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AppWebhookCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AppWebhookCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAppWebhookCreateInternalServerError() *AppWebhookCreateInternalServerErr
 	return &AppWebhookCreateInternalServerError{}
 }
 
-/* AppWebhookCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AppWebhookCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AppWebhookCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app webhook create internal server error response has a 2xx status code
+func (o *AppWebhookCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app webhook create internal server error response has a 3xx status code
+func (o *AppWebhookCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app webhook create internal server error response has a 4xx status code
+func (o *AppWebhookCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app webhook create internal server error response has a 5xx status code
+func (o *AppWebhookCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this app webhook create internal server error response a status code equal to that given
+func (o *AppWebhookCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AppWebhookCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AppWebhookCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AppWebhookCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

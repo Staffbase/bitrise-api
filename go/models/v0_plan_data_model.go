@@ -31,7 +31,7 @@ type V0PlanDataModel struct {
 	Name string `json:"name,omitempty"`
 
 	// price
-	Price *NullsInt64 `json:"price,omitempty"`
+	Price *GithubComMarkbatesPopNullsInt64 `json:"price,omitempty"`
 }
 
 // Validate validates this v0 plan data model
@@ -57,6 +57,8 @@ func (m *V0PlanDataModel) validatePrice(formats strfmt.Registry) error {
 		if err := m.Price.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("price")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("price")
 			}
 			return err
 		}
@@ -85,6 +87,8 @@ func (m *V0PlanDataModel) contextValidatePrice(ctx context.Context, formats strf
 		if err := m.Price.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("price")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("price")
 			}
 			return err
 		}

@@ -38,11 +38,15 @@ type ClientService interface {
 
 	AddonListByUser(params *AddonListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonListByUserOK, error)
 
-	AddonsList(params *AddonsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonsListOK, error)
+	AddonsList(params *AddonsListParams, opts ...ClientOption) (*AddonsListOK, error)
 
-	AddonsShow(params *AddonsShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonsShowOK, error)
+	AddonsShow(params *AddonsShowParams, opts ...ClientOption) (*AddonsShowOK, error)
+
+	AndroidKeystoreFileConfirm(params *AndroidKeystoreFileConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileConfirmOK, error)
 
 	AndroidKeystoreFileCreate(params *AndroidKeystoreFileCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileCreateCreated, error)
+
+	AndroidKeystoreFileDelete(params *AndroidKeystoreFileDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileDeleteOK, error)
 
 	AndroidKeystoreFileList(params *AndroidKeystoreFileListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileListOK, error)
 
@@ -62,9 +66,13 @@ type ClientService interface {
 
 	AppShow(params *AppShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppShowOK, error)
 
+	AppUpdate(params *AppUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppUpdateOK, error)
+
 	AppWebhookCreate(params *AppWebhookCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppWebhookCreateOK, error)
 
 	AppleAPICredentialList(params *AppleAPICredentialListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppleAPICredentialListOK, error)
+
+	ArchivedBuildsList(params *ArchivedBuildsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArchivedBuildsListOK, error)
 
 	ArtifactDelete(params *ArtifactDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArtifactDeleteOK, error)
 
@@ -102,7 +110,7 @@ type ClientService interface {
 
 	BuildListAll(params *BuildListAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildListAllOK, error)
 
-	BuildLog(params *BuildLogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildLogOK, error)
+	BuildLog(params *BuildLogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) error
 
 	BuildRequestList(params *BuildRequestListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildRequestListOK, error)
 
@@ -113,6 +121,14 @@ type ClientService interface {
 	BuildTrigger(params *BuildTriggerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildTriggerCreated, error)
 
 	BuildWorkflowList(params *BuildWorkflowListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildWorkflowListOK, error)
+
+	CacheItemDelete(params *CacheItemDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheItemDeleteOK, error)
+
+	CacheItemDeleteAll(params *CacheItemDeleteAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheItemDeleteAllOK, error)
+
+	CacheItemDownload(params *CacheItemDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheItemDownloadOK, error)
+
+	CacheList(params *CacheListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheListOK, error)
 
 	GenericProjectFileConfirm(params *GenericProjectFileConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFileConfirmOK, error)
 
@@ -138,6 +154,16 @@ type ClientService interface {
 
 	OutgoingWebhookUpdate(params *OutgoingWebhookUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OutgoingWebhookUpdateOK, error)
 
+	PipelineAbort(params *PipelineAbortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineAbortOK, error)
+
+	PipelineList(params *PipelineListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineListOK, error)
+
+	PipelineListAll(params *PipelineListAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineListAllOK, error)
+
+	PipelineRebuild(params *PipelineRebuildParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineRebuildOK, error)
+
+	PipelineShow(params *PipelineShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineShowOK, error)
+
 	ProvisioningProfileConfirm(params *ProvisioningProfileConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileConfirmOK, error)
 
 	ProvisioningProfileCreate(params *ProvisioningProfileCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileCreateCreated, error)
@@ -150,9 +176,21 @@ type ClientService interface {
 
 	ProvisioningProfileUpdate(params *ProvisioningProfileUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileUpdateOK, error)
 
+	SecretDelete(params *SecretDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretDeleteNoContent, error)
+
+	SecretList(params *SecretListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretListOK, error)
+
+	SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertNoContent, error)
+
+	SecretValueGet(params *SecretValueGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretValueGetOK, error)
+
 	SSHKeyCreate(params *SSHKeyCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SSHKeyCreateOK, error)
 
 	TestDeviceList(params *TestDeviceListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TestDeviceListOK, error)
+
+	UserAddonTokens(params *UserAddonTokensParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensOK, error)
+
+	UserAddonTokensDelete(params *UserAddonTokensDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensDeleteOK, error)
 
 	UserPlan(params *UserPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserPlanOK, error)
 
@@ -170,9 +208,9 @@ type ClientService interface {
 }
 
 /*
-  ActivityList gets list of bitrise activity events
+ActivityList gets list of bitrise activity events
 
-  List all the Bitrise activity events
+List all the Bitrise activity events
 */
 func (a *Client) ActivityList(params *ActivityListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ActivityListOK, error) {
 	// TODO: Validate the params before sending
@@ -211,9 +249,9 @@ func (a *Client) ActivityList(params *ActivityListParams, authInfo runtime.Clien
 }
 
 /*
-  AddonListByApp gets list of the addons for apps
+AddonListByApp gets list of the addons for apps
 
-  List all the provisioned addons for the authorized apps
+List all the provisioned addons for the authorized apps
 */
 func (a *Client) AddonListByApp(params *AddonListByAppParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonListByAppOK, error) {
 	// TODO: Validate the params before sending
@@ -252,9 +290,9 @@ func (a *Client) AddonListByApp(params *AddonListByAppParams, authInfo runtime.C
 }
 
 /*
-  AddonListByOrganization gets list of the addons for organization
+AddonListByOrganization gets list of the addons for organization
 
-  List all the provisioned addons for organization
+List all the provisioned addons for organization
 */
 func (a *Client) AddonListByOrganization(params *AddonListByOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonListByOrganizationOK, error) {
 	// TODO: Validate the params before sending
@@ -293,9 +331,9 @@ func (a *Client) AddonListByOrganization(params *AddonListByOrganizationParams, 
 }
 
 /*
-  AddonListByUser gets list of the addons for user
+AddonListByUser gets list of the addons for user
 
-  List all the provisioned addons for the authenticated user
+List all the provisioned addons for the authenticated user
 */
 func (a *Client) AddonListByUser(params *AddonListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonListByUserOK, error) {
 	// TODO: Validate the params before sending
@@ -334,11 +372,11 @@ func (a *Client) AddonListByUser(params *AddonListByUserParams, authInfo runtime
 }
 
 /*
-  AddonsList gets list of available bitrise addons
+AddonsList gets list of available bitrise addons
 
-  List all the available Bitrise addons
+List all the available Bitrise addons
 */
-func (a *Client) AddonsList(params *AddonsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonsListOK, error) {
+func (a *Client) AddonsList(params *AddonsListParams, opts ...ClientOption) (*AddonsListOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddonsListParams()
@@ -352,7 +390,6 @@ func (a *Client) AddonsList(params *AddonsListParams, authInfo runtime.ClientAut
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &AddonsListReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -375,11 +412,11 @@ func (a *Client) AddonsList(params *AddonsListParams, authInfo runtime.ClientAut
 }
 
 /*
-  AddonsShow gets a specific bitrise addon
+AddonsShow gets a specific bitrise addon
 
-  Show details of a specific Bitrise addon
+Show details of a specific Bitrise addon
 */
-func (a *Client) AddonsShow(params *AddonsShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AddonsShowOK, error) {
+func (a *Client) AddonsShow(params *AddonsShowParams, opts ...ClientOption) (*AddonsShowOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewAddonsShowParams()
@@ -393,7 +430,6 @@ func (a *Client) AddonsShow(params *AddonsShowParams, authInfo runtime.ClientAut
 		Schemes:            []string{"https"},
 		Params:             params,
 		Reader:             &AddonsShowReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -416,9 +452,50 @@ func (a *Client) AddonsShow(params *AddonsShowParams, authInfo runtime.ClientAut
 }
 
 /*
-  AndroidKeystoreFileCreate creates an android keystore file
+AndroidKeystoreFileConfirm confirms an android keystore file upload
 
-  Add a new Android keystore file to an app
+This is the last step of uploading an android keystore file to Bitrise. Confirm the android keystore file upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the upload](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#confirming-the-file-upload) guide.
+*/
+func (a *Client) AndroidKeystoreFileConfirm(params *AndroidKeystoreFileConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileConfirmOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAndroidKeystoreFileConfirmParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "android-keystore-file-confirm",
+		Method:             "POST",
+		PathPattern:        "/apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AndroidKeystoreFileConfirmReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AndroidKeystoreFileConfirmOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for android-keystore-file-confirm: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AndroidKeystoreFileCreate creates an android keystore file
+
+Add a new Android keystore file to an app
 */
 func (a *Client) AndroidKeystoreFileCreate(params *AndroidKeystoreFileCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileCreateCreated, error) {
 	// TODO: Validate the params before sending
@@ -457,9 +534,50 @@ func (a *Client) AndroidKeystoreFileCreate(params *AndroidKeystoreFileCreatePara
 }
 
 /*
-  AndroidKeystoreFileList gets a list of the android keystore files
+AndroidKeystoreFileDelete deletes an android keystore file
 
-  List all the android keystore files that have been uploaded to a specific app.
+Delete an app's android keystore file. You can fetch an app's android keystore file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/android-keystore-files](https://api-docs.bitrise.io/#/android-keystore-file/android-keystore-file-list) endpoint. Read more in our [Deleting a file](https://devcenter.bitrise.io/api/managing-android-keystore-files.html) guide.
+*/
+func (a *Client) AndroidKeystoreFileDelete(params *AndroidKeystoreFileDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileDeleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAndroidKeystoreFileDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "android-keystore-file-delete",
+		Method:             "DELETE",
+		PathPattern:        "/apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AndroidKeystoreFileDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AndroidKeystoreFileDeleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for android-keystore-file-delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AndroidKeystoreFileList gets a list of the android keystore files
+
+List all the android keystore files that have been uploaded to a specific app.
 */
 func (a *Client) AndroidKeystoreFileList(params *AndroidKeystoreFileListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileListOK, error) {
 	// TODO: Validate the params before sending
@@ -498,9 +616,9 @@ func (a *Client) AndroidKeystoreFileList(params *AndroidKeystoreFileListParams, 
 }
 
 /*
-  AppConfigCreate uploads a new bitrise yml for your application
+AppConfigCreate uploads a new bitrise yml for your application
 
-  Upload a new bitrise.yml for your application.
+Upload a new bitrise.yml for your application.
 */
 func (a *Client) AppConfigCreate(params *AppConfigCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppConfigCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -539,9 +657,9 @@ func (a *Client) AppConfigCreate(params *AppConfigCreateParams, authInfo runtime
 }
 
 /*
-  AppConfigDatastoreShow gets bitrise yml of a specific app
+AppConfigDatastoreShow gets bitrise yml of a specific app
 
-  Get the full `bitrise.yml` configuration of an application, by providing the app slug. It returns the current `bitrise.yml` that is stored on bitrise.io in full, including the trigger map, the different workflows and the Steps.
+Get the full `bitrise.yml` configuration of an application, by providing the app slug. It returns the current `bitrise.yml` that is stored on bitrise.io in full, including the trigger map, the different workflows and the Steps.
 */
 func (a *Client) AppConfigDatastoreShow(params *AppConfigDatastoreShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppConfigDatastoreShowOK, error) {
 	// TODO: Validate the params before sending
@@ -580,9 +698,9 @@ func (a *Client) AppConfigDatastoreShow(params *AppConfigDatastoreShowParams, au
 }
 
 /*
-  AppCreate adds a new app
+AppCreate adds a new app
 
-  Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: your git provider, the repository URL, the slug of the repository as it appears at the provider, and the slug of the owner of the repository. Read more about the app creation process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).
+Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: your git provider, the repository URL, the slug of the repository as it appears at the provider, and the slug of the owner of the repository. Read more about the app creation process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).
 */
 func (a *Client) AppCreate(params *AppCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -621,9 +739,9 @@ func (a *Client) AppCreate(params *AppCreateParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  AppFinish saves the application at the end of the app registration process
+AppFinish saves the application at the end of the app registration process
 
-  Save the application after registering it on Bitrise and registering an SSH key (and, optionally, adding a webhook). With this endpoint you can define the initial configuration, define application-level environment variables, determine the project type, and set an Organization to be the owner of the app. Read more about the app registration process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).
+Save the application after registering it on Bitrise and registering an SSH key (and, optionally, adding a webhook). With this endpoint you can define the initial configuration, define application-level environment variables, determine the project type, and set an Organization to be the owner of the app. Read more about the app registration process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).
 */
 func (a *Client) AppFinish(params *AppFinishParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppFinishOK, error) {
 	// TODO: Validate the params before sending
@@ -662,9 +780,9 @@ func (a *Client) AppFinish(params *AppFinishParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  AppList gets list of the apps
+AppList gets list of the apps
 
-  List all the apps available for the authenticated account, including those that are owned by other users or Organizations.
+List all the apps available for the authenticated account, including those that are owned by other users or Organizations.
 */
 func (a *Client) AppList(params *AppListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppListOK, error) {
 	// TODO: Validate the params before sending
@@ -703,9 +821,9 @@ func (a *Client) AppList(params *AppListParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  AppListByOrganization gets list of the apps for an organization
+AppListByOrganization gets list of the apps for an organization
 
-  List all the available apps owned by a given organization. [Find the organization URL](https://devcenter.bitrise.io/team-management/organizations/org-url/) of the organisations you are part of; be aware that the endpoint will not return any apps if the authenticated account is not a member of the given organisation.
+List all the available apps owned by a given organization. [Find the organization URL](https://devcenter.bitrise.io/team-management/organizations/org-url/) of the organisations you are part of; be aware that the endpoint will not return any apps if the authenticated account is not a member of the given organisation.
 */
 func (a *Client) AppListByOrganization(params *AppListByOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppListByOrganizationOK, error) {
 	// TODO: Validate the params before sending
@@ -744,9 +862,9 @@ func (a *Client) AppListByOrganization(params *AppListByOrganizationParams, auth
 }
 
 /*
-  AppListByUser gets list of the apps for a user
+AppListByUser gets list of the apps for a user
 
-  List all the available apps for the given user.  It needs the user slug that you can get from the [GET /me](https://api-docs.bitrise.io/#/user/user-profile) endpoint.
+List all the available apps for the given user.  It needs the user slug that you can get from the [GET /me](https://api-docs.bitrise.io/#/user/user-profile) endpoint.
 */
 func (a *Client) AppListByUser(params *AppListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppListByUserOK, error) {
 	// TODO: Validate the params before sending
@@ -785,9 +903,9 @@ func (a *Client) AppListByUser(params *AppListByUserParams, authInfo runtime.Cli
 }
 
 /*
-  AppShow gets a specific app
+AppShow gets a specific app
 
-  Get the details of a specific app by providing the app slug. You can get the app slug by calling the [/apps](https://api-docs.bitrise.io/#/application/app-list) endpoint or by opening the app on bitrise.io and copying the slug from the URL.
+Get the details of a specific app by providing the app slug. You can get the app slug by calling the [/apps](https://api-docs.bitrise.io/#/application/app-list) endpoint or by opening the app on bitrise.io and copying the slug from the URL.
 */
 func (a *Client) AppShow(params *AppShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppShowOK, error) {
 	// TODO: Validate the params before sending
@@ -826,9 +944,50 @@ func (a *Client) AppShow(params *AppShowParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  AppWebhookCreate registers an incoming webhook for a specific application
+AppUpdate updates an app
 
-  [Register an incoming webhook](https://devcenter.bitrise.io/api/incoming-and-outgoing-webhooks/#incoming-webhooks) for a specific application. You can do this during the app registration process or at any other time in an app's life. When calling this endpoint, a webhook is registered at your git provider: this is necessary to automatically trigger builds on Bitrise.
+Updates an app by slug. Only updates the fields specified in the body.
+*/
+func (a *Client) AppUpdate(params *AppUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-update",
+		Method:             "PATCH",
+		PathPattern:        "/apps/{app-slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AppWebhookCreate registers an incoming webhook for a specific application
+
+[Register an incoming webhook](https://devcenter.bitrise.io/api/incoming-and-outgoing-webhooks/#incoming-webhooks) for a specific application. You can do this during the app registration process or at any other time in an app's life. When calling this endpoint, a webhook is registered at your git provider: this is necessary to automatically trigger builds on Bitrise.
 */
 func (a *Client) AppWebhookCreate(params *AppWebhookCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppWebhookCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -867,9 +1026,9 @@ func (a *Client) AppWebhookCreate(params *AppWebhookCreateParams, authInfo runti
 }
 
 /*
-  AppleAPICredentialList lists apple API credentials for a specific user
+AppleAPICredentialList lists apple API credentials for a specific user
 
-  List Apple API credentials for a specific Bitrise user
+List Apple API credentials for a specific Bitrise user
 */
 func (a *Client) AppleAPICredentialList(params *AppleAPICredentialListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppleAPICredentialListOK, error) {
 	// TODO: Validate the params before sending
@@ -908,9 +1067,50 @@ func (a *Client) AppleAPICredentialList(params *AppleAPICredentialListParams, au
 }
 
 /*
-  ArtifactDelete deletes a build artifact
+ArchivedBuildsList lists 1000 archived builds of an app
 
-  Delete a build artifact of an app's build. The required parameters are app slug, build slug and artifact slug. You can fetch the build artifact slug if you first list all build artifacts of an app with the [/apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-list) endpoint.
+List the first 1000 archived builds of a specified Bitrise app. Set parameters to filter builds:
+*/
+func (a *Client) ArchivedBuildsList(params *ArchivedBuildsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArchivedBuildsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewArchivedBuildsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "archived-builds-list",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/archived-builds",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ArchivedBuildsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ArchivedBuildsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for archived-builds-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ArtifactDelete deletes a build artifact
+
+Delete a build artifact of an app's build. The required parameters are app slug, build slug and artifact slug. You can fetch the build artifact slug if you first list all build artifacts of an app with the [/apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-list) endpoint.
 */
 func (a *Client) ArtifactDelete(params *ArtifactDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArtifactDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -949,9 +1149,9 @@ func (a *Client) ArtifactDelete(params *ArtifactDeleteParams, authInfo runtime.C
 }
 
 /*
-  ArtifactList gets a list of all build artifacts
+ArtifactList gets a list of all build artifacts
 
-  List all build artifacts that have been generated for an app's build. You can use the created build artifact slugs from the response output to retrieve data of a specific build artifact with the [GET/apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-show) endpoint or update a build artifact with the [PATCH/apps](https://api-docs.bitrise.io/#/build-artifact/artifact-update) endpoint.
+List all build artifacts that have been generated for an app's build. This endpoint can retrieve artifacts from the archive as well. You can use the created build artifact slugs from the response output to retrieve data of a specific build artifact with the [GET/apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-show) endpoint or update a build artifact with the [PATCH/apps](https://api-docs.bitrise.io/#/build-artifact/artifact-update) endpoint.
 */
 func (a *Client) ArtifactList(params *ArtifactListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArtifactListOK, error) {
 	// TODO: Validate the params before sending
@@ -990,9 +1190,9 @@ func (a *Client) ArtifactList(params *ArtifactListParams, authInfo runtime.Clien
 }
 
 /*
-  ArtifactShow gets a specific build artifact
+ArtifactShow gets a specific build artifact
 
-  Retrieve data of a specific build artifact. The response output contains a time-limited download url (expires in 10 minutes) and a public install page URL. You can view the build artifact with both URLs, but the public install page url will not work unless you [enable it](https://devcenter.bitrise.io/tutorials/deploy/bitrise-app-deployment/#enabling-public-page-for-the-app).
+Retrieve data of a specific build artifact. The endpoint can retrieve archived artifacts as well. The response output contains a time-limited download url (expires in 10 minutes) and a public install-page URL. You can view the build artifact with both URLs, but the public install-page url will not work unless you [enable it](https://devcenter.bitrise.io/tutorials/deploy/bitrise-app-deployment/#enabling-public-page-for-the-app).
 */
 func (a *Client) ArtifactShow(params *ArtifactShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArtifactShowOK, error) {
 	// TODO: Validate the params before sending
@@ -1031,9 +1231,9 @@ func (a *Client) ArtifactShow(params *ArtifactShowParams, authInfo runtime.Clien
 }
 
 /*
-  ArtifactUpdate updates a build artifact
+ArtifactUpdate updates a build artifact
 
-  Update the `is_public_page_enabled` attribute of your app's build. The required parameters are app slug, build slug and artifact slug. You can fetch the build artifact slug if you first list all build artifacts of an app with the [GET /apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-list) endpoint.
+Update the `is_public_page_enabled` attribute of your app's build. The required parameters are app slug, build slug and artifact slug. You can fetch the build artifact slug if you first list all build artifacts of an app with the [GET /apps/](https://api-docs.bitrise.io/#/build-artifact/artifact-list) endpoint.
 */
 func (a *Client) ArtifactUpdate(params *ArtifactUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArtifactUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -1072,9 +1272,9 @@ func (a *Client) ArtifactUpdate(params *ArtifactUpdateParams, authInfo runtime.C
 }
 
 /*
-  AvatarCandidateCreate creates avatar candidates
+AvatarCandidateCreate creates avatar candidates
 
-  Add new avatar candidates to a specific app
+Add new avatar candidates to a specific app
 */
 func (a *Client) AvatarCandidateCreate(params *AvatarCandidateCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidateCreateCreated, error) {
 	// TODO: Validate the params before sending
@@ -1113,9 +1313,9 @@ func (a *Client) AvatarCandidateCreate(params *AvatarCandidateCreateParams, auth
 }
 
 /*
-  AvatarCandidateList gets list of the avatar candidates
+AvatarCandidateList gets list of the avatar candidates
 
-  List all available avatar candidates for an application
+List all available avatar candidates for an application
 */
 func (a *Client) AvatarCandidateList(params *AvatarCandidateListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidateListOK, error) {
 	// TODO: Validate the params before sending
@@ -1154,9 +1354,9 @@ func (a *Client) AvatarCandidateList(params *AvatarCandidateListParams, authInfo
 }
 
 /*
-  AvatarCandidatePromote promotes an avatar candidate
+AvatarCandidatePromote promotes an avatar candidate
 
-  Promotes an avatar candidate for an app
+Promotes an avatar candidate for an app
 */
 func (a *Client) AvatarCandidatePromote(params *AvatarCandidatePromoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidatePromoteOK, error) {
 	// TODO: Validate the params before sending
@@ -1195,9 +1395,9 @@ func (a *Client) AvatarCandidatePromote(params *AvatarCandidatePromoteParams, au
 }
 
 /*
-  BranchList lists the branches with existing builds of an app s repository
+BranchList lists the branches with existing builds of an app s repository
 
-  Lists only those branches of a specified Bitrise app that have existing builds.
+Lists only those branches of a specified Bitrise app that have existing builds.
 */
 func (a *Client) BranchList(params *BranchListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BranchListOK, error) {
 	// TODO: Validate the params before sending
@@ -1236,9 +1436,9 @@ func (a *Client) BranchList(params *BranchListParams, authInfo runtime.ClientAut
 }
 
 /*
-  BuildAbort aborts a specific build
+BuildAbort aborts a specific build
 
-  Abort a specific build. Set an abort reason with the `abort_reason` parameter. Use the `abort_with_success` parameter to abort a build but still count it as a successful one.
+Abort a specific build. Set an abort reason with the `abort_reason` parameter. Use the `abort_with_success` parameter to abort a build but still count it as a successful one.
 */
 func (a *Client) BuildAbort(params *BuildAbortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildAbortOK, error) {
 	// TODO: Validate the params before sending
@@ -1277,9 +1477,9 @@ func (a *Client) BuildAbort(params *BuildAbortParams, authInfo runtime.ClientAut
 }
 
 /*
-  BuildBitriseYmlShow gets the bitrise yml of a build
+BuildBitriseYmlShow gets the bitrise yml of a build
 
-  Get the bitrise.yml file of one of the builds of a given app. This will return the `bitrise.yml` configuration with which the build ran. You can compare it to [the current bitrise.yml configuration](https://api-docs.bitrise.io/#/application/app-config-datastore-show) of the app.
+Get the bitrise.yml file of one of the builds of a given app. This will return the `bitrise.yml` configuration with which the build ran. You can compare it to [the current bitrise.yml configuration](https://api-docs.bitrise.io/#/application/app-config-datastore-show) of the app.
 */
 func (a *Client) BuildBitriseYmlShow(params *BuildBitriseYmlShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildBitriseYmlShowOK, error) {
 	// TODO: Validate the params before sending
@@ -1318,9 +1518,9 @@ func (a *Client) BuildBitriseYmlShow(params *BuildBitriseYmlShowParams, authInfo
 }
 
 /*
-  BuildCertificateConfirm confirms a build certificate upload
+BuildCertificateConfirm confirms a build certificate upload
 
-  This is the last step of uploading a build certificate to Bitrise. Confirm the build certificate upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the iOS code signing file upload](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
+This is the last step of uploading a build certificate to Bitrise. Confirm the build certificate upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the iOS code signing file upload](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
 */
 func (a *Client) BuildCertificateConfirm(params *BuildCertificateConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildCertificateConfirmOK, error) {
 	// TODO: Validate the params before sending
@@ -1359,9 +1559,9 @@ func (a *Client) BuildCertificateConfirm(params *BuildCertificateConfirmParams, 
 }
 
 /*
-  BuildCertificateCreate creates a build certificate
+BuildCertificateCreate creates a build certificate
 
-  Create a temporary pre-signed upload URL for the build certificate and upload the file to AWS with a simple `curl` request. To complete the uploading process and view your files on the Code Signing tab of your app, continue with the [POST /apps/{app-slug}/build-certificates/{build-certificate-slug}/uploaded](https://api-docs.bitrise.io/#/build-certificate/build-certificate-confirm) endpoint. Read more in our [Creating and uploading an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#creating--uploading-an-ios-code-signing-file) guide.
+Create a temporary pre-signed upload URL for the build certificate and upload the file to AWS with a simple `curl` request. To complete the uploading process and view your files on the Code Signing tab of your app, continue with the [POST /apps/{app-slug}/build-certificates/{build-certificate-slug}/uploaded](https://api-docs.bitrise.io/#/build-certificate/build-certificate-confirm) endpoint. Read more in our [Creating and uploading an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#creating--uploading-an-ios-code-signing-file) guide.
 */
 func (a *Client) BuildCertificateCreate(params *BuildCertificateCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildCertificateCreateCreated, error) {
 	// TODO: Validate the params before sending
@@ -1400,9 +1600,9 @@ func (a *Client) BuildCertificateCreate(params *BuildCertificateCreateParams, au
 }
 
 /*
-  BuildCertificateDelete deletes a build certificate
+BuildCertificateDelete deletes a build certificate
 
-  Delete an app's build certificate. You can fetch the build certificate slug for this endpoint if you first call the [GET /apps/{app-slug}/build-certificates](https://api-docs.bitrise.io/#/build-certificate/build-certificate-list) endpoint to list all available build certificates of an app. Read more in our [Deleting an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#deleting-an-ios-code-signing-file) guide.
+Delete an app's build certificate. You can fetch the build certificate slug for this endpoint if you first call the [GET /apps/{app-slug}/build-certificates](https://api-docs.bitrise.io/#/build-certificate/build-certificate-list) endpoint to list all available build certificates of an app. Read more in our [Deleting an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#deleting-an-ios-code-signing-file) guide.
 */
 func (a *Client) BuildCertificateDelete(params *BuildCertificateDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildCertificateDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -1441,9 +1641,9 @@ func (a *Client) BuildCertificateDelete(params *BuildCertificateDeleteParams, au
 }
 
 /*
-  BuildCertificateList gets a list of the build certificates
+BuildCertificateList gets a list of the build certificates
 
-  List all the build certificates that have been uploaded to a specific app. Read more in our [Listing the uploaded iOS code signing files of an app](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#listing-the-uploaded-ios-code-signing-files-of-an-app) guide.
+List all the build certificates that have been uploaded to a specific app. Read more in our [Listing the uploaded iOS code signing files of an app](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#listing-the-uploaded-ios-code-signing-files-of-an-app) guide.
 */
 func (a *Client) BuildCertificateList(params *BuildCertificateListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildCertificateListOK, error) {
 	// TODO: Validate the params before sending
@@ -1482,9 +1682,9 @@ func (a *Client) BuildCertificateList(params *BuildCertificateListParams, authIn
 }
 
 /*
-  BuildCertificateShow gets a specific build certificate
+BuildCertificateShow gets a specific build certificate
 
-  Retrieve data of a specific build certificate. You can fetch the build certificate slug for this endpoint if you first call the [GET /apps/{app-slug}/build-certificates](https://api-docs.bitrise.io/#/build-certificate/build-certificate-list) endpoint to list all available build certificates of an app. Read more in our [Getting a specific iOS code signing file's data](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#getting-a-specific-ios-code-signing-files-data) guide.
+Retrieve data of a specific build certificate. You can fetch the build certificate slug for this endpoint if you first call the [GET /apps/{app-slug}/build-certificates](https://api-docs.bitrise.io/#/build-certificate/build-certificate-list) endpoint to list all available build certificates of an app. Read more in our [Getting a specific iOS code signing file's data](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#getting-a-specific-ios-code-signing-files-data) guide.
 */
 func (a *Client) BuildCertificateShow(params *BuildCertificateShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildCertificateShowOK, error) {
 	// TODO: Validate the params before sending
@@ -1523,9 +1723,9 @@ func (a *Client) BuildCertificateShow(params *BuildCertificateShowParams, authIn
 }
 
 /*
-  BuildCertificateUpdate updates a build certificate
+BuildCertificateUpdate updates a build certificate
 
-  Update an uploaded build certificate's attributes. You can fetch the build certificate slug for this endpoint if you first call the [GET /apps/{app-slug}/build-certificates](https://api-docs.bitrise.io/#/build-certificate/build-certificate-list) endpoint. Read more in our [Updating an uploaded iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
+Update an uploaded build certificate's attributes. You can fetch the build certificate slug for this endpoint if you first call the [GET /apps/{app-slug}/build-certificates](https://api-docs.bitrise.io/#/build-certificate/build-certificate-list) endpoint. Read more in our [Updating an uploaded iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
 */
 func (a *Client) BuildCertificateUpdate(params *BuildCertificateUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildCertificateUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -1564,9 +1764,9 @@ func (a *Client) BuildCertificateUpdate(params *BuildCertificateUpdateParams, au
 }
 
 /*
-  BuildList lists all builds of an app
+BuildList lists all builds of an app
 
-  List all the builds of a specified Bitrise app. Set parameters to filter builds: for example, you can search for builds run with a given workflow or all builds that were triggered by Pull Requests. It returns all the relevant data of the build.
+List all the builds of a specified Bitrise app. Set parameters to filter builds: for example, you can search for builds run with a given workflow or all builds that were triggered by Pull Requests. It returns all the relevant data of the build.
 */
 func (a *Client) BuildList(params *BuildListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildListOK, error) {
 	// TODO: Validate the params before sending
@@ -1605,9 +1805,9 @@ func (a *Client) BuildList(params *BuildListParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  BuildListAll lists all builds
+BuildListAll lists all builds
 
-  List all the Bitrise builds that can be accessed with the authenticated account. Filter builds based on their owner, using the owner slug, or the status of the build.
+List all the Bitrise builds that can be accessed with the authenticated account. Filter builds based on their owner, using the owner slug, or the status of the build.
 */
 func (a *Client) BuildListAll(params *BuildListAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildListAllOK, error) {
 	// TODO: Validate the params before sending
@@ -1646,11 +1846,11 @@ func (a *Client) BuildListAll(params *BuildListAllParams, authInfo runtime.Clien
 }
 
 /*
-  BuildLog gets the build log of a build
+BuildLog gets the build log of a build
 
-  Get the build log of a specified build of a Bitrise app. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL.
+Get the build log of a specified build of a Bitrise app. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL. Preview of the log is returned in `log_chunks` field in JSON format. You can download the full raw log in txt by using the signed url returned in `expiring_raw_log_url`. Be aware that this url is expiring in 10 minutes!
 */
-func (a *Client) BuildLog(params *BuildLogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildLogOK, error) {
+func (a *Client) BuildLog(params *BuildLogParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) error {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewBuildLogParams()
@@ -1672,24 +1872,17 @@ func (a *Client) BuildLog(params *BuildLogParams, authInfo runtime.ClientAuthInf
 		opt(op)
 	}
 
-	result, err := a.transport.Submit(op)
+	_, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return err
 	}
-	success, ok := result.(*BuildLogOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for build-log: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
+	return nil
 }
 
 /*
-  BuildRequestList lists the open build requests for an app
+BuildRequestList lists the open build requests for an app
 
-  List the existing open build requests of a specified Bitrise app
+List the existing open build requests of a specified Bitrise app
 */
 func (a *Client) BuildRequestList(params *BuildRequestListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildRequestListOK, error) {
 	// TODO: Validate the params before sending
@@ -1728,9 +1921,9 @@ func (a *Client) BuildRequestList(params *BuildRequestListParams, authInfo runti
 }
 
 /*
-  BuildRequestUpdate updates a build request
+BuildRequestUpdate updates a build request
 
-  Update a specific build request of a specific app
+Update a specific build request of a specific app
 */
 func (a *Client) BuildRequestUpdate(params *BuildRequestUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildRequestUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -1769,9 +1962,9 @@ func (a *Client) BuildRequestUpdate(params *BuildRequestUpdateParams, authInfo r
 }
 
 /*
-  BuildShow gets a build of a given app
+BuildShow gets a build of a given app
 
-  Get the specified build of a given Bitrise app. You need to provide both an app slug and a build slug. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL. The endpoint returns all the relevant data of the build.
+Get the specified build of a given Bitrise app. You need to provide both an app slug and a build slug. You can get the build slug either by calling the [/builds](https://api-docs.bitrise.io/#/builds/build-list) endpoint or by clicking on the build on bitrise.io and copying the slug from the URL. The endpoint returns all the relevant data of the build.
 */
 func (a *Client) BuildShow(params *BuildShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildShowOK, error) {
 	// TODO: Validate the params before sending
@@ -1810,9 +2003,9 @@ func (a *Client) BuildShow(params *BuildShowParams, authInfo runtime.ClientAuthI
 }
 
 /*
-  BuildTrigger triggers a new build
+BuildTrigger triggers a new build pipeline
 
-  Trigger a new build. Specify an app slug and at least one parameter out of three: a git tag or git commit hash, a branch, or a workflow ID. You can also set specific parameters for Pull Request builds and define additional environment variables for your build. [Check out our detailed guide](https://devcenter.bitrise.io/api/build-trigger/).
+Trigger a new build/pipeline. Specify an app slug and at least one parameter out of three: a git tag or git commit hash, a branch, or a workflow/pipeline ID. You can also set specific parameters for Pull Request builds/pipelines and define additional environment variables for your build/pipeline. [Check out our detailed guide](https://devcenter.bitrise.io/api/build-trigger/).
 */
 func (a *Client) BuildTrigger(params *BuildTriggerParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildTriggerCreated, error) {
 	// TODO: Validate the params before sending
@@ -1851,9 +2044,9 @@ func (a *Client) BuildTrigger(params *BuildTriggerParams, authInfo runtime.Clien
 }
 
 /*
-  BuildWorkflowList lists the workflows of an app
+BuildWorkflowList lists the workflows of an app
 
-  List the workflows that were triggered at any time for a given Bitrise app. Note that it might list workflows that are currently not defined in the app's `bitrise.yml` configuration - and conversely, workflows that were never triggered will not be listed even if they are defined in the `bitrise.yml` file.
+List the workflows that were triggered at any time for a given Bitrise app. Note that it might list workflows that are currently not defined in the app's `bitrise.yml` configuration - and conversely, workflows that were never triggered will not be listed even if they are defined in the `bitrise.yml` file.
 */
 func (a *Client) BuildWorkflowList(params *BuildWorkflowListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BuildWorkflowListOK, error) {
 	// TODO: Validate the params before sending
@@ -1892,9 +2085,173 @@ func (a *Client) BuildWorkflowList(params *BuildWorkflowListParams, authInfo run
 }
 
 /*
-  GenericProjectFileConfirm confirms a generic project file upload
+CacheItemDelete deletes a key value cache item
 
-  This is the last step of uploading a generic project file to Bitrise. Confirm the generic project file upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the upload](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#confirming-the-file-upload) guide.
+Deletes a key-value cache item. Deleted cache items are no longer accessible and cannot be restored.
+*/
+func (a *Client) CacheItemDelete(params *CacheItemDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheItemDeleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCacheItemDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "cache-item-delete",
+		Method:             "DELETE",
+		PathPattern:        "/apps/{app-slug}/cache-items/{cache-item-id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CacheItemDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CacheItemDeleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for cache-item-delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CacheItemDeleteAll deletes all key value cache items belonging to an app
+
+Deletes all key-value cache items created by the builds of an app. Deleted cache items are no longer accessible and cannot be restored.
+*/
+func (a *Client) CacheItemDeleteAll(params *CacheItemDeleteAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheItemDeleteAllOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCacheItemDeleteAllParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "cache-item-delete-all",
+		Method:             "DELETE",
+		PathPattern:        "/apps/{app-slug}/cache-items",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CacheItemDeleteAllReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CacheItemDeleteAllOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for cache-item-delete-all: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CacheItemDownload gets the download URL of a key value cache item
+
+Gets a download URL of a cache item.
+*/
+func (a *Client) CacheItemDownload(params *CacheItemDownloadParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheItemDownloadOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCacheItemDownloadParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "cache-item-download",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/cache-items/{cache-item-id}/download",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CacheItemDownloadReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CacheItemDownloadOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for cache-item-download: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+CacheList lists the key value cache items belonging to an app
+
+List all the available cache items that the builds of the app created via the save-cache step.
+*/
+func (a *Client) CacheList(params *CacheListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*CacheListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewCacheListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "cache-list",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/cache-items",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &CacheListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*CacheListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for cache-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+GenericProjectFileConfirm confirms a generic project file upload
+
+This is the last step of uploading a generic project file to Bitrise. Confirm the generic project file upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the upload](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#confirming-the-file-upload) guide.
 */
 func (a *Client) GenericProjectFileConfirm(params *GenericProjectFileConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFileConfirmOK, error) {
 	// TODO: Validate the params before sending
@@ -1933,9 +2290,9 @@ func (a *Client) GenericProjectFileConfirm(params *GenericProjectFileConfirmPara
 }
 
 /*
-  GenericProjectFileDelete deletes a generic project file
+GenericProjectFileDelete deletes a generic project file
 
-  Delete an app's generic project file. You can fetch an app's generic project file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/generic-project-files](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-list) endpoint. Read more in our [Deleting a file](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#deleting-a-file) guide.
+Delete an app's generic project file. You can fetch an app's generic project file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/generic-project-files](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-list) endpoint. Read more in our [Deleting a file](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#deleting-a-file) guide.
 */
 func (a *Client) GenericProjectFileDelete(params *GenericProjectFileDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFileDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -1974,9 +2331,9 @@ func (a *Client) GenericProjectFileDelete(params *GenericProjectFileDeleteParams
 }
 
 /*
-  GenericProjectFileList gets a list of the generic project files
+GenericProjectFileList gets a list of the generic project files
 
-  List all the generic project files that have been uploaded to a specific app. Read more in our [Listing the uploaded files of an app](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#listing-the-uploaded-files-of-an-app) guide.
+List all the generic project files that have been uploaded to a specific app. Read more in our [Listing the uploaded files of an app](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#listing-the-uploaded-files-of-an-app) guide.
 */
 func (a *Client) GenericProjectFileList(params *GenericProjectFileListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFileListOK, error) {
 	// TODO: Validate the params before sending
@@ -2015,9 +2372,9 @@ func (a *Client) GenericProjectFileList(params *GenericProjectFileListParams, au
 }
 
 /*
-  GenericProjectFileShow gets a specific generic project file
+GenericProjectFileShow gets a specific generic project file
 
-  Retrieve data of a specific generic project file to check its attributes and optionally modify them with the [PATCH /apps/](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-update) endpoint. Read more in our [Retrieving a specific file's data](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#retrieving-a-specific-files-data) guide.
+Retrieve data of a specific generic project file to check its attributes and optionally modify them with the [PATCH /apps/](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-update) endpoint. Read more in our [Retrieving a specific file's data](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#retrieving-a-specific-files-data) guide.
 */
 func (a *Client) GenericProjectFileShow(params *GenericProjectFileShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFileShowOK, error) {
 	// TODO: Validate the params before sending
@@ -2056,9 +2413,9 @@ func (a *Client) GenericProjectFileShow(params *GenericProjectFileShowParams, au
 }
 
 /*
-  GenericProjectFileUpdate updates a generic project file
+GenericProjectFileUpdate updates a generic project file
 
-  Update a generic project file's attributes. You can fetch an app's generic project file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/generic-project-files](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-list) endpoint. Read more in our [Updating an uploaded file](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#updating-an-uploaded-file) guide.
+Update a generic project file's attributes. You can fetch an app's generic project file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/generic-project-files](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-list) endpoint. Read more in our [Updating an uploaded file](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#updating-an-uploaded-file) guide.
 */
 func (a *Client) GenericProjectFileUpdate(params *GenericProjectFileUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFileUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -2097,9 +2454,9 @@ func (a *Client) GenericProjectFileUpdate(params *GenericProjectFileUpdateParams
 }
 
 /*
-  GenericProjectFilesCreate creates a generic project file
+GenericProjectFilesCreate creates a generic project file
 
-  Create a temporary pre-signed upload URL (expires in 10 minutes) for the generic project file and upload it to AWS with a simple `curl` request. To complete the uploading process and view your files on the Code Signing tab of your app, continue with the [POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-confirm) endpoint. Read more in our [Creating and uploading files to Generic File Storage](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#creating-and-uploading-files-to-generic-file-storage) guide.
+Create a temporary pre-signed upload URL (expires in 10 minutes) for the generic project file and upload it to AWS with a simple `curl` request. To complete the uploading process and view your files on the Code Signing tab of your app, continue with the [POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded](https://api-docs.bitrise.io/#/generic-project-file/generic-project-file-confirm) endpoint. Read more in our [Creating and uploading files to Generic File Storage](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#creating-and-uploading-files-to-generic-file-storage) guide.
 */
 func (a *Client) GenericProjectFilesCreate(params *GenericProjectFilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFilesCreateCreated, error) {
 	// TODO: Validate the params before sending
@@ -2138,9 +2495,9 @@ func (a *Client) GenericProjectFilesCreate(params *GenericProjectFilesCreatePara
 }
 
 /*
-  OrgList lists the organizations that the user is part of
+OrgList lists the organizations that the user is part of
 
-  List all Bitrise organizations that the user is part of
+List all Bitrise organizations that the user is part of
 */
 func (a *Client) OrgList(params *OrgListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgListOK, error) {
 	// TODO: Validate the params before sending
@@ -2179,9 +2536,9 @@ func (a *Client) OrgList(params *OrgListParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  OrgShow gets a specified organization
+OrgShow gets a specified organization
 
-  Get a specified Bitrise organization that the user is part of.
+Get a specified Bitrise organization that the user is part of.
 */
 func (a *Client) OrgShow(params *OrgShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgShowOK, error) {
 	// TODO: Validate the params before sending
@@ -2220,9 +2577,9 @@ func (a *Client) OrgShow(params *OrgShowParams, authInfo runtime.ClientAuthInfoW
 }
 
 /*
-  OutgoingWebhookCreate creates an outgoing webhook for an app
+OutgoingWebhookCreate creates an outgoing webhook for an app
 
-  Create an outgoing webhook for a specified Bitrise app: this can be used to send build events to a specified URL with custom headers. Currently, only build events can trigger outgoing webhooks.
+Create an outgoing webhook for a specified Bitrise app: this can be used to send build events to a specified URL with custom headers. Currently, only build events can trigger outgoing webhooks.
 */
 func (a *Client) OutgoingWebhookCreate(params *OutgoingWebhookCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OutgoingWebhookCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -2261,9 +2618,9 @@ func (a *Client) OutgoingWebhookCreate(params *OutgoingWebhookCreateParams, auth
 }
 
 /*
-  OutgoingWebhookDelete deletes an outgoing webhook of an app
+OutgoingWebhookDelete deletes an outgoing webhook of an app
 
-  Delete an existing outgoing webhook for a specified Bitrise app.
+Delete an existing outgoing webhook for a specified Bitrise app.
 */
 func (a *Client) OutgoingWebhookDelete(params *OutgoingWebhookDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OutgoingWebhookDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -2302,9 +2659,9 @@ func (a *Client) OutgoingWebhookDelete(params *OutgoingWebhookDeleteParams, auth
 }
 
 /*
-  OutgoingWebhookList lists the outgoing webhooks of an app
+OutgoingWebhookList lists the outgoing webhooks of an app
 
-  List all the outgoing webhooks registered for a specified Bitrise app. This returns all the relevant data of the webhook, including the slug of the webhook and its URL.
+List all the outgoing webhooks registered for a specified Bitrise app. This returns all the relevant data of the webhook, including the slug of the webhook and its URL.
 */
 func (a *Client) OutgoingWebhookList(params *OutgoingWebhookListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OutgoingWebhookListOK, error) {
 	// TODO: Validate the params before sending
@@ -2343,9 +2700,9 @@ func (a *Client) OutgoingWebhookList(params *OutgoingWebhookListParams, authInfo
 }
 
 /*
-  OutgoingWebhookUpdate updates an outgoing webhook of an app
+OutgoingWebhookUpdate updates an outgoing webhook of an app
 
-  Update an existing outgoing webhook (URL, events, secrets and headers) for a specified Bitrise app. Even if you do not want to change one of the parameters, you still have to provide that parameter as well: simply use its existing value.
+Update an existing outgoing webhook (URL, events, secrets and headers) for a specified Bitrise app. Even if you do not want to change one of the parameters, you still have to provide that parameter as well: simply use its existing value.
 */
 func (a *Client) OutgoingWebhookUpdate(params *OutgoingWebhookUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OutgoingWebhookUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -2384,9 +2741,214 @@ func (a *Client) OutgoingWebhookUpdate(params *OutgoingWebhookUpdateParams, auth
 }
 
 /*
-  ProvisioningProfileConfirm confirms a provisioning profile upload
+PipelineAbort aborts a pipeline
 
-  This is the last step of the upload process. Confirm the provisioning profile upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the iOS code signing file upload](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
+Aborts a pipeline. You need to provide the app slug and the id of the pipeline. You can add an abort reason, choose to skip notifications and make the abort with success state.
+*/
+func (a *Client) PipelineAbort(params *PipelineAbortParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineAbortOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPipelineAbortParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pipeline-abort",
+		Method:             "POST",
+		PathPattern:        "/apps/{app-slug}/pipelines/{pipeline-id}/abort",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PipelineAbortReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PipelineAbortOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pipeline-abort: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PipelineList lists all pipelines and standalone builds of an app
+
+List all the pipelines and standalone builds of a specified Bitrise app. Set parameters to filter pipelines: for example, you can search for pipelines/standalone builds run with a given workflow name or all pipelines/standalone builds that were triggered by Pull Requests. It returns all the relevant data of the pipelines/standalone builds.
+*/
+func (a *Client) PipelineList(params *PipelineListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPipelineListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pipeline-list",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/pipelines",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PipelineListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PipelineListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pipeline-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PipelineListAll lists all pipelines standalone builds
+
+List all the Bitrise pipelines/standalone builds that can be accessed with the authenticated account. Filter pipelines/standalone builds based on their owner, using the owner slug, or the status of the pipeline/standalone build.
+*/
+func (a *Client) PipelineListAll(params *PipelineListAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineListAllOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPipelineListAllParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pipeline-list-all",
+		Method:             "GET",
+		PathPattern:        "/pipelines",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PipelineListAllReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PipelineListAllOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pipeline-list-all: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PipelineRebuild rebuilds a pipeline
+
+Rebuilds a pipeline. You can rebuild the whole pipeline or only the unsuccessful and subsequent workflows by setting the partial flag to true.
+*/
+func (a *Client) PipelineRebuild(params *PipelineRebuildParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineRebuildOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPipelineRebuildParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pipeline-rebuild",
+		Method:             "POST",
+		PathPattern:        "/apps/{app-slug}/pipelines/{pipeline-id}/rebuild",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PipelineRebuildReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PipelineRebuildOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pipeline-rebuild: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PipelineShow gets a pipeline of a given app
+
+Get the specified pipeline of a given Bitrise app. You need to provide both an app slug and a pipeline id. You can get the pipeline id either by calling the [/pipelines](https://api-docs.bitrise.io/#/pipelines/pipeline-list) endpoint or by clicking on the pipeline on bitrise.io and copying the id from the URL. The endpoint returns all the relevant data of the pipeline.
+*/
+func (a *Client) PipelineShow(params *PipelineShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineShowOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPipelineShowParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pipeline-show",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/pipelines/{pipeline-id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &PipelineShowReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PipelineShowOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pipeline-show: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ProvisioningProfileConfirm confirms a provisioning profile upload
+
+This is the last step of the upload process. Confirm the provisioning profile upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the iOS code signing file upload](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
 */
 func (a *Client) ProvisioningProfileConfirm(params *ProvisioningProfileConfirmParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileConfirmOK, error) {
 	// TODO: Validate the params before sending
@@ -2425,9 +2987,9 @@ func (a *Client) ProvisioningProfileConfirm(params *ProvisioningProfileConfirmPa
 }
 
 /*
-  ProvisioningProfileCreate creates a provisioning profile
+ProvisioningProfileCreate creates a provisioning profile
 
-  Create a temporary pre-signed upload URL (expires in 10 minutes) for the provisioning profile and upload it to AWS with a simple `curl` request. To complete the upload process, continue with the [POST /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}/uploaded](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-confirm) endpoint. Read more in our [Creating and uploading an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#creating--uploading-an-ios-code-signing-file) guide.
+Create a temporary pre-signed upload URL (expires in 10 minutes) for the provisioning profile and upload it to AWS with a simple `curl` request. To complete the upload process, continue with the [POST /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}/uploaded](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-confirm) endpoint. Read more in our [Creating and uploading an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#creating--uploading-an-ios-code-signing-file) guide.
 */
 func (a *Client) ProvisioningProfileCreate(params *ProvisioningProfileCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileCreateCreated, error) {
 	// TODO: Validate the params before sending
@@ -2466,9 +3028,9 @@ func (a *Client) ProvisioningProfileCreate(params *ProvisioningProfileCreatePara
 }
 
 /*
-  ProvisioningProfileDelete deletes a provisioning profile
+ProvisioningProfileDelete deletes a provisioning profile
 
-  Delete an app's provisioning profile. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Deleting an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#deleting-an-ios-code-signing-file) guide.
+Delete an app's provisioning profile. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Deleting an iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#deleting-an-ios-code-signing-file) guide.
 */
 func (a *Client) ProvisioningProfileDelete(params *ProvisioningProfileDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -2507,9 +3069,9 @@ func (a *Client) ProvisioningProfileDelete(params *ProvisioningProfileDeletePara
 }
 
 /*
-  ProvisioningProfileList gets a list of the provisioning profiles
+ProvisioningProfileList gets a list of the provisioning profiles
 
-  List all the provisioning profiles that have been uploaded to a specific app. Read more in our [Listing the uploaded iOS code signing files of an app](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#listing-the-uploaded-ios-code-signing-files-of-an-app) guide.
+List all the provisioning profiles that have been uploaded to a specific app. Read more in our [Listing the uploaded iOS code signing files of an app](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#listing-the-uploaded-ios-code-signing-files-of-an-app) guide.
 */
 func (a *Client) ProvisioningProfileList(params *ProvisioningProfileListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileListOK, error) {
 	// TODO: Validate the params before sending
@@ -2548,9 +3110,9 @@ func (a *Client) ProvisioningProfileList(params *ProvisioningProfileListParams, 
 }
 
 /*
-  ProvisioningProfileShow gets a specific provisioning profile
+ProvisioningProfileShow gets a specific provisioning profile
 
-  Retrieve data of a specific provisioning profile. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Getting a specific iOS code signing file's data](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#getting-a-specific-ios-code-signing-files-data) guide.
+Retrieve data of a specific provisioning profile. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Getting a specific iOS code signing file's data](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#getting-a-specific-ios-code-signing-files-data) guide.
 */
 func (a *Client) ProvisioningProfileShow(params *ProvisioningProfileShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileShowOK, error) {
 	// TODO: Validate the params before sending
@@ -2589,9 +3151,9 @@ func (a *Client) ProvisioningProfileShow(params *ProvisioningProfileShowParams, 
 }
 
 /*
-  ProvisioningProfileUpdate updates a provisioning profile
+ProvisioningProfileUpdate updates a provisioning profile
 
-  Update an uploaded provisioning profile's attributes. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Updating an uploaded iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
+Update an uploaded provisioning profile's attributes. You can fetch the provisioning profile's slug if you call the [GET /apps/{app-slug}/provisioning-profiles](https://api-docs.bitrise.io/#/provisioning-profile/provisioning-profile-list) endpoint. Read more in our [Updating an uploaded iOS code signing file](https://devcenter.bitrise.io/api/managing-ios-code-signing-files/#confirming-the-ios-code-signing-file-upload) guide.
 */
 func (a *Client) ProvisioningProfileUpdate(params *ProvisioningProfileUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileUpdateOK, error) {
 	// TODO: Validate the params before sending
@@ -2630,9 +3192,173 @@ func (a *Client) ProvisioningProfileUpdate(params *ProvisioningProfileUpdatePara
 }
 
 /*
-  SSHKeyCreate adds an SSH key to a specific app
+SecretDelete deletes an application secret
 
-  Add an SSH-key to a specific app. After creating an app, you need to register the SSH key so that Bitrise will be able to access and clone your repository during the build process. This requires the app slug of your newly created app.
+Delete an application secret. Requires administrator level privileges to the app.
+*/
+func (a *Client) SecretDelete(params *SecretDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretDeleteNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSecretDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "secret-delete",
+		Method:             "DELETE",
+		PathPattern:        "/apps/{app-slug}/secrets/{secret-name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SecretDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SecretDeleteNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for secret-delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SecretList lists the application secrets with no values
+
+List the application secrets (with no values). Requires administrator level privileges to the app.
+*/
+func (a *Client) SecretList(params *SecretListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSecretListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "secret-list",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/secrets",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SecretListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SecretListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for secret-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SecretUpsert upserts an application secret
+
+Upsert an application secret. Requires administrator level privileges to the app.
+*/
+func (a *Client) SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSecretUpsertParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "secret-upsert",
+		Method:             "PUT",
+		PathPattern:        "/apps/{app-slug}/secrets/{secret-name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SecretUpsertReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SecretUpsertNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for secret-upsert: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SecretValueGet gets the value of an unprotected application secrets
+
+Get the value of an (unprotected) application secrets. Requires administrator level privileges to the app.
+*/
+func (a *Client) SecretValueGet(params *SecretValueGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretValueGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewSecretValueGetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "secret-value-get",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/secrets/{secret-name}/value",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &SecretValueGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*SecretValueGetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for secret-value-get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+SSHKeyCreate adds an SSH key to a specific app
+
+Add an SSH-key to a specific app. After creating an app, you need to register the SSH key so that Bitrise will be able to access and clone your repository during the build process. This requires the app slug of your newly created app.
 */
 func (a *Client) SSHKeyCreate(params *SSHKeyCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SSHKeyCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -2671,9 +3397,9 @@ func (a *Client) SSHKeyCreate(params *SSHKeyCreateParams, authInfo runtime.Clien
 }
 
 /*
-  TestDeviceList lists the test devices for an app
+TestDeviceList lists the test devices for an app
 
-  List registered test devices of all members of a specified Bitrise app
+List registered test devices of all members of a specified Bitrise app
 */
 func (a *Client) TestDeviceList(params *TestDeviceListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TestDeviceListOK, error) {
 	// TODO: Validate the params before sending
@@ -2712,9 +3438,91 @@ func (a *Client) TestDeviceList(params *TestDeviceListParams, authInfo runtime.C
 }
 
 /*
-  UserPlan thes subscription plan of the user
+UserAddonTokens thes active addon tokens of the user
 
-  Get the subscription of the user: the current plan, any pending plans, and the duration of a trial period if applicable
+Lists the active addon tokens of the user with some extra details.
+*/
+func (a *Client) UserAddonTokens(params *UserAddonTokensParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserAddonTokensParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "user-addon-tokens",
+		Method:             "GET",
+		PathPattern:        "/me/addon-tokens",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserAddonTokensReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UserAddonTokensOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for user-addon-tokens: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UserAddonTokensDelete removes an active addon token of the user
+
+Removes the active addon token of the user.
+*/
+func (a *Client) UserAddonTokensDelete(params *UserAddonTokensDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensDeleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewUserAddonTokensDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "user-addon-tokens-delete",
+		Method:             "DELETE",
+		PathPattern:        "/me/addon-tokens/{addon-id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &UserAddonTokensDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*UserAddonTokensDeleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for user-addon-tokens-delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+UserPlan thes subscription plan of the user
+
+Get the subscription of the user: the current plan, any pending plans, and the duration of a trial period if applicable
 */
 func (a *Client) UserPlan(params *UserPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserPlanOK, error) {
 	// TODO: Validate the params before sending
@@ -2753,9 +3561,9 @@ func (a *Client) UserPlan(params *UserPlanParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  UserProfile gets your profile data
+UserProfile gets your profile info
 
-  Shows the authenticated users profile data
+Shows the authenticated users profile info
 */
 func (a *Client) UserProfile(params *UserProfileParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserProfileOK, error) {
 	// TODO: Validate the params before sending
@@ -2794,9 +3602,9 @@ func (a *Client) UserProfile(params *UserProfileParams, authInfo runtime.ClientA
 }
 
 /*
-  UserShow gets a specific user
+UserShow gets a specific user
 
-  Show information about a specific user
+Show information about a specific user
 */
 func (a *Client) UserShow(params *UserShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserShowOK, error) {
 	// TODO: Validate the params before sending
@@ -2835,9 +3643,9 @@ func (a *Client) UserShow(params *UserShowParams, authInfo runtime.ClientAuthInf
 }
 
 /*
-  WebhookDeliveryItemList lists the webhook delivery items of an app
+WebhookDeliveryItemList lists the webhook delivery items of an app
 
-  List all the delivery items of an outgoing webhook of a Bitrise application
+List all the delivery items of an outgoing webhook of a Bitrise application
 */
 func (a *Client) WebhookDeliveryItemList(params *WebhookDeliveryItemListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*WebhookDeliveryItemListOK, error) {
 	// TODO: Validate the params before sending
@@ -2876,9 +3684,9 @@ func (a *Client) WebhookDeliveryItemList(params *WebhookDeliveryItemListParams, 
 }
 
 /*
-  WebhookDeliveryItemRedeliver res deliver the webhook delivery items of an app
+WebhookDeliveryItemRedeliver res deliver the webhook delivery items of an app
 
-  Re-deliver the delivery item of a specified webhook of a Bitrise application
+Re-deliver the delivery item of a specified webhook of a Bitrise application
 */
 func (a *Client) WebhookDeliveryItemRedeliver(params *WebhookDeliveryItemRedeliverParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*WebhookDeliveryItemRedeliverOK, error) {
 	// TODO: Validate the params before sending
@@ -2917,9 +3725,9 @@ func (a *Client) WebhookDeliveryItemRedeliver(params *WebhookDeliveryItemRedeliv
 }
 
 /*
-  WebhookDeliveryItemShow gets a specific delivery item of a webhook
+WebhookDeliveryItemShow gets a specific delivery item of a webhook
 
-  Get the specified delivery item of an outgoing webhook of a Bitrise application
+Get the specified delivery item of an outgoing webhook of a Bitrise application
 */
 func (a *Client) WebhookDeliveryItemShow(params *WebhookDeliveryItemShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*WebhookDeliveryItemShowOK, error) {
 	// TODO: Validate the params before sending

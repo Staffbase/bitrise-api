@@ -63,7 +63,8 @@ func NewProvisioningProfileCreateCreated() *ProvisioningProfileCreateCreated {
 	return &ProvisioningProfileCreateCreated{}
 }
 
-/* ProvisioningProfileCreateCreated describes a response with status code 201, with default header values.
+/*
+ProvisioningProfileCreateCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -71,9 +72,39 @@ type ProvisioningProfileCreateCreated struct {
 	Payload *models.V0ProvisionProfileResponseModel
 }
 
+// IsSuccess returns true when this provisioning profile create created response has a 2xx status code
+func (o *ProvisioningProfileCreateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this provisioning profile create created response has a 3xx status code
+func (o *ProvisioningProfileCreateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile create created response has a 4xx status code
+func (o *ProvisioningProfileCreateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile create created response has a 5xx status code
+func (o *ProvisioningProfileCreateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile create created response a status code equal to that given
+func (o *ProvisioningProfileCreateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *ProvisioningProfileCreateCreated) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateCreated  %+v", 201, o.Payload)
 }
+
+func (o *ProvisioningProfileCreateCreated) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateCreated  %+v", 201, o.Payload)
+}
+
 func (o *ProvisioningProfileCreateCreated) GetPayload() *models.V0ProvisionProfileResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewProvisioningProfileCreateBadRequest() *ProvisioningProfileCreateBadReque
 	return &ProvisioningProfileCreateBadRequest{}
 }
 
-/* ProvisioningProfileCreateBadRequest describes a response with status code 400, with default header values.
+/*
+ProvisioningProfileCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ProvisioningProfileCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile create bad request response has a 2xx status code
+func (o *ProvisioningProfileCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile create bad request response has a 3xx status code
+func (o *ProvisioningProfileCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile create bad request response has a 4xx status code
+func (o *ProvisioningProfileCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile create bad request response has a 5xx status code
+func (o *ProvisioningProfileCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile create bad request response a status code equal to that given
+func (o *ProvisioningProfileCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ProvisioningProfileCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ProvisioningProfileCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ProvisioningProfileCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewProvisioningProfileCreateUnauthorized() *ProvisioningProfileCreateUnauth
 	return &ProvisioningProfileCreateUnauthorized{}
 }
 
-/* ProvisioningProfileCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+ProvisioningProfileCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ProvisioningProfileCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile create unauthorized response has a 2xx status code
+func (o *ProvisioningProfileCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile create unauthorized response has a 3xx status code
+func (o *ProvisioningProfileCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile create unauthorized response has a 4xx status code
+func (o *ProvisioningProfileCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile create unauthorized response has a 5xx status code
+func (o *ProvisioningProfileCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile create unauthorized response a status code equal to that given
+func (o *ProvisioningProfileCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ProvisioningProfileCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ProvisioningProfileCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ProvisioningProfileCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewProvisioningProfileCreateNotFound() *ProvisioningProfileCreateNotFound {
 	return &ProvisioningProfileCreateNotFound{}
 }
 
-/* ProvisioningProfileCreateNotFound describes a response with status code 404, with default header values.
+/*
+ProvisioningProfileCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ProvisioningProfileCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile create not found response has a 2xx status code
+func (o *ProvisioningProfileCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile create not found response has a 3xx status code
+func (o *ProvisioningProfileCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile create not found response has a 4xx status code
+func (o *ProvisioningProfileCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this provisioning profile create not found response has a 5xx status code
+func (o *ProvisioningProfileCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this provisioning profile create not found response a status code equal to that given
+func (o *ProvisioningProfileCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ProvisioningProfileCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ProvisioningProfileCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ProvisioningProfileCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewProvisioningProfileCreateInternalServerError() *ProvisioningProfileCreat
 	return &ProvisioningProfileCreateInternalServerError{}
 }
 
-/* ProvisioningProfileCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+ProvisioningProfileCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ProvisioningProfileCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this provisioning profile create internal server error response has a 2xx status code
+func (o *ProvisioningProfileCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this provisioning profile create internal server error response has a 3xx status code
+func (o *ProvisioningProfileCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this provisioning profile create internal server error response has a 4xx status code
+func (o *ProvisioningProfileCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this provisioning profile create internal server error response has a 5xx status code
+func (o *ProvisioningProfileCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this provisioning profile create internal server error response a status code equal to that given
+func (o *ProvisioningProfileCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ProvisioningProfileCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ProvisioningProfileCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ProvisioningProfileCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -63,7 +63,8 @@ func NewAppConfigCreateOK() *AppConfigCreateOK {
 	return &AppConfigCreateOK{}
 }
 
-/* AppConfigCreateOK describes a response with status code 200, with default header values.
+/*
+AppConfigCreateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AppConfigCreateOK struct {
 	Payload models.V0AppConfigRespModel
 }
 
+// IsSuccess returns true when this app config create o k response has a 2xx status code
+func (o *AppConfigCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this app config create o k response has a 3xx status code
+func (o *AppConfigCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config create o k response has a 4xx status code
+func (o *AppConfigCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app config create o k response has a 5xx status code
+func (o *AppConfigCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config create o k response a status code equal to that given
+func (o *AppConfigCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AppConfigCreateOK) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *AppConfigCreateOK) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *AppConfigCreateOK) GetPayload() models.V0AppConfigRespModel {
 	return o.Payload
 }
@@ -93,7 +124,8 @@ func NewAppConfigCreateBadRequest() *AppConfigCreateBadRequest {
 	return &AppConfigCreateBadRequest{}
 }
 
-/* AppConfigCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AppConfigCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -101,9 +133,39 @@ type AppConfigCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app config create bad request response has a 2xx status code
+func (o *AppConfigCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config create bad request response has a 3xx status code
+func (o *AppConfigCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config create bad request response has a 4xx status code
+func (o *AppConfigCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app config create bad request response has a 5xx status code
+func (o *AppConfigCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config create bad request response a status code equal to that given
+func (o *AppConfigCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AppConfigCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AppConfigCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AppConfigCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -125,7 +187,8 @@ func NewAppConfigCreateUnauthorized() *AppConfigCreateUnauthorized {
 	return &AppConfigCreateUnauthorized{}
 }
 
-/* AppConfigCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AppConfigCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -133,9 +196,39 @@ type AppConfigCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app config create unauthorized response has a 2xx status code
+func (o *AppConfigCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config create unauthorized response has a 3xx status code
+func (o *AppConfigCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config create unauthorized response has a 4xx status code
+func (o *AppConfigCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app config create unauthorized response has a 5xx status code
+func (o *AppConfigCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config create unauthorized response a status code equal to that given
+func (o *AppConfigCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AppConfigCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AppConfigCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AppConfigCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -157,7 +250,8 @@ func NewAppConfigCreateNotFound() *AppConfigCreateNotFound {
 	return &AppConfigCreateNotFound{}
 }
 
-/* AppConfigCreateNotFound describes a response with status code 404, with default header values.
+/*
+AppConfigCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -165,9 +259,39 @@ type AppConfigCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app config create not found response has a 2xx status code
+func (o *AppConfigCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config create not found response has a 3xx status code
+func (o *AppConfigCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config create not found response has a 4xx status code
+func (o *AppConfigCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app config create not found response has a 5xx status code
+func (o *AppConfigCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app config create not found response a status code equal to that given
+func (o *AppConfigCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AppConfigCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AppConfigCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AppConfigCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -189,7 +313,8 @@ func NewAppConfigCreateInternalServerError() *AppConfigCreateInternalServerError
 	return &AppConfigCreateInternalServerError{}
 }
 
-/* AppConfigCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AppConfigCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -197,9 +322,39 @@ type AppConfigCreateInternalServerError struct {
 	Payload *models.V0ProxyErrorRespModel
 }
 
+// IsSuccess returns true when this app config create internal server error response has a 2xx status code
+func (o *AppConfigCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app config create internal server error response has a 3xx status code
+func (o *AppConfigCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app config create internal server error response has a 4xx status code
+func (o *AppConfigCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app config create internal server error response has a 5xx status code
+func (o *AppConfigCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this app config create internal server error response a status code equal to that given
+func (o *AppConfigCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AppConfigCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AppConfigCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AppConfigCreateInternalServerError) GetPayload() *models.V0ProxyErrorRespModel {
 	return o.Payload
 }

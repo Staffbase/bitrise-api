@@ -63,7 +63,8 @@ func NewAddonListByUserOK() *AddonListByUserOK {
 	return &AddonListByUserOK{}
 }
 
-/* AddonListByUserOK describes a response with status code 200, with default header values.
+/*
+AddonListByUserOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AddonListByUserOK struct {
 	Payload *models.V0OwnerAddOnsListResponseModel
 }
 
+// IsSuccess returns true when this addon list by user o k response has a 2xx status code
+func (o *AddonListByUserOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this addon list by user o k response has a 3xx status code
+func (o *AddonListByUserOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by user o k response has a 4xx status code
+func (o *AddonListByUserOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addon list by user o k response has a 5xx status code
+func (o *AddonListByUserOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by user o k response a status code equal to that given
+func (o *AddonListByUserOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AddonListByUserOK) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserOK  %+v", 200, o.Payload)
 }
+
+func (o *AddonListByUserOK) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserOK  %+v", 200, o.Payload)
+}
+
 func (o *AddonListByUserOK) GetPayload() *models.V0OwnerAddOnsListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAddonListByUserBadRequest() *AddonListByUserBadRequest {
 	return &AddonListByUserBadRequest{}
 }
 
-/* AddonListByUserBadRequest describes a response with status code 400, with default header values.
+/*
+AddonListByUserBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AddonListByUserBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by user bad request response has a 2xx status code
+func (o *AddonListByUserBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by user bad request response has a 3xx status code
+func (o *AddonListByUserBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by user bad request response has a 4xx status code
+func (o *AddonListByUserBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by user bad request response has a 5xx status code
+func (o *AddonListByUserBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by user bad request response a status code equal to that given
+func (o *AddonListByUserBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AddonListByUserBadRequest) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AddonListByUserBadRequest) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AddonListByUserBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAddonListByUserUnauthorized() *AddonListByUserUnauthorized {
 	return &AddonListByUserUnauthorized{}
 }
 
-/* AddonListByUserUnauthorized describes a response with status code 401, with default header values.
+/*
+AddonListByUserUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AddonListByUserUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by user unauthorized response has a 2xx status code
+func (o *AddonListByUserUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by user unauthorized response has a 3xx status code
+func (o *AddonListByUserUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by user unauthorized response has a 4xx status code
+func (o *AddonListByUserUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by user unauthorized response has a 5xx status code
+func (o *AddonListByUserUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by user unauthorized response a status code equal to that given
+func (o *AddonListByUserUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AddonListByUserUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AddonListByUserUnauthorized) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AddonListByUserUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAddonListByUserNotFound() *AddonListByUserNotFound {
 	return &AddonListByUserNotFound{}
 }
 
-/* AddonListByUserNotFound describes a response with status code 404, with default header values.
+/*
+AddonListByUserNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AddonListByUserNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by user not found response has a 2xx status code
+func (o *AddonListByUserNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by user not found response has a 3xx status code
+func (o *AddonListByUserNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by user not found response has a 4xx status code
+func (o *AddonListByUserNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this addon list by user not found response has a 5xx status code
+func (o *AddonListByUserNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this addon list by user not found response a status code equal to that given
+func (o *AddonListByUserNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AddonListByUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AddonListByUserNotFound) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AddonListByUserNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAddonListByUserInternalServerError() *AddonListByUserInternalServerError
 	return &AddonListByUserInternalServerError{}
 }
 
-/* AddonListByUserInternalServerError describes a response with status code 500, with default header values.
+/*
+AddonListByUserInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AddonListByUserInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this addon list by user internal server error response has a 2xx status code
+func (o *AddonListByUserInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this addon list by user internal server error response has a 3xx status code
+func (o *AddonListByUserInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this addon list by user internal server error response has a 4xx status code
+func (o *AddonListByUserInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this addon list by user internal server error response has a 5xx status code
+func (o *AddonListByUserInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this addon list by user internal server error response a status code equal to that given
+func (o *AddonListByUserInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AddonListByUserInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AddonListByUserInternalServerError) String() string {
+	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AddonListByUserInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

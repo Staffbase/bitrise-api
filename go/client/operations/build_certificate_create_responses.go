@@ -63,7 +63,8 @@ func NewBuildCertificateCreateCreated() *BuildCertificateCreateCreated {
 	return &BuildCertificateCreateCreated{}
 }
 
-/* BuildCertificateCreateCreated describes a response with status code 201, with default header values.
+/*
+BuildCertificateCreateCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -71,9 +72,39 @@ type BuildCertificateCreateCreated struct {
 	Payload *models.V0BuildCertificateResponseModel
 }
 
+// IsSuccess returns true when this build certificate create created response has a 2xx status code
+func (o *BuildCertificateCreateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build certificate create created response has a 3xx status code
+func (o *BuildCertificateCreateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate create created response has a 4xx status code
+func (o *BuildCertificateCreateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build certificate create created response has a 5xx status code
+func (o *BuildCertificateCreateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate create created response a status code equal to that given
+func (o *BuildCertificateCreateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *BuildCertificateCreateCreated) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateCreated  %+v", 201, o.Payload)
 }
+
+func (o *BuildCertificateCreateCreated) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateCreated  %+v", 201, o.Payload)
+}
+
 func (o *BuildCertificateCreateCreated) GetPayload() *models.V0BuildCertificateResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewBuildCertificateCreateBadRequest() *BuildCertificateCreateBadRequest {
 	return &BuildCertificateCreateBadRequest{}
 }
 
-/* BuildCertificateCreateBadRequest describes a response with status code 400, with default header values.
+/*
+BuildCertificateCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type BuildCertificateCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate create bad request response has a 2xx status code
+func (o *BuildCertificateCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate create bad request response has a 3xx status code
+func (o *BuildCertificateCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate create bad request response has a 4xx status code
+func (o *BuildCertificateCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build certificate create bad request response has a 5xx status code
+func (o *BuildCertificateCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate create bad request response a status code equal to that given
+func (o *BuildCertificateCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildCertificateCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildCertificateCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildCertificateCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewBuildCertificateCreateUnauthorized() *BuildCertificateCreateUnauthorized
 	return &BuildCertificateCreateUnauthorized{}
 }
 
-/* BuildCertificateCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildCertificateCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type BuildCertificateCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate create unauthorized response has a 2xx status code
+func (o *BuildCertificateCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate create unauthorized response has a 3xx status code
+func (o *BuildCertificateCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate create unauthorized response has a 4xx status code
+func (o *BuildCertificateCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build certificate create unauthorized response has a 5xx status code
+func (o *BuildCertificateCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate create unauthorized response a status code equal to that given
+func (o *BuildCertificateCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildCertificateCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildCertificateCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildCertificateCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewBuildCertificateCreateNotFound() *BuildCertificateCreateNotFound {
 	return &BuildCertificateCreateNotFound{}
 }
 
-/* BuildCertificateCreateNotFound describes a response with status code 404, with default header values.
+/*
+BuildCertificateCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type BuildCertificateCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate create not found response has a 2xx status code
+func (o *BuildCertificateCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate create not found response has a 3xx status code
+func (o *BuildCertificateCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate create not found response has a 4xx status code
+func (o *BuildCertificateCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build certificate create not found response has a 5xx status code
+func (o *BuildCertificateCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build certificate create not found response a status code equal to that given
+func (o *BuildCertificateCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildCertificateCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildCertificateCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildCertificateCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewBuildCertificateCreateInternalServerError() *BuildCertificateCreateInter
 	return &BuildCertificateCreateInternalServerError{}
 }
 
-/* BuildCertificateCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildCertificateCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type BuildCertificateCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build certificate create internal server error response has a 2xx status code
+func (o *BuildCertificateCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build certificate create internal server error response has a 3xx status code
+func (o *BuildCertificateCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build certificate create internal server error response has a 4xx status code
+func (o *BuildCertificateCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build certificate create internal server error response has a 5xx status code
+func (o *BuildCertificateCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build certificate create internal server error response a status code equal to that given
+func (o *BuildCertificateCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildCertificateCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildCertificateCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildCertificateCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

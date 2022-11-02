@@ -54,10 +54,12 @@ func NewAppFinishParamsWithHTTPClient(client *http.Client) *AppFinishParams {
 	}
 }
 
-/* AppFinishParams contains all the parameters to send to the API endpoint
-   for the app finish operation.
+/*
+AppFinishParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the app finish operation.
+
+	Typically these are written to a http.Request.
 */
 type AppFinishParams struct {
 

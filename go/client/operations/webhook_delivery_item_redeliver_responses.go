@@ -57,7 +57,8 @@ func NewWebhookDeliveryItemRedeliverOK() *WebhookDeliveryItemRedeliverOK {
 	return &WebhookDeliveryItemRedeliverOK{}
 }
 
-/* WebhookDeliveryItemRedeliverOK describes a response with status code 200, with default header values.
+/*
+WebhookDeliveryItemRedeliverOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type WebhookDeliveryItemRedeliverOK struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this webhook delivery item redeliver o k response has a 2xx status code
+func (o *WebhookDeliveryItemRedeliverOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this webhook delivery item redeliver o k response has a 3xx status code
+func (o *WebhookDeliveryItemRedeliverOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this webhook delivery item redeliver o k response has a 4xx status code
+func (o *WebhookDeliveryItemRedeliverOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this webhook delivery item redeliver o k response has a 5xx status code
+func (o *WebhookDeliveryItemRedeliverOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this webhook delivery item redeliver o k response a status code equal to that given
+func (o *WebhookDeliveryItemRedeliverOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *WebhookDeliveryItemRedeliverOK) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverOK  %+v", 200, o.Payload)
 }
+
+func (o *WebhookDeliveryItemRedeliverOK) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverOK  %+v", 200, o.Payload)
+}
+
 func (o *WebhookDeliveryItemRedeliverOK) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewWebhookDeliveryItemRedeliverBadRequest() *WebhookDeliveryItemRedeliverBa
 	return &WebhookDeliveryItemRedeliverBadRequest{}
 }
 
-/* WebhookDeliveryItemRedeliverBadRequest describes a response with status code 400, with default header values.
+/*
+WebhookDeliveryItemRedeliverBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -97,9 +129,39 @@ type WebhookDeliveryItemRedeliverBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this webhook delivery item redeliver bad request response has a 2xx status code
+func (o *WebhookDeliveryItemRedeliverBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this webhook delivery item redeliver bad request response has a 3xx status code
+func (o *WebhookDeliveryItemRedeliverBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this webhook delivery item redeliver bad request response has a 4xx status code
+func (o *WebhookDeliveryItemRedeliverBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this webhook delivery item redeliver bad request response has a 5xx status code
+func (o *WebhookDeliveryItemRedeliverBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this webhook delivery item redeliver bad request response a status code equal to that given
+func (o *WebhookDeliveryItemRedeliverBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *WebhookDeliveryItemRedeliverBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *WebhookDeliveryItemRedeliverBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *WebhookDeliveryItemRedeliverBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewWebhookDeliveryItemRedeliverUnauthorized() *WebhookDeliveryItemRedeliver
 	return &WebhookDeliveryItemRedeliverUnauthorized{}
 }
 
-/* WebhookDeliveryItemRedeliverUnauthorized describes a response with status code 401, with default header values.
+/*
+WebhookDeliveryItemRedeliverUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -129,9 +192,39 @@ type WebhookDeliveryItemRedeliverUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this webhook delivery item redeliver unauthorized response has a 2xx status code
+func (o *WebhookDeliveryItemRedeliverUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this webhook delivery item redeliver unauthorized response has a 3xx status code
+func (o *WebhookDeliveryItemRedeliverUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this webhook delivery item redeliver unauthorized response has a 4xx status code
+func (o *WebhookDeliveryItemRedeliverUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this webhook delivery item redeliver unauthorized response has a 5xx status code
+func (o *WebhookDeliveryItemRedeliverUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this webhook delivery item redeliver unauthorized response a status code equal to that given
+func (o *WebhookDeliveryItemRedeliverUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *WebhookDeliveryItemRedeliverUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *WebhookDeliveryItemRedeliverUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *WebhookDeliveryItemRedeliverUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewWebhookDeliveryItemRedeliverInternalServerError() *WebhookDeliveryItemRe
 	return &WebhookDeliveryItemRedeliverInternalServerError{}
 }
 
-/* WebhookDeliveryItemRedeliverInternalServerError describes a response with status code 500, with default header values.
+/*
+WebhookDeliveryItemRedeliverInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -161,9 +255,39 @@ type WebhookDeliveryItemRedeliverInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this webhook delivery item redeliver internal server error response has a 2xx status code
+func (o *WebhookDeliveryItemRedeliverInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this webhook delivery item redeliver internal server error response has a 3xx status code
+func (o *WebhookDeliveryItemRedeliverInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this webhook delivery item redeliver internal server error response has a 4xx status code
+func (o *WebhookDeliveryItemRedeliverInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this webhook delivery item redeliver internal server error response has a 5xx status code
+func (o *WebhookDeliveryItemRedeliverInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this webhook delivery item redeliver internal server error response a status code equal to that given
+func (o *WebhookDeliveryItemRedeliverInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *WebhookDeliveryItemRedeliverInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *WebhookDeliveryItemRedeliverInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *WebhookDeliveryItemRedeliverInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

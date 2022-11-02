@@ -19,7 +19,7 @@ import (
 // swagger:model v0.AppFinishParams
 type V0AppFinishParams struct {
 
-	// Which config to use `default-android-config`, `default-cordova-config`, `default-fastlane-config`, `default-ionic-config`, `default-ios-config`,`default-macos-config`, `default-react-native-config`, `default-xamarin-config`, `other-config` (default if parameter is not speficied)
+	// Which config to use. Specify a config that matches your project type (e. g. `default-android-config` for `android`, etc.). If not speficied, default value is `other-config`. The available values are `default-android-config`, `default-cordova-config`, `default-fastlane-android-config`, `default-fastlane-ios-config`, `flutter-config-notest-app-android`, `flutter-config-notest-app-both`, `flutter-config-notest-app-ios`, `flutter-config-test-app-android`, `flutter-config-test-app-both`, `flutter-config-test-app-ios`, `default-ionic-config`, `default-ios-config`, `default-macos-config`, `default-react-native-config`, `default-react-native-expo-config`, `other-config`.
 	Config string `json:"config,omitempty"`
 
 	// Environment variables for the application workflows, e.g. {"env1":"val1","env2":"val2"}

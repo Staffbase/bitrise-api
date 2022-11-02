@@ -63,7 +63,8 @@ func NewArtifactDeleteOK() *ArtifactDeleteOK {
 	return &ArtifactDeleteOK{}
 }
 
-/* ArtifactDeleteOK describes a response with status code 200, with default header values.
+/*
+ArtifactDeleteOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ArtifactDeleteOK struct {
 	Payload *models.V0ArtifactDeleteResponseModel
 }
 
+// IsSuccess returns true when this artifact delete o k response has a 2xx status code
+func (o *ArtifactDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this artifact delete o k response has a 3xx status code
+func (o *ArtifactDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact delete o k response has a 4xx status code
+func (o *ArtifactDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this artifact delete o k response has a 5xx status code
+func (o *ArtifactDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact delete o k response a status code equal to that given
+func (o *ArtifactDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ArtifactDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *ArtifactDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *ArtifactDeleteOK) GetPayload() *models.V0ArtifactDeleteResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewArtifactDeleteBadRequest() *ArtifactDeleteBadRequest {
 	return &ArtifactDeleteBadRequest{}
 }
 
-/* ArtifactDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+ArtifactDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ArtifactDeleteBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact delete bad request response has a 2xx status code
+func (o *ArtifactDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact delete bad request response has a 3xx status code
+func (o *ArtifactDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact delete bad request response has a 4xx status code
+func (o *ArtifactDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact delete bad request response has a 5xx status code
+func (o *ArtifactDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact delete bad request response a status code equal to that given
+func (o *ArtifactDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ArtifactDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ArtifactDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ArtifactDeleteBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewArtifactDeleteUnauthorized() *ArtifactDeleteUnauthorized {
 	return &ArtifactDeleteUnauthorized{}
 }
 
-/* ArtifactDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+ArtifactDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ArtifactDeleteUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact delete unauthorized response has a 2xx status code
+func (o *ArtifactDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact delete unauthorized response has a 3xx status code
+func (o *ArtifactDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact delete unauthorized response has a 4xx status code
+func (o *ArtifactDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact delete unauthorized response has a 5xx status code
+func (o *ArtifactDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact delete unauthorized response a status code equal to that given
+func (o *ArtifactDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ArtifactDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ArtifactDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ArtifactDeleteUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewArtifactDeleteNotFound() *ArtifactDeleteNotFound {
 	return &ArtifactDeleteNotFound{}
 }
 
-/* ArtifactDeleteNotFound describes a response with status code 404, with default header values.
+/*
+ArtifactDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ArtifactDeleteNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact delete not found response has a 2xx status code
+func (o *ArtifactDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact delete not found response has a 3xx status code
+func (o *ArtifactDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact delete not found response has a 4xx status code
+func (o *ArtifactDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact delete not found response has a 5xx status code
+func (o *ArtifactDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact delete not found response a status code equal to that given
+func (o *ArtifactDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ArtifactDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ArtifactDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ArtifactDeleteNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewArtifactDeleteInternalServerError() *ArtifactDeleteInternalServerError {
 	return &ArtifactDeleteInternalServerError{}
 }
 
-/* ArtifactDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+ArtifactDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ArtifactDeleteInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact delete internal server error response has a 2xx status code
+func (o *ArtifactDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact delete internal server error response has a 3xx status code
+func (o *ArtifactDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact delete internal server error response has a 4xx status code
+func (o *ArtifactDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this artifact delete internal server error response has a 5xx status code
+func (o *ArtifactDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this artifact delete internal server error response a status code equal to that given
+func (o *ArtifactDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ArtifactDeleteInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ArtifactDeleteInternalServerError) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ArtifactDeleteInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -63,7 +63,8 @@ func NewOutgoingWebhookUpdateOK() *OutgoingWebhookUpdateOK {
 	return &OutgoingWebhookUpdateOK{}
 }
 
-/* OutgoingWebhookUpdateOK describes a response with status code 200, with default header values.
+/*
+OutgoingWebhookUpdateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type OutgoingWebhookUpdateOK struct {
 	Payload *models.V0AppWebhookResponseModel
 }
 
+// IsSuccess returns true when this outgoing webhook update o k response has a 2xx status code
+func (o *OutgoingWebhookUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this outgoing webhook update o k response has a 3xx status code
+func (o *OutgoingWebhookUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook update o k response has a 4xx status code
+func (o *OutgoingWebhookUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this outgoing webhook update o k response has a 5xx status code
+func (o *OutgoingWebhookUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook update o k response a status code equal to that given
+func (o *OutgoingWebhookUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OutgoingWebhookUpdateOK) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *OutgoingWebhookUpdateOK) String() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *OutgoingWebhookUpdateOK) GetPayload() *models.V0AppWebhookResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewOutgoingWebhookUpdateBadRequest() *OutgoingWebhookUpdateBadRequest {
 	return &OutgoingWebhookUpdateBadRequest{}
 }
 
-/* OutgoingWebhookUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+OutgoingWebhookUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type OutgoingWebhookUpdateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook update bad request response has a 2xx status code
+func (o *OutgoingWebhookUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook update bad request response has a 3xx status code
+func (o *OutgoingWebhookUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook update bad request response has a 4xx status code
+func (o *OutgoingWebhookUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this outgoing webhook update bad request response has a 5xx status code
+func (o *OutgoingWebhookUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook update bad request response a status code equal to that given
+func (o *OutgoingWebhookUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OutgoingWebhookUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OutgoingWebhookUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OutgoingWebhookUpdateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewOutgoingWebhookUpdateUnauthorized() *OutgoingWebhookUpdateUnauthorized {
 	return &OutgoingWebhookUpdateUnauthorized{}
 }
 
-/* OutgoingWebhookUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+OutgoingWebhookUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type OutgoingWebhookUpdateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook update unauthorized response has a 2xx status code
+func (o *OutgoingWebhookUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook update unauthorized response has a 3xx status code
+func (o *OutgoingWebhookUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook update unauthorized response has a 4xx status code
+func (o *OutgoingWebhookUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this outgoing webhook update unauthorized response has a 5xx status code
+func (o *OutgoingWebhookUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook update unauthorized response a status code equal to that given
+func (o *OutgoingWebhookUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OutgoingWebhookUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OutgoingWebhookUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OutgoingWebhookUpdateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewOutgoingWebhookUpdateNotFound() *OutgoingWebhookUpdateNotFound {
 	return &OutgoingWebhookUpdateNotFound{}
 }
 
-/* OutgoingWebhookUpdateNotFound describes a response with status code 404, with default header values.
+/*
+OutgoingWebhookUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type OutgoingWebhookUpdateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook update not found response has a 2xx status code
+func (o *OutgoingWebhookUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook update not found response has a 3xx status code
+func (o *OutgoingWebhookUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook update not found response has a 4xx status code
+func (o *OutgoingWebhookUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this outgoing webhook update not found response has a 5xx status code
+func (o *OutgoingWebhookUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this outgoing webhook update not found response a status code equal to that given
+func (o *OutgoingWebhookUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OutgoingWebhookUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OutgoingWebhookUpdateNotFound) String() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OutgoingWebhookUpdateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewOutgoingWebhookUpdateInternalServerError() *OutgoingWebhookUpdateInterna
 	return &OutgoingWebhookUpdateInternalServerError{}
 }
 
-/* OutgoingWebhookUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+OutgoingWebhookUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type OutgoingWebhookUpdateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this outgoing webhook update internal server error response has a 2xx status code
+func (o *OutgoingWebhookUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this outgoing webhook update internal server error response has a 3xx status code
+func (o *OutgoingWebhookUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this outgoing webhook update internal server error response has a 4xx status code
+func (o *OutgoingWebhookUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this outgoing webhook update internal server error response has a 5xx status code
+func (o *OutgoingWebhookUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this outgoing webhook update internal server error response a status code equal to that given
+func (o *OutgoingWebhookUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OutgoingWebhookUpdateInternalServerError) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *OutgoingWebhookUpdateInternalServerError) String() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *OutgoingWebhookUpdateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

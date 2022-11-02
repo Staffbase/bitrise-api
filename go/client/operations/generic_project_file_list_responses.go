@@ -63,7 +63,8 @@ func NewGenericProjectFileListOK() *GenericProjectFileListOK {
 	return &GenericProjectFileListOK{}
 }
 
-/* GenericProjectFileListOK describes a response with status code 200, with default header values.
+/*
+GenericProjectFileListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type GenericProjectFileListOK struct {
 	Payload *models.V0ProjectFileStorageListResponseModel
 }
 
+// IsSuccess returns true when this generic project file list o k response has a 2xx status code
+func (o *GenericProjectFileListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this generic project file list o k response has a 3xx status code
+func (o *GenericProjectFileListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file list o k response has a 4xx status code
+func (o *GenericProjectFileListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file list o k response has a 5xx status code
+func (o *GenericProjectFileListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file list o k response a status code equal to that given
+func (o *GenericProjectFileListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GenericProjectFileListOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListOK  %+v", 200, o.Payload)
 }
+
+func (o *GenericProjectFileListOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListOK  %+v", 200, o.Payload)
+}
+
 func (o *GenericProjectFileListOK) GetPayload() *models.V0ProjectFileStorageListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewGenericProjectFileListBadRequest() *GenericProjectFileListBadRequest {
 	return &GenericProjectFileListBadRequest{}
 }
 
-/* GenericProjectFileListBadRequest describes a response with status code 400, with default header values.
+/*
+GenericProjectFileListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type GenericProjectFileListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file list bad request response has a 2xx status code
+func (o *GenericProjectFileListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file list bad request response has a 3xx status code
+func (o *GenericProjectFileListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file list bad request response has a 4xx status code
+func (o *GenericProjectFileListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file list bad request response has a 5xx status code
+func (o *GenericProjectFileListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file list bad request response a status code equal to that given
+func (o *GenericProjectFileListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GenericProjectFileListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GenericProjectFileListBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GenericProjectFileListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewGenericProjectFileListUnauthorized() *GenericProjectFileListUnauthorized
 	return &GenericProjectFileListUnauthorized{}
 }
 
-/* GenericProjectFileListUnauthorized describes a response with status code 401, with default header values.
+/*
+GenericProjectFileListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type GenericProjectFileListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file list unauthorized response has a 2xx status code
+func (o *GenericProjectFileListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file list unauthorized response has a 3xx status code
+func (o *GenericProjectFileListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file list unauthorized response has a 4xx status code
+func (o *GenericProjectFileListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file list unauthorized response has a 5xx status code
+func (o *GenericProjectFileListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file list unauthorized response a status code equal to that given
+func (o *GenericProjectFileListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GenericProjectFileListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GenericProjectFileListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GenericProjectFileListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewGenericProjectFileListNotFound() *GenericProjectFileListNotFound {
 	return &GenericProjectFileListNotFound{}
 }
 
-/* GenericProjectFileListNotFound describes a response with status code 404, with default header values.
+/*
+GenericProjectFileListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type GenericProjectFileListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file list not found response has a 2xx status code
+func (o *GenericProjectFileListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file list not found response has a 3xx status code
+func (o *GenericProjectFileListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file list not found response has a 4xx status code
+func (o *GenericProjectFileListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file list not found response has a 5xx status code
+func (o *GenericProjectFileListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file list not found response a status code equal to that given
+func (o *GenericProjectFileListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GenericProjectFileListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GenericProjectFileListNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GenericProjectFileListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewGenericProjectFileListInternalServerError() *GenericProjectFileListInter
 	return &GenericProjectFileListInternalServerError{}
 }
 
-/* GenericProjectFileListInternalServerError describes a response with status code 500, with default header values.
+/*
+GenericProjectFileListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type GenericProjectFileListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file list internal server error response has a 2xx status code
+func (o *GenericProjectFileListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file list internal server error response has a 3xx status code
+func (o *GenericProjectFileListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file list internal server error response has a 4xx status code
+func (o *GenericProjectFileListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file list internal server error response has a 5xx status code
+func (o *GenericProjectFileListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this generic project file list internal server error response a status code equal to that given
+func (o *GenericProjectFileListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GenericProjectFileListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *GenericProjectFileListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/generic-project-files][%d] genericProjectFileListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *GenericProjectFileListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -52,10 +52,12 @@ func NewAddonsListParamsWithHTTPClient(client *http.Client) *AddonsListParams {
 	}
 }
 
-/* AddonsListParams contains all the parameters to send to the API endpoint
-   for the addons list operation.
+/*
+AddonsListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the addons list operation.
+
+	Typically these are written to a http.Request.
 */
 type AddonsListParams struct {
 	timeout    time.Duration

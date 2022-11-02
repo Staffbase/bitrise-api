@@ -63,7 +63,8 @@ func NewActivityListOK() *ActivityListOK {
 	return &ActivityListOK{}
 }
 
-/* ActivityListOK describes a response with status code 200, with default header values.
+/*
+ActivityListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ActivityListOK struct {
 	Payload *models.V0ActivityEventListResponseModel
 }
 
+// IsSuccess returns true when this activity list o k response has a 2xx status code
+func (o *ActivityListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this activity list o k response has a 3xx status code
+func (o *ActivityListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activity list o k response has a 4xx status code
+func (o *ActivityListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this activity list o k response has a 5xx status code
+func (o *ActivityListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activity list o k response a status code equal to that given
+func (o *ActivityListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ActivityListOK) Error() string {
 	return fmt.Sprintf("[GET /me/activities][%d] activityListOK  %+v", 200, o.Payload)
 }
+
+func (o *ActivityListOK) String() string {
+	return fmt.Sprintf("[GET /me/activities][%d] activityListOK  %+v", 200, o.Payload)
+}
+
 func (o *ActivityListOK) GetPayload() *models.V0ActivityEventListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewActivityListBadRequest() *ActivityListBadRequest {
 	return &ActivityListBadRequest{}
 }
 
-/* ActivityListBadRequest describes a response with status code 400, with default header values.
+/*
+ActivityListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ActivityListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this activity list bad request response has a 2xx status code
+func (o *ActivityListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activity list bad request response has a 3xx status code
+func (o *ActivityListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activity list bad request response has a 4xx status code
+func (o *ActivityListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activity list bad request response has a 5xx status code
+func (o *ActivityListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activity list bad request response a status code equal to that given
+func (o *ActivityListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ActivityListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /me/activities][%d] activityListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ActivityListBadRequest) String() string {
+	return fmt.Sprintf("[GET /me/activities][%d] activityListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ActivityListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewActivityListUnauthorized() *ActivityListUnauthorized {
 	return &ActivityListUnauthorized{}
 }
 
-/* ActivityListUnauthorized describes a response with status code 401, with default header values.
+/*
+ActivityListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ActivityListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this activity list unauthorized response has a 2xx status code
+func (o *ActivityListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activity list unauthorized response has a 3xx status code
+func (o *ActivityListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activity list unauthorized response has a 4xx status code
+func (o *ActivityListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activity list unauthorized response has a 5xx status code
+func (o *ActivityListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activity list unauthorized response a status code equal to that given
+func (o *ActivityListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ActivityListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /me/activities][%d] activityListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ActivityListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /me/activities][%d] activityListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ActivityListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewActivityListNotFound() *ActivityListNotFound {
 	return &ActivityListNotFound{}
 }
 
-/* ActivityListNotFound describes a response with status code 404, with default header values.
+/*
+ActivityListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ActivityListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this activity list not found response has a 2xx status code
+func (o *ActivityListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activity list not found response has a 3xx status code
+func (o *ActivityListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activity list not found response has a 4xx status code
+func (o *ActivityListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this activity list not found response has a 5xx status code
+func (o *ActivityListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this activity list not found response a status code equal to that given
+func (o *ActivityListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ActivityListNotFound) Error() string {
 	return fmt.Sprintf("[GET /me/activities][%d] activityListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ActivityListNotFound) String() string {
+	return fmt.Sprintf("[GET /me/activities][%d] activityListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ActivityListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewActivityListInternalServerError() *ActivityListInternalServerError {
 	return &ActivityListInternalServerError{}
 }
 
-/* ActivityListInternalServerError describes a response with status code 500, with default header values.
+/*
+ActivityListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ActivityListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this activity list internal server error response has a 2xx status code
+func (o *ActivityListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this activity list internal server error response has a 3xx status code
+func (o *ActivityListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this activity list internal server error response has a 4xx status code
+func (o *ActivityListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this activity list internal server error response has a 5xx status code
+func (o *ActivityListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this activity list internal server error response a status code equal to that given
+func (o *ActivityListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ActivityListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /me/activities][%d] activityListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ActivityListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /me/activities][%d] activityListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ActivityListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -63,7 +63,8 @@ func NewOrgListOK() *OrgListOK {
 	return &OrgListOK{}
 }
 
-/* OrgListOK describes a response with status code 200, with default header values.
+/*
+OrgListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type OrgListOK struct {
 	Payload *models.V0OrganizationListRespModel
 }
 
+// IsSuccess returns true when this org list o k response has a 2xx status code
+func (o *OrgListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this org list o k response has a 3xx status code
+func (o *OrgListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org list o k response has a 4xx status code
+func (o *OrgListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this org list o k response has a 5xx status code
+func (o *OrgListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org list o k response a status code equal to that given
+func (o *OrgListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *OrgListOK) Error() string {
 	return fmt.Sprintf("[GET /organizations][%d] orgListOK  %+v", 200, o.Payload)
 }
+
+func (o *OrgListOK) String() string {
+	return fmt.Sprintf("[GET /organizations][%d] orgListOK  %+v", 200, o.Payload)
+}
+
 func (o *OrgListOK) GetPayload() *models.V0OrganizationListRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewOrgListBadRequest() *OrgListBadRequest {
 	return &OrgListBadRequest{}
 }
 
-/* OrgListBadRequest describes a response with status code 400, with default header values.
+/*
+OrgListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type OrgListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org list bad request response has a 2xx status code
+func (o *OrgListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org list bad request response has a 3xx status code
+func (o *OrgListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org list bad request response has a 4xx status code
+func (o *OrgListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this org list bad request response has a 5xx status code
+func (o *OrgListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org list bad request response a status code equal to that given
+func (o *OrgListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *OrgListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /organizations][%d] orgListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *OrgListBadRequest) String() string {
+	return fmt.Sprintf("[GET /organizations][%d] orgListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *OrgListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewOrgListUnauthorized() *OrgListUnauthorized {
 	return &OrgListUnauthorized{}
 }
 
-/* OrgListUnauthorized describes a response with status code 401, with default header values.
+/*
+OrgListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type OrgListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org list unauthorized response has a 2xx status code
+func (o *OrgListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org list unauthorized response has a 3xx status code
+func (o *OrgListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org list unauthorized response has a 4xx status code
+func (o *OrgListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this org list unauthorized response has a 5xx status code
+func (o *OrgListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org list unauthorized response a status code equal to that given
+func (o *OrgListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *OrgListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /organizations][%d] orgListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *OrgListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /organizations][%d] orgListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *OrgListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewOrgListNotFound() *OrgListNotFound {
 	return &OrgListNotFound{}
 }
 
-/* OrgListNotFound describes a response with status code 404, with default header values.
+/*
+OrgListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type OrgListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org list not found response has a 2xx status code
+func (o *OrgListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org list not found response has a 3xx status code
+func (o *OrgListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org list not found response has a 4xx status code
+func (o *OrgListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this org list not found response has a 5xx status code
+func (o *OrgListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this org list not found response a status code equal to that given
+func (o *OrgListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *OrgListNotFound) Error() string {
 	return fmt.Sprintf("[GET /organizations][%d] orgListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *OrgListNotFound) String() string {
+	return fmt.Sprintf("[GET /organizations][%d] orgListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *OrgListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewOrgListInternalServerError() *OrgListInternalServerError {
 	return &OrgListInternalServerError{}
 }
 
-/* OrgListInternalServerError describes a response with status code 500, with default header values.
+/*
+OrgListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type OrgListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this org list internal server error response has a 2xx status code
+func (o *OrgListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this org list internal server error response has a 3xx status code
+func (o *OrgListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this org list internal server error response has a 4xx status code
+func (o *OrgListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this org list internal server error response has a 5xx status code
+func (o *OrgListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this org list internal server error response a status code equal to that given
+func (o *OrgListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *OrgListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /organizations][%d] orgListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *OrgListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /organizations][%d] orgListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *OrgListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

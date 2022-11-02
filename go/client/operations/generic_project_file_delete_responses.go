@@ -63,7 +63,8 @@ func NewGenericProjectFileDeleteOK() *GenericProjectFileDeleteOK {
 	return &GenericProjectFileDeleteOK{}
 }
 
-/* GenericProjectFileDeleteOK describes a response with status code 200, with default header values.
+/*
+GenericProjectFileDeleteOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type GenericProjectFileDeleteOK struct {
 	Payload *models.V0ProjectFileStorageResponseModel
 }
 
+// IsSuccess returns true when this generic project file delete o k response has a 2xx status code
+func (o *GenericProjectFileDeleteOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this generic project file delete o k response has a 3xx status code
+func (o *GenericProjectFileDeleteOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file delete o k response has a 4xx status code
+func (o *GenericProjectFileDeleteOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file delete o k response has a 5xx status code
+func (o *GenericProjectFileDeleteOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file delete o k response a status code equal to that given
+func (o *GenericProjectFileDeleteOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GenericProjectFileDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteOK  %+v", 200, o.Payload)
 }
+
+func (o *GenericProjectFileDeleteOK) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteOK  %+v", 200, o.Payload)
+}
+
 func (o *GenericProjectFileDeleteOK) GetPayload() *models.V0ProjectFileStorageResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewGenericProjectFileDeleteBadRequest() *GenericProjectFileDeleteBadRequest
 	return &GenericProjectFileDeleteBadRequest{}
 }
 
-/* GenericProjectFileDeleteBadRequest describes a response with status code 400, with default header values.
+/*
+GenericProjectFileDeleteBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type GenericProjectFileDeleteBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file delete bad request response has a 2xx status code
+func (o *GenericProjectFileDeleteBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file delete bad request response has a 3xx status code
+func (o *GenericProjectFileDeleteBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file delete bad request response has a 4xx status code
+func (o *GenericProjectFileDeleteBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file delete bad request response has a 5xx status code
+func (o *GenericProjectFileDeleteBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file delete bad request response a status code equal to that given
+func (o *GenericProjectFileDeleteBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GenericProjectFileDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GenericProjectFileDeleteBadRequest) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GenericProjectFileDeleteBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewGenericProjectFileDeleteUnauthorized() *GenericProjectFileDeleteUnauthor
 	return &GenericProjectFileDeleteUnauthorized{}
 }
 
-/* GenericProjectFileDeleteUnauthorized describes a response with status code 401, with default header values.
+/*
+GenericProjectFileDeleteUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type GenericProjectFileDeleteUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file delete unauthorized response has a 2xx status code
+func (o *GenericProjectFileDeleteUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file delete unauthorized response has a 3xx status code
+func (o *GenericProjectFileDeleteUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file delete unauthorized response has a 4xx status code
+func (o *GenericProjectFileDeleteUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file delete unauthorized response has a 5xx status code
+func (o *GenericProjectFileDeleteUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file delete unauthorized response a status code equal to that given
+func (o *GenericProjectFileDeleteUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GenericProjectFileDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GenericProjectFileDeleteUnauthorized) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GenericProjectFileDeleteUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewGenericProjectFileDeleteNotFound() *GenericProjectFileDeleteNotFound {
 	return &GenericProjectFileDeleteNotFound{}
 }
 
-/* GenericProjectFileDeleteNotFound describes a response with status code 404, with default header values.
+/*
+GenericProjectFileDeleteNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type GenericProjectFileDeleteNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file delete not found response has a 2xx status code
+func (o *GenericProjectFileDeleteNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file delete not found response has a 3xx status code
+func (o *GenericProjectFileDeleteNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file delete not found response has a 4xx status code
+func (o *GenericProjectFileDeleteNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file delete not found response has a 5xx status code
+func (o *GenericProjectFileDeleteNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file delete not found response a status code equal to that given
+func (o *GenericProjectFileDeleteNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GenericProjectFileDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GenericProjectFileDeleteNotFound) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GenericProjectFileDeleteNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewGenericProjectFileDeleteInternalServerError() *GenericProjectFileDeleteI
 	return &GenericProjectFileDeleteInternalServerError{}
 }
 
-/* GenericProjectFileDeleteInternalServerError describes a response with status code 500, with default header values.
+/*
+GenericProjectFileDeleteInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type GenericProjectFileDeleteInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file delete internal server error response has a 2xx status code
+func (o *GenericProjectFileDeleteInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file delete internal server error response has a 3xx status code
+func (o *GenericProjectFileDeleteInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file delete internal server error response has a 4xx status code
+func (o *GenericProjectFileDeleteInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file delete internal server error response has a 5xx status code
+func (o *GenericProjectFileDeleteInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this generic project file delete internal server error response a status code equal to that given
+func (o *GenericProjectFileDeleteInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GenericProjectFileDeleteInternalServerError) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *GenericProjectFileDeleteInternalServerError) String() string {
+	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *GenericProjectFileDeleteInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

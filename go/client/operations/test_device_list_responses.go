@@ -63,7 +63,8 @@ func NewTestDeviceListOK() *TestDeviceListOK {
 	return &TestDeviceListOK{}
 }
 
-/* TestDeviceListOK describes a response with status code 200, with default header values.
+/*
+TestDeviceListOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type TestDeviceListOK struct {
 	Payload *models.V0TestDeviceListResponseModel
 }
 
+// IsSuccess returns true when this test device list o k response has a 2xx status code
+func (o *TestDeviceListOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this test device list o k response has a 3xx status code
+func (o *TestDeviceListOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test device list o k response has a 4xx status code
+func (o *TestDeviceListOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this test device list o k response has a 5xx status code
+func (o *TestDeviceListOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test device list o k response a status code equal to that given
+func (o *TestDeviceListOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *TestDeviceListOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListOK  %+v", 200, o.Payload)
 }
+
+func (o *TestDeviceListOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListOK  %+v", 200, o.Payload)
+}
+
 func (o *TestDeviceListOK) GetPayload() *models.V0TestDeviceListResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewTestDeviceListBadRequest() *TestDeviceListBadRequest {
 	return &TestDeviceListBadRequest{}
 }
 
-/* TestDeviceListBadRequest describes a response with status code 400, with default header values.
+/*
+TestDeviceListBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type TestDeviceListBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this test device list bad request response has a 2xx status code
+func (o *TestDeviceListBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test device list bad request response has a 3xx status code
+func (o *TestDeviceListBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test device list bad request response has a 4xx status code
+func (o *TestDeviceListBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this test device list bad request response has a 5xx status code
+func (o *TestDeviceListBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test device list bad request response a status code equal to that given
+func (o *TestDeviceListBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *TestDeviceListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *TestDeviceListBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *TestDeviceListBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewTestDeviceListUnauthorized() *TestDeviceListUnauthorized {
 	return &TestDeviceListUnauthorized{}
 }
 
-/* TestDeviceListUnauthorized describes a response with status code 401, with default header values.
+/*
+TestDeviceListUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type TestDeviceListUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this test device list unauthorized response has a 2xx status code
+func (o *TestDeviceListUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test device list unauthorized response has a 3xx status code
+func (o *TestDeviceListUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test device list unauthorized response has a 4xx status code
+func (o *TestDeviceListUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this test device list unauthorized response has a 5xx status code
+func (o *TestDeviceListUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test device list unauthorized response a status code equal to that given
+func (o *TestDeviceListUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *TestDeviceListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *TestDeviceListUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *TestDeviceListUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewTestDeviceListNotFound() *TestDeviceListNotFound {
 	return &TestDeviceListNotFound{}
 }
 
-/* TestDeviceListNotFound describes a response with status code 404, with default header values.
+/*
+TestDeviceListNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type TestDeviceListNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this test device list not found response has a 2xx status code
+func (o *TestDeviceListNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test device list not found response has a 3xx status code
+func (o *TestDeviceListNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test device list not found response has a 4xx status code
+func (o *TestDeviceListNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this test device list not found response has a 5xx status code
+func (o *TestDeviceListNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this test device list not found response a status code equal to that given
+func (o *TestDeviceListNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *TestDeviceListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListNotFound  %+v", 404, o.Payload)
 }
+
+func (o *TestDeviceListNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListNotFound  %+v", 404, o.Payload)
+}
+
 func (o *TestDeviceListNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewTestDeviceListInternalServerError() *TestDeviceListInternalServerError {
 	return &TestDeviceListInternalServerError{}
 }
 
-/* TestDeviceListInternalServerError describes a response with status code 500, with default header values.
+/*
+TestDeviceListInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type TestDeviceListInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this test device list internal server error response has a 2xx status code
+func (o *TestDeviceListInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this test device list internal server error response has a 3xx status code
+func (o *TestDeviceListInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this test device list internal server error response has a 4xx status code
+func (o *TestDeviceListInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this test device list internal server error response has a 5xx status code
+func (o *TestDeviceListInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this test device list internal server error response a status code equal to that given
+func (o *TestDeviceListInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *TestDeviceListInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *TestDeviceListInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *TestDeviceListInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

@@ -55,6 +55,8 @@ func (m *V0UserPlanDataModel) validateCurrentPlan(formats strfmt.Registry) error
 		if err := m.CurrentPlan.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("current_plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("current_plan")
 			}
 			return err
 		}
@@ -72,6 +74,8 @@ func (m *V0UserPlanDataModel) validatePendingPlan(formats strfmt.Registry) error
 		if err := m.PendingPlan.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pending_plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pending_plan")
 			}
 			return err
 		}
@@ -104,6 +108,8 @@ func (m *V0UserPlanDataModel) contextValidateCurrentPlan(ctx context.Context, fo
 		if err := m.CurrentPlan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("current_plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("current_plan")
 			}
 			return err
 		}
@@ -118,6 +124,8 @@ func (m *V0UserPlanDataModel) contextValidatePendingPlan(ctx context.Context, fo
 		if err := m.PendingPlan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pending_plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("pending_plan")
 			}
 			return err
 		}

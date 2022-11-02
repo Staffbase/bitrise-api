@@ -57,7 +57,8 @@ func NewUserProfileOK() *UserProfileOK {
 	return &UserProfileOK{}
 }
 
-/* UserProfileOK describes a response with status code 200, with default header values.
+/*
+UserProfileOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -65,9 +66,39 @@ type UserProfileOK struct {
 	Payload *models.V0UserProfileRespModel
 }
 
+// IsSuccess returns true when this user profile o k response has a 2xx status code
+func (o *UserProfileOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user profile o k response has a 3xx status code
+func (o *UserProfileOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user profile o k response has a 4xx status code
+func (o *UserProfileOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user profile o k response has a 5xx status code
+func (o *UserProfileOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user profile o k response a status code equal to that given
+func (o *UserProfileOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserProfileOK) Error() string {
 	return fmt.Sprintf("[GET /me][%d] userProfileOK  %+v", 200, o.Payload)
 }
+
+func (o *UserProfileOK) String() string {
+	return fmt.Sprintf("[GET /me][%d] userProfileOK  %+v", 200, o.Payload)
+}
+
 func (o *UserProfileOK) GetPayload() *models.V0UserProfileRespModel {
 	return o.Payload
 }
@@ -89,7 +120,8 @@ func NewUserProfileUnauthorized() *UserProfileUnauthorized {
 	return &UserProfileUnauthorized{}
 }
 
-/* UserProfileUnauthorized describes a response with status code 401, with default header values.
+/*
+UserProfileUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -97,9 +129,39 @@ type UserProfileUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user profile unauthorized response has a 2xx status code
+func (o *UserProfileUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user profile unauthorized response has a 3xx status code
+func (o *UserProfileUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user profile unauthorized response has a 4xx status code
+func (o *UserProfileUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user profile unauthorized response has a 5xx status code
+func (o *UserProfileUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user profile unauthorized response a status code equal to that given
+func (o *UserProfileUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserProfileUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /me][%d] userProfileUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserProfileUnauthorized) String() string {
+	return fmt.Sprintf("[GET /me][%d] userProfileUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserProfileUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -121,7 +183,8 @@ func NewUserProfileNotFound() *UserProfileNotFound {
 	return &UserProfileNotFound{}
 }
 
-/* UserProfileNotFound describes a response with status code 404, with default header values.
+/*
+UserProfileNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -129,9 +192,39 @@ type UserProfileNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user profile not found response has a 2xx status code
+func (o *UserProfileNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user profile not found response has a 3xx status code
+func (o *UserProfileNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user profile not found response has a 4xx status code
+func (o *UserProfileNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user profile not found response has a 5xx status code
+func (o *UserProfileNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user profile not found response a status code equal to that given
+func (o *UserProfileNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /me][%d] userProfileNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserProfileNotFound) String() string {
+	return fmt.Sprintf("[GET /me][%d] userProfileNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserProfileNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -153,7 +246,8 @@ func NewUserProfileInternalServerError() *UserProfileInternalServerError {
 	return &UserProfileInternalServerError{}
 }
 
-/* UserProfileInternalServerError describes a response with status code 500, with default header values.
+/*
+UserProfileInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -161,9 +255,39 @@ type UserProfileInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user profile internal server error response has a 2xx status code
+func (o *UserProfileInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user profile internal server error response has a 3xx status code
+func (o *UserProfileInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user profile internal server error response has a 4xx status code
+func (o *UserProfileInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user profile internal server error response has a 5xx status code
+func (o *UserProfileInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user profile internal server error response a status code equal to that given
+func (o *UserProfileInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserProfileInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /me][%d] userProfileInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *UserProfileInternalServerError) String() string {
+	return fmt.Sprintf("[GET /me][%d] userProfileInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *UserProfileInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

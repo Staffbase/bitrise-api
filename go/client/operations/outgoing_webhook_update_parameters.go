@@ -54,10 +54,12 @@ func NewOutgoingWebhookUpdateParamsWithHTTPClient(client *http.Client) *Outgoing
 	}
 }
 
-/* OutgoingWebhookUpdateParams contains all the parameters to send to the API endpoint
-   for the outgoing webhook update operation.
+/*
+OutgoingWebhookUpdateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the outgoing webhook update operation.
+
+	Typically these are written to a http.Request.
 */
 type OutgoingWebhookUpdateParams struct {
 

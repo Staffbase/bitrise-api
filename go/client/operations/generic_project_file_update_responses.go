@@ -63,7 +63,8 @@ func NewGenericProjectFileUpdateOK() *GenericProjectFileUpdateOK {
 	return &GenericProjectFileUpdateOK{}
 }
 
-/* GenericProjectFileUpdateOK describes a response with status code 200, with default header values.
+/*
+GenericProjectFileUpdateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type GenericProjectFileUpdateOK struct {
 	Payload *models.V0ProjectFileStorageResponseModel
 }
 
+// IsSuccess returns true when this generic project file update o k response has a 2xx status code
+func (o *GenericProjectFileUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this generic project file update o k response has a 3xx status code
+func (o *GenericProjectFileUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file update o k response has a 4xx status code
+func (o *GenericProjectFileUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file update o k response has a 5xx status code
+func (o *GenericProjectFileUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file update o k response a status code equal to that given
+func (o *GenericProjectFileUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *GenericProjectFileUpdateOK) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *GenericProjectFileUpdateOK) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *GenericProjectFileUpdateOK) GetPayload() *models.V0ProjectFileStorageResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewGenericProjectFileUpdateBadRequest() *GenericProjectFileUpdateBadRequest
 	return &GenericProjectFileUpdateBadRequest{}
 }
 
-/* GenericProjectFileUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+GenericProjectFileUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type GenericProjectFileUpdateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file update bad request response has a 2xx status code
+func (o *GenericProjectFileUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file update bad request response has a 3xx status code
+func (o *GenericProjectFileUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file update bad request response has a 4xx status code
+func (o *GenericProjectFileUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file update bad request response has a 5xx status code
+func (o *GenericProjectFileUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file update bad request response a status code equal to that given
+func (o *GenericProjectFileUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *GenericProjectFileUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *GenericProjectFileUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *GenericProjectFileUpdateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewGenericProjectFileUpdateUnauthorized() *GenericProjectFileUpdateUnauthor
 	return &GenericProjectFileUpdateUnauthorized{}
 }
 
-/* GenericProjectFileUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+GenericProjectFileUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type GenericProjectFileUpdateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file update unauthorized response has a 2xx status code
+func (o *GenericProjectFileUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file update unauthorized response has a 3xx status code
+func (o *GenericProjectFileUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file update unauthorized response has a 4xx status code
+func (o *GenericProjectFileUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file update unauthorized response has a 5xx status code
+func (o *GenericProjectFileUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file update unauthorized response a status code equal to that given
+func (o *GenericProjectFileUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *GenericProjectFileUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *GenericProjectFileUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *GenericProjectFileUpdateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewGenericProjectFileUpdateNotFound() *GenericProjectFileUpdateNotFound {
 	return &GenericProjectFileUpdateNotFound{}
 }
 
-/* GenericProjectFileUpdateNotFound describes a response with status code 404, with default header values.
+/*
+GenericProjectFileUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type GenericProjectFileUpdateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file update not found response has a 2xx status code
+func (o *GenericProjectFileUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file update not found response has a 3xx status code
+func (o *GenericProjectFileUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file update not found response has a 4xx status code
+func (o *GenericProjectFileUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this generic project file update not found response has a 5xx status code
+func (o *GenericProjectFileUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this generic project file update not found response a status code equal to that given
+func (o *GenericProjectFileUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *GenericProjectFileUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *GenericProjectFileUpdateNotFound) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *GenericProjectFileUpdateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewGenericProjectFileUpdateInternalServerError() *GenericProjectFileUpdateI
 	return &GenericProjectFileUpdateInternalServerError{}
 }
 
-/* GenericProjectFileUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+GenericProjectFileUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type GenericProjectFileUpdateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this generic project file update internal server error response has a 2xx status code
+func (o *GenericProjectFileUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this generic project file update internal server error response has a 3xx status code
+func (o *GenericProjectFileUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this generic project file update internal server error response has a 4xx status code
+func (o *GenericProjectFileUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this generic project file update internal server error response has a 5xx status code
+func (o *GenericProjectFileUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this generic project file update internal server error response a status code equal to that given
+func (o *GenericProjectFileUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *GenericProjectFileUpdateInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *GenericProjectFileUpdateInternalServerError) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *GenericProjectFileUpdateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

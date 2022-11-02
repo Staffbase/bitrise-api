@@ -63,7 +63,8 @@ func NewArtifactShowOK() *ArtifactShowOK {
 	return &ArtifactShowOK{}
 }
 
-/* ArtifactShowOK describes a response with status code 200, with default header values.
+/*
+ArtifactShowOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ArtifactShowOK struct {
 	Payload *models.V0ArtifactShowResponseModel
 }
 
+// IsSuccess returns true when this artifact show o k response has a 2xx status code
+func (o *ArtifactShowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this artifact show o k response has a 3xx status code
+func (o *ArtifactShowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact show o k response has a 4xx status code
+func (o *ArtifactShowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this artifact show o k response has a 5xx status code
+func (o *ArtifactShowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact show o k response a status code equal to that given
+func (o *ArtifactShowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ArtifactShowOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowOK  %+v", 200, o.Payload)
 }
+
+func (o *ArtifactShowOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowOK  %+v", 200, o.Payload)
+}
+
 func (o *ArtifactShowOK) GetPayload() *models.V0ArtifactShowResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewArtifactShowBadRequest() *ArtifactShowBadRequest {
 	return &ArtifactShowBadRequest{}
 }
 
-/* ArtifactShowBadRequest describes a response with status code 400, with default header values.
+/*
+ArtifactShowBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ArtifactShowBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact show bad request response has a 2xx status code
+func (o *ArtifactShowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact show bad request response has a 3xx status code
+func (o *ArtifactShowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact show bad request response has a 4xx status code
+func (o *ArtifactShowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact show bad request response has a 5xx status code
+func (o *ArtifactShowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact show bad request response a status code equal to that given
+func (o *ArtifactShowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ArtifactShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ArtifactShowBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ArtifactShowBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewArtifactShowUnauthorized() *ArtifactShowUnauthorized {
 	return &ArtifactShowUnauthorized{}
 }
 
-/* ArtifactShowUnauthorized describes a response with status code 401, with default header values.
+/*
+ArtifactShowUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ArtifactShowUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact show unauthorized response has a 2xx status code
+func (o *ArtifactShowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact show unauthorized response has a 3xx status code
+func (o *ArtifactShowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact show unauthorized response has a 4xx status code
+func (o *ArtifactShowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact show unauthorized response has a 5xx status code
+func (o *ArtifactShowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact show unauthorized response a status code equal to that given
+func (o *ArtifactShowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ArtifactShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ArtifactShowUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ArtifactShowUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewArtifactShowNotFound() *ArtifactShowNotFound {
 	return &ArtifactShowNotFound{}
 }
 
-/* ArtifactShowNotFound describes a response with status code 404, with default header values.
+/*
+ArtifactShowNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ArtifactShowNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact show not found response has a 2xx status code
+func (o *ArtifactShowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact show not found response has a 3xx status code
+func (o *ArtifactShowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact show not found response has a 4xx status code
+func (o *ArtifactShowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact show not found response has a 5xx status code
+func (o *ArtifactShowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact show not found response a status code equal to that given
+func (o *ArtifactShowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ArtifactShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ArtifactShowNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ArtifactShowNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewArtifactShowInternalServerError() *ArtifactShowInternalServerError {
 	return &ArtifactShowInternalServerError{}
 }
 
-/* ArtifactShowInternalServerError describes a response with status code 500, with default header values.
+/*
+ArtifactShowInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ArtifactShowInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact show internal server error response has a 2xx status code
+func (o *ArtifactShowInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact show internal server error response has a 3xx status code
+func (o *ArtifactShowInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact show internal server error response has a 4xx status code
+func (o *ArtifactShowInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this artifact show internal server error response has a 5xx status code
+func (o *ArtifactShowInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this artifact show internal server error response a status code equal to that given
+func (o *ArtifactShowInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ArtifactShowInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ArtifactShowInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactShowInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ArtifactShowInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

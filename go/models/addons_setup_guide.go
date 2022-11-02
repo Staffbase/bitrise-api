@@ -54,6 +54,8 @@ func (m *AddonsSetupGuide) validateInstructions(formats strfmt.Registry) error {
 			if err := m.Instructions[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("instructions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("instructions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -86,6 +88,8 @@ func (m *AddonsSetupGuide) contextValidateInstructions(ctx context.Context, form
 			if err := m.Instructions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("instructions" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("instructions" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -54,10 +54,12 @@ func NewSSHKeyCreateParamsWithHTTPClient(client *http.Client) *SSHKeyCreateParam
 	}
 }
 
-/* SSHKeyCreateParams contains all the parameters to send to the API endpoint
-   for the ssh key create operation.
+/*
+SSHKeyCreateParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the ssh key create operation.
+
+	Typically these are written to a http.Request.
 */
 type SSHKeyCreateParams struct {
 

@@ -63,7 +63,8 @@ func NewAvatarCandidateCreateCreated() *AvatarCandidateCreateCreated {
 	return &AvatarCandidateCreateCreated{}
 }
 
-/* AvatarCandidateCreateCreated describes a response with status code 201, with default header values.
+/*
+AvatarCandidateCreateCreated describes a response with status code 201, with default header values.
 
 Created
 */
@@ -71,9 +72,39 @@ type AvatarCandidateCreateCreated struct {
 	Payload []*models.V0AvatarCandidateCreateResponseItem
 }
 
+// IsSuccess returns true when this avatar candidate create created response has a 2xx status code
+func (o *AvatarCandidateCreateCreated) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this avatar candidate create created response has a 3xx status code
+func (o *AvatarCandidateCreateCreated) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate create created response has a 4xx status code
+func (o *AvatarCandidateCreateCreated) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this avatar candidate create created response has a 5xx status code
+func (o *AvatarCandidateCreateCreated) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate create created response a status code equal to that given
+func (o *AvatarCandidateCreateCreated) IsCode(code int) bool {
+	return code == 201
+}
+
 func (o *AvatarCandidateCreateCreated) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateCreated  %+v", 201, o.Payload)
 }
+
+func (o *AvatarCandidateCreateCreated) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateCreated  %+v", 201, o.Payload)
+}
+
 func (o *AvatarCandidateCreateCreated) GetPayload() []*models.V0AvatarCandidateCreateResponseItem {
 	return o.Payload
 }
@@ -93,7 +124,8 @@ func NewAvatarCandidateCreateBadRequest() *AvatarCandidateCreateBadRequest {
 	return &AvatarCandidateCreateBadRequest{}
 }
 
-/* AvatarCandidateCreateBadRequest describes a response with status code 400, with default header values.
+/*
+AvatarCandidateCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -101,9 +133,39 @@ type AvatarCandidateCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate create bad request response has a 2xx status code
+func (o *AvatarCandidateCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate create bad request response has a 3xx status code
+func (o *AvatarCandidateCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate create bad request response has a 4xx status code
+func (o *AvatarCandidateCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate create bad request response has a 5xx status code
+func (o *AvatarCandidateCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate create bad request response a status code equal to that given
+func (o *AvatarCandidateCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AvatarCandidateCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AvatarCandidateCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AvatarCandidateCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -125,7 +187,8 @@ func NewAvatarCandidateCreateUnauthorized() *AvatarCandidateCreateUnauthorized {
 	return &AvatarCandidateCreateUnauthorized{}
 }
 
-/* AvatarCandidateCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+AvatarCandidateCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -133,9 +196,39 @@ type AvatarCandidateCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate create unauthorized response has a 2xx status code
+func (o *AvatarCandidateCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate create unauthorized response has a 3xx status code
+func (o *AvatarCandidateCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate create unauthorized response has a 4xx status code
+func (o *AvatarCandidateCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate create unauthorized response has a 5xx status code
+func (o *AvatarCandidateCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate create unauthorized response a status code equal to that given
+func (o *AvatarCandidateCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AvatarCandidateCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AvatarCandidateCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AvatarCandidateCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -157,7 +250,8 @@ func NewAvatarCandidateCreateNotFound() *AvatarCandidateCreateNotFound {
 	return &AvatarCandidateCreateNotFound{}
 }
 
-/* AvatarCandidateCreateNotFound describes a response with status code 404, with default header values.
+/*
+AvatarCandidateCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -165,9 +259,39 @@ type AvatarCandidateCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate create not found response has a 2xx status code
+func (o *AvatarCandidateCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate create not found response has a 3xx status code
+func (o *AvatarCandidateCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate create not found response has a 4xx status code
+func (o *AvatarCandidateCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this avatar candidate create not found response has a 5xx status code
+func (o *AvatarCandidateCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this avatar candidate create not found response a status code equal to that given
+func (o *AvatarCandidateCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AvatarCandidateCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AvatarCandidateCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AvatarCandidateCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -189,7 +313,8 @@ func NewAvatarCandidateCreateInternalServerError() *AvatarCandidateCreateInterna
 	return &AvatarCandidateCreateInternalServerError{}
 }
 
-/* AvatarCandidateCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+AvatarCandidateCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -197,9 +322,39 @@ type AvatarCandidateCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this avatar candidate create internal server error response has a 2xx status code
+func (o *AvatarCandidateCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this avatar candidate create internal server error response has a 3xx status code
+func (o *AvatarCandidateCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this avatar candidate create internal server error response has a 4xx status code
+func (o *AvatarCandidateCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this avatar candidate create internal server error response has a 5xx status code
+func (o *AvatarCandidateCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this avatar candidate create internal server error response a status code equal to that given
+func (o *AvatarCandidateCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AvatarCandidateCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AvatarCandidateCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/avatar-candidates][%d] avatarCandidateCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AvatarCandidateCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

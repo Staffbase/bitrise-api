@@ -63,7 +63,8 @@ func NewUserPlanOK() *UserPlanOK {
 	return &UserPlanOK{}
 }
 
-/* UserPlanOK describes a response with status code 200, with default header values.
+/*
+UserPlanOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type UserPlanOK struct {
 	Payload *models.V0UserPlanRespModel
 }
 
+// IsSuccess returns true when this user plan o k response has a 2xx status code
+func (o *UserPlanOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this user plan o k response has a 3xx status code
+func (o *UserPlanOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user plan o k response has a 4xx status code
+func (o *UserPlanOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user plan o k response has a 5xx status code
+func (o *UserPlanOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user plan o k response a status code equal to that given
+func (o *UserPlanOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *UserPlanOK) Error() string {
 	return fmt.Sprintf("[GET /me/plan][%d] userPlanOK  %+v", 200, o.Payload)
 }
+
+func (o *UserPlanOK) String() string {
+	return fmt.Sprintf("[GET /me/plan][%d] userPlanOK  %+v", 200, o.Payload)
+}
+
 func (o *UserPlanOK) GetPayload() *models.V0UserPlanRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewUserPlanBadRequest() *UserPlanBadRequest {
 	return &UserPlanBadRequest{}
 }
 
-/* UserPlanBadRequest describes a response with status code 400, with default header values.
+/*
+UserPlanBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type UserPlanBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user plan bad request response has a 2xx status code
+func (o *UserPlanBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user plan bad request response has a 3xx status code
+func (o *UserPlanBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user plan bad request response has a 4xx status code
+func (o *UserPlanBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user plan bad request response has a 5xx status code
+func (o *UserPlanBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user plan bad request response a status code equal to that given
+func (o *UserPlanBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *UserPlanBadRequest) Error() string {
 	return fmt.Sprintf("[GET /me/plan][%d] userPlanBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *UserPlanBadRequest) String() string {
+	return fmt.Sprintf("[GET /me/plan][%d] userPlanBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *UserPlanBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewUserPlanUnauthorized() *UserPlanUnauthorized {
 	return &UserPlanUnauthorized{}
 }
 
-/* UserPlanUnauthorized describes a response with status code 401, with default header values.
+/*
+UserPlanUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type UserPlanUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user plan unauthorized response has a 2xx status code
+func (o *UserPlanUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user plan unauthorized response has a 3xx status code
+func (o *UserPlanUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user plan unauthorized response has a 4xx status code
+func (o *UserPlanUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user plan unauthorized response has a 5xx status code
+func (o *UserPlanUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user plan unauthorized response a status code equal to that given
+func (o *UserPlanUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *UserPlanUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /me/plan][%d] userPlanUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *UserPlanUnauthorized) String() string {
+	return fmt.Sprintf("[GET /me/plan][%d] userPlanUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *UserPlanUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewUserPlanNotFound() *UserPlanNotFound {
 	return &UserPlanNotFound{}
 }
 
-/* UserPlanNotFound describes a response with status code 404, with default header values.
+/*
+UserPlanNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type UserPlanNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user plan not found response has a 2xx status code
+func (o *UserPlanNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user plan not found response has a 3xx status code
+func (o *UserPlanNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user plan not found response has a 4xx status code
+func (o *UserPlanNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this user plan not found response has a 5xx status code
+func (o *UserPlanNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this user plan not found response a status code equal to that given
+func (o *UserPlanNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *UserPlanNotFound) Error() string {
 	return fmt.Sprintf("[GET /me/plan][%d] userPlanNotFound  %+v", 404, o.Payload)
 }
+
+func (o *UserPlanNotFound) String() string {
+	return fmt.Sprintf("[GET /me/plan][%d] userPlanNotFound  %+v", 404, o.Payload)
+}
+
 func (o *UserPlanNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewUserPlanInternalServerError() *UserPlanInternalServerError {
 	return &UserPlanInternalServerError{}
 }
 
-/* UserPlanInternalServerError describes a response with status code 500, with default header values.
+/*
+UserPlanInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type UserPlanInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this user plan internal server error response has a 2xx status code
+func (o *UserPlanInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this user plan internal server error response has a 3xx status code
+func (o *UserPlanInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this user plan internal server error response has a 4xx status code
+func (o *UserPlanInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this user plan internal server error response has a 5xx status code
+func (o *UserPlanInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this user plan internal server error response a status code equal to that given
+func (o *UserPlanInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *UserPlanInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /me/plan][%d] userPlanInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *UserPlanInternalServerError) String() string {
+	return fmt.Sprintf("[GET /me/plan][%d] userPlanInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *UserPlanInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

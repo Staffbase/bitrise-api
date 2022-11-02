@@ -52,10 +52,12 @@ func NewGenericProjectFileDeleteParamsWithHTTPClient(client *http.Client) *Gener
 	}
 }
 
-/* GenericProjectFileDeleteParams contains all the parameters to send to the API endpoint
-   for the generic project file delete operation.
+/*
+GenericProjectFileDeleteParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the generic project file delete operation.
+
+	Typically these are written to a http.Request.
 */
 type GenericProjectFileDeleteParams struct {
 

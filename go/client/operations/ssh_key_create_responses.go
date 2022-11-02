@@ -63,7 +63,8 @@ func NewSSHKeyCreateOK() *SSHKeyCreateOK {
 	return &SSHKeyCreateOK{}
 }
 
-/* SSHKeyCreateOK describes a response with status code 200, with default header values.
+/*
+SSHKeyCreateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type SSHKeyCreateOK struct {
 	Payload *models.V0SSHKeyRespModel
 }
 
+// IsSuccess returns true when this ssh key create o k response has a 2xx status code
+func (o *SSHKeyCreateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this ssh key create o k response has a 3xx status code
+func (o *SSHKeyCreateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh key create o k response has a 4xx status code
+func (o *SSHKeyCreateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ssh key create o k response has a 5xx status code
+func (o *SSHKeyCreateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh key create o k response a status code equal to that given
+func (o *SSHKeyCreateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *SSHKeyCreateOK) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateOK  %+v", 200, o.Payload)
 }
+
+func (o *SSHKeyCreateOK) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateOK  %+v", 200, o.Payload)
+}
+
 func (o *SSHKeyCreateOK) GetPayload() *models.V0SSHKeyRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewSSHKeyCreateBadRequest() *SSHKeyCreateBadRequest {
 	return &SSHKeyCreateBadRequest{}
 }
 
-/* SSHKeyCreateBadRequest describes a response with status code 400, with default header values.
+/*
+SSHKeyCreateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type SSHKeyCreateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this ssh key create bad request response has a 2xx status code
+func (o *SSHKeyCreateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh key create bad request response has a 3xx status code
+func (o *SSHKeyCreateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh key create bad request response has a 4xx status code
+func (o *SSHKeyCreateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ssh key create bad request response has a 5xx status code
+func (o *SSHKeyCreateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh key create bad request response a status code equal to that given
+func (o *SSHKeyCreateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *SSHKeyCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *SSHKeyCreateBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *SSHKeyCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewSSHKeyCreateUnauthorized() *SSHKeyCreateUnauthorized {
 	return &SSHKeyCreateUnauthorized{}
 }
 
-/* SSHKeyCreateUnauthorized describes a response with status code 401, with default header values.
+/*
+SSHKeyCreateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type SSHKeyCreateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this ssh key create unauthorized response has a 2xx status code
+func (o *SSHKeyCreateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh key create unauthorized response has a 3xx status code
+func (o *SSHKeyCreateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh key create unauthorized response has a 4xx status code
+func (o *SSHKeyCreateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ssh key create unauthorized response has a 5xx status code
+func (o *SSHKeyCreateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh key create unauthorized response a status code equal to that given
+func (o *SSHKeyCreateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *SSHKeyCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *SSHKeyCreateUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *SSHKeyCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewSSHKeyCreateNotFound() *SSHKeyCreateNotFound {
 	return &SSHKeyCreateNotFound{}
 }
 
-/* SSHKeyCreateNotFound describes a response with status code 404, with default header values.
+/*
+SSHKeyCreateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type SSHKeyCreateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this ssh key create not found response has a 2xx status code
+func (o *SSHKeyCreateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh key create not found response has a 3xx status code
+func (o *SSHKeyCreateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh key create not found response has a 4xx status code
+func (o *SSHKeyCreateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this ssh key create not found response has a 5xx status code
+func (o *SSHKeyCreateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this ssh key create not found response a status code equal to that given
+func (o *SSHKeyCreateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *SSHKeyCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *SSHKeyCreateNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *SSHKeyCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewSSHKeyCreateInternalServerError() *SSHKeyCreateInternalServerError {
 	return &SSHKeyCreateInternalServerError{}
 }
 
-/* SSHKeyCreateInternalServerError describes a response with status code 500, with default header values.
+/*
+SSHKeyCreateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type SSHKeyCreateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this ssh key create internal server error response has a 2xx status code
+func (o *SSHKeyCreateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this ssh key create internal server error response has a 3xx status code
+func (o *SSHKeyCreateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this ssh key create internal server error response has a 4xx status code
+func (o *SSHKeyCreateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this ssh key create internal server error response has a 5xx status code
+func (o *SSHKeyCreateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this ssh key create internal server error response a status code equal to that given
+func (o *SSHKeyCreateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *SSHKeyCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *SSHKeyCreateInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *SSHKeyCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

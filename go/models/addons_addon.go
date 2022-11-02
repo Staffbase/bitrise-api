@@ -107,6 +107,8 @@ func (m *AddonsAddon) validateDeveloperLinks(formats strfmt.Registry) error {
 			if err := m.DeveloperLinks[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("developer_links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("developer_links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -131,6 +133,8 @@ func (m *AddonsAddon) validatePlans(formats strfmt.Registry) error {
 			if err := m.Plans[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("plans" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("plans" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -150,6 +154,8 @@ func (m *AddonsAddon) validateSetupGuide(formats strfmt.Registry) error {
 		if err := m.SetupGuide.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setup_guide")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("setup_guide")
 			}
 			return err
 		}
@@ -188,6 +194,8 @@ func (m *AddonsAddon) contextValidateDeveloperLinks(ctx context.Context, formats
 			if err := m.DeveloperLinks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("developer_links" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("developer_links" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -206,6 +214,8 @@ func (m *AddonsAddon) contextValidatePlans(ctx context.Context, formats strfmt.R
 			if err := m.Plans[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("plans" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("plans" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -222,6 +232,8 @@ func (m *AddonsAddon) contextValidateSetupGuide(ctx context.Context, formats str
 		if err := m.SetupGuide.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setup_guide")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("setup_guide")
 			}
 			return err
 		}

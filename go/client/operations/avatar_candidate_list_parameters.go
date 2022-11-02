@@ -52,10 +52,12 @@ func NewAvatarCandidateListParamsWithHTTPClient(client *http.Client) *AvatarCand
 	}
 }
 
-/* AvatarCandidateListParams contains all the parameters to send to the API endpoint
-   for the avatar candidate list operation.
+/*
+AvatarCandidateListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the avatar candidate list operation.
+
+	Typically these are written to a http.Request.
 */
 type AvatarCandidateListParams struct {
 

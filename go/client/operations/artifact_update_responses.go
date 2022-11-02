@@ -63,7 +63,8 @@ func NewArtifactUpdateOK() *ArtifactUpdateOK {
 	return &ArtifactUpdateOK{}
 }
 
-/* ArtifactUpdateOK describes a response with status code 200, with default header values.
+/*
+ArtifactUpdateOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type ArtifactUpdateOK struct {
 	Payload *models.V0ArtifactShowResponseModel
 }
 
+// IsSuccess returns true when this artifact update o k response has a 2xx status code
+func (o *ArtifactUpdateOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this artifact update o k response has a 3xx status code
+func (o *ArtifactUpdateOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact update o k response has a 4xx status code
+func (o *ArtifactUpdateOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this artifact update o k response has a 5xx status code
+func (o *ArtifactUpdateOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact update o k response a status code equal to that given
+func (o *ArtifactUpdateOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *ArtifactUpdateOK) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateOK  %+v", 200, o.Payload)
 }
+
+func (o *ArtifactUpdateOK) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateOK  %+v", 200, o.Payload)
+}
+
 func (o *ArtifactUpdateOK) GetPayload() *models.V0ArtifactShowResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewArtifactUpdateBadRequest() *ArtifactUpdateBadRequest {
 	return &ArtifactUpdateBadRequest{}
 }
 
-/* ArtifactUpdateBadRequest describes a response with status code 400, with default header values.
+/*
+ArtifactUpdateBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type ArtifactUpdateBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact update bad request response has a 2xx status code
+func (o *ArtifactUpdateBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact update bad request response has a 3xx status code
+func (o *ArtifactUpdateBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact update bad request response has a 4xx status code
+func (o *ArtifactUpdateBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact update bad request response has a 5xx status code
+func (o *ArtifactUpdateBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact update bad request response a status code equal to that given
+func (o *ArtifactUpdateBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *ArtifactUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *ArtifactUpdateBadRequest) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *ArtifactUpdateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewArtifactUpdateUnauthorized() *ArtifactUpdateUnauthorized {
 	return &ArtifactUpdateUnauthorized{}
 }
 
-/* ArtifactUpdateUnauthorized describes a response with status code 401, with default header values.
+/*
+ArtifactUpdateUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type ArtifactUpdateUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact update unauthorized response has a 2xx status code
+func (o *ArtifactUpdateUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact update unauthorized response has a 3xx status code
+func (o *ArtifactUpdateUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact update unauthorized response has a 4xx status code
+func (o *ArtifactUpdateUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact update unauthorized response has a 5xx status code
+func (o *ArtifactUpdateUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact update unauthorized response a status code equal to that given
+func (o *ArtifactUpdateUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *ArtifactUpdateUnauthorized) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *ArtifactUpdateUnauthorized) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *ArtifactUpdateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewArtifactUpdateNotFound() *ArtifactUpdateNotFound {
 	return &ArtifactUpdateNotFound{}
 }
 
-/* ArtifactUpdateNotFound describes a response with status code 404, with default header values.
+/*
+ArtifactUpdateNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type ArtifactUpdateNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact update not found response has a 2xx status code
+func (o *ArtifactUpdateNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact update not found response has a 3xx status code
+func (o *ArtifactUpdateNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact update not found response has a 4xx status code
+func (o *ArtifactUpdateNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this artifact update not found response has a 5xx status code
+func (o *ArtifactUpdateNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this artifact update not found response a status code equal to that given
+func (o *ArtifactUpdateNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *ArtifactUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateNotFound  %+v", 404, o.Payload)
 }
+
+func (o *ArtifactUpdateNotFound) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateNotFound  %+v", 404, o.Payload)
+}
+
 func (o *ArtifactUpdateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewArtifactUpdateInternalServerError() *ArtifactUpdateInternalServerError {
 	return &ArtifactUpdateInternalServerError{}
 }
 
-/* ArtifactUpdateInternalServerError describes a response with status code 500, with default header values.
+/*
+ArtifactUpdateInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type ArtifactUpdateInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this artifact update internal server error response has a 2xx status code
+func (o *ArtifactUpdateInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this artifact update internal server error response has a 3xx status code
+func (o *ArtifactUpdateInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this artifact update internal server error response has a 4xx status code
+func (o *ArtifactUpdateInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this artifact update internal server error response has a 5xx status code
+func (o *ArtifactUpdateInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this artifact update internal server error response a status code equal to that given
+func (o *ArtifactUpdateInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *ArtifactUpdateInternalServerError) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *ArtifactUpdateInternalServerError) String() string {
+	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *ArtifactUpdateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

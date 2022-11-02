@@ -60,6 +60,8 @@ func (m *AddonsPlan) validateFeatures(formats strfmt.Registry) error {
 			if err := m.Features[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("features" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("features" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -92,6 +94,8 @@ func (m *AddonsPlan) contextValidateFeatures(ctx context.Context, formats strfmt
 			if err := m.Features[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("features" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("features" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

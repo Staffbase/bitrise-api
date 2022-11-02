@@ -55,6 +55,9 @@ type V0BuildTriggerParamsBuildParams struct {
 	// head repository url
 	HeadRepositoryURL string `json:"head_repository_url,omitempty"`
 
+	// pipeline id
+	PipelineID string `json:"pipeline_id,omitempty"`
+
 	// pull request author
 	PullRequestAuthor string `json:"pull_request_author,omitempty"`
 
@@ -112,6 +115,8 @@ func (m *V0BuildTriggerParamsBuildParams) validateCommitPaths(formats strfmt.Reg
 			if err := m.CommitPaths[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("commit_paths" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commit_paths" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -136,6 +141,8 @@ func (m *V0BuildTriggerParamsBuildParams) validateEnvironments(formats strfmt.Re
 			if err := m.Environments[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -172,6 +179,8 @@ func (m *V0BuildTriggerParamsBuildParams) contextValidateCommitPaths(ctx context
 			if err := m.CommitPaths[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("commit_paths" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("commit_paths" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -190,6 +199,8 @@ func (m *V0BuildTriggerParamsBuildParams) contextValidateEnvironments(ctx contex
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("environments" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

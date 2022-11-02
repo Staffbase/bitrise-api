@@ -22,13 +22,13 @@ type V0ActivityEventResponseItemModel struct {
 	CreatedAt string `json:"created_at,omitempty"`
 
 	// description
-	Description *NullsString `json:"description,omitempty"`
+	Description *GithubComMarkbatesPopNullsString `json:"description,omitempty"`
 
 	// event icon
-	EventIcon *NullsString `json:"event_icon,omitempty"`
+	EventIcon *GithubComMarkbatesPopNullsString `json:"event_icon,omitempty"`
 
 	// event stype
-	EventStype *NullsString `json:"event_stype,omitempty"`
+	EventStype *GithubComMarkbatesPopNullsString `json:"event_stype,omitempty"`
 
 	// repository avatar icon url
 	RepositoryAvatarIconURL string `json:"repository_avatar_icon_url,omitempty"`
@@ -40,10 +40,10 @@ type V0ActivityEventResponseItemModel struct {
 	Slug string `json:"slug,omitempty"`
 
 	// target path string
-	TargetPathString *NullsString `json:"target_path_string,omitempty"`
+	TargetPathString *GithubComMarkbatesPopNullsString `json:"target_path_string,omitempty"`
 
 	// title
-	Title *NullsString `json:"title,omitempty"`
+	Title *GithubComMarkbatesPopNullsString `json:"title,omitempty"`
 }
 
 // Validate validates this v0 activity event response item model
@@ -85,6 +85,8 @@ func (m *V0ActivityEventResponseItemModel) validateDescription(formats strfmt.Re
 		if err := m.Description.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("description")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("description")
 			}
 			return err
 		}
@@ -102,6 +104,8 @@ func (m *V0ActivityEventResponseItemModel) validateEventIcon(formats strfmt.Regi
 		if err := m.EventIcon.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event_icon")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("event_icon")
 			}
 			return err
 		}
@@ -119,6 +123,8 @@ func (m *V0ActivityEventResponseItemModel) validateEventStype(formats strfmt.Reg
 		if err := m.EventStype.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event_stype")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("event_stype")
 			}
 			return err
 		}
@@ -136,6 +142,8 @@ func (m *V0ActivityEventResponseItemModel) validateTargetPathString(formats strf
 		if err := m.TargetPathString.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("target_path_string")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("target_path_string")
 			}
 			return err
 		}
@@ -153,6 +161,8 @@ func (m *V0ActivityEventResponseItemModel) validateTitle(formats strfmt.Registry
 		if err := m.Title.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("title")
 			}
 			return err
 		}
@@ -197,6 +207,8 @@ func (m *V0ActivityEventResponseItemModel) contextValidateDescription(ctx contex
 		if err := m.Description.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("description")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("description")
 			}
 			return err
 		}
@@ -211,6 +223,8 @@ func (m *V0ActivityEventResponseItemModel) contextValidateEventIcon(ctx context.
 		if err := m.EventIcon.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event_icon")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("event_icon")
 			}
 			return err
 		}
@@ -225,6 +239,8 @@ func (m *V0ActivityEventResponseItemModel) contextValidateEventStype(ctx context
 		if err := m.EventStype.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event_stype")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("event_stype")
 			}
 			return err
 		}
@@ -239,6 +255,8 @@ func (m *V0ActivityEventResponseItemModel) contextValidateTargetPathString(ctx c
 		if err := m.TargetPathString.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("target_path_string")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("target_path_string")
 			}
 			return err
 		}
@@ -253,6 +271,8 @@ func (m *V0ActivityEventResponseItemModel) contextValidateTitle(ctx context.Cont
 		if err := m.Title.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("title")
 			}
 			return err
 		}

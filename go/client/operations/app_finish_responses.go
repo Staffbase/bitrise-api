@@ -63,7 +63,8 @@ func NewAppFinishOK() *AppFinishOK {
 	return &AppFinishOK{}
 }
 
-/* AppFinishOK describes a response with status code 200, with default header values.
+/*
+AppFinishOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type AppFinishOK struct {
 	Payload *models.V0AppFinishRespModel
 }
 
+// IsSuccess returns true when this app finish o k response has a 2xx status code
+func (o *AppFinishOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this app finish o k response has a 3xx status code
+func (o *AppFinishOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app finish o k response has a 4xx status code
+func (o *AppFinishOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app finish o k response has a 5xx status code
+func (o *AppFinishOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app finish o k response a status code equal to that given
+func (o *AppFinishOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *AppFinishOK) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishOK  %+v", 200, o.Payload)
 }
+
+func (o *AppFinishOK) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishOK  %+v", 200, o.Payload)
+}
+
 func (o *AppFinishOK) GetPayload() *models.V0AppFinishRespModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewAppFinishBadRequest() *AppFinishBadRequest {
 	return &AppFinishBadRequest{}
 }
 
-/* AppFinishBadRequest describes a response with status code 400, with default header values.
+/*
+AppFinishBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type AppFinishBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app finish bad request response has a 2xx status code
+func (o *AppFinishBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app finish bad request response has a 3xx status code
+func (o *AppFinishBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app finish bad request response has a 4xx status code
+func (o *AppFinishBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app finish bad request response has a 5xx status code
+func (o *AppFinishBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app finish bad request response a status code equal to that given
+func (o *AppFinishBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *AppFinishBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *AppFinishBadRequest) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *AppFinishBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewAppFinishUnauthorized() *AppFinishUnauthorized {
 	return &AppFinishUnauthorized{}
 }
 
-/* AppFinishUnauthorized describes a response with status code 401, with default header values.
+/*
+AppFinishUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type AppFinishUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app finish unauthorized response has a 2xx status code
+func (o *AppFinishUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app finish unauthorized response has a 3xx status code
+func (o *AppFinishUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app finish unauthorized response has a 4xx status code
+func (o *AppFinishUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app finish unauthorized response has a 5xx status code
+func (o *AppFinishUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app finish unauthorized response a status code equal to that given
+func (o *AppFinishUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *AppFinishUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *AppFinishUnauthorized) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *AppFinishUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewAppFinishNotFound() *AppFinishNotFound {
 	return &AppFinishNotFound{}
 }
 
-/* AppFinishNotFound describes a response with status code 404, with default header values.
+/*
+AppFinishNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type AppFinishNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app finish not found response has a 2xx status code
+func (o *AppFinishNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app finish not found response has a 3xx status code
+func (o *AppFinishNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app finish not found response has a 4xx status code
+func (o *AppFinishNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this app finish not found response has a 5xx status code
+func (o *AppFinishNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this app finish not found response a status code equal to that given
+func (o *AppFinishNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *AppFinishNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishNotFound  %+v", 404, o.Payload)
 }
+
+func (o *AppFinishNotFound) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishNotFound  %+v", 404, o.Payload)
+}
+
 func (o *AppFinishNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewAppFinishInternalServerError() *AppFinishInternalServerError {
 	return &AppFinishInternalServerError{}
 }
 
-/* AppFinishInternalServerError describes a response with status code 500, with default header values.
+/*
+AppFinishInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type AppFinishInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this app finish internal server error response has a 2xx status code
+func (o *AppFinishInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this app finish internal server error response has a 3xx status code
+func (o *AppFinishInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this app finish internal server error response has a 4xx status code
+func (o *AppFinishInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this app finish internal server error response has a 5xx status code
+func (o *AppFinishInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this app finish internal server error response a status code equal to that given
+func (o *AppFinishInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *AppFinishInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *AppFinishInternalServerError) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *AppFinishInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

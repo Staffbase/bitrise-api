@@ -31,16 +31,16 @@ type V0WebhookDeliveryItemResponseModel struct {
 	RequestURL string `json:"request_url,omitempty"`
 
 	// response body
-	ResponseBody *NullsString `json:"response_body,omitempty"`
+	ResponseBody *GithubComMarkbatesPopNullsString `json:"response_body,omitempty"`
 
 	// response headers
-	ResponseHeaders *NullsString `json:"response_headers,omitempty"`
+	ResponseHeaders *GithubComMarkbatesPopNullsString `json:"response_headers,omitempty"`
 
 	// response http status
-	ResponseHTTPStatus *NullsInt64 `json:"response_http_status,omitempty"`
+	ResponseHTTPStatus *GithubComMarkbatesPopNullsInt64 `json:"response_http_status,omitempty"`
 
 	// response seconds
-	ResponseSeconds *NullsInt64 `json:"response_seconds,omitempty"`
+	ResponseSeconds *GithubComMarkbatesPopNullsInt64 `json:"response_seconds,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -84,6 +84,8 @@ func (m *V0WebhookDeliveryItemResponseModel) validateResponseBody(formats strfmt
 		if err := m.ResponseBody.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_body")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_body")
 			}
 			return err
 		}
@@ -101,6 +103,8 @@ func (m *V0WebhookDeliveryItemResponseModel) validateResponseHeaders(formats str
 		if err := m.ResponseHeaders.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_headers")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_headers")
 			}
 			return err
 		}
@@ -118,6 +122,8 @@ func (m *V0WebhookDeliveryItemResponseModel) validateResponseHTTPStatus(formats 
 		if err := m.ResponseHTTPStatus.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_http_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_http_status")
 			}
 			return err
 		}
@@ -135,6 +141,8 @@ func (m *V0WebhookDeliveryItemResponseModel) validateResponseSeconds(formats str
 		if err := m.ResponseSeconds.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_seconds")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_seconds")
 			}
 			return err
 		}
@@ -175,6 +183,8 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseBody(ctx con
 		if err := m.ResponseBody.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_body")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_body")
 			}
 			return err
 		}
@@ -189,6 +199,8 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHeaders(ctx 
 		if err := m.ResponseHeaders.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_headers")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_headers")
 			}
 			return err
 		}
@@ -203,6 +215,8 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHTTPStatus(c
 		if err := m.ResponseHTTPStatus.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_http_status")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_http_status")
 			}
 			return err
 		}
@@ -217,6 +231,8 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseSeconds(ctx 
 		if err := m.ResponseSeconds.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_seconds")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("response_seconds")
 			}
 			return err
 		}

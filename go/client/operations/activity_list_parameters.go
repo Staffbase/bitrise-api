@@ -53,10 +53,12 @@ func NewActivityListParamsWithHTTPClient(client *http.Client) *ActivityListParam
 	}
 }
 
-/* ActivityListParams contains all the parameters to send to the API endpoint
-   for the activity list operation.
+/*
+ActivityListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the activity list operation.
+
+	Typically these are written to a http.Request.
 */
 type ActivityListParams struct {
 

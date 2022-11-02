@@ -63,7 +63,8 @@ func NewBuildShowOK() *BuildShowOK {
 	return &BuildShowOK{}
 }
 
-/* BuildShowOK describes a response with status code 200, with default header values.
+/*
+BuildShowOK describes a response with status code 200, with default header values.
 
 OK
 */
@@ -71,9 +72,39 @@ type BuildShowOK struct {
 	Payload *models.V0BuildShowResponseModel
 }
 
+// IsSuccess returns true when this build show o k response has a 2xx status code
+func (o *BuildShowOK) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this build show o k response has a 3xx status code
+func (o *BuildShowOK) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build show o k response has a 4xx status code
+func (o *BuildShowOK) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build show o k response has a 5xx status code
+func (o *BuildShowOK) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build show o k response a status code equal to that given
+func (o *BuildShowOK) IsCode(code int) bool {
+	return code == 200
+}
+
 func (o *BuildShowOK) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowOK  %+v", 200, o.Payload)
 }
+
+func (o *BuildShowOK) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowOK  %+v", 200, o.Payload)
+}
+
 func (o *BuildShowOK) GetPayload() *models.V0BuildShowResponseModel {
 	return o.Payload
 }
@@ -95,7 +126,8 @@ func NewBuildShowBadRequest() *BuildShowBadRequest {
 	return &BuildShowBadRequest{}
 }
 
-/* BuildShowBadRequest describes a response with status code 400, with default header values.
+/*
+BuildShowBadRequest describes a response with status code 400, with default header values.
 
 Bad Request
 */
@@ -103,9 +135,39 @@ type BuildShowBadRequest struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build show bad request response has a 2xx status code
+func (o *BuildShowBadRequest) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build show bad request response has a 3xx status code
+func (o *BuildShowBadRequest) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build show bad request response has a 4xx status code
+func (o *BuildShowBadRequest) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build show bad request response has a 5xx status code
+func (o *BuildShowBadRequest) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build show bad request response a status code equal to that given
+func (o *BuildShowBadRequest) IsCode(code int) bool {
+	return code == 400
+}
+
 func (o *BuildShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowBadRequest  %+v", 400, o.Payload)
 }
+
+func (o *BuildShowBadRequest) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowBadRequest  %+v", 400, o.Payload)
+}
+
 func (o *BuildShowBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -127,7 +189,8 @@ func NewBuildShowUnauthorized() *BuildShowUnauthorized {
 	return &BuildShowUnauthorized{}
 }
 
-/* BuildShowUnauthorized describes a response with status code 401, with default header values.
+/*
+BuildShowUnauthorized describes a response with status code 401, with default header values.
 
 Unauthorized
 */
@@ -135,9 +198,39 @@ type BuildShowUnauthorized struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build show unauthorized response has a 2xx status code
+func (o *BuildShowUnauthorized) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build show unauthorized response has a 3xx status code
+func (o *BuildShowUnauthorized) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build show unauthorized response has a 4xx status code
+func (o *BuildShowUnauthorized) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build show unauthorized response has a 5xx status code
+func (o *BuildShowUnauthorized) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build show unauthorized response a status code equal to that given
+func (o *BuildShowUnauthorized) IsCode(code int) bool {
+	return code == 401
+}
+
 func (o *BuildShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowUnauthorized  %+v", 401, o.Payload)
 }
+
+func (o *BuildShowUnauthorized) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowUnauthorized  %+v", 401, o.Payload)
+}
+
 func (o *BuildShowUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -159,7 +252,8 @@ func NewBuildShowNotFound() *BuildShowNotFound {
 	return &BuildShowNotFound{}
 }
 
-/* BuildShowNotFound describes a response with status code 404, with default header values.
+/*
+BuildShowNotFound describes a response with status code 404, with default header values.
 
 Not Found
 */
@@ -167,9 +261,39 @@ type BuildShowNotFound struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build show not found response has a 2xx status code
+func (o *BuildShowNotFound) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build show not found response has a 3xx status code
+func (o *BuildShowNotFound) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build show not found response has a 4xx status code
+func (o *BuildShowNotFound) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this build show not found response has a 5xx status code
+func (o *BuildShowNotFound) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this build show not found response a status code equal to that given
+func (o *BuildShowNotFound) IsCode(code int) bool {
+	return code == 404
+}
+
 func (o *BuildShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowNotFound  %+v", 404, o.Payload)
 }
+
+func (o *BuildShowNotFound) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowNotFound  %+v", 404, o.Payload)
+}
+
 func (o *BuildShowNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }
@@ -191,7 +315,8 @@ func NewBuildShowInternalServerError() *BuildShowInternalServerError {
 	return &BuildShowInternalServerError{}
 }
 
-/* BuildShowInternalServerError describes a response with status code 500, with default header values.
+/*
+BuildShowInternalServerError describes a response with status code 500, with default header values.
 
 Internal Server Error
 */
@@ -199,9 +324,39 @@ type BuildShowInternalServerError struct {
 	Payload *models.ServiceStandardErrorRespModel
 }
 
+// IsSuccess returns true when this build show internal server error response has a 2xx status code
+func (o *BuildShowInternalServerError) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this build show internal server error response has a 3xx status code
+func (o *BuildShowInternalServerError) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this build show internal server error response has a 4xx status code
+func (o *BuildShowInternalServerError) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this build show internal server error response has a 5xx status code
+func (o *BuildShowInternalServerError) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this build show internal server error response a status code equal to that given
+func (o *BuildShowInternalServerError) IsCode(code int) bool {
+	return code == 500
+}
+
 func (o *BuildShowInternalServerError) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowInternalServerError  %+v", 500, o.Payload)
 }
+
+func (o *BuildShowInternalServerError) String() string {
+	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowInternalServerError  %+v", 500, o.Payload)
+}
+
 func (o *BuildShowInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
 	return o.Payload
 }

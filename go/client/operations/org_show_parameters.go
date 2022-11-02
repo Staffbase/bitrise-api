@@ -52,10 +52,12 @@ func NewOrgShowParamsWithHTTPClient(client *http.Client) *OrgShowParams {
 	}
 }
 
-/* OrgShowParams contains all the parameters to send to the API endpoint
-   for the org show operation.
+/*
+OrgShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the org show operation.
+
+	Typically these are written to a http.Request.
 */
 type OrgShowParams struct {
 

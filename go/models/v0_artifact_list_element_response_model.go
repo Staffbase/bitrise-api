@@ -22,10 +22,13 @@ type V0ArtifactListElementResponseModel struct {
 	ArtifactMeta []int64 `json:"artifact_meta"`
 
 	// artifact type
-	ArtifactType *NullsString `json:"artifact_type,omitempty"`
+	ArtifactType *GithubComMarkbatesPopNullsString `json:"artifact_type,omitempty"`
 
 	// file size bytes
 	FileSizeBytes int64 `json:"file_size_bytes,omitempty"`
+
+	// intermediate file info
+	IntermediateFileInfo []int64 `json:"intermediate_file_info"`
 
 	// is public page enabled
 	IsPublicPageEnabled bool `json:"is_public_page_enabled,omitempty"`
@@ -34,7 +37,7 @@ type V0ArtifactListElementResponseModel struct {
 	Slug string `json:"slug,omitempty"`
 
 	// title
-	Title *NullsString `json:"title,omitempty"`
+	Title *GithubComMarkbatesPopNullsString `json:"title,omitempty"`
 }
 
 // Validate validates this v0 artifact list element response model
@@ -64,6 +67,8 @@ func (m *V0ArtifactListElementResponseModel) validateArtifactType(formats strfmt
 		if err := m.ArtifactType.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("artifact_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("artifact_type")
 			}
 			return err
 		}
@@ -81,6 +86,8 @@ func (m *V0ArtifactListElementResponseModel) validateTitle(formats strfmt.Regist
 		if err := m.Title.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("title")
 			}
 			return err
 		}
@@ -113,6 +120,8 @@ func (m *V0ArtifactListElementResponseModel) contextValidateArtifactType(ctx con
 		if err := m.ArtifactType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("artifact_type")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("artifact_type")
 			}
 			return err
 		}
@@ -127,6 +136,8 @@ func (m *V0ArtifactListElementResponseModel) contextValidateTitle(ctx context.Co
 		if err := m.Title.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("title")
 			}
 			return err
 		}

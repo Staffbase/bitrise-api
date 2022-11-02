@@ -52,10 +52,12 @@ func NewUserShowParamsWithHTTPClient(client *http.Client) *UserShowParams {
 	}
 }
 
-/* UserShowParams contains all the parameters to send to the API endpoint
-   for the user show operation.
+/*
+UserShowParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the user show operation.
+
+	Typically these are written to a http.Request.
 */
 type UserShowParams struct {
 

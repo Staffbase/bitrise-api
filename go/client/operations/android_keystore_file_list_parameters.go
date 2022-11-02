@@ -53,10 +53,12 @@ func NewAndroidKeystoreFileListParamsWithHTTPClient(client *http.Client) *Androi
 	}
 }
 
-/* AndroidKeystoreFileListParams contains all the parameters to send to the API endpoint
-   for the android keystore file list operation.
+/*
+AndroidKeystoreFileListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the android keystore file list operation.
+
+	Typically these are written to a http.Request.
 */
 type AndroidKeystoreFileListParams struct {
 

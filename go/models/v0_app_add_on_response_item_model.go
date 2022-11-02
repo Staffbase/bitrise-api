@@ -36,14 +36,26 @@ type V0AppAddOnResponseItemModel struct {
 	// is beta
 	IsBeta bool `json:"is_beta,omitempty"`
 
+	// is enabled
+	IsEnabled bool `json:"is_enabled,omitempty"`
+
+	// login url
+	LoginURL string `json:"login_url,omitempty"`
+
 	// plan
 	Plan *AddonsPlan `json:"plan,omitempty"`
+
+	// scopes
+	Scopes []string `json:"scopes"`
 
 	// setup guide
 	SetupGuide *AddonsSetupGuide `json:"setup_guide,omitempty"`
 
 	// summary
 	Summary string `json:"summary,omitempty"`
+
+	// terms url
+	TermsURL string `json:"terms_url,omitempty"`
 
 	// title
 	Title string `json:"title,omitempty"`
@@ -76,6 +88,8 @@ func (m *V0AppAddOnResponseItemModel) validatePlan(formats strfmt.Registry) erro
 		if err := m.Plan.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("plan")
 			}
 			return err
 		}
@@ -93,6 +107,8 @@ func (m *V0AppAddOnResponseItemModel) validateSetupGuide(formats strfmt.Registry
 		if err := m.SetupGuide.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setup_guide")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("setup_guide")
 			}
 			return err
 		}
@@ -125,6 +141,8 @@ func (m *V0AppAddOnResponseItemModel) contextValidatePlan(ctx context.Context, f
 		if err := m.Plan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plan")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("plan")
 			}
 			return err
 		}
@@ -139,6 +157,8 @@ func (m *V0AppAddOnResponseItemModel) contextValidateSetupGuide(ctx context.Cont
 		if err := m.SetupGuide.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setup_guide")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("setup_guide")
 			}
 			return err
 		}

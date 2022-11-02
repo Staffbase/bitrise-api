@@ -52,10 +52,12 @@ func NewBuildWorkflowListParamsWithHTTPClient(client *http.Client) *BuildWorkflo
 	}
 }
 
-/* BuildWorkflowListParams contains all the parameters to send to the API endpoint
-   for the build workflow list operation.
+/*
+BuildWorkflowListParams contains all the parameters to send to the API endpoint
 
-   Typically these are written to a http.Request.
+	for the build workflow list operation.
+
+	Typically these are written to a http.Request.
 */
 type BuildWorkflowListParams struct {
 
