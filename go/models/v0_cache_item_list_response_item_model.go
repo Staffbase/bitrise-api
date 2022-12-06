@@ -37,6 +37,9 @@ type V0CacheItemListResponseItemModel struct {
 
 	// id
 	ID string `json:"id,omitempty"`
+
+	// last used at
+	LastUsedAt string `json:"last_used_at,omitempty"`
 }
 
 // Validate validates this v0 cache item list response item model
