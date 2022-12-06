@@ -330,6 +330,66 @@
                     }
                 }
             },
+            "delete": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Deletes an app by slug. Use with care, make sure you really want to delete the app. This action cannot be undone.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "application"
+                ],
+                "summary": "Deletes an app",
+                "operationId": "app-delete",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppDeleteRespModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            },
             "patch": {
                 "security": [
                     {
@@ -1096,6 +1156,134 @@
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/v0.ProxyErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/bitrise.yml/config": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Getting the location of the application's bitrise.yaml. Requires administrator level privileges to the app.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app-setup"
+                ],
+                "summary": "Getting the location of the application's bitrise.yaml",
+                "operationId": "app-setup-bitrise-yml-config-get",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.BitriseYMLConfigGetResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Changing the location of the application's bitrise.yaml. Requires administrator level privileges to the app.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "app-setup"
+                ],
+                "summary": "Changing the location of the application's bitrise.yaml",
+                "operationId": "app-setup-bitrise-yml-config-update",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Bitrise YML Config Update Params",
+                        "name": "app",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.BitriseYMLConfigUpdateParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
                         }
                     }
                 }
@@ -5046,6 +5234,77 @@
                 }
             }
         },
+        "/apps/{app-slug}/update-email-notifications": {
+            "patch": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Updates the app's email notification settings with parameters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "application"
+                ],
+                "summary": "Updates the app's notification settings",
+                "operationId": "app-notifications",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "App notification settings parameters",
+                        "name": "notification_settings_params",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppNotificationSettingsParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.AppNotificationSettingsUpdateResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
         "/builds": {
             "get": {
                 "security": [
@@ -6520,6 +6779,14 @@
                 "type": "string"
             }
         },
+        "v0.AppDeleteRespModel": {
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "type": "string"
+                }
+            }
+        },
         "v0.AppFinishParams": {
             "type": "object",
             "required": [
@@ -6585,6 +6852,27 @@
                 "paging": {
                     "description": "pagination",
                     "$ref": "#/definitions/v0.PagingResponseModel"
+                }
+            }
+        },
+        "v0.AppNotificationSettingsParams": {
+            "type": "object",
+            "properties": {
+                "on_failure": {
+                    "description": "When should Bitrise send notifications for the users on build failure? Possible values: always, never, change",
+                    "type": "string"
+                },
+                "on_success": {
+                    "description": "When should Bitrise send notifications for the users on build success? Possible values: always, never, change",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.AppNotificationSettingsUpdateResponse": {
+            "type": "object",
+            "properties": {
+                "msg": {
+                    "type": "string"
                 }
             }
         },
@@ -7261,6 +7549,25 @@
                 }
             }
         },
+        "v0.BitriseYMLConfigGetResponse": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.BitriseYMLConfigUpdateParams": {
+            "type": "object",
+            "properties": {
+                "location": {
+                    "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
+                    "type": "string",
+                    "example": "repository"
+                }
+            }
+        },
         "v0.BranchListResponseModel": {
             "type": "object",
             "properties": {
@@ -7836,6 +8143,9 @@
                 },
                 "id": {
                     "type": "string"
+                },
+                "last_used_at": {
+                    "type": "string"
                 }
             }
         },
@@ -8290,7 +8600,16 @@
                     "type": "string"
                 },
                 "status": {
-                    "type": "string"
+                    "type": "string",
+                    "enum": [
+                        "aborted",
+                        "failed",
+                        "initializing",
+                        "on_hold",
+                        "running",
+                        "succeeded",
+                        "succeeded_with_abort"
+                    ]
                 },
                 "trigger_params": {
                     "$ref": "#/definitions/v0.PipelineShowTriggerParamsResponseModel"
