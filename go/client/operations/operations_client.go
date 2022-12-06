@@ -56,6 +56,8 @@ type ClientService interface {
 
 	AppCreate(params *AppCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppCreateOK, error)
 
+	AppDelete(params *AppDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppDeleteOK, error)
+
 	AppFinish(params *AppFinishParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppFinishOK, error)
 
 	AppList(params *AppListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppListOK, error)
@@ -63,6 +65,12 @@ type ClientService interface {
 	AppListByOrganization(params *AppListByOrganizationParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppListByOrganizationOK, error)
 
 	AppListByUser(params *AppListByUserParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppListByUserOK, error)
+
+	AppNotifications(params *AppNotificationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppNotificationsOK, error)
+
+	AppSetupBitriseYmlConfigGet(params *AppSetupBitriseYmlConfigGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigGetOK, error)
+
+	AppSetupBitriseYmlConfigUpdate(params *AppSetupBitriseYmlConfigUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigUpdateNoContent, error)
 
 	AppShow(params *AppShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppShowOK, error)
 
@@ -739,6 +747,47 @@ func (a *Client) AppCreate(params *AppCreateParams, authInfo runtime.ClientAuthI
 }
 
 /*
+AppDelete deletes an app
+
+Deletes an app by slug. Use with care, make sure you really want to delete the app. This action cannot be undone.
+*/
+func (a *Client) AppDelete(params *AppDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppDeleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-delete",
+		Method:             "DELETE",
+		PathPattern:        "/apps/{app-slug}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppDeleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 AppFinish saves the application at the end of the app registration process
 
 Save the application after registering it on Bitrise and registering an SSH key (and, optionally, adding a webhook). With this endpoint you can define the initial configuration, define application-level environment variables, determine the project type, and set an Organization to be the owner of the app. Read more about the app registration process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).
@@ -899,6 +948,129 @@ func (a *Client) AppListByUser(params *AppListByUserParams, authInfo runtime.Cli
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for app-list-by-user: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AppNotifications updates the app s notification settings
+
+Updates the app's email notification settings with parameters
+*/
+func (a *Client) AppNotifications(params *AppNotificationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppNotificationsOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppNotificationsParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-notifications",
+		Method:             "PATCH",
+		PathPattern:        "/apps/{app-slug}/update-email-notifications",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppNotificationsReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppNotificationsOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-notifications: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AppSetupBitriseYmlConfigGet gettings the location of the application s bitrise yaml
+
+Getting the location of the application's bitrise.yaml. Requires administrator level privileges to the app.
+*/
+func (a *Client) AppSetupBitriseYmlConfigGet(params *AppSetupBitriseYmlConfigGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppSetupBitriseYmlConfigGetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-setup-bitrise-yml-config-get",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/bitrise.yml/config",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppSetupBitriseYmlConfigGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppSetupBitriseYmlConfigGetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-setup-bitrise-yml-config-get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AppSetupBitriseYmlConfigUpdate changings the location of the application s bitrise yaml
+
+Changing the location of the application's bitrise.yaml. Requires administrator level privileges to the app.
+*/
+func (a *Client) AppSetupBitriseYmlConfigUpdate(params *AppSetupBitriseYmlConfigUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigUpdateNoContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppSetupBitriseYmlConfigUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-setup-bitrise-yml-config-update",
+		Method:             "PUT",
+		PathPattern:        "/apps/{app-slug}/bitrise.yml/config",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppSetupBitriseYmlConfigUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppSetupBitriseYmlConfigUpdateNoContent)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-setup-bitrise-yml-config-update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

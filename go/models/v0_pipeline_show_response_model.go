@@ -7,11 +7,13 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // V0PipelineShowResponseModel v0 pipeline show response model
@@ -56,6 +58,7 @@ type V0PipelineShowResponseModel struct {
 	StartedAt string `json:"started_at,omitempty"`
 
 	// status
+	// Enum: [aborted failed initializing on_hold running succeeded succeeded_with_abort]
 	Status string `json:"status,omitempty"`
 
 	// trigger params
@@ -81,6 +84,10 @@ func (m *V0PipelineShowResponseModel) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStages(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStatus(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -160,6 +167,63 @@ func (m *V0PipelineShowResponseModel) validateStages(formats strfmt.Registry) er
 			}
 		}
 
+	}
+
+	return nil
+}
+
+var v0PipelineShowResponseModelTypeStatusPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["aborted","failed","initializing","on_hold","running","succeeded","succeeded_with_abort"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		v0PipelineShowResponseModelTypeStatusPropEnum = append(v0PipelineShowResponseModelTypeStatusPropEnum, v)
+	}
+}
+
+const (
+
+	// V0PipelineShowResponseModelStatusAborted captures enum value "aborted"
+	V0PipelineShowResponseModelStatusAborted string = "aborted"
+
+	// V0PipelineShowResponseModelStatusFailed captures enum value "failed"
+	V0PipelineShowResponseModelStatusFailed string = "failed"
+
+	// V0PipelineShowResponseModelStatusInitializing captures enum value "initializing"
+	V0PipelineShowResponseModelStatusInitializing string = "initializing"
+
+	// V0PipelineShowResponseModelStatusOnHold captures enum value "on_hold"
+	V0PipelineShowResponseModelStatusOnHold string = "on_hold"
+
+	// V0PipelineShowResponseModelStatusRunning captures enum value "running"
+	V0PipelineShowResponseModelStatusRunning string = "running"
+
+	// V0PipelineShowResponseModelStatusSucceeded captures enum value "succeeded"
+	V0PipelineShowResponseModelStatusSucceeded string = "succeeded"
+
+	// V0PipelineShowResponseModelStatusSucceededWithAbort captures enum value "succeeded_with_abort"
+	V0PipelineShowResponseModelStatusSucceededWithAbort string = "succeeded_with_abort"
+)
+
+// prop value enum
+func (m *V0PipelineShowResponseModel) validateStatusEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, v0PipelineShowResponseModelTypeStatusPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *V0PipelineShowResponseModel) validateStatus(formats strfmt.Registry) error {
+	if swag.IsZero(m.Status) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateStatusEnum("status", "body", m.Status); err != nil {
+		return err
 	}
 
 	return nil
