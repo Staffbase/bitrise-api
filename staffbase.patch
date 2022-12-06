@@ -1,5 +1,5 @@
 --- swagger.json	2022-11-29 09:57:38.000000000 +0100
-+++ swagger_patched.json	2022-12-06 13:36:38.833666094 +0100
++++ swagger_patched.json	2022-12-06 13:41:01.823671064 +0100
 @@ -2157,7 +2157,7 @@
                      }
                  ],
@@ -20,3 +20,19 @@
                      },
                      "400": {
                          "description": "Bad Request",
+@@ -5568,6 +5568,15 @@
+                 ],
+                 "summary": "Removes an active addon token of the user",
+                 "operationId": "user-addon-tokens-delete",
++                "parameters": [
++                    {
++                        "type": "string",
++                        "description": "Addon ID",
++                        "name": "addon-id",
++                        "in": "path",
++                        "required": true
++                    }
++                ],
+                 "deprecated": true,
+                 "responses": {
+                     "200": {
