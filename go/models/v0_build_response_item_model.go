@@ -54,6 +54,9 @@ type V0BuildResponseItemModel struct {
 	// is status sent
 	IsStatusSent bool `json:"is_status_sent,omitempty"`
 
+	// log format
+	LogFormat string `json:"log_format,omitempty"`
+
 	// machine type id
 	MachineTypeID *GithubComMarkbatesPopNullsString `json:"machine_type_id,omitempty"`
 

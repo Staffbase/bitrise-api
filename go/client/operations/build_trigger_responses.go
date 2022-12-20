@@ -66,7 +66,7 @@ func NewBuildTriggerCreated() *BuildTriggerCreated {
 /*
 BuildTriggerCreated describes a response with status code 201, with default header values.
 
-OK
+Created
 */
 type BuildTriggerCreated struct {
 	Payload *models.V0BuildTriggerRespModel
