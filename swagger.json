@@ -2157,8 +2157,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK",
+                    "201": {
+                        "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/v0.BuildTriggerRespModel"
                         }
@@ -5009,6 +5009,9 @@
                     }
                 ],
                 "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
                     "204": {
                         "description": "No Content"
                     },
@@ -7911,6 +7914,9 @@
                 },
                 "is_status_sent": {
                     "type": "boolean"
+                },
+                "log_format": {
+                    "type": "string"
                 },
                 "machine_type_id": {
                     "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
