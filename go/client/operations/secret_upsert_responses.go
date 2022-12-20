@@ -29,6 +29,12 @@ func (o *SecretUpsertReader) ReadResponse(response runtime.ClientResponse, consu
 			return nil, err
 		}
 		return result, nil
+	case 204:
+		result := NewSecretUpsertNoContent()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
 	case 400:
 		result := NewSecretUpsertBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -105,6 +111,57 @@ func (o *SecretUpsertCreated) String() string {
 }
 
 func (o *SecretUpsertCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	return nil
+}
+
+// NewSecretUpsertNoContent creates a SecretUpsertNoContent with default headers values
+func NewSecretUpsertNoContent() *SecretUpsertNoContent {
+	return &SecretUpsertNoContent{}
+}
+
+/*
+SecretUpsertNoContent describes a response with status code 204, with default header values.
+
+No Content
+*/
+type SecretUpsertNoContent struct {
+}
+
+// IsSuccess returns true when this secret upsert no content response has a 2xx status code
+func (o *SecretUpsertNoContent) IsSuccess() bool {
+	return true
+}
+
+// IsRedirect returns true when this secret upsert no content response has a 3xx status code
+func (o *SecretUpsertNoContent) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this secret upsert no content response has a 4xx status code
+func (o *SecretUpsertNoContent) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this secret upsert no content response has a 5xx status code
+func (o *SecretUpsertNoContent) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this secret upsert no content response a status code equal to that given
+func (o *SecretUpsertNoContent) IsCode(code int) bool {
+	return code == 204
+}
+
+func (o *SecretUpsertNoContent) Error() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertNoContent ", 204)
+}
+
+func (o *SecretUpsertNoContent) String() string {
+	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertNoContent ", 204)
+}
+
+func (o *SecretUpsertNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }

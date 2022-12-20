@@ -188,7 +188,7 @@ type ClientService interface {
 
 	SecretList(params *SecretListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretListOK, error)
 
-	SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertCreated, error)
+	SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertCreated, *SecretUpsertNoContent, error)
 
 	SecretValueGet(params *SecretValueGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretValueGetOK, error)
 
@@ -3450,7 +3450,7 @@ SecretUpsert upserts an application secret
 
 Upsert an application secret. Requires administrator level privileges to the app.
 */
-func (a *Client) SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertCreated, error) {
+func (a *Client) SecretUpsert(params *SecretUpsertParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretUpsertCreated, *SecretUpsertNoContent, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewSecretUpsertParams()
@@ -3474,15 +3474,16 @@ func (a *Client) SecretUpsert(params *SecretUpsertParams, authInfo runtime.Clien
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*SecretUpsertCreated)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *SecretUpsertCreated:
+		return value, nil, nil
+	case *SecretUpsertNoContent:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for secret-upsert: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for operations: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
