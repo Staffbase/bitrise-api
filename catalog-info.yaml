@@ -10,7 +10,7 @@ spec:
   type: openapi
   lifecycle: production
   definition:
-    $text: ./swagger_patched.json
+    $text: ./swagger.json
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component

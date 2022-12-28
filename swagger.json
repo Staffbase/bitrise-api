@@ -5572,6 +5572,15 @@
                 "summary": "Removes an active addon token of the user",
                 "operationId": "user-addon-tokens-delete",
                 "deprecated": true,
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Addon ID",
+                        "name": "addon-id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK"
