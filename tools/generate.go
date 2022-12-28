@@ -16,7 +16,9 @@ limitations under the License.
 
 package tools
 
-//go:generate gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger flatten swagger.json -o swagger_flat.json
+//go:generate gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger flatten ../swagger.json -o swagger_flat.json
 // remove tags to group all operations within a single client
 //go:generate sh -c "cat swagger_flat.json | jq '[., (.paths | map_values(.[] |= del(.tags?)) | {paths: .})] | add' > swagger_go.json"
-//go:generate gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger generate client -A bitrise-api -f swagger_go.json -t go --default-scheme=https --with-flatten=full
+//go:generate gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger generate client -A bitrise-api -f swagger_go.json -t ../go --default-scheme=https --with-flatten=full
+// cleanup
+//go:generate sh -c "rm swagger_flat.json swagger_go.json"
