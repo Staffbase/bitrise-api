@@ -13,7 +13,6 @@
 #limitations under the License.
 
 .PHONY: download deps generate build help
-CHECK_FILES?=$$(go list ./... | grep -v /vendor/)
 SWAGGER_SPEC=swagger.json
 
 help: ## Show this help.
