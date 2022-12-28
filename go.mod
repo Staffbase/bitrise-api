@@ -8,6 +8,4 @@ require (
 	github.com/go-openapi/strfmt v0.21.3
 	github.com/go-openapi/swag v0.22.3
 	github.com/go-openapi/validate v0.22.0
-	github.com/go-swagger/go-swagger v0.30.3
-	github.com/kyoh86/richgo v0.3.11
 )

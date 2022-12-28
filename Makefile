@@ -13,7 +13,6 @@
 #limitations under the License.
 
 .PHONY: download deps generate build help
-CHECK_FILES?=$$(go list ./... | grep -v /vendor/)
 SWAGGER_SPEC=swagger.json
 
 help: ## Show this help.
@@ -31,7 +30,7 @@ download: ## Download bitrise swagger specification
 	wget -q -O $(SWAGGER_SPEC) https://api-docs.bitrise.io/docs/swagger.json
 
 generate: validate ## Generate the API Go client and the JSON document for the UI.
-	go generate
+	go generate tools/generate.go
 
 validate: deps ## Check that the swagger spec is valid.
-	gobin -m -run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.3 validate $(SWAGGER_SPEC)
+	gobin -run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.3 validate $(SWAGGER_SPEC)
