@@ -16,5 +16,5 @@
 # vendor/
 /.gobincache/
 
-/swagger_patched_flat.json
-/swagger_patched_go.json
+/swagger_flat.json
+/swagger_go.json
