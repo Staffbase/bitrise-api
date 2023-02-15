@@ -22,8 +22,8 @@ type V0AppWebhookListResponseModel struct {
 	// data
 	Data []*V0AppWebhookResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0AppWebhookListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 app webhook list response model

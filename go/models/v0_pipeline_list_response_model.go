@@ -22,8 +22,8 @@ type V0PipelineListResponseModel struct {
 	// data
 	Data []*V0PipelineListResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0PipelineListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 pipeline list response model

@@ -22,8 +22,8 @@ type V0BuildListAllResponseModel struct {
 	// data
 	Data []*V0BuildListAllResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0BuildListAllResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 build list all response model

@@ -22,8 +22,8 @@ type V0ArtifactListResponseModel struct {
 	// data
 	Data []*V0ArtifactListElementResponseModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0ArtifactListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 artifact list response model

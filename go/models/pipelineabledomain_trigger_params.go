@@ -37,12 +37,6 @@ type PipelineabledomainTriggerParams struct {
 	// commit message
 	CommitMessage string `json:"commit_message,omitempty"`
 
-	// commit paths
-	CommitPaths interface{} `json:"commit_paths,omitempty"`
-
-	// diff url
-	DiffURL string `json:"diff_url,omitempty"`
-
 	// environments
 	Environments []*PipelineabledomainEnvironments `json:"environments"`
 

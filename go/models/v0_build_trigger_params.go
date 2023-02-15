@@ -18,7 +18,7 @@ import (
 // swagger:model v0.BuildTriggerParams
 type V0BuildTriggerParams struct {
 
-	// The public part of the SSH key you would like to use
+	// build params
 	BuildParams *V0BuildTriggerParamsBuildParams `json:"build_params,omitempty"`
 
 	// hook info

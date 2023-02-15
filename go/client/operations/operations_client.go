@@ -68,6 +68,10 @@ type ClientService interface {
 
 	AppNotifications(params *AppNotificationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppNotificationsOK, error)
 
+	AppRolesQuery(params *AppRolesQueryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesQueryOK, error)
+
+	AppRolesUpdate(params *AppRolesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesUpdateOK, error)
+
 	AppSetupBitriseYmlConfigGet(params *AppSetupBitriseYmlConfigGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigGetOK, error)
 
 	AppSetupBitriseYmlConfigUpdate(params *AppSetupBitriseYmlConfigUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigUpdateNoContent, error)
@@ -153,6 +157,8 @@ type ClientService interface {
 	OrgList(params *OrgListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgListOK, error)
 
 	OrgShow(params *OrgShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgShowOK, error)
+
+	OrganzationGroupsList(params *OrganzationGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganzationGroupsListOK, error)
 
 	OutgoingWebhookCreate(params *OutgoingWebhookCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OutgoingWebhookCreateOK, error)
 
@@ -989,6 +995,86 @@ func (a *Client) AppNotifications(params *AppNotificationsParams, authInfo runti
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for app-notifications: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AppRolesQuery lists group roles for an app
+*/
+func (a *Client) AppRolesQuery(params *AppRolesQueryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesQueryOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppRolesQueryParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-roles-query",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/roles/{role-name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppRolesQueryReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppRolesQueryOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-roles-query: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AppRolesUpdate replaces group roles for an app
+
+Replaces the groups for a given role on an app. Only the given groups will be present for a role on the app after this call.
+*/
+func (a *Client) AppRolesUpdate(params *AppRolesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppRolesUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-roles-update",
+		Method:             "PUT",
+		PathPattern:        "/apps/{app-slug}/roles/{role-name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppRolesUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppRolesUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-roles-update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -2745,6 +2831,47 @@ func (a *Client) OrgShow(params *OrgShowParams, authInfo runtime.ClientAuthInfoW
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for org-show: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganzationGroupsList lists organizations groups
+
+Lists the groups of an organization
+*/
+func (a *Client) OrganzationGroupsList(params *OrganzationGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganzationGroupsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganzationGroupsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "organzation-groups-list",
+		Method:             "GET",
+		PathPattern:        "/organizations/{org-slug}/groups",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganzationGroupsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganzationGroupsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for organzation-groups-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

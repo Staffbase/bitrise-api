@@ -22,8 +22,8 @@ type V0BuildCertificateListResponseModel struct {
 	// data
 	Data []*V0BuildCertificateResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0BuildCertificateListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 build certificate list response model
