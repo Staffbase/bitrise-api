@@ -1155,7 +1155,7 @@
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/v0.ProxyErrorRespModel"
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     }
                 }
@@ -2821,6 +2821,12 @@
                         "required": true
                     },
                     {
+                        "type": "string",
+                        "description": "Getting cache items created before the given parameter (RFC3339 time format, default: now)",
+                        "name": "next",
+                        "in": "query"
+                    },
+                    {
                         "type": "integer",
                         "description": "Max number of elements per page (default: 100)",
                         "name": "limit",
@@ -4040,6 +4046,12 @@
                 "parameters": [
                     {
                         "type": "string",
+                        "description": "List pipelines/standalone builds run after a given date (RFC3339 time format)",
+                        "name": "after",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "App slug",
                         "name": "app-slug",
                         "in": "path",
@@ -4047,26 +4059,14 @@
                     },
                     {
                         "type": "string",
+                        "description": "List pipelines/standalone builds run before a given date (RFC3339 time format) - was called 'next' earlier",
+                        "name": "before",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "The branch which was built",
                         "name": "branch",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The name of the workflow used for the pipeline/standalone build",
-                        "name": "workflow",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The commit message of the pipeline/standalone build",
-                        "name": "commit_message",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The event that triggered the pipeline/standalone build (push, pull-request, tag)",
-                        "name": "trigger_event_type",
                         "in": "query"
                     },
                     {
@@ -4077,7 +4077,19 @@
                     },
                     {
                         "type": "string",
-                        "description": "List pipelines/standalone builds run before a given date (RFC3339 time format)",
+                        "description": "The commit message of the pipeline/standalone build",
+                        "name": "commit_message",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Max number of elements per page (default: 10)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "List pipelines/standalone builds run before a given date (RFC3339 time format) - deprecated",
                         "name": "next",
                         "in": "query"
                     },
@@ -4088,9 +4100,15 @@
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "description": "Max number of elements per page (default: 10)",
-                        "name": "limit",
+                        "type": "string",
+                        "description": "The event that triggered the pipeline/standalone build (push, pull-request, tag)",
+                        "name": "trigger_event_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The name of the workflow used for the pipeline/standalone build",
+                        "name": "workflow",
                         "in": "query"
                     }
                 ],
@@ -4897,6 +4915,153 @@
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/roles/{role-name}": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "application"
+                ],
+                "summary": "Lists group roles for an app",
+                "operationId": "app-roles-query",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "slug of the app",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "name of the role being queried",
+                        "name": "role-name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "list of group slugs",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Replaces the groups for a given role on an app. Only the given groups will be present for a role on the app after this call.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "application"
+                ],
+                "summary": "Replaces group roles for an app",
+                "operationId": "app-roles-update",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "slug of the app",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "name of the role being modified",
+                        "name": "role-name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "list of group slugs",
+                        "name": "groups",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "list of group slugs",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     }
                 }
@@ -5868,6 +6033,65 @@
                 }
             }
         },
+        "/organizations/{org-slug}/groups": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Lists the groups of an organization",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "organizations"
+                ],
+                "summary": "List organizations groups",
+                "operationId": "organzation-groups-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "slug of the organization",
+                        "name": "org-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "list of groups",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "allOf": [
+                                    {
+                                        "type": "object"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "slug": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
         "/organizations/{organization-slug}/addons": {
             "get": {
                 "security": [
@@ -6485,7 +6709,7 @@
                 }
             }
         },
-        "github.com_gobuffalo_nulls.Int64": {
+        "github_com_gobuffalo_nulls.Int64": {
             "type": "object",
             "properties": {
                 "int64": {
@@ -6497,7 +6721,7 @@
                 }
             }
         },
-        "github.com_gobuffalo_nulls.String": {
+        "github_com_gobuffalo_nulls.String": {
             "type": "object",
             "properties": {
                 "string": {
@@ -6509,7 +6733,7 @@
                 }
             }
         },
-        "github.com_markbates_pop_nulls.Int64": {
+        "github_com_markbates_pop_nulls.Int64": {
             "type": "object",
             "properties": {
                 "int64": {
@@ -6521,7 +6745,7 @@
                 }
             }
         },
-        "github.com_markbates_pop_nulls.String": {
+        "github_com_markbates_pop_nulls.String": {
             "type": "object",
             "properties": {
                 "string": {
@@ -6564,10 +6788,6 @@
                 "commit_message": {
                     "type": "string"
                 },
-                "commit_paths": {},
-                "diff_url": {
-                    "type": "string"
-                },
                 "environments": {
                     "type": "array",
                     "items": {
@@ -6585,6 +6805,14 @@
                     "type": "string"
                 },
                 "tag": {
+                    "type": "string"
+                }
+            }
+        },
+        "service.ProxyErrorRespModel": {
+            "type": "object",
+            "properties": {
+                "error_msg": {
                     "type": "string"
                 }
             }
@@ -6618,13 +6846,13 @@
                     "type": "string"
                 },
                 "description": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "event_icon": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "event_stype": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repository_avatar_icon_url": {
                     "type": "string"
@@ -6636,10 +6864,10 @@
                     "type": "string"
                 },
                 "target_path_string": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "title": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -6647,7 +6875,7 @@
             "type": "object",
             "properties": {
                 "icon": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "plan": {
                     "$ref": "#/definitions/addons.Plan"
@@ -6863,7 +7091,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -6903,7 +7135,7 @@
             "type": "object",
             "properties": {
                 "avatar_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "is_disabled": {
                     "type": "boolean"
@@ -6918,19 +7150,19 @@
                     "$ref": "#/definitions/v0.OwnerAccountResponseModel"
                 },
                 "project_type": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "provider": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repo_owner": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repo_slug": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repo_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "slug": {
                     "type": "string"
@@ -7157,7 +7389,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7300,7 +7536,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7399,7 +7639,7 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "file_size_bytes": {
                     "type": "integer"
@@ -7417,7 +7657,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -7432,7 +7672,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7446,7 +7690,7 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "expiring_download_url": {
                     "type": "string"
@@ -7470,7 +7714,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -7566,7 +7810,11 @@
             "properties": {
                 "location": {
                     "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "type": "string"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/website.BitriseYMLLocation"
+                        }
+                    ]
                 }
             }
         },
@@ -7575,7 +7823,11 @@
             "properties": {
                 "location": {
                     "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "type": "string",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/website.BitriseYMLLocation"
+                        }
+                    ],
                     "example": "repository"
                 }
             }
@@ -7629,7 +7881,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7709,25 +7965,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -7742,7 +7998,7 @@
                     "type": "boolean"
                 },
                 "machine_type_id": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -7754,10 +8010,10 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repository": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
@@ -7766,7 +8022,7 @@
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -7778,13 +8034,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -7802,7 +8058,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7817,7 +8077,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7889,25 +8153,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -7928,7 +8192,7 @@
                     "type": "string"
                 },
                 "machine_type_id": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -7943,16 +8207,16 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "slug": {
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -7964,13 +8228,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -7990,7 +8254,11 @@
             "properties": {
                 "build_params": {
                     "description": "The public part of the SSH key you would like to use",
-                    "$ref": "#/definitions/v0.BuildTriggerParamsBuildParams"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.BuildTriggerParamsBuildParams"
+                        }
+                    ]
                 },
                 "hook_info": {
                     "$ref": "#/definitions/v0.BuildTriggerParamsHookInfo"
@@ -8230,7 +8498,7 @@
             "type": "object",
             "properties": {
                 "avatar_icon_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "concurrency_count": {
                     "type": "integer"
@@ -8379,16 +8647,16 @@
             "type": "object",
             "properties": {
                 "branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "finished_at": {
                     "type": "string"
@@ -8406,7 +8674,7 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "repository": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
@@ -8421,13 +8689,13 @@
                     "type": "integer"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8452,19 +8720,19 @@
             "type": "object",
             "properties": {
                 "branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.Int64"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.Int64"
                 },
                 "finished_at": {
                     "type": "string"
@@ -8482,7 +8750,7 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "slug": {
                     "type": "string"
@@ -8494,7 +8762,7 @@
                     "type": "integer"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "trigger_params": {
                     "$ref": "#/definitions/pipelineabledomain.TriggerParams"
@@ -8503,7 +8771,7 @@
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8521,7 +8789,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -8675,10 +8947,6 @@
                 "commit_message": {
                     "type": "string"
                 },
-                "commit_paths": {},
-                "diff_url": {
-                    "type": "string"
-                },
                 "environments": {
                     "type": "array",
                     "items": {
@@ -8742,7 +9010,7 @@
                     "type": "string"
                 },
                 "price": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 }
             }
         },
@@ -8780,7 +9048,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -8874,7 +9146,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -8927,14 +9203,6 @@
                 },
                 "upload_file_size": {
                     "type": "integer"
-                }
-            }
-        },
-        "v0.ProxyErrorRespModel": {
-            "type": "object",
-            "properties": {
-                "error_msg": {
-                    "type": "string"
                 }
             }
         },
@@ -9070,16 +9338,16 @@
                     "type": "string"
                 },
                 "response_body": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "response_headers": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "response_http_status": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "response_seconds": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "slug": {
                     "type": "string"
@@ -9104,6 +9372,17 @@
                     "type": "string"
                 }
             }
+        },
+        "website.BitriseYMLLocation": {
+            "type": "string",
+            "enum": [
+                "bitrise.io",
+                "repository"
+            ],
+            "x-enum-varnames": [
+                "LocationBitriseIo",
+                "LocationRepository"
+            ]
         }
     },
     "securityDefinitions": {
