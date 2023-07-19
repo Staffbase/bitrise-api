@@ -12,25 +12,22 @@
 #See the License for the specific language governing permissions and
 #limitations under the License.
 
-.PHONY: download deps generate build help
+.PHONY: download generate build help
 SWAGGER_SPEC=swagger.json
 
 help: ## Show this help.
 		@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {sub("\\\\n",sprintf("\n%22c"," "), $$2);printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
-all: download deps generate build ## Validate the swagger spec, generate the code and build it.
+all: download generate build ## Validate the swagger spec, generate the code and build it.
 
 build: ## Build the API Go client.
 	go build ./go/...
-
-deps: ## Download dependencies.
-	go install github.com/myitcv/gobin@v0.0.14 && go mod download
 
 download: ## Download bitrise swagger specification
 	wget -q -O $(SWAGGER_SPEC) https://api-docs.bitrise.io/docs/swagger.json
 
 generate: validate ## Generate the API Go client and the JSON document for the UI.
-	go generate tools/generate.go
+	go run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.5 generate client -A bitrise-api -f $(SWAGGER_SPEC) -t go --default-scheme=https --with-flatten=minimal --skip-tag-packages
 
-validate: deps ## Check that the swagger spec is valid.
-	gobin -run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.3 validate $(SWAGGER_SPEC)
+validate: ## Check that the swagger spec is valid.
+	go run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.5 validate $(SWAGGER_SPEC)
