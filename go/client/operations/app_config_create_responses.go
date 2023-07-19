@@ -319,7 +319,7 @@ AppConfigCreateInternalServerError describes a response with status code 500, wi
 Internal Server Error
 */
 type AppConfigCreateInternalServerError struct {
-	Payload *models.V0ProxyErrorRespModel
+	Payload *models.ServiceProxyErrorRespModel
 }
 
 // IsSuccess returns true when this app config create internal server error response has a 2xx status code
@@ -355,13 +355,13 @@ func (o *AppConfigCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *AppConfigCreateInternalServerError) GetPayload() *models.V0ProxyErrorRespModel {
+func (o *AppConfigCreateInternalServerError) GetPayload() *models.ServiceProxyErrorRespModel {
 	return o.Payload
 }
 
 func (o *AppConfigCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.V0ProxyErrorRespModel)
+	o.Payload = new(models.ServiceProxyErrorRespModel)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -30,6 +30,9 @@ type V0PipelineListAllResponseItemModel struct {
 	// commit message
 	CommitMessage *GithubComGobuffaloNullsString `json:"commit_message,omitempty"`
 
+	// credit cost
+	CreditCost *GithubComGobuffaloNullsInt64 `json:"credit_cost,omitempty"`
+
 	// finished at
 	FinishedAt string `json:"finished_at,omitempty"`
 
@@ -86,6 +89,10 @@ func (m *V0PipelineListAllResponseItemModel) Validate(formats strfmt.Registry) e
 	}
 
 	if err := m.validateCommitMessage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCreditCost(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -160,6 +167,25 @@ func (m *V0PipelineListAllResponseItemModel) validateCommitMessage(formats strfm
 				return ve.ValidateName("commit_message")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("commit_message")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0PipelineListAllResponseItemModel) validateCreditCost(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreditCost) { // not required
+		return nil
+	}
+
+	if m.CreditCost != nil {
+		if err := m.CreditCost.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("credit_cost")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credit_cost")
 			}
 			return err
 		}
@@ -260,6 +286,10 @@ func (m *V0PipelineListAllResponseItemModel) ContextValidate(ctx context.Context
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCreditCost(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidatePullRequestTargetBranch(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -322,6 +352,22 @@ func (m *V0PipelineListAllResponseItemModel) contextValidateCommitMessage(ctx co
 				return ve.ValidateName("commit_message")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("commit_message")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0PipelineListAllResponseItemModel) contextValidateCreditCost(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CreditCost != nil {
+		if err := m.CreditCost.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("credit_cost")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credit_cost")
 			}
 			return err
 		}

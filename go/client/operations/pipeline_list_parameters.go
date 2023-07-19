@@ -62,11 +62,23 @@ PipelineListParams contains all the parameters to send to the API endpoint
 */
 type PipelineListParams struct {
 
+	/* After.
+
+	   List pipelines/standalone builds run after a given date (RFC3339 time format)
+	*/
+	After *string
+
 	/* AppSlug.
 
 	   App slug
 	*/
 	AppSlug string
+
+	/* Before.
+
+	   List pipelines/standalone builds run before a given date (RFC3339 time format) - was called 'next' earlier
+	*/
+	Before *string
 
 	/* Branch.
 
@@ -94,7 +106,7 @@ type PipelineListParams struct {
 
 	/* Next.
 
-	   List pipelines/standalone builds run before a given date (RFC3339 time format)
+	   List pipelines/standalone builds run before a given date (RFC3339 time format) - deprecated
 	*/
 	Next *string
 
@@ -169,6 +181,17 @@ func (o *PipelineListParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithAfter adds the after to the pipeline list params
+func (o *PipelineListParams) WithAfter(after *string) *PipelineListParams {
+	o.SetAfter(after)
+	return o
+}
+
+// SetAfter adds the after to the pipeline list params
+func (o *PipelineListParams) SetAfter(after *string) {
+	o.After = after
+}
+
 // WithAppSlug adds the appSlug to the pipeline list params
 func (o *PipelineListParams) WithAppSlug(appSlug string) *PipelineListParams {
 	o.SetAppSlug(appSlug)
@@ -178,6 +201,17 @@ func (o *PipelineListParams) WithAppSlug(appSlug string) *PipelineListParams {
 // SetAppSlug adds the appSlug to the pipeline list params
 func (o *PipelineListParams) SetAppSlug(appSlug string) {
 	o.AppSlug = appSlug
+}
+
+// WithBefore adds the before to the pipeline list params
+func (o *PipelineListParams) WithBefore(before *string) *PipelineListParams {
+	o.SetBefore(before)
+	return o
+}
+
+// SetBefore adds the before to the pipeline list params
+func (o *PipelineListParams) SetBefore(before *string) {
+	o.Before = before
 }
 
 // WithBranch adds the branch to the pipeline list params
@@ -276,9 +310,43 @@ func (o *PipelineListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 	}
 	var res []error
 
+	if o.After != nil {
+
+		// query param after
+		var qrAfter string
+
+		if o.After != nil {
+			qrAfter = *o.After
+		}
+		qAfter := qrAfter
+		if qAfter != "" {
+
+			if err := r.SetQueryParam("after", qAfter); err != nil {
+				return err
+			}
+		}
+	}
+
 	// path param app-slug
 	if err := r.SetPathParam("app-slug", o.AppSlug); err != nil {
 		return err
+	}
+
+	if o.Before != nil {
+
+		// query param before
+		var qrBefore string
+
+		if o.Before != nil {
+			qrBefore = *o.Before
+		}
+		qBefore := qrBefore
+		if qBefore != "" {
+
+			if err := r.SetQueryParam("before", qBefore); err != nil {
+				return err
+			}
+		}
 	}
 
 	if o.Branch != nil {

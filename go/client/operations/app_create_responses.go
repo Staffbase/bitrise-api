@@ -132,7 +132,7 @@ AppCreateBadRequest describes a response with status code 400, with default head
 Bad Request
 */
 type AppCreateBadRequest struct {
-	Payload *models.ServiceStandardErrorRespModel
+	Payload *models.ServiceProxyErrorRespModel
 }
 
 // IsSuccess returns true when this app create bad request response has a 2xx status code
@@ -168,13 +168,13 @@ func (o *AppCreateBadRequest) String() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateBadRequest  %+v", 400, o.Payload)
 }
 
-func (o *AppCreateBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
+func (o *AppCreateBadRequest) GetPayload() *models.ServiceProxyErrorRespModel {
 	return o.Payload
 }
 
 func (o *AppCreateBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ServiceStandardErrorRespModel)
+	o.Payload = new(models.ServiceProxyErrorRespModel)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -195,7 +195,7 @@ AppCreateUnauthorized describes a response with status code 401, with default he
 Unauthorized
 */
 type AppCreateUnauthorized struct {
-	Payload *models.ServiceStandardErrorRespModel
+	Payload *models.ServiceProxyErrorRespModel
 }
 
 // IsSuccess returns true when this app create unauthorized response has a 2xx status code
@@ -231,13 +231,13 @@ func (o *AppCreateUnauthorized) String() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateUnauthorized  %+v", 401, o.Payload)
 }
 
-func (o *AppCreateUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
+func (o *AppCreateUnauthorized) GetPayload() *models.ServiceProxyErrorRespModel {
 	return o.Payload
 }
 
 func (o *AppCreateUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ServiceStandardErrorRespModel)
+	o.Payload = new(models.ServiceProxyErrorRespModel)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -258,7 +258,7 @@ AppCreateNotFound describes a response with status code 404, with default header
 Not Found
 */
 type AppCreateNotFound struct {
-	Payload *models.ServiceStandardErrorRespModel
+	Payload *models.ServiceProxyErrorRespModel
 }
 
 // IsSuccess returns true when this app create not found response has a 2xx status code
@@ -294,13 +294,13 @@ func (o *AppCreateNotFound) String() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateNotFound  %+v", 404, o.Payload)
 }
 
-func (o *AppCreateNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
+func (o *AppCreateNotFound) GetPayload() *models.ServiceProxyErrorRespModel {
 	return o.Payload
 }
 
 func (o *AppCreateNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ServiceStandardErrorRespModel)
+	o.Payload = new(models.ServiceProxyErrorRespModel)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -321,7 +321,7 @@ AppCreateInternalServerError describes a response with status code 500, with def
 Internal Server Error
 */
 type AppCreateInternalServerError struct {
-	Payload *models.ServiceStandardErrorRespModel
+	Payload *models.ServiceProxyErrorRespModel
 }
 
 // IsSuccess returns true when this app create internal server error response has a 2xx status code
@@ -357,13 +357,13 @@ func (o *AppCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /apps/register][%d] appCreateInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *AppCreateInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {
+func (o *AppCreateInternalServerError) GetPayload() *models.ServiceProxyErrorRespModel {
 	return o.Payload
 }
 
 func (o *AppCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.ServiceStandardErrorRespModel)
+	o.Payload = new(models.ServiceProxyErrorRespModel)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

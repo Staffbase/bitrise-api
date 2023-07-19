@@ -22,8 +22,8 @@ type V0ArchivedBuildListResponseModel struct {
 	// data
 	Data []*V0ArchivedBuildResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0ArchivedBuildListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 archived build list response model

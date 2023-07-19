@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -23,6 +24,9 @@ type V0PipelineListResponseItemModel struct {
 
 	// build number
 	BuildNumber int64 `json:"build_number,omitempty"`
+
+	// build tool invocations
+	BuildToolInvocations []*PipelineabledomainBuildToolInvocation `json:"build_tool_invocations"`
 
 	// commit hash
 	CommitHash *GithubComGobuffaloNullsString `json:"commit_hash,omitempty"`
@@ -44,6 +48,9 @@ type V0PipelineListResponseItemModel struct {
 
 	// is processed
 	IsProcessed bool `json:"is_processed,omitempty"`
+
+	// local config
+	LocalConfig *PipelineabledomainLocalConfig `json:"local_config,omitempty"`
 
 	// pull request id
 	PullRequestID int64 `json:"pull_request_id,omitempty"`
@@ -84,6 +91,10 @@ func (m *V0PipelineListResponseItemModel) Validate(formats strfmt.Registry) erro
 		res = append(res, err)
 	}
 
+	if err := m.validateBuildToolInvocations(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateCommitHash(formats); err != nil {
 		res = append(res, err)
 	}
@@ -93,6 +104,10 @@ func (m *V0PipelineListResponseItemModel) Validate(formats strfmt.Registry) erro
 	}
 
 	if err := m.validateCreditCost(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLocalConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -132,6 +147,32 @@ func (m *V0PipelineListResponseItemModel) validateBranch(formats strfmt.Registry
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *V0PipelineListResponseItemModel) validateBuildToolInvocations(formats strfmt.Registry) error {
+	if swag.IsZero(m.BuildToolInvocations) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.BuildToolInvocations); i++ {
+		if swag.IsZero(m.BuildToolInvocations[i]) { // not required
+			continue
+		}
+
+		if m.BuildToolInvocations[i] != nil {
+			if err := m.BuildToolInvocations[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("build_tool_invocations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("build_tool_invocations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -186,6 +227,25 @@ func (m *V0PipelineListResponseItemModel) validateCreditCost(formats strfmt.Regi
 				return ve.ValidateName("credit_cost")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("credit_cost")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0PipelineListResponseItemModel) validateLocalConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.LocalConfig) { // not required
+		return nil
+	}
+
+	if m.LocalConfig != nil {
+		if err := m.LocalConfig.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("local_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("local_config")
 			}
 			return err
 		}
@@ -278,6 +338,10 @@ func (m *V0PipelineListResponseItemModel) ContextValidate(ctx context.Context, f
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateBuildToolInvocations(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCommitHash(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -287,6 +351,10 @@ func (m *V0PipelineListResponseItemModel) ContextValidate(ctx context.Context, f
 	}
 
 	if err := m.contextValidateCreditCost(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateLocalConfig(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -323,6 +391,26 @@ func (m *V0PipelineListResponseItemModel) contextValidateBranch(ctx context.Cont
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *V0PipelineListResponseItemModel) contextValidateBuildToolInvocations(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.BuildToolInvocations); i++ {
+
+		if m.BuildToolInvocations[i] != nil {
+			if err := m.BuildToolInvocations[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("build_tool_invocations" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("build_tool_invocations" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -368,6 +456,22 @@ func (m *V0PipelineListResponseItemModel) contextValidateCreditCost(ctx context.
 				return ve.ValidateName("credit_cost")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("credit_cost")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0PipelineListResponseItemModel) contextValidateLocalConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.LocalConfig != nil {
+		if err := m.LocalConfig.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("local_config")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("local_config")
 			}
 			return err
 		}

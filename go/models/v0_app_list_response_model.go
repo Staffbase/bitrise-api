@@ -22,8 +22,8 @@ type V0AppListResponseModel struct {
 	// data
 	Data []*V0AppResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0AppListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 app list response model

@@ -22,8 +22,8 @@ type V0ProvisionProfileListResponseModel struct {
 	// data
 	Data []*V0ProvisionProfileResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0ProvisionProfileListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 provision profile list response model

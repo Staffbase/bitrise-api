@@ -22,8 +22,8 @@ type V0ProjectFileStorageListResponseModel struct {
 	// data
 	Data []*V0ProjectFileStorageResponseItemModel `json:"data"`
 
-	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	// paging
+	Paging *V0ProjectFileStorageListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 project file storage list response model
