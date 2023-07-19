@@ -54,7 +54,7 @@ func (o *BuildCertificateConfirmReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/build-certificates/{build-certificate-slug}/uploaded] build-certificate-confirm", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildCertificateConfirmOK) IsServerError() bool {
 // IsCode returns true when this build certificate confirm o k response a status code equal to that given
 func (o *BuildCertificateConfirmOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build certificate confirm o k response
+func (o *BuildCertificateConfirmOK) Code() int {
+	return 200
 }
 
 func (o *BuildCertificateConfirmOK) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildCertificateConfirmBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build certificate confirm bad request response
+func (o *BuildCertificateConfirmBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildCertificateConfirmBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates/{build-certificate-slug}/uploaded][%d] buildCertificateConfirmBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildCertificateConfirmUnauthorized) IsServerError() bool {
 // IsCode returns true when this build certificate confirm unauthorized response a status code equal to that given
 func (o *BuildCertificateConfirmUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build certificate confirm unauthorized response
+func (o *BuildCertificateConfirmUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildCertificateConfirmUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildCertificateConfirmNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build certificate confirm not found response
+func (o *BuildCertificateConfirmNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildCertificateConfirmNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates/{build-certificate-slug}/uploaded][%d] buildCertificateConfirmNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildCertificateConfirmInternalServerError) IsServerError() bool {
 // IsCode returns true when this build certificate confirm internal server error response a status code equal to that given
 func (o *BuildCertificateConfirmInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build certificate confirm internal server error response
+func (o *BuildCertificateConfirmInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildCertificateConfirmInternalServerError) Error() string {

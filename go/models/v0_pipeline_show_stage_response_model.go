@@ -88,6 +88,11 @@ func (m *V0PipelineShowStageResponseModel) contextValidateWorkflows(ctx context.
 	for i := 0; i < len(m.Workflows); i++ {
 
 		if m.Workflows[i] != nil {
+
+			if swag.IsZero(m.Workflows[i]) { // not required
+				return nil
+			}
+
 			if err := m.Workflows[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("workflows" + "." + strconv.Itoa(i))

@@ -54,7 +54,7 @@ func (o *CacheListReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/cache-items] cache-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *CacheListOK) IsServerError() bool {
 // IsCode returns true when this cache list o k response a status code equal to that given
 func (o *CacheListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the cache list o k response
+func (o *CacheListOK) Code() int {
+	return 200
 }
 
 func (o *CacheListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *CacheListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cache list bad request response
+func (o *CacheListBadRequest) Code() int {
+	return 400
+}
+
 func (o *CacheListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/cache-items][%d] cacheListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *CacheListUnauthorized) IsServerError() bool {
 // IsCode returns true when this cache list unauthorized response a status code equal to that given
 func (o *CacheListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cache list unauthorized response
+func (o *CacheListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CacheListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *CacheListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cache list not found response
+func (o *CacheListNotFound) Code() int {
+	return 404
+}
+
 func (o *CacheListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/cache-items][%d] cacheListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *CacheListInternalServerError) IsServerError() bool {
 // IsCode returns true when this cache list internal server error response a status code equal to that given
 func (o *CacheListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cache list internal server error response
+func (o *CacheListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CacheListInternalServerError) Error() string {

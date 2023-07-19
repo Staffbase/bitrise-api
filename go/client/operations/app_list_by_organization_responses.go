@@ -54,7 +54,7 @@ func (o *AppListByOrganizationReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /organizations/{org-slug}/apps] app-list-by-organization", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppListByOrganizationOK) IsServerError() bool {
 // IsCode returns true when this app list by organization o k response a status code equal to that given
 func (o *AppListByOrganizationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app list by organization o k response
+func (o *AppListByOrganizationOK) Code() int {
+	return 200
 }
 
 func (o *AppListByOrganizationOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppListByOrganizationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app list by organization bad request response
+func (o *AppListByOrganizationBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppListByOrganizationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}/apps][%d] appListByOrganizationBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppListByOrganizationUnauthorized) IsServerError() bool {
 // IsCode returns true when this app list by organization unauthorized response a status code equal to that given
 func (o *AppListByOrganizationUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app list by organization unauthorized response
+func (o *AppListByOrganizationUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppListByOrganizationUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppListByOrganizationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app list by organization not found response
+func (o *AppListByOrganizationNotFound) Code() int {
+	return 404
+}
+
 func (o *AppListByOrganizationNotFound) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}/apps][%d] appListByOrganizationNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppListByOrganizationInternalServerError) IsServerError() bool {
 // IsCode returns true when this app list by organization internal server error response a status code equal to that given
 func (o *AppListByOrganizationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app list by organization internal server error response
+func (o *AppListByOrganizationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppListByOrganizationInternalServerError) Error() string {

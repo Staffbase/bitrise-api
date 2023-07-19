@@ -54,7 +54,7 @@ func (o *GenericProjectFileUpdateReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}] generic-project-file-update", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GenericProjectFileUpdateOK) IsServerError() bool {
 // IsCode returns true when this generic project file update o k response a status code equal to that given
 func (o *GenericProjectFileUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the generic project file update o k response
+func (o *GenericProjectFileUpdateOK) Code() int {
+	return 200
 }
 
 func (o *GenericProjectFileUpdateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *GenericProjectFileUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the generic project file update bad request response
+func (o *GenericProjectFileUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *GenericProjectFileUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *GenericProjectFileUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this generic project file update unauthorized response a status code equal to that given
 func (o *GenericProjectFileUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the generic project file update unauthorized response
+func (o *GenericProjectFileUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GenericProjectFileUpdateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *GenericProjectFileUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the generic project file update not found response
+func (o *GenericProjectFileUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *GenericProjectFileUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *GenericProjectFileUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this generic project file update internal server error response a status code equal to that given
 func (o *GenericProjectFileUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the generic project file update internal server error response
+func (o *GenericProjectFileUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GenericProjectFileUpdateInternalServerError) Error() string {

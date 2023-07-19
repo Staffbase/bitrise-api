@@ -54,7 +54,7 @@ func (o *PipelineListAllReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /pipelines] pipeline-list-all", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *PipelineListAllOK) IsServerError() bool {
 // IsCode returns true when this pipeline list all o k response a status code equal to that given
 func (o *PipelineListAllOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the pipeline list all o k response
+func (o *PipelineListAllOK) Code() int {
+	return 200
 }
 
 func (o *PipelineListAllOK) Error() string {
@@ -160,6 +165,11 @@ func (o *PipelineListAllBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the pipeline list all bad request response
+func (o *PipelineListAllBadRequest) Code() int {
+	return 400
+}
+
 func (o *PipelineListAllBadRequest) Error() string {
 	return fmt.Sprintf("[GET /pipelines][%d] pipelineListAllBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *PipelineListAllUnauthorized) IsServerError() bool {
 // IsCode returns true when this pipeline list all unauthorized response a status code equal to that given
 func (o *PipelineListAllUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the pipeline list all unauthorized response
+func (o *PipelineListAllUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PipelineListAllUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *PipelineListAllNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pipeline list all not found response
+func (o *PipelineListAllNotFound) Code() int {
+	return 404
+}
+
 func (o *PipelineListAllNotFound) Error() string {
 	return fmt.Sprintf("[GET /pipelines][%d] pipelineListAllNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PipelineListAllInternalServerError) IsServerError() bool {
 // IsCode returns true when this pipeline list all internal server error response a status code equal to that given
 func (o *PipelineListAllInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pipeline list all internal server error response
+func (o *PipelineListAllInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PipelineListAllInternalServerError) Error() string {

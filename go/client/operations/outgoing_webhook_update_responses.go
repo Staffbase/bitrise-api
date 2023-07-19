@@ -54,7 +54,7 @@ func (o *OutgoingWebhookUpdateReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}] outgoing-webhook-update", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *OutgoingWebhookUpdateOK) IsServerError() bool {
 // IsCode returns true when this outgoing webhook update o k response a status code equal to that given
 func (o *OutgoingWebhookUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the outgoing webhook update o k response
+func (o *OutgoingWebhookUpdateOK) Code() int {
+	return 200
 }
 
 func (o *OutgoingWebhookUpdateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *OutgoingWebhookUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the outgoing webhook update bad request response
+func (o *OutgoingWebhookUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *OutgoingWebhookUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *OutgoingWebhookUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this outgoing webhook update unauthorized response a status code equal to that given
 func (o *OutgoingWebhookUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the outgoing webhook update unauthorized response
+func (o *OutgoingWebhookUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OutgoingWebhookUpdateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *OutgoingWebhookUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the outgoing webhook update not found response
+func (o *OutgoingWebhookUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *OutgoingWebhookUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *OutgoingWebhookUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this outgoing webhook update internal server error response a status code equal to that given
 func (o *OutgoingWebhookUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the outgoing webhook update internal server error response
+func (o *OutgoingWebhookUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OutgoingWebhookUpdateInternalServerError) Error() string {

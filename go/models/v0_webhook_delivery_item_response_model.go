@@ -180,6 +180,11 @@ func (m *V0WebhookDeliveryItemResponseModel) ContextValidate(ctx context.Context
 func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseBody(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResponseBody != nil {
+
+		if swag.IsZero(m.ResponseBody) { // not required
+			return nil
+		}
+
 		if err := m.ResponseBody.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_body")
@@ -196,6 +201,11 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseBody(ctx con
 func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHeaders(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResponseHeaders != nil {
+
+		if swag.IsZero(m.ResponseHeaders) { // not required
+			return nil
+		}
+
 		if err := m.ResponseHeaders.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_headers")
@@ -212,6 +222,11 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHeaders(ctx 
 func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHTTPStatus(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResponseHTTPStatus != nil {
+
+		if swag.IsZero(m.ResponseHTTPStatus) { // not required
+			return nil
+		}
+
 		if err := m.ResponseHTTPStatus.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_http_status")
@@ -228,6 +243,11 @@ func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseHTTPStatus(c
 func (m *V0WebhookDeliveryItemResponseModel) contextValidateResponseSeconds(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ResponseSeconds != nil {
+
+		if swag.IsZero(m.ResponseSeconds) { // not required
+			return nil
+		}
+
 		if err := m.ResponseSeconds.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("response_seconds")

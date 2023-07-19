@@ -54,7 +54,7 @@ func (o *AddonsListReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /addons] addons-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AddonsListOK) IsServerError() bool {
 // IsCode returns true when this addons list o k response a status code equal to that given
 func (o *AddonsListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the addons list o k response
+func (o *AddonsListOK) Code() int {
+	return 200
 }
 
 func (o *AddonsListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AddonsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the addons list bad request response
+func (o *AddonsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddonsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /addons][%d] addonsListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AddonsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this addons list unauthorized response a status code equal to that given
 func (o *AddonsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the addons list unauthorized response
+func (o *AddonsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AddonsListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AddonsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the addons list not found response
+func (o *AddonsListNotFound) Code() int {
+	return 404
+}
+
 func (o *AddonsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /addons][%d] addonsListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AddonsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this addons list internal server error response a status code equal to that given
 func (o *AddonsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the addons list internal server error response
+func (o *AddonsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddonsListInternalServerError) Error() string {

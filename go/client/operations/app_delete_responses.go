@@ -54,7 +54,7 @@ func (o *AppDeleteReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}] app-delete", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppDeleteOK) IsServerError() bool {
 // IsCode returns true when this app delete o k response a status code equal to that given
 func (o *AppDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app delete o k response
+func (o *AppDeleteOK) Code() int {
+	return 200
 }
 
 func (o *AppDeleteOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app delete bad request response
+func (o *AppDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}][%d] appDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this app delete unauthorized response a status code equal to that given
 func (o *AppDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app delete unauthorized response
+func (o *AppDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppDeleteUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app delete not found response
+func (o *AppDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *AppDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}][%d] appDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this app delete internal server error response a status code equal to that given
 func (o *AppDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app delete internal server error response
+func (o *AppDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppDeleteInternalServerError) Error() string {

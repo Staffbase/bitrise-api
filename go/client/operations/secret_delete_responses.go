@@ -54,7 +54,7 @@ func (o *SecretDeleteReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/secrets/{secret-name}] secret-delete", response, response.Code())
 	}
 }
 
@@ -94,6 +94,11 @@ func (o *SecretDeleteNoContent) IsServerError() bool {
 // IsCode returns true when this secret delete no content response a status code equal to that given
 func (o *SecretDeleteNoContent) IsCode(code int) bool {
 	return code == 204
+}
+
+// Code gets the status code for the secret delete no content response
+func (o *SecretDeleteNoContent) Code() int {
+	return 204
 }
 
 func (o *SecretDeleteNoContent) Error() string {
@@ -146,6 +151,11 @@ func (o *SecretDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this secret delete bad request response a status code equal to that given
 func (o *SecretDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the secret delete bad request response
+func (o *SecretDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *SecretDeleteBadRequest) Error() string {
@@ -211,6 +221,11 @@ func (o *SecretDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the secret delete unauthorized response
+func (o *SecretDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SecretDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/secrets/{secret-name}][%d] secretDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -274,6 +289,11 @@ func (o *SecretDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the secret delete not found response
+func (o *SecretDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *SecretDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/secrets/{secret-name}][%d] secretDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -335,6 +355,11 @@ func (o *SecretDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this secret delete internal server error response a status code equal to that given
 func (o *SecretDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the secret delete internal server error response
+func (o *SecretDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecretDeleteInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *ProvisioningProfileDeleteReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}] provisioning-profile-delete", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ProvisioningProfileDeleteOK) IsServerError() bool {
 // IsCode returns true when this provisioning profile delete o k response a status code equal to that given
 func (o *ProvisioningProfileDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the provisioning profile delete o k response
+func (o *ProvisioningProfileDeleteOK) Code() int {
+	return 200
 }
 
 func (o *ProvisioningProfileDeleteOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ProvisioningProfileDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the provisioning profile delete bad request response
+func (o *ProvisioningProfileDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProvisioningProfileDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ProvisioningProfileDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this provisioning profile delete unauthorized response a status code equal to that given
 func (o *ProvisioningProfileDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the provisioning profile delete unauthorized response
+func (o *ProvisioningProfileDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProvisioningProfileDeleteUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ProvisioningProfileDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the provisioning profile delete not found response
+func (o *ProvisioningProfileDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ProvisioningProfileDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ProvisioningProfileDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this provisioning profile delete internal server error response a status code equal to that given
 func (o *ProvisioningProfileDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the provisioning profile delete internal server error response
+func (o *ProvisioningProfileDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProvisioningProfileDeleteInternalServerError) Error() string {

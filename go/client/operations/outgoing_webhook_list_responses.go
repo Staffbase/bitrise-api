@@ -48,7 +48,7 @@ func (o *OutgoingWebhookListReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/outgoing-webhooks] outgoing-webhook-list", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *OutgoingWebhookListOK) IsServerError() bool {
 // IsCode returns true when this outgoing webhook list o k response a status code equal to that given
 func (o *OutgoingWebhookListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the outgoing webhook list o k response
+func (o *OutgoingWebhookListOK) Code() int {
+	return 200
 }
 
 func (o *OutgoingWebhookListOK) Error() string {
@@ -154,6 +159,11 @@ func (o *OutgoingWebhookListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the outgoing webhook list bad request response
+func (o *OutgoingWebhookListBadRequest) Code() int {
+	return 400
+}
+
 func (o *OutgoingWebhookListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/outgoing-webhooks][%d] outgoingWebhookListBadRequest  %+v", 400, o.Payload)
 }
@@ -217,6 +227,11 @@ func (o *OutgoingWebhookListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the outgoing webhook list unauthorized response
+func (o *OutgoingWebhookListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *OutgoingWebhookListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/outgoing-webhooks][%d] outgoingWebhookListUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *OutgoingWebhookListInternalServerError) IsServerError() bool {
 // IsCode returns true when this outgoing webhook list internal server error response a status code equal to that given
 func (o *OutgoingWebhookListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the outgoing webhook list internal server error response
+func (o *OutgoingWebhookListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OutgoingWebhookListInternalServerError) Error() string {

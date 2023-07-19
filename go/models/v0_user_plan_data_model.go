@@ -105,6 +105,11 @@ func (m *V0UserPlanDataModel) ContextValidate(ctx context.Context, formats strfm
 func (m *V0UserPlanDataModel) contextValidateCurrentPlan(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CurrentPlan != nil {
+
+		if swag.IsZero(m.CurrentPlan) { // not required
+			return nil
+		}
+
 		if err := m.CurrentPlan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("current_plan")
@@ -121,6 +126,11 @@ func (m *V0UserPlanDataModel) contextValidateCurrentPlan(ctx context.Context, fo
 func (m *V0UserPlanDataModel) contextValidatePendingPlan(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PendingPlan != nil {
+
+		if swag.IsZero(m.PendingPlan) { // not required
+			return nil
+		}
+
 		if err := m.PendingPlan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pending_plan")

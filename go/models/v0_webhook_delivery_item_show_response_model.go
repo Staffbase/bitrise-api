@@ -72,6 +72,11 @@ func (m *V0WebhookDeliveryItemShowResponseModel) ContextValidate(ctx context.Con
 func (m *V0WebhookDeliveryItemShowResponseModel) contextValidateData(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Data != nil {
+
+		if swag.IsZero(m.Data) { // not required
+			return nil
+		}
+
 		if err := m.Data.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("data")

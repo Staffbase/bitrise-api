@@ -112,6 +112,11 @@ func (m *V0CacheItemListResponseModel) contextValidateData(ctx context.Context, 
 	for i := 0; i < len(m.Data); i++ {
 
 		if m.Data[i] != nil {
+
+			if swag.IsZero(m.Data[i]) { // not required
+				return nil
+			}
+
 			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
@@ -130,6 +135,11 @@ func (m *V0CacheItemListResponseModel) contextValidateData(ctx context.Context, 
 func (m *V0CacheItemListResponseModel) contextValidatePaging(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Paging != nil {
+
+		if swag.IsZero(m.Paging) { // not required
+			return nil
+		}
+
 		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("paging")

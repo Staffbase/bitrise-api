@@ -145,6 +145,11 @@ func (m *V0ArchivedBuildResponseItemModel) contextValidateBuildArtifacts(ctx con
 	for i := 0; i < len(m.BuildArtifacts); i++ {
 
 		if m.BuildArtifacts[i] != nil {
+
+			if swag.IsZero(m.BuildArtifacts[i]) { // not required
+				return nil
+			}
+
 			if err := m.BuildArtifacts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("build_artifacts" + "." + strconv.Itoa(i))

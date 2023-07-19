@@ -23,7 +23,9 @@ type V0ProvisionProfileListResponseModel struct {
 	Data []*V0ProvisionProfileResponseItemModel `json:"data"`
 
 	// pagination
-	Paging *V0PagingResponseModel `json:"paging,omitempty"`
+	Paging struct {
+		V0PagingResponseModel
+	} `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 provision profile list response model
@@ -75,17 +77,6 @@ func (m *V0ProvisionProfileListResponseModel) validatePaging(formats strfmt.Regi
 		return nil
 	}
 
-	if m.Paging != nil {
-		if err := m.Paging.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -112,6 +103,11 @@ func (m *V0ProvisionProfileListResponseModel) contextValidateData(ctx context.Co
 	for i := 0; i < len(m.Data); i++ {
 
 		if m.Data[i] != nil {
+
+			if swag.IsZero(m.Data[i]) { // not required
+				return nil
+			}
+
 			if err := m.Data[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("data" + "." + strconv.Itoa(i))
@@ -128,17 +124,6 @@ func (m *V0ProvisionProfileListResponseModel) contextValidateData(ctx context.Co
 }
 
 func (m *V0ProvisionProfileListResponseModel) contextValidatePaging(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Paging != nil {
-		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
 
 	return nil
 }

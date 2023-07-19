@@ -54,7 +54,7 @@ func (o *TestDeviceListReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/test-devices] test-device-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *TestDeviceListOK) IsServerError() bool {
 // IsCode returns true when this test device list o k response a status code equal to that given
 func (o *TestDeviceListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the test device list o k response
+func (o *TestDeviceListOK) Code() int {
+	return 200
 }
 
 func (o *TestDeviceListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *TestDeviceListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the test device list bad request response
+func (o *TestDeviceListBadRequest) Code() int {
+	return 400
+}
+
 func (o *TestDeviceListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *TestDeviceListUnauthorized) IsServerError() bool {
 // IsCode returns true when this test device list unauthorized response a status code equal to that given
 func (o *TestDeviceListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the test device list unauthorized response
+func (o *TestDeviceListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *TestDeviceListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *TestDeviceListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the test device list not found response
+func (o *TestDeviceListNotFound) Code() int {
+	return 404
+}
+
 func (o *TestDeviceListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/test-devices][%d] testDeviceListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *TestDeviceListInternalServerError) IsServerError() bool {
 // IsCode returns true when this test device list internal server error response a status code equal to that given
 func (o *TestDeviceListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the test device list internal server error response
+func (o *TestDeviceListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *TestDeviceListInternalServerError) Error() string {

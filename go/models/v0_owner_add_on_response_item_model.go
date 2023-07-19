@@ -103,6 +103,11 @@ func (m *V0OwnerAddOnResponseItemModel) contextValidateApps(ctx context.Context,
 	for i := 0; i < len(m.Apps); i++ {
 
 		if m.Apps[i] != nil {
+
+			if swag.IsZero(m.Apps[i]) { // not required
+				return nil
+			}
+
 			if err := m.Apps[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("apps" + "." + strconv.Itoa(i))

@@ -176,6 +176,11 @@ func (m *V0BuildTriggerParamsBuildParams) contextValidateCommitPaths(ctx context
 	for i := 0; i < len(m.CommitPaths); i++ {
 
 		if m.CommitPaths[i] != nil {
+
+			if swag.IsZero(m.CommitPaths[i]) { // not required
+				return nil
+			}
+
 			if err := m.CommitPaths[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("commit_paths" + "." + strconv.Itoa(i))
@@ -196,6 +201,11 @@ func (m *V0BuildTriggerParamsBuildParams) contextValidateEnvironments(ctx contex
 	for i := 0; i < len(m.Environments); i++ {
 
 		if m.Environments[i] != nil {
+
+			if swag.IsZero(m.Environments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))

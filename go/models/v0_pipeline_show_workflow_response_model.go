@@ -32,6 +32,9 @@ type V0PipelineShowWorkflowResponseModel struct {
 	// name
 	Name string `json:"name,omitempty"`
 
+	// start failure reason
+	StartFailureReason string `json:"startFailureReason,omitempty"`
+
 	// started at
 	StartedAt string `json:"started_at,omitempty"`
 

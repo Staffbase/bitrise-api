@@ -54,7 +54,7 @@ func (o *AndroidKeystoreFileConfirmReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}] android-keystore-file-confirm", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AndroidKeystoreFileConfirmOK) IsServerError() bool {
 // IsCode returns true when this android keystore file confirm o k response a status code equal to that given
 func (o *AndroidKeystoreFileConfirmOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the android keystore file confirm o k response
+func (o *AndroidKeystoreFileConfirmOK) Code() int {
+	return 200
 }
 
 func (o *AndroidKeystoreFileConfirmOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AndroidKeystoreFileConfirmBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the android keystore file confirm bad request response
+func (o *AndroidKeystoreFileConfirmBadRequest) Code() int {
+	return 400
+}
+
 func (o *AndroidKeystoreFileConfirmBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AndroidKeystoreFileConfirmUnauthorized) IsServerError() bool {
 // IsCode returns true when this android keystore file confirm unauthorized response a status code equal to that given
 func (o *AndroidKeystoreFileConfirmUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the android keystore file confirm unauthorized response
+func (o *AndroidKeystoreFileConfirmUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AndroidKeystoreFileConfirmUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AndroidKeystoreFileConfirmNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the android keystore file confirm not found response
+func (o *AndroidKeystoreFileConfirmNotFound) Code() int {
+	return 404
+}
+
 func (o *AndroidKeystoreFileConfirmNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AndroidKeystoreFileConfirmInternalServerError) IsServerError() bool {
 // IsCode returns true when this android keystore file confirm internal server error response a status code equal to that given
 func (o *AndroidKeystoreFileConfirmInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the android keystore file confirm internal server error response
+func (o *AndroidKeystoreFileConfirmInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AndroidKeystoreFileConfirmInternalServerError) Error() string {

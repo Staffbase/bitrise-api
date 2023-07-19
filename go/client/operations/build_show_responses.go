@@ -54,7 +54,7 @@ func (o *BuildShowReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/builds/{build-slug}] build-show", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildShowOK) IsServerError() bool {
 // IsCode returns true when this build show o k response a status code equal to that given
 func (o *BuildShowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build show o k response
+func (o *BuildShowOK) Code() int {
+	return 200
 }
 
 func (o *BuildShowOK) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildShowBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build show bad request response
+func (o *BuildShowBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildShowUnauthorized) IsServerError() bool {
 // IsCode returns true when this build show unauthorized response a status code equal to that given
 func (o *BuildShowUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build show unauthorized response
+func (o *BuildShowUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildShowUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildShowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build show not found response
+func (o *BuildShowNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}][%d] buildShowNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildShowInternalServerError) IsServerError() bool {
 // IsCode returns true when this build show internal server error response a status code equal to that given
 func (o *BuildShowInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build show internal server error response
+func (o *BuildShowInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildShowInternalServerError) Error() string {

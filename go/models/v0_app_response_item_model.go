@@ -270,6 +270,11 @@ func (m *V0AppResponseItemModel) ContextValidate(ctx context.Context, formats st
 func (m *V0AppResponseItemModel) contextValidateAvatarURL(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AvatarURL != nil {
+
+		if swag.IsZero(m.AvatarURL) { // not required
+			return nil
+		}
+
 		if err := m.AvatarURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("avatar_url")
@@ -286,6 +291,11 @@ func (m *V0AppResponseItemModel) contextValidateAvatarURL(ctx context.Context, f
 func (m *V0AppResponseItemModel) contextValidateOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Owner != nil {
+
+		if swag.IsZero(m.Owner) { // not required
+			return nil
+		}
+
 		if err := m.Owner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("owner")
@@ -302,6 +312,11 @@ func (m *V0AppResponseItemModel) contextValidateOwner(ctx context.Context, forma
 func (m *V0AppResponseItemModel) contextValidateProjectType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ProjectType != nil {
+
+		if swag.IsZero(m.ProjectType) { // not required
+			return nil
+		}
+
 		if err := m.ProjectType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("project_type")
@@ -318,6 +333,11 @@ func (m *V0AppResponseItemModel) contextValidateProjectType(ctx context.Context,
 func (m *V0AppResponseItemModel) contextValidateProvider(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Provider != nil {
+
+		if swag.IsZero(m.Provider) { // not required
+			return nil
+		}
+
 		if err := m.Provider.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("provider")
@@ -334,6 +354,11 @@ func (m *V0AppResponseItemModel) contextValidateProvider(ctx context.Context, fo
 func (m *V0AppResponseItemModel) contextValidateRepoOwner(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RepoOwner != nil {
+
+		if swag.IsZero(m.RepoOwner) { // not required
+			return nil
+		}
+
 		if err := m.RepoOwner.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("repo_owner")
@@ -350,6 +375,11 @@ func (m *V0AppResponseItemModel) contextValidateRepoOwner(ctx context.Context, f
 func (m *V0AppResponseItemModel) contextValidateRepoSlug(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RepoSlug != nil {
+
+		if swag.IsZero(m.RepoSlug) { // not required
+			return nil
+		}
+
 		if err := m.RepoSlug.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("repo_slug")
@@ -366,6 +396,11 @@ func (m *V0AppResponseItemModel) contextValidateRepoSlug(ctx context.Context, fo
 func (m *V0AppResponseItemModel) contextValidateRepoURL(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.RepoURL != nil {
+
+		if swag.IsZero(m.RepoURL) { // not required
+			return nil
+		}
+
 		if err := m.RepoURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("repo_url")

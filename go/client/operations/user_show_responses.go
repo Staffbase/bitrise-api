@@ -54,7 +54,7 @@ func (o *UserShowReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /users/{user-slug}] user-show", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *UserShowOK) IsServerError() bool {
 // IsCode returns true when this user show o k response a status code equal to that given
 func (o *UserShowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the user show o k response
+func (o *UserShowOK) Code() int {
+	return 200
 }
 
 func (o *UserShowOK) Error() string {
@@ -160,6 +165,11 @@ func (o *UserShowBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the user show bad request response
+func (o *UserShowBadRequest) Code() int {
+	return 400
+}
+
 func (o *UserShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *UserShowUnauthorized) IsServerError() bool {
 // IsCode returns true when this user show unauthorized response a status code equal to that given
 func (o *UserShowUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the user show unauthorized response
+func (o *UserShowUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UserShowUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *UserShowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user show not found response
+func (o *UserShowNotFound) Code() int {
+	return 404
+}
+
 func (o *UserShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}][%d] userShowNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *UserShowInternalServerError) IsServerError() bool {
 // IsCode returns true when this user show internal server error response a status code equal to that given
 func (o *UserShowInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user show internal server error response
+func (o *UserShowInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserShowInternalServerError) Error() string {

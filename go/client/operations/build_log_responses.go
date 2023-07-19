@@ -48,7 +48,7 @@ func (o *BuildLogReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/builds/{build-slug}/log] build-log", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *BuildLogBadRequest) IsServerError() bool {
 // IsCode returns true when this build log bad request response a status code equal to that given
 func (o *BuildLogBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the build log bad request response
+func (o *BuildLogBadRequest) Code() int {
+	return 400
 }
 
 func (o *BuildLogBadRequest) Error() string {
@@ -154,6 +159,11 @@ func (o *BuildLogUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the build log unauthorized response
+func (o *BuildLogUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BuildLogUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/log][%d] buildLogUnauthorized  %+v", 401, o.Payload)
 }
@@ -217,6 +227,11 @@ func (o *BuildLogNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build log not found response
+func (o *BuildLogNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildLogNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/log][%d] buildLogNotFound  %+v", 404, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *BuildLogInternalServerError) IsServerError() bool {
 // IsCode returns true when this build log internal server error response a status code equal to that given
 func (o *BuildLogInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build log internal server error response
+func (o *BuildLogInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildLogInternalServerError) Error() string {

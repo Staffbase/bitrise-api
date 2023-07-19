@@ -54,7 +54,7 @@ func (o *BuildCertificateListReader) ReadResponse(response runtime.ClientRespons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/build-certificates] build-certificate-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildCertificateListOK) IsServerError() bool {
 // IsCode returns true when this build certificate list o k response a status code equal to that given
 func (o *BuildCertificateListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build certificate list o k response
+func (o *BuildCertificateListOK) Code() int {
+	return 200
 }
 
 func (o *BuildCertificateListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildCertificateListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build certificate list bad request response
+func (o *BuildCertificateListBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildCertificateListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/build-certificates][%d] buildCertificateListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildCertificateListUnauthorized) IsServerError() bool {
 // IsCode returns true when this build certificate list unauthorized response a status code equal to that given
 func (o *BuildCertificateListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build certificate list unauthorized response
+func (o *BuildCertificateListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildCertificateListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildCertificateListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build certificate list not found response
+func (o *BuildCertificateListNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildCertificateListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/build-certificates][%d] buildCertificateListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildCertificateListInternalServerError) IsServerError() bool {
 // IsCode returns true when this build certificate list internal server error response a status code equal to that given
 func (o *BuildCertificateListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build certificate list internal server error response
+func (o *BuildCertificateListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildCertificateListInternalServerError) Error() string {

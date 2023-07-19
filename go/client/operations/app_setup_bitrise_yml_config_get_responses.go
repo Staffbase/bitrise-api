@@ -54,7 +54,7 @@ func (o *AppSetupBitriseYmlConfigGetReader) ReadResponse(response runtime.Client
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/bitrise.yml/config] app-setup-bitrise-yml-config-get", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppSetupBitriseYmlConfigGetOK) IsServerError() bool {
 // IsCode returns true when this app setup bitrise yml config get o k response a status code equal to that given
 func (o *AppSetupBitriseYmlConfigGetOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app setup bitrise yml config get o k response
+func (o *AppSetupBitriseYmlConfigGetOK) Code() int {
+	return 200
 }
 
 func (o *AppSetupBitriseYmlConfigGetOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppSetupBitriseYmlConfigGetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app setup bitrise yml config get bad request response
+func (o *AppSetupBitriseYmlConfigGetBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppSetupBitriseYmlConfigGetBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml/config][%d] appSetupBitriseYmlConfigGetBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppSetupBitriseYmlConfigGetUnauthorized) IsServerError() bool {
 // IsCode returns true when this app setup bitrise yml config get unauthorized response a status code equal to that given
 func (o *AppSetupBitriseYmlConfigGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app setup bitrise yml config get unauthorized response
+func (o *AppSetupBitriseYmlConfigGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppSetupBitriseYmlConfigGetUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppSetupBitriseYmlConfigGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app setup bitrise yml config get not found response
+func (o *AppSetupBitriseYmlConfigGetNotFound) Code() int {
+	return 404
+}
+
 func (o *AppSetupBitriseYmlConfigGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/bitrise.yml/config][%d] appSetupBitriseYmlConfigGetNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppSetupBitriseYmlConfigGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this app setup bitrise yml config get internal server error response a status code equal to that given
 func (o *AppSetupBitriseYmlConfigGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app setup bitrise yml config get internal server error response
+func (o *AppSetupBitriseYmlConfigGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppSetupBitriseYmlConfigGetInternalServerError) Error() string {

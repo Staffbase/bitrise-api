@@ -117,6 +117,11 @@ func (m *V0ArtifactListElementResponseModel) ContextValidate(ctx context.Context
 func (m *V0ArtifactListElementResponseModel) contextValidateArtifactType(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.ArtifactType != nil {
+
+		if swag.IsZero(m.ArtifactType) { // not required
+			return nil
+		}
+
 		if err := m.ArtifactType.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("artifact_type")
@@ -133,6 +138,11 @@ func (m *V0ArtifactListElementResponseModel) contextValidateArtifactType(ctx con
 func (m *V0ArtifactListElementResponseModel) contextValidateTitle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Title != nil {
+
+		if swag.IsZero(m.Title) { // not required
+			return nil
+		}
+
 		if err := m.Title.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")

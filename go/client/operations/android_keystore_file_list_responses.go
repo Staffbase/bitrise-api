@@ -54,7 +54,7 @@ func (o *AndroidKeystoreFileListReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/android-keystore-files] android-keystore-file-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AndroidKeystoreFileListOK) IsServerError() bool {
 // IsCode returns true when this android keystore file list o k response a status code equal to that given
 func (o *AndroidKeystoreFileListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the android keystore file list o k response
+func (o *AndroidKeystoreFileListOK) Code() int {
+	return 200
 }
 
 func (o *AndroidKeystoreFileListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AndroidKeystoreFileListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the android keystore file list bad request response
+func (o *AndroidKeystoreFileListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AndroidKeystoreFileListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AndroidKeystoreFileListUnauthorized) IsServerError() bool {
 // IsCode returns true when this android keystore file list unauthorized response a status code equal to that given
 func (o *AndroidKeystoreFileListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the android keystore file list unauthorized response
+func (o *AndroidKeystoreFileListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AndroidKeystoreFileListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AndroidKeystoreFileListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the android keystore file list not found response
+func (o *AndroidKeystoreFileListNotFound) Code() int {
+	return 404
+}
+
 func (o *AndroidKeystoreFileListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AndroidKeystoreFileListInternalServerError) IsServerError() bool {
 // IsCode returns true when this android keystore file list internal server error response a status code equal to that given
 func (o *AndroidKeystoreFileListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the android keystore file list internal server error response
+func (o *AndroidKeystoreFileListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AndroidKeystoreFileListInternalServerError) Error() string {

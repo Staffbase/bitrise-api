@@ -54,7 +54,7 @@ func (o *AppNotificationsReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /apps/{app-slug}/update-email-notifications] app-notifications", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppNotificationsOK) IsServerError() bool {
 // IsCode returns true when this app notifications o k response a status code equal to that given
 func (o *AppNotificationsOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app notifications o k response
+func (o *AppNotificationsOK) Code() int {
+	return 200
 }
 
 func (o *AppNotificationsOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppNotificationsBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app notifications bad request response
+func (o *AppNotificationsBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppNotificationsBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/update-email-notifications][%d] appNotificationsBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppNotificationsUnauthorized) IsServerError() bool {
 // IsCode returns true when this app notifications unauthorized response a status code equal to that given
 func (o *AppNotificationsUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app notifications unauthorized response
+func (o *AppNotificationsUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppNotificationsUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppNotificationsNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app notifications not found response
+func (o *AppNotificationsNotFound) Code() int {
+	return 404
+}
+
 func (o *AppNotificationsNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/update-email-notifications][%d] appNotificationsNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppNotificationsInternalServerError) IsServerError() bool {
 // IsCode returns true when this app notifications internal server error response a status code equal to that given
 func (o *AppNotificationsInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app notifications internal server error response
+func (o *AppNotificationsInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppNotificationsInternalServerError) Error() string {

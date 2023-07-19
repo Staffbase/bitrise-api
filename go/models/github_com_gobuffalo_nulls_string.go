@@ -14,7 +14,7 @@ import (
 
 // GithubComGobuffaloNullsString github com gobuffalo nulls string
 //
-// swagger:model github.com_gobuffalo_nulls.String
+// swagger:model github_com_gobuffalo_nulls.String
 type GithubComGobuffaloNullsString struct {
 
 	// string

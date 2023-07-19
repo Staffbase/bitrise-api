@@ -48,7 +48,7 @@ func (o *WebhookDeliveryItemListReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items] webhook-delivery-item-list", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *WebhookDeliveryItemListOK) IsServerError() bool {
 // IsCode returns true when this webhook delivery item list o k response a status code equal to that given
 func (o *WebhookDeliveryItemListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the webhook delivery item list o k response
+func (o *WebhookDeliveryItemListOK) Code() int {
+	return 200
 }
 
 func (o *WebhookDeliveryItemListOK) Error() string {
@@ -154,6 +159,11 @@ func (o *WebhookDeliveryItemListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the webhook delivery item list bad request response
+func (o *WebhookDeliveryItemListBadRequest) Code() int {
+	return 400
+}
+
 func (o *WebhookDeliveryItemListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items][%d] webhookDeliveryItemListBadRequest  %+v", 400, o.Payload)
 }
@@ -217,6 +227,11 @@ func (o *WebhookDeliveryItemListUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the webhook delivery item list unauthorized response
+func (o *WebhookDeliveryItemListUnauthorized) Code() int {
+	return 401
+}
+
 func (o *WebhookDeliveryItemListUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items][%d] webhookDeliveryItemListUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *WebhookDeliveryItemListInternalServerError) IsServerError() bool {
 // IsCode returns true when this webhook delivery item list internal server error response a status code equal to that given
 func (o *WebhookDeliveryItemListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the webhook delivery item list internal server error response
+func (o *WebhookDeliveryItemListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *WebhookDeliveryItemListInternalServerError) Error() string {

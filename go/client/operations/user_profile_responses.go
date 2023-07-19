@@ -48,7 +48,7 @@ func (o *UserProfileReader) ReadResponse(response runtime.ClientResponse, consum
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /me] user-profile", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *UserProfileOK) IsServerError() bool {
 // IsCode returns true when this user profile o k response a status code equal to that given
 func (o *UserProfileOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the user profile o k response
+func (o *UserProfileOK) Code() int {
+	return 200
 }
 
 func (o *UserProfileOK) Error() string {
@@ -154,6 +159,11 @@ func (o *UserProfileUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the user profile unauthorized response
+func (o *UserProfileUnauthorized) Code() int {
+	return 401
+}
+
 func (o *UserProfileUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /me][%d] userProfileUnauthorized  %+v", 401, o.Payload)
 }
@@ -217,6 +227,11 @@ func (o *UserProfileNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user profile not found response
+func (o *UserProfileNotFound) Code() int {
+	return 404
+}
+
 func (o *UserProfileNotFound) Error() string {
 	return fmt.Sprintf("[GET /me][%d] userProfileNotFound  %+v", 404, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *UserProfileInternalServerError) IsServerError() bool {
 // IsCode returns true when this user profile internal server error response a status code equal to that given
 func (o *UserProfileInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user profile internal server error response
+func (o *UserProfileInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserProfileInternalServerError) Error() string {

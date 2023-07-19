@@ -54,7 +54,7 @@ func (o *AppleAPICredentialListReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /users/{user-slug}/apple-api-credentials] apple-api-credential-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppleAPICredentialListOK) IsServerError() bool {
 // IsCode returns true when this apple Api credential list o k response a status code equal to that given
 func (o *AppleAPICredentialListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the apple Api credential list o k response
+func (o *AppleAPICredentialListOK) Code() int {
+	return 200
 }
 
 func (o *AppleAPICredentialListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppleAPICredentialListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the apple Api credential list bad request response
+func (o *AppleAPICredentialListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppleAPICredentialListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppleAPICredentialListUnauthorized) IsServerError() bool {
 // IsCode returns true when this apple Api credential list unauthorized response a status code equal to that given
 func (o *AppleAPICredentialListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the apple Api credential list unauthorized response
+func (o *AppleAPICredentialListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppleAPICredentialListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppleAPICredentialListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the apple Api credential list not found response
+func (o *AppleAPICredentialListNotFound) Code() int {
+	return 404
+}
+
 func (o *AppleAPICredentialListNotFound) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apple-api-credentials][%d] appleApiCredentialListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppleAPICredentialListInternalServerError) IsServerError() bool {
 // IsCode returns true when this apple Api credential list internal server error response a status code equal to that given
 func (o *AppleAPICredentialListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the apple Api credential list internal server error response
+func (o *AppleAPICredentialListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppleAPICredentialListInternalServerError) Error() string {

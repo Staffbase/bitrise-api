@@ -54,7 +54,7 @@ func (o *AndroidKeystoreFileDeleteReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}] android-keystore-file-delete", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AndroidKeystoreFileDeleteOK) IsServerError() bool {
 // IsCode returns true when this android keystore file delete o k response a status code equal to that given
 func (o *AndroidKeystoreFileDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the android keystore file delete o k response
+func (o *AndroidKeystoreFileDeleteOK) Code() int {
+	return 200
 }
 
 func (o *AndroidKeystoreFileDeleteOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AndroidKeystoreFileDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the android keystore file delete bad request response
+func (o *AndroidKeystoreFileDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *AndroidKeystoreFileDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AndroidKeystoreFileDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this android keystore file delete unauthorized response a status code equal to that given
 func (o *AndroidKeystoreFileDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the android keystore file delete unauthorized response
+func (o *AndroidKeystoreFileDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AndroidKeystoreFileDeleteUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AndroidKeystoreFileDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the android keystore file delete not found response
+func (o *AndroidKeystoreFileDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *AndroidKeystoreFileDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AndroidKeystoreFileDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this android keystore file delete internal server error response a status code equal to that given
 func (o *AndroidKeystoreFileDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the android keystore file delete internal server error response
+func (o *AndroidKeystoreFileDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AndroidKeystoreFileDeleteInternalServerError) Error() string {

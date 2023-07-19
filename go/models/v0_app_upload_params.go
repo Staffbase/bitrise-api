@@ -34,6 +34,9 @@ type V0AppUploadParams struct {
 	// Required: true
 	IsPublic *bool `json:"is_public"`
 
+	// Toggles whether manual approval should be enabled for the app's builds. If it's not specified, it will be `true`.
+	ManualApprovalEnabled bool `json:"manual_approval_enabled,omitempty"`
+
 	// The slug of the organization, who will be the owner of the application. If it's not specified, then the authenticated user will be the owner.
 	OrganizationSlug string `json:"organization_slug,omitempty"`
 

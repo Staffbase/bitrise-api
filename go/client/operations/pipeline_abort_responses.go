@@ -54,7 +54,7 @@ func (o *PipelineAbortReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/pipelines/{pipeline-id}/abort] pipeline-abort", response, response.Code())
 	}
 }
 
@@ -94,6 +94,11 @@ func (o *PipelineAbortOK) IsServerError() bool {
 // IsCode returns true when this pipeline abort o k response a status code equal to that given
 func (o *PipelineAbortOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the pipeline abort o k response
+func (o *PipelineAbortOK) Code() int {
+	return 200
 }
 
 func (o *PipelineAbortOK) Error() string {
@@ -146,6 +151,11 @@ func (o *PipelineAbortBadRequest) IsServerError() bool {
 // IsCode returns true when this pipeline abort bad request response a status code equal to that given
 func (o *PipelineAbortBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pipeline abort bad request response
+func (o *PipelineAbortBadRequest) Code() int {
+	return 400
 }
 
 func (o *PipelineAbortBadRequest) Error() string {
@@ -211,6 +221,11 @@ func (o *PipelineAbortUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pipeline abort unauthorized response
+func (o *PipelineAbortUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PipelineAbortUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/abort][%d] pipelineAbortUnauthorized  %+v", 401, o.Payload)
 }
@@ -274,6 +289,11 @@ func (o *PipelineAbortNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pipeline abort not found response
+func (o *PipelineAbortNotFound) Code() int {
+	return 404
+}
+
 func (o *PipelineAbortNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/abort][%d] pipelineAbortNotFound  %+v", 404, o.Payload)
 }
@@ -335,6 +355,11 @@ func (o *PipelineAbortInternalServerError) IsServerError() bool {
 // IsCode returns true when this pipeline abort internal server error response a status code equal to that given
 func (o *PipelineAbortInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pipeline abort internal server error response
+func (o *PipelineAbortInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PipelineAbortInternalServerError) Error() string {

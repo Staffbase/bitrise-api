@@ -204,6 +204,11 @@ func (m *V0ActivityEventResponseItemModel) ContextValidate(ctx context.Context, 
 func (m *V0ActivityEventResponseItemModel) contextValidateDescription(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Description != nil {
+
+		if swag.IsZero(m.Description) { // not required
+			return nil
+		}
+
 		if err := m.Description.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("description")
@@ -220,6 +225,11 @@ func (m *V0ActivityEventResponseItemModel) contextValidateDescription(ctx contex
 func (m *V0ActivityEventResponseItemModel) contextValidateEventIcon(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EventIcon != nil {
+
+		if swag.IsZero(m.EventIcon) { // not required
+			return nil
+		}
+
 		if err := m.EventIcon.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event_icon")
@@ -236,6 +246,11 @@ func (m *V0ActivityEventResponseItemModel) contextValidateEventIcon(ctx context.
 func (m *V0ActivityEventResponseItemModel) contextValidateEventStype(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.EventStype != nil {
+
+		if swag.IsZero(m.EventStype) { // not required
+			return nil
+		}
+
 		if err := m.EventStype.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("event_stype")
@@ -252,6 +267,11 @@ func (m *V0ActivityEventResponseItemModel) contextValidateEventStype(ctx context
 func (m *V0ActivityEventResponseItemModel) contextValidateTargetPathString(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TargetPathString != nil {
+
+		if swag.IsZero(m.TargetPathString) { // not required
+			return nil
+		}
+
 		if err := m.TargetPathString.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("target_path_string")
@@ -268,6 +288,11 @@ func (m *V0ActivityEventResponseItemModel) contextValidateTargetPathString(ctx c
 func (m *V0ActivityEventResponseItemModel) contextValidateTitle(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Title != nil {
+
+		if swag.IsZero(m.Title) { // not required
+			return nil
+		}
+
 		if err := m.Title.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("title")

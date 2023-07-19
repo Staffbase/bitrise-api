@@ -74,6 +74,12 @@ type CacheListParams struct {
 	*/
 	Limit *int64
 
+	/* Next.
+
+	   Getting cache items created before the given parameter (RFC3339 time format, default: now)
+	*/
+	Next *string
+
 	timeout    time.Duration
 	Context    context.Context
 	HTTPClient *http.Client
@@ -149,6 +155,17 @@ func (o *CacheListParams) SetLimit(limit *int64) {
 	o.Limit = limit
 }
 
+// WithNext adds the next to the cache list params
+func (o *CacheListParams) WithNext(next *string) *CacheListParams {
+	o.SetNext(next)
+	return o
+}
+
+// SetNext adds the next to the cache list params
+func (o *CacheListParams) SetNext(next *string) {
+	o.Next = next
+}
+
 // WriteToRequest writes these params to a swagger request
 func (o *CacheListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
 
@@ -174,6 +191,23 @@ func (o *CacheListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Reg
 		if qLimit != "" {
 
 			if err := r.SetQueryParam("limit", qLimit); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Next != nil {
+
+		// query param next
+		var qrNext string
+
+		if o.Next != nil {
+			qrNext = *o.Next
+		}
+		qNext := qrNext
+		if qNext != "" {
+
+			if err := r.SetQueryParam("next", qNext); err != nil {
 				return err
 			}
 		}

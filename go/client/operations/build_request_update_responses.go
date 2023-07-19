@@ -54,7 +54,7 @@ func (o *BuildRequestUpdateReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}] build-request-update", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildRequestUpdateOK) IsServerError() bool {
 // IsCode returns true when this build request update o k response a status code equal to that given
 func (o *BuildRequestUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build request update o k response
+func (o *BuildRequestUpdateOK) Code() int {
+	return 200
 }
 
 func (o *BuildRequestUpdateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildRequestUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build request update bad request response
+func (o *BuildRequestUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildRequestUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildRequestUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this build request update unauthorized response a status code equal to that given
 func (o *BuildRequestUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build request update unauthorized response
+func (o *BuildRequestUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildRequestUpdateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildRequestUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build request update not found response
+func (o *BuildRequestUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildRequestUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-requests/{build-request-slug}][%d] buildRequestUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildRequestUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this build request update internal server error response a status code equal to that given
 func (o *BuildRequestUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build request update internal server error response
+func (o *BuildRequestUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildRequestUpdateInternalServerError) Error() string {

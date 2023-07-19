@@ -54,7 +54,7 @@ func (o *OrgListReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /organizations] org-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *OrgListOK) IsServerError() bool {
 // IsCode returns true when this org list o k response a status code equal to that given
 func (o *OrgListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the org list o k response
+func (o *OrgListOK) Code() int {
+	return 200
 }
 
 func (o *OrgListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *OrgListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the org list bad request response
+func (o *OrgListBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrgListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /organizations][%d] orgListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *OrgListUnauthorized) IsServerError() bool {
 // IsCode returns true when this org list unauthorized response a status code equal to that given
 func (o *OrgListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the org list unauthorized response
+func (o *OrgListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrgListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *OrgListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the org list not found response
+func (o *OrgListNotFound) Code() int {
+	return 404
+}
+
 func (o *OrgListNotFound) Error() string {
 	return fmt.Sprintf("[GET /organizations][%d] orgListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *OrgListInternalServerError) IsServerError() bool {
 // IsCode returns true when this org list internal server error response a status code equal to that given
 func (o *OrgListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the org list internal server error response
+func (o *OrgListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrgListInternalServerError) Error() string {

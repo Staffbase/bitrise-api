@@ -54,7 +54,7 @@ func (o *BuildTriggerReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/builds] build-trigger", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildTriggerCreated) IsServerError() bool {
 // IsCode returns true when this build trigger created response a status code equal to that given
 func (o *BuildTriggerCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the build trigger created response
+func (o *BuildTriggerCreated) Code() int {
+	return 201
 }
 
 func (o *BuildTriggerCreated) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildTriggerBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build trigger bad request response
+func (o *BuildTriggerBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildTriggerBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildTriggerUnauthorized) IsServerError() bool {
 // IsCode returns true when this build trigger unauthorized response a status code equal to that given
 func (o *BuildTriggerUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build trigger unauthorized response
+func (o *BuildTriggerUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildTriggerUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildTriggerNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build trigger not found response
+func (o *BuildTriggerNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildTriggerNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds][%d] buildTriggerNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildTriggerInternalServerError) IsServerError() bool {
 // IsCode returns true when this build trigger internal server error response a status code equal to that given
 func (o *BuildTriggerInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build trigger internal server error response
+func (o *BuildTriggerInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildTriggerInternalServerError) Error() string {

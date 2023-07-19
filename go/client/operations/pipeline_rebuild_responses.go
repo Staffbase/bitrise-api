@@ -23,8 +23,8 @@ type PipelineRebuildReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PipelineRebuildReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewPipelineRebuildOK()
+	case 201:
+		result := NewPipelineRebuildCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -60,57 +60,62 @@ func (o *PipelineRebuildReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/pipelines/{pipeline-id}/rebuild] pipeline-rebuild", response, response.Code())
 	}
 }
 
-// NewPipelineRebuildOK creates a PipelineRebuildOK with default headers values
-func NewPipelineRebuildOK() *PipelineRebuildOK {
-	return &PipelineRebuildOK{}
+// NewPipelineRebuildCreated creates a PipelineRebuildCreated with default headers values
+func NewPipelineRebuildCreated() *PipelineRebuildCreated {
+	return &PipelineRebuildCreated{}
 }
 
 /*
-PipelineRebuildOK describes a response with status code 200, with default header values.
+PipelineRebuildCreated describes a response with status code 201, with default header values.
 
-OK
+Created
 */
-type PipelineRebuildOK struct {
+type PipelineRebuildCreated struct {
 }
 
-// IsSuccess returns true when this pipeline rebuild o k response has a 2xx status code
-func (o *PipelineRebuildOK) IsSuccess() bool {
+// IsSuccess returns true when this pipeline rebuild created response has a 2xx status code
+func (o *PipelineRebuildCreated) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this pipeline rebuild o k response has a 3xx status code
-func (o *PipelineRebuildOK) IsRedirect() bool {
+// IsRedirect returns true when this pipeline rebuild created response has a 3xx status code
+func (o *PipelineRebuildCreated) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this pipeline rebuild o k response has a 4xx status code
-func (o *PipelineRebuildOK) IsClientError() bool {
+// IsClientError returns true when this pipeline rebuild created response has a 4xx status code
+func (o *PipelineRebuildCreated) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this pipeline rebuild o k response has a 5xx status code
-func (o *PipelineRebuildOK) IsServerError() bool {
+// IsServerError returns true when this pipeline rebuild created response has a 5xx status code
+func (o *PipelineRebuildCreated) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this pipeline rebuild o k response a status code equal to that given
-func (o *PipelineRebuildOK) IsCode(code int) bool {
-	return code == 200
+// IsCode returns true when this pipeline rebuild created response a status code equal to that given
+func (o *PipelineRebuildCreated) IsCode(code int) bool {
+	return code == 201
 }
 
-func (o *PipelineRebuildOK) Error() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/rebuild][%d] pipelineRebuildOK ", 200)
+// Code gets the status code for the pipeline rebuild created response
+func (o *PipelineRebuildCreated) Code() int {
+	return 201
 }
 
-func (o *PipelineRebuildOK) String() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/rebuild][%d] pipelineRebuildOK ", 200)
+func (o *PipelineRebuildCreated) Error() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/rebuild][%d] pipelineRebuildCreated ", 201)
 }
 
-func (o *PipelineRebuildOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PipelineRebuildCreated) String() string {
+	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/rebuild][%d] pipelineRebuildCreated ", 201)
+}
+
+func (o *PipelineRebuildCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	return nil
 }
@@ -152,6 +157,11 @@ func (o *PipelineRebuildBadRequest) IsServerError() bool {
 // IsCode returns true when this pipeline rebuild bad request response a status code equal to that given
 func (o *PipelineRebuildBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pipeline rebuild bad request response
+func (o *PipelineRebuildBadRequest) Code() int {
+	return 400
 }
 
 func (o *PipelineRebuildBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *PipelineRebuildUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pipeline rebuild unauthorized response
+func (o *PipelineRebuildUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PipelineRebuildUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/rebuild][%d] pipelineRebuildUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *PipelineRebuildNotFound) IsServerError() bool {
 // IsCode returns true when this pipeline rebuild not found response a status code equal to that given
 func (o *PipelineRebuildNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the pipeline rebuild not found response
+func (o *PipelineRebuildNotFound) Code() int {
+	return 404
 }
 
 func (o *PipelineRebuildNotFound) Error() string {
@@ -343,6 +363,11 @@ func (o *PipelineRebuildPreconditionFailed) IsCode(code int) bool {
 	return code == 412
 }
 
+// Code gets the status code for the pipeline rebuild precondition failed response
+func (o *PipelineRebuildPreconditionFailed) Code() int {
+	return 412
+}
+
 func (o *PipelineRebuildPreconditionFailed) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/pipelines/{pipeline-id}/rebuild][%d] pipelineRebuildPreconditionFailed  %+v", 412, o.Payload)
 }
@@ -404,6 +429,11 @@ func (o *PipelineRebuildInternalServerError) IsServerError() bool {
 // IsCode returns true when this pipeline rebuild internal server error response a status code equal to that given
 func (o *PipelineRebuildInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pipeline rebuild internal server error response
+func (o *PipelineRebuildInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PipelineRebuildInternalServerError) Error() string {

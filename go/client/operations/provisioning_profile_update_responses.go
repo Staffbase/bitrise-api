@@ -54,7 +54,7 @@ func (o *ProvisioningProfileUpdateReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}] provisioning-profile-update", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ProvisioningProfileUpdateOK) IsServerError() bool {
 // IsCode returns true when this provisioning profile update o k response a status code equal to that given
 func (o *ProvisioningProfileUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the provisioning profile update o k response
+func (o *ProvisioningProfileUpdateOK) Code() int {
+	return 200
 }
 
 func (o *ProvisioningProfileUpdateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ProvisioningProfileUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the provisioning profile update bad request response
+func (o *ProvisioningProfileUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProvisioningProfileUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ProvisioningProfileUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this provisioning profile update unauthorized response a status code equal to that given
 func (o *ProvisioningProfileUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the provisioning profile update unauthorized response
+func (o *ProvisioningProfileUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProvisioningProfileUpdateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ProvisioningProfileUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the provisioning profile update not found response
+func (o *ProvisioningProfileUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *ProvisioningProfileUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}][%d] provisioningProfileUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ProvisioningProfileUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this provisioning profile update internal server error response a status code equal to that given
 func (o *ProvisioningProfileUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the provisioning profile update internal server error response
+func (o *ProvisioningProfileUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProvisioningProfileUpdateInternalServerError) Error() string {

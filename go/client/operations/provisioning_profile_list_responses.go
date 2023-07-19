@@ -54,7 +54,7 @@ func (o *ProvisioningProfileListReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/provisioning-profiles] provisioning-profile-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ProvisioningProfileListOK) IsServerError() bool {
 // IsCode returns true when this provisioning profile list o k response a status code equal to that given
 func (o *ProvisioningProfileListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the provisioning profile list o k response
+func (o *ProvisioningProfileListOK) Code() int {
+	return 200
 }
 
 func (o *ProvisioningProfileListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ProvisioningProfileListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the provisioning profile list bad request response
+func (o *ProvisioningProfileListBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProvisioningProfileListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ProvisioningProfileListUnauthorized) IsServerError() bool {
 // IsCode returns true when this provisioning profile list unauthorized response a status code equal to that given
 func (o *ProvisioningProfileListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the provisioning profile list unauthorized response
+func (o *ProvisioningProfileListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProvisioningProfileListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ProvisioningProfileListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the provisioning profile list not found response
+func (o *ProvisioningProfileListNotFound) Code() int {
+	return 404
+}
+
 func (o *ProvisioningProfileListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/provisioning-profiles][%d] provisioningProfileListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ProvisioningProfileListInternalServerError) IsServerError() bool {
 // IsCode returns true when this provisioning profile list internal server error response a status code equal to that given
 func (o *ProvisioningProfileListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the provisioning profile list internal server error response
+func (o *ProvisioningProfileListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProvisioningProfileListInternalServerError) Error() string {

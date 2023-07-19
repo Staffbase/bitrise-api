@@ -54,7 +54,7 @@ func (o *SecretValueGetReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/secrets/{secret-name}/value] secret-value-get", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *SecretValueGetOK) IsServerError() bool {
 // IsCode returns true when this secret value get o k response a status code equal to that given
 func (o *SecretValueGetOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the secret value get o k response
+func (o *SecretValueGetOK) Code() int {
+	return 200
 }
 
 func (o *SecretValueGetOK) Error() string {
@@ -160,6 +165,11 @@ func (o *SecretValueGetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the secret value get bad request response
+func (o *SecretValueGetBadRequest) Code() int {
+	return 400
+}
+
 func (o *SecretValueGetBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/secrets/{secret-name}/value][%d] secretValueGetBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *SecretValueGetUnauthorized) IsServerError() bool {
 // IsCode returns true when this secret value get unauthorized response a status code equal to that given
 func (o *SecretValueGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the secret value get unauthorized response
+func (o *SecretValueGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SecretValueGetUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *SecretValueGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the secret value get not found response
+func (o *SecretValueGetNotFound) Code() int {
+	return 404
+}
+
 func (o *SecretValueGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/secrets/{secret-name}/value][%d] secretValueGetNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *SecretValueGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this secret value get internal server error response a status code equal to that given
 func (o *SecretValueGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the secret value get internal server error response
+func (o *SecretValueGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecretValueGetInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *ArtifactListReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/builds/{build-slug}/artifacts] artifact-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ArtifactListOK) IsServerError() bool {
 // IsCode returns true when this artifact list o k response a status code equal to that given
 func (o *ArtifactListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the artifact list o k response
+func (o *ArtifactListOK) Code() int {
+	return 200
 }
 
 func (o *ArtifactListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ArtifactListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the artifact list bad request response
+func (o *ArtifactListBadRequest) Code() int {
+	return 400
+}
+
 func (o *ArtifactListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts][%d] artifactListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ArtifactListUnauthorized) IsServerError() bool {
 // IsCode returns true when this artifact list unauthorized response a status code equal to that given
 func (o *ArtifactListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the artifact list unauthorized response
+func (o *ArtifactListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ArtifactListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ArtifactListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the artifact list not found response
+func (o *ArtifactListNotFound) Code() int {
+	return 404
+}
+
 func (o *ArtifactListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/artifacts][%d] artifactListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ArtifactListInternalServerError) IsServerError() bool {
 // IsCode returns true when this artifact list internal server error response a status code equal to that given
 func (o *ArtifactListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the artifact list internal server error response
+func (o *ArtifactListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ArtifactListInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *SSHKeyCreateReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/register-ssh-key] ssh-key-create", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *SSHKeyCreateOK) IsServerError() bool {
 // IsCode returns true when this ssh key create o k response a status code equal to that given
 func (o *SSHKeyCreateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the ssh key create o k response
+func (o *SSHKeyCreateOK) Code() int {
+	return 200
 }
 
 func (o *SSHKeyCreateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *SSHKeyCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the ssh key create bad request response
+func (o *SSHKeyCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *SSHKeyCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *SSHKeyCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this ssh key create unauthorized response a status code equal to that given
 func (o *SSHKeyCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the ssh key create unauthorized response
+func (o *SSHKeyCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SSHKeyCreateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *SSHKeyCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the ssh key create not found response
+func (o *SSHKeyCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *SSHKeyCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-ssh-key][%d] sshKeyCreateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *SSHKeyCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this ssh key create internal server error response a status code equal to that given
 func (o *SSHKeyCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the ssh key create internal server error response
+func (o *SSHKeyCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SSHKeyCreateInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *OrgShowReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /organizations/{org-slug}] org-show", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *OrgShowOK) IsServerError() bool {
 // IsCode returns true when this org show o k response a status code equal to that given
 func (o *OrgShowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the org show o k response
+func (o *OrgShowOK) Code() int {
+	return 200
 }
 
 func (o *OrgShowOK) Error() string {
@@ -160,6 +165,11 @@ func (o *OrgShowBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the org show bad request response
+func (o *OrgShowBadRequest) Code() int {
+	return 400
+}
+
 func (o *OrgShowBadRequest) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *OrgShowUnauthorized) IsServerError() bool {
 // IsCode returns true when this org show unauthorized response a status code equal to that given
 func (o *OrgShowUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the org show unauthorized response
+func (o *OrgShowUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OrgShowUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *OrgShowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the org show not found response
+func (o *OrgShowNotFound) Code() int {
+	return 404
+}
+
 func (o *OrgShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}][%d] orgShowNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *OrgShowInternalServerError) IsServerError() bool {
 // IsCode returns true when this org show internal server error response a status code equal to that given
 func (o *OrgShowInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the org show internal server error response
+func (o *OrgShowInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OrgShowInternalServerError) Error() string {

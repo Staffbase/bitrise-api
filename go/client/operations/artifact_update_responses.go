@@ -54,7 +54,7 @@ func (o *ArtifactUpdateReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}] artifact-update", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ArtifactUpdateOK) IsServerError() bool {
 // IsCode returns true when this artifact update o k response a status code equal to that given
 func (o *ArtifactUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the artifact update o k response
+func (o *ArtifactUpdateOK) Code() int {
+	return 200
 }
 
 func (o *ArtifactUpdateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ArtifactUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the artifact update bad request response
+func (o *ArtifactUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *ArtifactUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ArtifactUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this artifact update unauthorized response a status code equal to that given
 func (o *ArtifactUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the artifact update unauthorized response
+func (o *ArtifactUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ArtifactUpdateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ArtifactUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the artifact update not found response
+func (o *ArtifactUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *ArtifactUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ArtifactUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this artifact update internal server error response a status code equal to that given
 func (o *ArtifactUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the artifact update internal server error response
+func (o *ArtifactUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ArtifactUpdateInternalServerError) Error() string {

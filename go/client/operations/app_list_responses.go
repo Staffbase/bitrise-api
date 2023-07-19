@@ -54,7 +54,7 @@ func (o *AppListReader) ReadResponse(response runtime.ClientResponse, consumer r
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps] app-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppListOK) IsServerError() bool {
 // IsCode returns true when this app list o k response a status code equal to that given
 func (o *AppListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app list o k response
+func (o *AppListOK) Code() int {
+	return 200
 }
 
 func (o *AppListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app list bad request response
+func (o *AppListBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps][%d] appListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppListUnauthorized) IsServerError() bool {
 // IsCode returns true when this app list unauthorized response a status code equal to that given
 func (o *AppListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app list unauthorized response
+func (o *AppListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app list not found response
+func (o *AppListNotFound) Code() int {
+	return 404
+}
+
 func (o *AppListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps][%d] appListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppListInternalServerError) IsServerError() bool {
 // IsCode returns true when this app list internal server error response a status code equal to that given
 func (o *AppListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app list internal server error response
+func (o *AppListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppListInternalServerError) Error() string {

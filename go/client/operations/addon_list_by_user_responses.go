@@ -54,7 +54,7 @@ func (o *AddonListByUserReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /users/{user-slug}/addons] addon-list-by-user", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AddonListByUserOK) IsServerError() bool {
 // IsCode returns true when this addon list by user o k response a status code equal to that given
 func (o *AddonListByUserOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the addon list by user o k response
+func (o *AddonListByUserOK) Code() int {
+	return 200
 }
 
 func (o *AddonListByUserOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AddonListByUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the addon list by user bad request response
+func (o *AddonListByUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddonListByUserBadRequest) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AddonListByUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this addon list by user unauthorized response a status code equal to that given
 func (o *AddonListByUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the addon list by user unauthorized response
+func (o *AddonListByUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AddonListByUserUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AddonListByUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the addon list by user not found response
+func (o *AddonListByUserNotFound) Code() int {
+	return 404
+}
+
 func (o *AddonListByUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/addons][%d] addonListByUserNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AddonListByUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this addon list by user internal server error response a status code equal to that given
 func (o *AddonListByUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the addon list by user internal server error response
+func (o *AddonListByUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddonListByUserInternalServerError) Error() string {

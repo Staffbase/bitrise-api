@@ -82,6 +82,11 @@ func (m *V0AppSecretListResponse) contextValidateSecrets(ctx context.Context, fo
 	for i := 0; i < len(m.Secrets); i++ {
 
 		if m.Secrets[i] != nil {
+
+			if swag.IsZero(m.Secrets[i]) { // not required
+				return nil
+			}
+
 			if err := m.Secrets[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("secrets" + "." + strconv.Itoa(i))

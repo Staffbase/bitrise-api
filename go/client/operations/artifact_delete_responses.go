@@ -54,7 +54,7 @@ func (o *ArtifactDeleteReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}] artifact-delete", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ArtifactDeleteOK) IsServerError() bool {
 // IsCode returns true when this artifact delete o k response a status code equal to that given
 func (o *ArtifactDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the artifact delete o k response
+func (o *ArtifactDeleteOK) Code() int {
+	return 200
 }
 
 func (o *ArtifactDeleteOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ArtifactDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the artifact delete bad request response
+func (o *ArtifactDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *ArtifactDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ArtifactDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this artifact delete unauthorized response a status code equal to that given
 func (o *ArtifactDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the artifact delete unauthorized response
+func (o *ArtifactDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ArtifactDeleteUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ArtifactDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the artifact delete not found response
+func (o *ArtifactDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *ArtifactDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/builds/{build-slug}/artifacts/{artifact-slug}][%d] artifactDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ArtifactDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this artifact delete internal server error response a status code equal to that given
 func (o *ArtifactDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the artifact delete internal server error response
+func (o *ArtifactDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ArtifactDeleteInternalServerError) Error() string {
