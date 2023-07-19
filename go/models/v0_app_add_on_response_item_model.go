@@ -138,6 +138,11 @@ func (m *V0AppAddOnResponseItemModel) ContextValidate(ctx context.Context, forma
 func (m *V0AppAddOnResponseItemModel) contextValidatePlan(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Plan != nil {
+
+		if swag.IsZero(m.Plan) { // not required
+			return nil
+		}
+
 		if err := m.Plan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plan")
@@ -154,6 +159,11 @@ func (m *V0AppAddOnResponseItemModel) contextValidatePlan(ctx context.Context, f
 func (m *V0AppAddOnResponseItemModel) contextValidateSetupGuide(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SetupGuide != nil {
+
+		if swag.IsZero(m.SetupGuide) { // not required
+			return nil
+		}
+
 		if err := m.SetupGuide.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setup_guide")

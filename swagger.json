@@ -245,25 +245,25 @@
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     },
                     "401": {
                         "description": "Unauthorized",
                         "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     },
                     "404": {
                         "description": "Not Found",
                         "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     },
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     }
                 }
@@ -875,161 +875,6 @@
                 }
             }
         },
-        "/apps/{app-slug}/avatar-candidates": {
-            "post": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
-                "description": "Add new avatar candidates to a specific app",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "avatar-candidate"
-                ],
-                "summary": "Create avatar candidates",
-                "operationId": "avatar-candidate-create",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "App slug",
-                        "name": "app-slug",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "Avatar candidate parameters",
-                        "name": "avatar-candidate",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/v0.AvatarCandidateCreateParams"
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/v0.AvatarCandidateCreateResponseItem"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    }
-                }
-            }
-        },
-        "/apps/{app-slug}/avatar-candidates/{avatar-slug}": {
-            "patch": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
-                "description": "Promotes an avatar candidate for an app",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "avatar-candidate"
-                ],
-                "summary": "Promote an avatar candidate",
-                "operationId": "avatar-candidate-promote",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "App slug",
-                        "name": "app-slug",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "Avatar candidate slug",
-                        "name": "avatar-slug",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "description": "Avatar promote parameters",
-                        "name": "avatar-promote-params",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/v0.AvatarPromoteParams"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/v0.AvatarPromoteResponseModel"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    }
-                }
-            }
-        },
         "/apps/{app-slug}/bitrise.yml": {
             "get": {
                 "security": [
@@ -1155,7 +1000,7 @@
                     "500": {
                         "description": "Internal Server Error",
                         "schema": {
-                            "$ref": "#/definitions/v0.ProxyErrorRespModel"
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     }
                 }
@@ -2821,6 +2666,12 @@
                         "required": true
                     },
                     {
+                        "type": "string",
+                        "description": "Getting cache items created before the given parameter (RFC3339 time format, default: now)",
+                        "name": "next",
+                        "in": "query"
+                    },
+                    {
                         "type": "integer",
                         "description": "Max number of elements per page (default: 100)",
                         "name": "limit",
@@ -3534,6 +3385,83 @@
                 }
             }
         },
+        "/apps/{app-slug}/local-builds": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "List all the local builds belonging to the specified Bitrise app. Set parameters to filter builds",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "local-builds"
+                ],
+                "summary": "List local builds of an app",
+                "operationId": "local-build-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "List local builds run after a given date (RFC3339 time format)",
+                        "name": "after",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "List local builds run before a given date (RFC3339 time format) - was called 'next' earlier",
+                        "name": "before",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Max number of elements per page (default: 10)",
+                        "name": "limit",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.PipelineListResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
         "/apps/{app-slug}/outgoing-webhooks": {
             "get": {
                 "security": [
@@ -4040,6 +3968,12 @@
                 "parameters": [
                     {
                         "type": "string",
+                        "description": "List pipelines/standalone builds run after a given date (RFC3339 time format)",
+                        "name": "after",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "App slug",
                         "name": "app-slug",
                         "in": "path",
@@ -4047,26 +3981,14 @@
                     },
                     {
                         "type": "string",
+                        "description": "List pipelines/standalone builds run before a given date (RFC3339 time format) - was called 'next' earlier",
+                        "name": "before",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "The branch which was built",
                         "name": "branch",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The name of the workflow used for the pipeline/standalone build",
-                        "name": "workflow",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The commit message of the pipeline/standalone build",
-                        "name": "commit_message",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The event that triggered the pipeline/standalone build (push, pull-request, tag)",
-                        "name": "trigger_event_type",
                         "in": "query"
                     },
                     {
@@ -4077,7 +3999,19 @@
                     },
                     {
                         "type": "string",
-                        "description": "List pipelines/standalone builds run before a given date (RFC3339 time format)",
+                        "description": "The commit message of the pipeline/standalone build",
+                        "name": "commit_message",
+                        "in": "query"
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Max number of elements per page (default: 10)",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "List pipelines/standalone builds run before a given date (RFC3339 time format) - deprecated",
                         "name": "next",
                         "in": "query"
                     },
@@ -4088,9 +4022,15 @@
                         "in": "query"
                     },
                     {
-                        "type": "integer",
-                        "description": "Max number of elements per page (default: 10)",
-                        "name": "limit",
+                        "type": "string",
+                        "description": "The event that triggered the pipeline/standalone build (push, pull-request, tag)",
+                        "name": "trigger_event_type",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "The name of the workflow used for the pipeline/standalone build",
+                        "name": "workflow",
                         "in": "query"
                     }
                 ],
@@ -4314,8 +4254,8 @@
                     }
                 ],
                 "responses": {
-                    "200": {
-                        "description": "OK"
+                    "201": {
+                        "description": "Created"
                     },
                     "400": {
                         "description": "Bad Request",
@@ -4897,6 +4837,240 @@
                         "description": "Internal Server Error",
                         "schema": {
                             "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/releases/app-store": {
+            "post": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Create a new iOS release for the specified app. If the release candidate parameters (`release_branch` and `workflow`) are specified then the latest successful build is automatically picked up as release candidate and if `automatic_testflight_upload` is also turned on, then an upload to TestFlight is started immediately. You can use this endpoint to set up a fully automated release flow.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "releases"
+                ],
+                "summary": "Create a new Apple App Store release for the app.",
+                "operationId": "release-create-app-store",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "App Store release parameters",
+                        "name": "app",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.ReleaseCreateAppStoreParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/v0.ReleaseCreateAppStoreRespModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/roles/{role-name}": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "application"
+                ],
+                "summary": "Lists group roles for an app",
+                "operationId": "app-roles-query",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Slug of the app",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "admin",
+                            "manager",
+                            "member"
+                        ],
+                        "type": "string",
+                        "description": "Name of the role being queried, supported values are: admin, manager (equals developer), and member (equals tester/qa)",
+                        "name": "role-name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of group slugs",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Replaces the groups for a given role on an app. Only the given groups will be present for a role on the app after this call.",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "application"
+                ],
+                "summary": "Replaces group roles for an app",
+                "operationId": "app-roles-update",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Slug of the app",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "enum": [
+                            "admin",
+                            "manager",
+                            "member"
+                        ],
+                        "type": "string",
+                        "description": "Name of the role being modified, supported values are: admin, manager (equals developer), and member (equals tester/qa)",
+                        "name": "role-name",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "List of group slugs",
+                        "name": "groups",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "List of group slugs",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "type": "object"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "groups": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
                         }
                     }
                 }
@@ -5501,117 +5675,6 @@
                 }
             }
         },
-        "/me/addon-tokens": {
-            "get": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
-                "description": "Lists the active addon tokens of the user with some extra details.",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "user"
-                ],
-                "summary": "The active addon tokens of the user",
-                "operationId": "user-addon-tokens",
-                "deprecated": true,
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    }
-                }
-            }
-        },
-        "/me/addon-tokens/{addon-id}": {
-            "delete": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
-                "description": "Removes the active addon token of the user.",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "user"
-                ],
-                "summary": "Removes an active addon token of the user",
-                "operationId": "user-addon-tokens-delete",
-                "deprecated": true,
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "Addon ID",
-                        "name": "addon-id",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK"
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    }
-                }
-            }
-        },
         "/me/plan": {
             "get": {
                 "security": [
@@ -5868,6 +5931,136 @@
                 }
             }
         },
+        "/organizations/{org-slug}/apps/machine_types": {
+            "patch": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Migrates all apps' machine types of an organization from one machine type to another",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "organizations"
+                ],
+                "summary": "Migrate machine types",
+                "operationId": "organization-machine-type-update",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Organization slug",
+                        "name": "org-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Machine type to migrate from and to",
+                        "name": "types",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.OrganizationUpdateMachineTypeParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.OrganizationUpdateMachineTypeResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/organizations/{org-slug}/groups": {
+            "get": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Lists the groups of an organization",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "organizations"
+                ],
+                "summary": "List organizations groups",
+                "operationId": "organzation-groups-list",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "slug of the organization",
+                        "name": "org-slug",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "list of groups",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "allOf": [
+                                    {
+                                        "type": "object"
+                                    },
+                                    {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "slug": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.ProxyErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
         "/organizations/{organization-slug}/addons": {
             "get": {
                 "security": [
@@ -5974,6 +6167,77 @@
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/v0.PipelineListAllResponseModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{user-slug}/apps/machine_types": {
+            "patch": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Migrates all apps' machine types of a user from one machine type to another",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Migrate machine types",
+                "operationId": "user-machine-type-update",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User slug",
+                        "name": "user-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Machine type to migrate from and to",
+                        "name": "types",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.OrganizationUpdateMachineTypeParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/v0.OrganizationUpdateMachineTypeResponse"
                         }
                     },
                     "400": {
@@ -6273,68 +6537,6 @@
                     }
                 }
             }
-        },
-        "/v0.1/apps/{app-slug}/avatar-candidates": {
-            "get": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
-                "description": "List all available avatar candidates for an application",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "avatar-candidate"
-                ],
-                "summary": "Get list of the avatar candidates",
-                "operationId": "avatar-candidate-list",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "App slug",
-                        "name": "app-slug",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/v0.FindAvatarCandidateResponse"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    }
-                }
-            }
         }
     },
     "definitions": {
@@ -6485,7 +6687,7 @@
                 }
             }
         },
-        "github.com_gobuffalo_nulls.Int64": {
+        "github_com_gobuffalo_nulls.Int64": {
             "type": "object",
             "properties": {
                 "int64": {
@@ -6497,7 +6699,7 @@
                 }
             }
         },
-        "github.com_gobuffalo_nulls.String": {
+        "github_com_gobuffalo_nulls.String": {
             "type": "object",
             "properties": {
                 "string": {
@@ -6509,7 +6711,7 @@
                 }
             }
         },
-        "github.com_markbates_pop_nulls.Int64": {
+        "github_com_markbates_pop_nulls.Int64": {
             "type": "object",
             "properties": {
                 "int64": {
@@ -6521,7 +6723,7 @@
                 }
             }
         },
-        "github.com_markbates_pop_nulls.String": {
+        "github_com_markbates_pop_nulls.String": {
             "type": "object",
             "properties": {
                 "string": {
@@ -6530,6 +6732,20 @@
                 "valid": {
                     "description": "Valid is true if String is not NULL",
                     "type": "boolean"
+                }
+            }
+        },
+        "pipelineabledomain.BuildToolInvocation": {
+            "type": "object",
+            "properties": {
+                "invocation_id": {
+                    "type": "string"
+                },
+                "tool": {
+                    "type": "string"
+                },
+                "tool_version": {
+                    "type": "string"
                 }
             }
         },
@@ -6541,6 +6757,17 @@
                     "type": "string"
                 },
                 "value": {}
+            }
+        },
+        "pipelineabledomain.LocalConfig": {
+            "type": "object",
+            "properties": {
+                "host": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
             }
         },
         "pipelineabledomain.TriggerParams": {
@@ -6564,10 +6791,6 @@
                 "commit_message": {
                     "type": "string"
                 },
-                "commit_paths": {},
-                "diff_url": {
-                    "type": "string"
-                },
                 "environments": {
                     "type": "array",
                     "items": {
@@ -6584,7 +6807,13 @@
                 "pull_request_repository_url": {
                     "type": "string"
                 },
-                "tag": {
+                "tag": {}
+            }
+        },
+        "service.ProxyErrorRespModel": {
+            "type": "object",
+            "properties": {
+                "error_msg": {
                     "type": "string"
                 }
             }
@@ -6618,13 +6847,13 @@
                     "type": "string"
                 },
                 "description": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "event_icon": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "event_stype": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repository_avatar_icon_url": {
                     "type": "string"
@@ -6636,10 +6865,10 @@
                     "type": "string"
                 },
                 "target_path_string": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "title": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -6647,7 +6876,7 @@
             "type": "object",
             "properties": {
                 "icon": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "plan": {
                     "$ref": "#/definitions/addons.Plan"
@@ -6863,7 +7092,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -6903,7 +7136,7 @@
             "type": "object",
             "properties": {
                 "avatar_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "is_disabled": {
                     "type": "boolean"
@@ -6918,19 +7151,19 @@
                     "$ref": "#/definitions/v0.OwnerAccountResponseModel"
                 },
                 "project_type": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "provider": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repo_owner": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repo_slug": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repo_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "slug": {
                     "type": "string"
@@ -7080,6 +7313,10 @@
                     "description": "If `true` then the repository visibility setting will be public, in case of `false` it will be private",
                     "type": "boolean"
                 },
+                "manual_approval_enabled": {
+                    "description": "Toggles whether manual approval should be enabled for the app's builds. If it's not specified, it will be `true`.",
+                    "type": "boolean"
+                },
                 "organization_slug": {
                     "description": "The slug of the organization, who will be the owner of the application. If it's not specified, then the authenticated user will be the owner.",
                     "type": "string"
@@ -7157,7 +7394,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7300,7 +7541,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7399,7 +7644,7 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "file_size_bytes": {
                     "type": "integer"
@@ -7417,7 +7662,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -7432,7 +7677,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7446,7 +7695,7 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "expiring_download_url": {
                     "type": "string"
@@ -7470,7 +7719,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 }
             }
         },
@@ -7493,80 +7742,16 @@
                 }
             }
         },
-        "v0.AvatarCandidateCreateParams": {
-            "type": "object",
-            "required": [
-                "filename",
-                "filesize"
-            ],
-            "properties": {
-                "filename": {
-                    "type": "string"
-                },
-                "filesize": {
-                    "type": "integer"
-                }
-            }
-        },
-        "v0.AvatarCandidateCreateResponseItem": {
-            "type": "object",
-            "properties": {
-                "filename": {
-                    "type": "string"
-                },
-                "filesize": {
-                    "type": "integer"
-                },
-                "slug": {
-                    "type": "string"
-                },
-                "upload_url": {
-                    "type": "string"
-                }
-            }
-        },
-        "v0.AvatarPromoteParams": {
-            "type": "object",
-            "required": [
-                "is_promoted"
-            ],
-            "properties": {
-                "is_promoted": {
-                    "type": "boolean"
-                }
-            }
-        },
-        "v0.AvatarPromoteResponseItemModel": {
-            "type": "object",
-            "properties": {
-                "is_candidate": {
-                    "type": "boolean"
-                },
-                "slug": {
-                    "type": "string"
-                },
-                "upload_file_name": {
-                    "type": "string"
-                },
-                "upload_file_size": {
-                    "type": "integer"
-                }
-            }
-        },
-        "v0.AvatarPromoteResponseModel": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "$ref": "#/definitions/v0.AvatarPromoteResponseItemModel"
-                }
-            }
-        },
         "v0.BitriseYMLConfigGetResponse": {
             "type": "object",
             "properties": {
                 "location": {
                     "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "type": "string"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/website.BitriseYMLLocation"
+                        }
+                    ]
                 }
             }
         },
@@ -7575,7 +7760,11 @@
             "properties": {
                 "location": {
                     "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "type": "string",
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/website.BitriseYMLLocation"
+                        }
+                    ],
                     "example": "repository"
                 }
             }
@@ -7629,7 +7818,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7709,25 +7902,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -7742,7 +7935,7 @@
                     "type": "boolean"
                 },
                 "machine_type_id": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -7754,10 +7947,10 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "repository": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
@@ -7766,7 +7959,7 @@
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -7778,13 +7971,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -7802,7 +7995,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7817,7 +8014,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -7889,25 +8090,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -7928,7 +8129,7 @@
                     "type": "string"
                 },
                 "machine_type_id": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -7943,16 +8144,16 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "slug": {
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -7964,13 +8165,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -7990,7 +8191,11 @@
             "properties": {
                 "build_params": {
                     "description": "The public part of the SSH key you would like to use",
-                    "$ref": "#/definitions/v0.BuildTriggerParamsBuildParams"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.BuildTriggerParamsBuildParams"
+                        }
+                    ]
                 },
                 "hook_info": {
                     "$ref": "#/definitions/v0.BuildTriggerParamsHookInfo"
@@ -8201,36 +8406,11 @@
                 }
             }
         },
-        "v0.FindAvatarCandidateResponse": {
-            "type": "object",
-            "properties": {
-                "data": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/v0.FindAvatarCandidateResponseItem"
-                    }
-                }
-            }
-        },
-        "v0.FindAvatarCandidateResponseItem": {
-            "type": "object",
-            "properties": {
-                "download_url": {
-                    "type": "string"
-                },
-                "filename": {
-                    "type": "string"
-                },
-                "slug": {
-                    "type": "string"
-                }
-            }
-        },
         "v0.OrganizationDataModel": {
             "type": "object",
             "properties": {
                 "avatar_icon_url": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "concurrency_count": {
                     "type": "integer"
@@ -8279,6 +8459,50 @@
             "properties": {
                 "data": {
                     "$ref": "#/definitions/v0.OrganizationDataModel"
+                }
+            }
+        },
+        "v0.OrganizationUpdateMachineTypeParams": {
+            "type": "object",
+            "properties": {
+                "from_machine": {
+                    "description": "Machine type to migrate from",
+                    "type": "string"
+                },
+                "to_machine": {
+                    "description": "Machine type to migrate to",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.OrganizationUpdateMachineTypeResponse": {
+            "type": "object",
+            "properties": {
+                "errors": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "app": {
+                                "description": "The apps which had an error's identifiers in the following format \"#{app.title} (#{app.slug})\"",
+                                "type": "string"
+                            },
+                            "error": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                },
+                "message": {
+                    "description": "The result of the migration",
+                    "type": "string"
+                },
+                "migrated_apps": {
+                    "description": "The migrated apps' identifiers in the following format \"#{app.title} (#{app.slug})\"",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             }
         },
@@ -8379,16 +8603,19 @@
             "type": "object",
             "properties": {
                 "branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                },
+                "credit_cost": {
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.Int64"
                 },
                 "finished_at": {
                     "type": "string"
@@ -8406,7 +8633,7 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "repository": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
@@ -8421,13 +8648,13 @@
                     "type": "integer"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8452,19 +8679,25 @@
             "type": "object",
             "properties": {
                 "branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
+                "build_tool_invocations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/pipelineabledomain.BuildToolInvocation"
+                    }
+                },
                 "commit_hash": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.Int64"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.Int64"
                 },
                 "finished_at": {
                     "type": "string"
@@ -8478,11 +8711,14 @@
                 "is_processed": {
                     "type": "boolean"
                 },
+                "local_config": {
+                    "$ref": "#/definitions/pipelineabledomain.LocalConfig"
+                },
                 "pull_request_id": {
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "slug": {
                     "type": "string"
@@ -8494,7 +8730,7 @@
                     "type": "integer"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "trigger_params": {
                     "$ref": "#/definitions/pipelineabledomain.TriggerParams"
@@ -8503,7 +8739,7 @@
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github.com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8521,7 +8757,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -8675,10 +8915,6 @@
                 "commit_message": {
                     "type": "string"
                 },
-                "commit_paths": {},
-                "diff_url": {
-                    "type": "string"
-                },
                 "environments": {
                     "type": "array",
                     "items": {
@@ -8718,6 +8954,9 @@
                 "name": {
                     "type": "string"
                 },
+                "startFailureReason": {
+                    "type": "string"
+                },
                 "started_at": {
                     "type": "string"
                 },
@@ -8742,7 +8981,7 @@
                     "type": "string"
                 },
                 "price": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 }
             }
         },
@@ -8780,7 +9019,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -8874,7 +9117,11 @@
                 },
                 "paging": {
                     "description": "pagination",
-                    "$ref": "#/definitions/v0.PagingResponseModel"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/v0.PagingResponseModel"
+                        }
+                    ]
                 }
             }
         },
@@ -8930,10 +9177,68 @@
                 }
             }
         },
-        "v0.ProxyErrorRespModel": {
+        "v0.ReleaseCreateAppStoreParams": {
+            "type": "object",
+            "required": [
+                "bundle_id",
+                "name"
+            ],
+            "properties": {
+                "automatic_testflight_upload": {
+                    "description": "Indicates whether or not to upload every release candidate build automatically to TestFlight (default: `false`)",
+                    "type": "boolean"
+                },
+                "bundle_id": {
+                    "description": "The bundle ID of the app to be released",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "An internal description of the release; it won't be propagated to the App Store (default: empty)",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name/version of the release (e.g. `1.2`)",
+                    "type": "string"
+                },
+                "release_branch": {
+                    "description": "The branch used for building the release candidate (default: empty)",
+                    "type": "string"
+                },
+                "slack_webhook_url": {
+                    "description": "The Slack webhook URL to use for sending Slack notifications (default: empty)",
+                    "type": "string"
+                },
+                "teams_webhook_url": {
+                    "description": "The Teams webhook URL to use for sending MS Teams notifications (default: empty)",
+                    "type": "string"
+                },
+                "workflow": {
+                    "description": "The workflow used for building the release candidate (default: empty)",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.ReleaseCreateAppStoreRespModel": {
             "type": "object",
             "properties": {
-                "error_msg": {
+                "bundle_id": {
+                    "description": "The bundle ID of the app",
+                    "type": "string"
+                },
+                "id": {
+                    "description": "The ID of the newly created release",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name/version of the release (e.g. `1.2`)",
+                    "type": "string"
+                },
+                "platform": {
+                    "description": "The platform of the release (`ios`)",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "The status of the newly created release (`scheduled` or `in-progress`, depending on whether or not the release candidate settings were specified)",
                     "type": "string"
                 }
             }
@@ -9070,16 +9375,16 @@
                     "type": "string"
                 },
                 "response_body": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "response_headers": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
                 },
                 "response_http_status": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "response_seconds": {
-                    "$ref": "#/definitions/github.com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
                 },
                 "slug": {
                     "type": "string"
@@ -9104,6 +9409,17 @@
                     "type": "string"
                 }
             }
+        },
+        "website.BitriseYMLLocation": {
+            "type": "string",
+            "enum": [
+                "bitrise.io",
+                "repository"
+            ],
+            "x-enum-varnames": [
+                "LocationBitriseIo",
+                "LocationRepository"
+            ]
         }
     },
     "securityDefinitions": {

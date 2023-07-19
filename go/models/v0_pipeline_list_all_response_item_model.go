@@ -30,6 +30,9 @@ type V0PipelineListAllResponseItemModel struct {
 	// commit message
 	CommitMessage *GithubComGobuffaloNullsString `json:"commit_message,omitempty"`
 
+	// credit cost
+	CreditCost *GithubComGobuffaloNullsInt64 `json:"credit_cost,omitempty"`
+
 	// finished at
 	FinishedAt string `json:"finished_at,omitempty"`
 
@@ -86,6 +89,10 @@ func (m *V0PipelineListAllResponseItemModel) Validate(formats strfmt.Registry) e
 	}
 
 	if err := m.validateCommitMessage(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCreditCost(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -160,6 +167,25 @@ func (m *V0PipelineListAllResponseItemModel) validateCommitMessage(formats strfm
 				return ve.ValidateName("commit_message")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
 				return ce.ValidateName("commit_message")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *V0PipelineListAllResponseItemModel) validateCreditCost(formats strfmt.Registry) error {
+	if swag.IsZero(m.CreditCost) { // not required
+		return nil
+	}
+
+	if m.CreditCost != nil {
+		if err := m.CreditCost.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("credit_cost")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credit_cost")
 			}
 			return err
 		}
@@ -260,6 +286,10 @@ func (m *V0PipelineListAllResponseItemModel) ContextValidate(ctx context.Context
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCreditCost(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidatePullRequestTargetBranch(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -285,6 +315,11 @@ func (m *V0PipelineListAllResponseItemModel) ContextValidate(ctx context.Context
 func (m *V0PipelineListAllResponseItemModel) contextValidateBranch(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Branch != nil {
+
+		if swag.IsZero(m.Branch) { // not required
+			return nil
+		}
+
 		if err := m.Branch.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("branch")
@@ -301,6 +336,11 @@ func (m *V0PipelineListAllResponseItemModel) contextValidateBranch(ctx context.C
 func (m *V0PipelineListAllResponseItemModel) contextValidateCommitHash(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CommitHash != nil {
+
+		if swag.IsZero(m.CommitHash) { // not required
+			return nil
+		}
+
 		if err := m.CommitHash.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_hash")
@@ -317,6 +357,11 @@ func (m *V0PipelineListAllResponseItemModel) contextValidateCommitHash(ctx conte
 func (m *V0PipelineListAllResponseItemModel) contextValidateCommitMessage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CommitMessage != nil {
+
+		if swag.IsZero(m.CommitMessage) { // not required
+			return nil
+		}
+
 		if err := m.CommitMessage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_message")
@@ -330,9 +375,35 @@ func (m *V0PipelineListAllResponseItemModel) contextValidateCommitMessage(ctx co
 	return nil
 }
 
+func (m *V0PipelineListAllResponseItemModel) contextValidateCreditCost(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CreditCost != nil {
+
+		if swag.IsZero(m.CreditCost) { // not required
+			return nil
+		}
+
+		if err := m.CreditCost.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("credit_cost")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("credit_cost")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *V0PipelineListAllResponseItemModel) contextValidatePullRequestTargetBranch(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PullRequestTargetBranch != nil {
+
+		if swag.IsZero(m.PullRequestTargetBranch) { // not required
+			return nil
+		}
+
 		if err := m.PullRequestTargetBranch.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pull_request_target_branch")
@@ -349,6 +420,11 @@ func (m *V0PipelineListAllResponseItemModel) contextValidatePullRequestTargetBra
 func (m *V0PipelineListAllResponseItemModel) contextValidateRepository(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Repository != nil {
+
+		if swag.IsZero(m.Repository) { // not required
+			return nil
+		}
+
 		if err := m.Repository.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("repository")
@@ -365,6 +441,11 @@ func (m *V0PipelineListAllResponseItemModel) contextValidateRepository(ctx conte
 func (m *V0PipelineListAllResponseItemModel) contextValidateTag(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Tag != nil {
+
+		if swag.IsZero(m.Tag) { // not required
+			return nil
+		}
+
 		if err := m.Tag.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tag")
@@ -381,6 +462,11 @@ func (m *V0PipelineListAllResponseItemModel) contextValidateTag(ctx context.Cont
 func (m *V0PipelineListAllResponseItemModel) contextValidateTriggeredBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TriggeredBy != nil {
+
+		if swag.IsZero(m.TriggeredBy) { // not required
+			return nil
+		}
+
 		if err := m.TriggeredBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("triggered_by")

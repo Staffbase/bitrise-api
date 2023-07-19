@@ -54,7 +54,7 @@ func (o *AppListByUserReader) ReadResponse(response runtime.ClientResponse, cons
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /users/{user-slug}/apps] app-list-by-user", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppListByUserOK) IsServerError() bool {
 // IsCode returns true when this app list by user o k response a status code equal to that given
 func (o *AppListByUserOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app list by user o k response
+func (o *AppListByUserOK) Code() int {
+	return 200
 }
 
 func (o *AppListByUserOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppListByUserBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app list by user bad request response
+func (o *AppListByUserBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppListByUserBadRequest) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apps][%d] appListByUserBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppListByUserUnauthorized) IsServerError() bool {
 // IsCode returns true when this app list by user unauthorized response a status code equal to that given
 func (o *AppListByUserUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app list by user unauthorized response
+func (o *AppListByUserUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppListByUserUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppListByUserNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app list by user not found response
+func (o *AppListByUserNotFound) Code() int {
+	return 404
+}
+
 func (o *AppListByUserNotFound) Error() string {
 	return fmt.Sprintf("[GET /users/{user-slug}/apps][%d] appListByUserNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppListByUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this app list by user internal server error response a status code equal to that given
 func (o *AppListByUserInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app list by user internal server error response
+func (o *AppListByUserInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppListByUserInternalServerError) Error() string {

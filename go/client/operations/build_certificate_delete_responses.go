@@ -54,7 +54,7 @@ func (o *BuildCertificateDeleteReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}] build-certificate-delete", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildCertificateDeleteOK) IsServerError() bool {
 // IsCode returns true when this build certificate delete o k response a status code equal to that given
 func (o *BuildCertificateDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build certificate delete o k response
+func (o *BuildCertificateDeleteOK) Code() int {
+	return 200
 }
 
 func (o *BuildCertificateDeleteOK) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildCertificateDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build certificate delete bad request response
+func (o *BuildCertificateDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildCertificateDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildCertificateDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this build certificate delete unauthorized response a status code equal to that given
 func (o *BuildCertificateDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build certificate delete unauthorized response
+func (o *BuildCertificateDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildCertificateDeleteUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildCertificateDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build certificate delete not found response
+func (o *BuildCertificateDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildCertificateDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildCertificateDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this build certificate delete internal server error response a status code equal to that given
 func (o *BuildCertificateDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build certificate delete internal server error response
+func (o *BuildCertificateDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildCertificateDeleteInternalServerError) Error() string {

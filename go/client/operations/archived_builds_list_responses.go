@@ -54,7 +54,7 @@ func (o *ArchivedBuildsListReader) ReadResponse(response runtime.ClientResponse,
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/archived-builds] archived-builds-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ArchivedBuildsListOK) IsServerError() bool {
 // IsCode returns true when this archived builds list o k response a status code equal to that given
 func (o *ArchivedBuildsListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the archived builds list o k response
+func (o *ArchivedBuildsListOK) Code() int {
+	return 200
 }
 
 func (o *ArchivedBuildsListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ArchivedBuildsListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the archived builds list bad request response
+func (o *ArchivedBuildsListBadRequest) Code() int {
+	return 400
+}
+
 func (o *ArchivedBuildsListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/archived-builds][%d] archivedBuildsListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ArchivedBuildsListUnauthorized) IsServerError() bool {
 // IsCode returns true when this archived builds list unauthorized response a status code equal to that given
 func (o *ArchivedBuildsListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the archived builds list unauthorized response
+func (o *ArchivedBuildsListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ArchivedBuildsListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ArchivedBuildsListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the archived builds list not found response
+func (o *ArchivedBuildsListNotFound) Code() int {
+	return 404
+}
+
 func (o *ArchivedBuildsListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/archived-builds][%d] archivedBuildsListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ArchivedBuildsListInternalServerError) IsServerError() bool {
 // IsCode returns true when this archived builds list internal server error response a status code equal to that given
 func (o *ArchivedBuildsListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the archived builds list internal server error response
+func (o *ArchivedBuildsListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ArchivedBuildsListInternalServerError) Error() string {

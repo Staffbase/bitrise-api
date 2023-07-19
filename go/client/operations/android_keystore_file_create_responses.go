@@ -54,7 +54,7 @@ func (o *AndroidKeystoreFileCreateReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/android-keystore-files] android-keystore-file-create", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AndroidKeystoreFileCreateCreated) IsServerError() bool {
 // IsCode returns true when this android keystore file create created response a status code equal to that given
 func (o *AndroidKeystoreFileCreateCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the android keystore file create created response
+func (o *AndroidKeystoreFileCreateCreated) Code() int {
+	return 201
 }
 
 func (o *AndroidKeystoreFileCreateCreated) Error() string {
@@ -160,6 +165,11 @@ func (o *AndroidKeystoreFileCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the android keystore file create bad request response
+func (o *AndroidKeystoreFileCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *AndroidKeystoreFileCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AndroidKeystoreFileCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this android keystore file create unauthorized response a status code equal to that given
 func (o *AndroidKeystoreFileCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the android keystore file create unauthorized response
+func (o *AndroidKeystoreFileCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AndroidKeystoreFileCreateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AndroidKeystoreFileCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the android keystore file create not found response
+func (o *AndroidKeystoreFileCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AndroidKeystoreFileCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files][%d] androidKeystoreFileCreateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AndroidKeystoreFileCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this android keystore file create internal server error response a status code equal to that given
 func (o *AndroidKeystoreFileCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the android keystore file create internal server error response
+func (o *AndroidKeystoreFileCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AndroidKeystoreFileCreateInternalServerError) Error() string {

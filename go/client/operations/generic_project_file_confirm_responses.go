@@ -54,7 +54,7 @@ func (o *GenericProjectFileConfirmReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded] generic-project-file-confirm", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GenericProjectFileConfirmOK) IsServerError() bool {
 // IsCode returns true when this generic project file confirm o k response a status code equal to that given
 func (o *GenericProjectFileConfirmOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the generic project file confirm o k response
+func (o *GenericProjectFileConfirmOK) Code() int {
+	return 200
 }
 
 func (o *GenericProjectFileConfirmOK) Error() string {
@@ -160,6 +165,11 @@ func (o *GenericProjectFileConfirmBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the generic project file confirm bad request response
+func (o *GenericProjectFileConfirmBadRequest) Code() int {
+	return 400
+}
+
 func (o *GenericProjectFileConfirmBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *GenericProjectFileConfirmUnauthorized) IsServerError() bool {
 // IsCode returns true when this generic project file confirm unauthorized response a status code equal to that given
 func (o *GenericProjectFileConfirmUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the generic project file confirm unauthorized response
+func (o *GenericProjectFileConfirmUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GenericProjectFileConfirmUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *GenericProjectFileConfirmNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the generic project file confirm not found response
+func (o *GenericProjectFileConfirmNotFound) Code() int {
+	return 404
+}
+
 func (o *GenericProjectFileConfirmNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files/{generic-project-file-slug}/uploaded][%d] genericProjectFileConfirmNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *GenericProjectFileConfirmInternalServerError) IsServerError() bool {
 // IsCode returns true when this generic project file confirm internal server error response a status code equal to that given
 func (o *GenericProjectFileConfirmInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the generic project file confirm internal server error response
+func (o *GenericProjectFileConfirmInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GenericProjectFileConfirmInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *CacheItemDeleteReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/cache-items/{cache-item-id}] cache-item-delete", response, response.Code())
 	}
 }
 
@@ -94,6 +94,11 @@ func (o *CacheItemDeleteOK) IsServerError() bool {
 // IsCode returns true when this cache item delete o k response a status code equal to that given
 func (o *CacheItemDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the cache item delete o k response
+func (o *CacheItemDeleteOK) Code() int {
+	return 200
 }
 
 func (o *CacheItemDeleteOK) Error() string {
@@ -146,6 +151,11 @@ func (o *CacheItemDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this cache item delete bad request response a status code equal to that given
 func (o *CacheItemDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the cache item delete bad request response
+func (o *CacheItemDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *CacheItemDeleteBadRequest) Error() string {
@@ -211,6 +221,11 @@ func (o *CacheItemDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the cache item delete unauthorized response
+func (o *CacheItemDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *CacheItemDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/cache-items/{cache-item-id}][%d] cacheItemDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -274,6 +289,11 @@ func (o *CacheItemDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cache item delete not found response
+func (o *CacheItemDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *CacheItemDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/cache-items/{cache-item-id}][%d] cacheItemDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -335,6 +355,11 @@ func (o *CacheItemDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this cache item delete internal server error response a status code equal to that given
 func (o *CacheItemDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cache item delete internal server error response
+func (o *CacheItemDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CacheItemDeleteInternalServerError) Error() string {

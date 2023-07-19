@@ -54,7 +54,7 @@ func (o *BuildBitriseYmlShowReader) ReadResponse(response runtime.ClientResponse
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml] build-bitrise-yml-show", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildBitriseYmlShowOK) IsServerError() bool {
 // IsCode returns true when this build bitrise yml show o k response a status code equal to that given
 func (o *BuildBitriseYmlShowOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build bitrise yml show o k response
+func (o *BuildBitriseYmlShowOK) Code() int {
+	return 200
 }
 
 func (o *BuildBitriseYmlShowOK) Error() string {
@@ -156,6 +161,11 @@ func (o *BuildBitriseYmlShowBadRequest) IsServerError() bool {
 // IsCode returns true when this build bitrise yml show bad request response a status code equal to that given
 func (o *BuildBitriseYmlShowBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the build bitrise yml show bad request response
+func (o *BuildBitriseYmlShowBadRequest) Code() int {
+	return 400
 }
 
 func (o *BuildBitriseYmlShowBadRequest) Error() string {
@@ -221,6 +231,11 @@ func (o *BuildBitriseYmlShowUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the build bitrise yml show unauthorized response
+func (o *BuildBitriseYmlShowUnauthorized) Code() int {
+	return 401
+}
+
 func (o *BuildBitriseYmlShowUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowUnauthorized  %+v", 401, o.Payload)
 }
@@ -284,6 +299,11 @@ func (o *BuildBitriseYmlShowNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build bitrise yml show not found response
+func (o *BuildBitriseYmlShowNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildBitriseYmlShowNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/builds/{build-slug}/bitrise.yml][%d] buildBitriseYmlShowNotFound  %+v", 404, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *BuildBitriseYmlShowInternalServerError) IsServerError() bool {
 // IsCode returns true when this build bitrise yml show internal server error response a status code equal to that given
 func (o *BuildBitriseYmlShowInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build bitrise yml show internal server error response
+func (o *BuildBitriseYmlShowInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildBitriseYmlShowInternalServerError) Error() string {

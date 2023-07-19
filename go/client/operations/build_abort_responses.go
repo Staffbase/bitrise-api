@@ -60,7 +60,7 @@ func (o *BuildAbortReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/builds/{build-slug}/abort] build-abort", response, response.Code())
 	}
 }
 
@@ -101,6 +101,11 @@ func (o *BuildAbortOK) IsServerError() bool {
 // IsCode returns true when this build abort o k response a status code equal to that given
 func (o *BuildAbortOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build abort o k response
+func (o *BuildAbortOK) Code() int {
+	return 200
 }
 
 func (o *BuildAbortOK) Error() string {
@@ -166,6 +171,11 @@ func (o *BuildAbortBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build abort bad request response
+func (o *BuildAbortBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildAbortBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortBadRequest  %+v", 400, o.Payload)
 }
@@ -227,6 +237,11 @@ func (o *BuildAbortUnauthorized) IsServerError() bool {
 // IsCode returns true when this build abort unauthorized response a status code equal to that given
 func (o *BuildAbortUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build abort unauthorized response
+func (o *BuildAbortUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildAbortUnauthorized) Error() string {
@@ -292,6 +307,11 @@ func (o *BuildAbortNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build abort not found response
+func (o *BuildAbortNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildAbortNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortNotFound  %+v", 404, o.Payload)
 }
@@ -355,6 +375,11 @@ func (o *BuildAbortTooManyRequests) IsCode(code int) bool {
 	return code == 429
 }
 
+// Code gets the status code for the build abort too many requests response
+func (o *BuildAbortTooManyRequests) Code() int {
+	return 429
+}
+
 func (o *BuildAbortTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/builds/{build-slug}/abort][%d] buildAbortTooManyRequests  %+v", 429, o.Payload)
 }
@@ -416,6 +441,11 @@ func (o *BuildAbortInternalServerError) IsServerError() bool {
 // IsCode returns true when this build abort internal server error response a status code equal to that given
 func (o *BuildAbortInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build abort internal server error response
+func (o *BuildAbortInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildAbortInternalServerError) Error() string {

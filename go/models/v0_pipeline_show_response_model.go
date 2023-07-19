@@ -277,6 +277,11 @@ func (m *V0PipelineShowResponseModel) ContextValidate(ctx context.Context, forma
 func (m *V0PipelineShowResponseModel) contextValidateApp(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.App != nil {
+
+		if swag.IsZero(m.App) { // not required
+			return nil
+		}
+
 		if err := m.App.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("app")
@@ -295,6 +300,11 @@ func (m *V0PipelineShowResponseModel) contextValidateAttempts(ctx context.Contex
 	for i := 0; i < len(m.Attempts); i++ {
 
 		if m.Attempts[i] != nil {
+
+			if swag.IsZero(m.Attempts[i]) { // not required
+				return nil
+			}
+
 			if err := m.Attempts[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("attempts" + "." + strconv.Itoa(i))
@@ -315,6 +325,11 @@ func (m *V0PipelineShowResponseModel) contextValidateStages(ctx context.Context,
 	for i := 0; i < len(m.Stages); i++ {
 
 		if m.Stages[i] != nil {
+
+			if swag.IsZero(m.Stages[i]) { // not required
+				return nil
+			}
+
 			if err := m.Stages[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("stages" + "." + strconv.Itoa(i))
@@ -333,6 +348,11 @@ func (m *V0PipelineShowResponseModel) contextValidateStages(ctx context.Context,
 func (m *V0PipelineShowResponseModel) contextValidateTriggerParams(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TriggerParams != nil {
+
+		if swag.IsZero(m.TriggerParams) { // not required
+			return nil
+		}
+
 		if err := m.TriggerParams.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("trigger_params")

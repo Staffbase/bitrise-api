@@ -54,7 +54,7 @@ func (o *AddonListByOrganizationReader) ReadResponse(response runtime.ClientResp
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /organizations/{organization-slug}/addons] addon-list-by-organization", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AddonListByOrganizationOK) IsServerError() bool {
 // IsCode returns true when this addon list by organization o k response a status code equal to that given
 func (o *AddonListByOrganizationOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the addon list by organization o k response
+func (o *AddonListByOrganizationOK) Code() int {
+	return 200
 }
 
 func (o *AddonListByOrganizationOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AddonListByOrganizationBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the addon list by organization bad request response
+func (o *AddonListByOrganizationBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddonListByOrganizationBadRequest) Error() string {
 	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AddonListByOrganizationUnauthorized) IsServerError() bool {
 // IsCode returns true when this addon list by organization unauthorized response a status code equal to that given
 func (o *AddonListByOrganizationUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the addon list by organization unauthorized response
+func (o *AddonListByOrganizationUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AddonListByOrganizationUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AddonListByOrganizationNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the addon list by organization not found response
+func (o *AddonListByOrganizationNotFound) Code() int {
+	return 404
+}
+
 func (o *AddonListByOrganizationNotFound) Error() string {
 	return fmt.Sprintf("[GET /organizations/{organization-slug}/addons][%d] addonListByOrganizationNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AddonListByOrganizationInternalServerError) IsServerError() bool {
 // IsCode returns true when this addon list by organization internal server error response a status code equal to that given
 func (o *AddonListByOrganizationInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the addon list by organization internal server error response
+func (o *AddonListByOrganizationInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddonListByOrganizationInternalServerError) Error() string {

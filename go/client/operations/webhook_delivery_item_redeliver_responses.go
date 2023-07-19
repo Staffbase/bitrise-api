@@ -48,7 +48,7 @@ func (o *WebhookDeliveryItemRedeliverReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver] webhook-delivery-item-redeliver", response, response.Code())
 	}
 }
 
@@ -89,6 +89,11 @@ func (o *WebhookDeliveryItemRedeliverOK) IsServerError() bool {
 // IsCode returns true when this webhook delivery item redeliver o k response a status code equal to that given
 func (o *WebhookDeliveryItemRedeliverOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the webhook delivery item redeliver o k response
+func (o *WebhookDeliveryItemRedeliverOK) Code() int {
+	return 200
 }
 
 func (o *WebhookDeliveryItemRedeliverOK) Error() string {
@@ -154,6 +159,11 @@ func (o *WebhookDeliveryItemRedeliverBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the webhook delivery item redeliver bad request response
+func (o *WebhookDeliveryItemRedeliverBadRequest) Code() int {
+	return 400
+}
+
 func (o *WebhookDeliveryItemRedeliverBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverBadRequest  %+v", 400, o.Payload)
 }
@@ -217,6 +227,11 @@ func (o *WebhookDeliveryItemRedeliverUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the webhook delivery item redeliver unauthorized response
+func (o *WebhookDeliveryItemRedeliverUnauthorized) Code() int {
+	return 401
+}
+
 func (o *WebhookDeliveryItemRedeliverUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}/delivery-items/{webhook-delivery-item-slug}/redeliver][%d] webhookDeliveryItemRedeliverUnauthorized  %+v", 401, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *WebhookDeliveryItemRedeliverInternalServerError) IsServerError() bool {
 // IsCode returns true when this webhook delivery item redeliver internal server error response a status code equal to that given
 func (o *WebhookDeliveryItemRedeliverInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the webhook delivery item redeliver internal server error response
+func (o *WebhookDeliveryItemRedeliverInternalServerError) Code() int {
+	return 500
 }
 
 func (o *WebhookDeliveryItemRedeliverInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *BranchListReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/branches] branch-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BranchListOK) IsServerError() bool {
 // IsCode returns true when this branch list o k response a status code equal to that given
 func (o *BranchListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the branch list o k response
+func (o *BranchListOK) Code() int {
+	return 200
 }
 
 func (o *BranchListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *BranchListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the branch list bad request response
+func (o *BranchListBadRequest) Code() int {
+	return 400
+}
+
 func (o *BranchListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BranchListUnauthorized) IsServerError() bool {
 // IsCode returns true when this branch list unauthorized response a status code equal to that given
 func (o *BranchListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the branch list unauthorized response
+func (o *BranchListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BranchListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BranchListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the branch list not found response
+func (o *BranchListNotFound) Code() int {
+	return 404
+}
+
 func (o *BranchListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/branches][%d] branchListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BranchListInternalServerError) IsServerError() bool {
 // IsCode returns true when this branch list internal server error response a status code equal to that given
 func (o *BranchListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the branch list internal server error response
+func (o *BranchListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BranchListInternalServerError) Error() string {

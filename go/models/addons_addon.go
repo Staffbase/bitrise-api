@@ -191,6 +191,11 @@ func (m *AddonsAddon) contextValidateDeveloperLinks(ctx context.Context, formats
 	for i := 0; i < len(m.DeveloperLinks); i++ {
 
 		if m.DeveloperLinks[i] != nil {
+
+			if swag.IsZero(m.DeveloperLinks[i]) { // not required
+				return nil
+			}
+
 			if err := m.DeveloperLinks[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("developer_links" + "." + strconv.Itoa(i))
@@ -211,6 +216,11 @@ func (m *AddonsAddon) contextValidatePlans(ctx context.Context, formats strfmt.R
 	for i := 0; i < len(m.Plans); i++ {
 
 		if m.Plans[i] != nil {
+
+			if swag.IsZero(m.Plans[i]) { // not required
+				return nil
+			}
+
 			if err := m.Plans[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("plans" + "." + strconv.Itoa(i))
@@ -229,6 +239,11 @@ func (m *AddonsAddon) contextValidatePlans(ctx context.Context, formats strfmt.R
 func (m *AddonsAddon) contextValidateSetupGuide(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SetupGuide != nil {
+
+		if swag.IsZero(m.SetupGuide) { // not required
+			return nil
+		}
+
 		if err := m.SetupGuide.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("setup_guide")

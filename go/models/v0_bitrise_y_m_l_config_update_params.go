@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -19,16 +20,49 @@ type V0BitriseYMLConfigUpdateParams struct {
 
 	// Location of bitrise.yml file. Enums(bitrise.io, repository)
 	// Example: repository
-	Location string `json:"location,omitempty"`
+	Location struct {
+		WebsiteBitriseYMLLocation
+	} `json:"location,omitempty"`
 }
 
 // Validate validates this v0 bitrise y m l config update params
 func (m *V0BitriseYMLConfigUpdateParams) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateLocation(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this v0 bitrise y m l config update params based on context it is used
+func (m *V0BitriseYMLConfigUpdateParams) validateLocation(formats strfmt.Registry) error {
+	if swag.IsZero(m.Location) { // not required
+		return nil
+	}
+
+	return nil
+}
+
+// ContextValidate validate this v0 bitrise y m l config update params based on the context it is used
 func (m *V0BitriseYMLConfigUpdateParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLocation(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *V0BitriseYMLConfigUpdateParams) contextValidateLocation(ctx context.Context, formats strfmt.Registry) error {
+
 	return nil
 }
 

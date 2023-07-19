@@ -54,7 +54,7 @@ func (o *ProvisioningProfileConfirmReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}/uploaded] provisioning-profile-confirm", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ProvisioningProfileConfirmOK) IsServerError() bool {
 // IsCode returns true when this provisioning profile confirm o k response a status code equal to that given
 func (o *ProvisioningProfileConfirmOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the provisioning profile confirm o k response
+func (o *ProvisioningProfileConfirmOK) Code() int {
+	return 200
 }
 
 func (o *ProvisioningProfileConfirmOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ProvisioningProfileConfirmBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the provisioning profile confirm bad request response
+func (o *ProvisioningProfileConfirmBadRequest) Code() int {
+	return 400
+}
+
 func (o *ProvisioningProfileConfirmBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}/uploaded][%d] provisioningProfileConfirmBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ProvisioningProfileConfirmUnauthorized) IsServerError() bool {
 // IsCode returns true when this provisioning profile confirm unauthorized response a status code equal to that given
 func (o *ProvisioningProfileConfirmUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the provisioning profile confirm unauthorized response
+func (o *ProvisioningProfileConfirmUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ProvisioningProfileConfirmUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ProvisioningProfileConfirmNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the provisioning profile confirm not found response
+func (o *ProvisioningProfileConfirmNotFound) Code() int {
+	return 404
+}
+
 func (o *ProvisioningProfileConfirmNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/provisioning-profiles/{provisioning-profile-slug}/uploaded][%d] provisioningProfileConfirmNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ProvisioningProfileConfirmInternalServerError) IsServerError() bool {
 // IsCode returns true when this provisioning profile confirm internal server error response a status code equal to that given
 func (o *ProvisioningProfileConfirmInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the provisioning profile confirm internal server error response
+func (o *ProvisioningProfileConfirmInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ProvisioningProfileConfirmInternalServerError) Error() string {

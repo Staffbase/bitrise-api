@@ -450,6 +450,11 @@ func (m *V0BuildResponseItemModel) ContextValidate(ctx context.Context, formats 
 func (m *V0BuildResponseItemModel) contextValidateAbortReason(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AbortReason != nil {
+
+		if swag.IsZero(m.AbortReason) { // not required
+			return nil
+		}
+
 		if err := m.AbortReason.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("abort_reason")
@@ -466,6 +471,11 @@ func (m *V0BuildResponseItemModel) contextValidateAbortReason(ctx context.Contex
 func (m *V0BuildResponseItemModel) contextValidateBranch(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Branch != nil {
+
+		if swag.IsZero(m.Branch) { // not required
+			return nil
+		}
+
 		if err := m.Branch.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("branch")
@@ -482,6 +492,11 @@ func (m *V0BuildResponseItemModel) contextValidateBranch(ctx context.Context, fo
 func (m *V0BuildResponseItemModel) contextValidateCommitHash(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CommitHash != nil {
+
+		if swag.IsZero(m.CommitHash) { // not required
+			return nil
+		}
+
 		if err := m.CommitHash.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_hash")
@@ -498,6 +513,11 @@ func (m *V0BuildResponseItemModel) contextValidateCommitHash(ctx context.Context
 func (m *V0BuildResponseItemModel) contextValidateCommitMessage(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CommitMessage != nil {
+
+		if swag.IsZero(m.CommitMessage) { // not required
+			return nil
+		}
+
 		if err := m.CommitMessage.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_message")
@@ -514,6 +534,11 @@ func (m *V0BuildResponseItemModel) contextValidateCommitMessage(ctx context.Cont
 func (m *V0BuildResponseItemModel) contextValidateCommitViewURL(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CommitViewURL != nil {
+
+		if swag.IsZero(m.CommitViewURL) { // not required
+			return nil
+		}
+
 		if err := m.CommitViewURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("commit_view_url")
@@ -530,6 +555,11 @@ func (m *V0BuildResponseItemModel) contextValidateCommitViewURL(ctx context.Cont
 func (m *V0BuildResponseItemModel) contextValidateCreditCost(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.CreditCost != nil {
+
+		if swag.IsZero(m.CreditCost) { // not required
+			return nil
+		}
+
 		if err := m.CreditCost.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("credit_cost")
@@ -546,6 +576,11 @@ func (m *V0BuildResponseItemModel) contextValidateCreditCost(ctx context.Context
 func (m *V0BuildResponseItemModel) contextValidateMachineTypeID(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.MachineTypeID != nil {
+
+		if swag.IsZero(m.MachineTypeID) { // not required
+			return nil
+		}
+
 		if err := m.MachineTypeID.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("machine_type_id")
@@ -562,6 +597,11 @@ func (m *V0BuildResponseItemModel) contextValidateMachineTypeID(ctx context.Cont
 func (m *V0BuildResponseItemModel) contextValidatePullRequestTargetBranch(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PullRequestTargetBranch != nil {
+
+		if swag.IsZero(m.PullRequestTargetBranch) { // not required
+			return nil
+		}
+
 		if err := m.PullRequestTargetBranch.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pull_request_target_branch")
@@ -578,6 +618,11 @@ func (m *V0BuildResponseItemModel) contextValidatePullRequestTargetBranch(ctx co
 func (m *V0BuildResponseItemModel) contextValidatePullRequestViewURL(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.PullRequestViewURL != nil {
+
+		if swag.IsZero(m.PullRequestViewURL) { // not required
+			return nil
+		}
+
 		if err := m.PullRequestViewURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("pull_request_view_url")
@@ -594,6 +639,11 @@ func (m *V0BuildResponseItemModel) contextValidatePullRequestViewURL(ctx context
 func (m *V0BuildResponseItemModel) contextValidateStackIdentifier(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.StackIdentifier != nil {
+
+		if swag.IsZero(m.StackIdentifier) { // not required
+			return nil
+		}
+
 		if err := m.StackIdentifier.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("stack_identifier")
@@ -610,6 +660,11 @@ func (m *V0BuildResponseItemModel) contextValidateStackIdentifier(ctx context.Co
 func (m *V0BuildResponseItemModel) contextValidateTag(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Tag != nil {
+
+		if swag.IsZero(m.Tag) { // not required
+			return nil
+		}
+
 		if err := m.Tag.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("tag")
@@ -626,6 +681,11 @@ func (m *V0BuildResponseItemModel) contextValidateTag(ctx context.Context, forma
 func (m *V0BuildResponseItemModel) contextValidateTriggeredBy(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.TriggeredBy != nil {
+
+		if swag.IsZero(m.TriggeredBy) { // not required
+			return nil
+		}
+
 		if err := m.TriggeredBy.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("triggered_by")

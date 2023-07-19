@@ -54,7 +54,7 @@ func (o *SecretListReader) ReadResponse(response runtime.ClientResponse, consume
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/secrets] secret-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *SecretListOK) IsServerError() bool {
 // IsCode returns true when this secret list o k response a status code equal to that given
 func (o *SecretListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the secret list o k response
+func (o *SecretListOK) Code() int {
+	return 200
 }
 
 func (o *SecretListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *SecretListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the secret list bad request response
+func (o *SecretListBadRequest) Code() int {
+	return 400
+}
+
 func (o *SecretListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/secrets][%d] secretListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *SecretListUnauthorized) IsServerError() bool {
 // IsCode returns true when this secret list unauthorized response a status code equal to that given
 func (o *SecretListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the secret list unauthorized response
+func (o *SecretListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *SecretListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *SecretListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the secret list not found response
+func (o *SecretListNotFound) Code() int {
+	return 404
+}
+
 func (o *SecretListNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/secrets][%d] secretListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *SecretListInternalServerError) IsServerError() bool {
 // IsCode returns true when this secret list internal server error response a status code equal to that given
 func (o *SecretListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the secret list internal server error response
+func (o *SecretListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecretListInternalServerError) Error() string {

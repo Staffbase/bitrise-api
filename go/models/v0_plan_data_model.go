@@ -84,6 +84,11 @@ func (m *V0PlanDataModel) ContextValidate(ctx context.Context, formats strfmt.Re
 func (m *V0PlanDataModel) contextValidatePrice(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Price != nil {
+
+		if swag.IsZero(m.Price) { // not required
+			return nil
+		}
+
 		if err := m.Price.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("price")

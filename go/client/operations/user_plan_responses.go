@@ -54,7 +54,7 @@ func (o *UserPlanReader) ReadResponse(response runtime.ClientResponse, consumer 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /me/plan] user-plan", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *UserPlanOK) IsServerError() bool {
 // IsCode returns true when this user plan o k response a status code equal to that given
 func (o *UserPlanOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the user plan o k response
+func (o *UserPlanOK) Code() int {
+	return 200
 }
 
 func (o *UserPlanOK) Error() string {
@@ -160,6 +165,11 @@ func (o *UserPlanBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the user plan bad request response
+func (o *UserPlanBadRequest) Code() int {
+	return 400
+}
+
 func (o *UserPlanBadRequest) Error() string {
 	return fmt.Sprintf("[GET /me/plan][%d] userPlanBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *UserPlanUnauthorized) IsServerError() bool {
 // IsCode returns true when this user plan unauthorized response a status code equal to that given
 func (o *UserPlanUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the user plan unauthorized response
+func (o *UserPlanUnauthorized) Code() int {
+	return 401
 }
 
 func (o *UserPlanUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *UserPlanNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the user plan not found response
+func (o *UserPlanNotFound) Code() int {
+	return 404
+}
+
 func (o *UserPlanNotFound) Error() string {
 	return fmt.Sprintf("[GET /me/plan][%d] userPlanNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *UserPlanInternalServerError) IsServerError() bool {
 // IsCode returns true when this user plan internal server error response a status code equal to that given
 func (o *UserPlanInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the user plan internal server error response
+func (o *UserPlanInternalServerError) Code() int {
+	return 500
 }
 
 func (o *UserPlanInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *AppWebhookCreateReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/register-webhook] app-webhook-create", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppWebhookCreateOK) IsServerError() bool {
 // IsCode returns true when this app webhook create o k response a status code equal to that given
 func (o *AppWebhookCreateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app webhook create o k response
+func (o *AppWebhookCreateOK) Code() int {
+	return 200
 }
 
 func (o *AppWebhookCreateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppWebhookCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app webhook create bad request response
+func (o *AppWebhookCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppWebhookCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppWebhookCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this app webhook create unauthorized response a status code equal to that given
 func (o *AppWebhookCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app webhook create unauthorized response
+func (o *AppWebhookCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppWebhookCreateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppWebhookCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app webhook create not found response
+func (o *AppWebhookCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AppWebhookCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/register-webhook][%d] appWebhookCreateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppWebhookCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this app webhook create internal server error response a status code equal to that given
 func (o *AppWebhookCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app webhook create internal server error response
+func (o *AppWebhookCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppWebhookCreateInternalServerError) Error() string {

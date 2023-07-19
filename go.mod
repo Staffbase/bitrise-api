@@ -1,6 +1,6 @@
 module github.com/Staffbase/bitrise-api
 
-go 1.16
+go 1.20
 
 require (
 	github.com/go-openapi/errors v0.20.4

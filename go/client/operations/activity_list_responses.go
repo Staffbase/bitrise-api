@@ -54,7 +54,7 @@ func (o *ActivityListReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /me/activities] activity-list", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *ActivityListOK) IsServerError() bool {
 // IsCode returns true when this activity list o k response a status code equal to that given
 func (o *ActivityListOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the activity list o k response
+func (o *ActivityListOK) Code() int {
+	return 200
 }
 
 func (o *ActivityListOK) Error() string {
@@ -160,6 +165,11 @@ func (o *ActivityListBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the activity list bad request response
+func (o *ActivityListBadRequest) Code() int {
+	return 400
+}
+
 func (o *ActivityListBadRequest) Error() string {
 	return fmt.Sprintf("[GET /me/activities][%d] activityListBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *ActivityListUnauthorized) IsServerError() bool {
 // IsCode returns true when this activity list unauthorized response a status code equal to that given
 func (o *ActivityListUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the activity list unauthorized response
+func (o *ActivityListUnauthorized) Code() int {
+	return 401
 }
 
 func (o *ActivityListUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *ActivityListNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the activity list not found response
+func (o *ActivityListNotFound) Code() int {
+	return 404
+}
+
 func (o *ActivityListNotFound) Error() string {
 	return fmt.Sprintf("[GET /me/activities][%d] activityListNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ActivityListInternalServerError) IsServerError() bool {
 // IsCode returns true when this activity list internal server error response a status code equal to that given
 func (o *ActivityListInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the activity list internal server error response
+func (o *ActivityListInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ActivityListInternalServerError) Error() string {

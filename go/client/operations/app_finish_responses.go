@@ -54,7 +54,7 @@ func (o *AppFinishReader) ReadResponse(response runtime.ClientResponse, consumer
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/finish] app-finish", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppFinishOK) IsServerError() bool {
 // IsCode returns true when this app finish o k response a status code equal to that given
 func (o *AppFinishOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app finish o k response
+func (o *AppFinishOK) Code() int {
+	return 200
 }
 
 func (o *AppFinishOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AppFinishBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the app finish bad request response
+func (o *AppFinishBadRequest) Code() int {
+	return 400
+}
+
 func (o *AppFinishBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AppFinishUnauthorized) IsServerError() bool {
 // IsCode returns true when this app finish unauthorized response a status code equal to that given
 func (o *AppFinishUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the app finish unauthorized response
+func (o *AppFinishUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AppFinishUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AppFinishNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app finish not found response
+func (o *AppFinishNotFound) Code() int {
+	return 404
+}
+
 func (o *AppFinishNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/finish][%d] appFinishNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AppFinishInternalServerError) IsServerError() bool {
 // IsCode returns true when this app finish internal server error response a status code equal to that given
 func (o *AppFinishInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the app finish internal server error response
+func (o *AppFinishInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AppFinishInternalServerError) Error() string {

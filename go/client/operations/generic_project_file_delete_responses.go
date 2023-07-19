@@ -54,7 +54,7 @@ func (o *GenericProjectFileDeleteReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}] generic-project-file-delete", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GenericProjectFileDeleteOK) IsServerError() bool {
 // IsCode returns true when this generic project file delete o k response a status code equal to that given
 func (o *GenericProjectFileDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the generic project file delete o k response
+func (o *GenericProjectFileDeleteOK) Code() int {
+	return 200
 }
 
 func (o *GenericProjectFileDeleteOK) Error() string {
@@ -160,6 +165,11 @@ func (o *GenericProjectFileDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the generic project file delete bad request response
+func (o *GenericProjectFileDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *GenericProjectFileDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *GenericProjectFileDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this generic project file delete unauthorized response a status code equal to that given
 func (o *GenericProjectFileDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the generic project file delete unauthorized response
+func (o *GenericProjectFileDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GenericProjectFileDeleteUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *GenericProjectFileDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the generic project file delete not found response
+func (o *GenericProjectFileDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *GenericProjectFileDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/generic-project-files/{generic-project-file-slug}][%d] genericProjectFileDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *GenericProjectFileDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this generic project file delete internal server error response a status code equal to that given
 func (o *GenericProjectFileDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the generic project file delete internal server error response
+func (o *GenericProjectFileDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GenericProjectFileDeleteInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *BuildCertificateCreateReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/build-certificates] build-certificate-create", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildCertificateCreateCreated) IsServerError() bool {
 // IsCode returns true when this build certificate create created response a status code equal to that given
 func (o *BuildCertificateCreateCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the build certificate create created response
+func (o *BuildCertificateCreateCreated) Code() int {
+	return 201
 }
 
 func (o *BuildCertificateCreateCreated) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildCertificateCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build certificate create bad request response
+func (o *BuildCertificateCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildCertificateCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildCertificateCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this build certificate create unauthorized response a status code equal to that given
 func (o *BuildCertificateCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build certificate create unauthorized response
+func (o *BuildCertificateCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildCertificateCreateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildCertificateCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build certificate create not found response
+func (o *BuildCertificateCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildCertificateCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/build-certificates][%d] buildCertificateCreateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildCertificateCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this build certificate create internal server error response a status code equal to that given
 func (o *BuildCertificateCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build certificate create internal server error response
+func (o *BuildCertificateCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildCertificateCreateInternalServerError) Error() string {

@@ -14,7 +14,7 @@ import (
 
 // GithubComGobuffaloNullsInt64 github com gobuffalo nulls int64
 //
-// swagger:model github.com_gobuffalo_nulls.Int64
+// swagger:model github_com_gobuffalo_nulls.Int64
 type GithubComGobuffaloNullsInt64 struct {
 
 	// int64

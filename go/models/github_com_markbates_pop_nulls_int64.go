@@ -14,7 +14,7 @@ import (
 
 // GithubComMarkbatesPopNullsInt64 github com markbates pop nulls int64
 //
-// swagger:model github.com_markbates_pop_nulls.Int64
+// swagger:model github_com_markbates_pop_nulls.Int64
 type GithubComMarkbatesPopNullsInt64 struct {
 
 	// int64

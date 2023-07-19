@@ -119,6 +119,11 @@ func (m *V0OrganizationDataModel) ContextValidate(ctx context.Context, formats s
 func (m *V0OrganizationDataModel) contextValidateAvatarIconURL(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.AvatarIconURL != nil {
+
+		if swag.IsZero(m.AvatarIconURL) { // not required
+			return nil
+		}
+
 		if err := m.AvatarIconURL.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("avatar_icon_url")
@@ -137,6 +142,11 @@ func (m *V0OrganizationDataModel) contextValidateOwners(ctx context.Context, for
 	for i := 0; i < len(m.Owners); i++ {
 
 		if m.Owners[i] != nil {
+
+			if swag.IsZero(m.Owners[i]) { // not required
+				return nil
+			}
+
 			if err := m.Owners[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("owners" + "." + strconv.Itoa(i))

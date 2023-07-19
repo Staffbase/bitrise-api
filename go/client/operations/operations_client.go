@@ -68,6 +68,10 @@ type ClientService interface {
 
 	AppNotifications(params *AppNotificationsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppNotificationsOK, error)
 
+	AppRolesQuery(params *AppRolesQueryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesQueryOK, error)
+
+	AppRolesUpdate(params *AppRolesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesUpdateOK, error)
+
 	AppSetupBitriseYmlConfigGet(params *AppSetupBitriseYmlConfigGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigGetOK, error)
 
 	AppSetupBitriseYmlConfigUpdate(params *AppSetupBitriseYmlConfigUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppSetupBitriseYmlConfigUpdateNoContent, error)
@@ -89,12 +93,6 @@ type ClientService interface {
 	ArtifactShow(params *ArtifactShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArtifactShowOK, error)
 
 	ArtifactUpdate(params *ArtifactUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ArtifactUpdateOK, error)
-
-	AvatarCandidateCreate(params *AvatarCandidateCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidateCreateCreated, error)
-
-	AvatarCandidateList(params *AvatarCandidateListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidateListOK, error)
-
-	AvatarCandidatePromote(params *AvatarCandidatePromoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidatePromoteOK, error)
 
 	BranchList(params *BranchListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*BranchListOK, error)
 
@@ -150,9 +148,15 @@ type ClientService interface {
 
 	GenericProjectFilesCreate(params *GenericProjectFilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFilesCreateCreated, error)
 
+	LocalBuildList(params *LocalBuildListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*LocalBuildListOK, error)
+
 	OrgList(params *OrgListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgListOK, error)
 
 	OrgShow(params *OrgShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgShowOK, error)
+
+	OrganizationMachineTypeUpdate(params *OrganizationMachineTypeUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationMachineTypeUpdateOK, error)
+
+	OrganzationGroupsList(params *OrganzationGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganzationGroupsListOK, error)
 
 	OutgoingWebhookCreate(params *OutgoingWebhookCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OutgoingWebhookCreateOK, error)
 
@@ -168,7 +172,7 @@ type ClientService interface {
 
 	PipelineListAll(params *PipelineListAllParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineListAllOK, error)
 
-	PipelineRebuild(params *PipelineRebuildParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineRebuildOK, error)
+	PipelineRebuild(params *PipelineRebuildParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineRebuildCreated, error)
 
 	PipelineShow(params *PipelineShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineShowOK, error)
 
@@ -184,6 +188,8 @@ type ClientService interface {
 
 	ProvisioningProfileUpdate(params *ProvisioningProfileUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ProvisioningProfileUpdateOK, error)
 
+	ReleaseCreateAppStore(params *ReleaseCreateAppStoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReleaseCreateAppStoreCreated, error)
+
 	SecretDelete(params *SecretDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretDeleteNoContent, error)
 
 	SecretList(params *SecretListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretListOK, error)
@@ -196,9 +202,7 @@ type ClientService interface {
 
 	TestDeviceList(params *TestDeviceListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*TestDeviceListOK, error)
 
-	UserAddonTokens(params *UserAddonTokensParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensOK, error)
-
-	UserAddonTokensDelete(params *UserAddonTokensDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensDeleteOK, error)
+	UserMachineTypeUpdate(params *UserMachineTypeUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserMachineTypeUpdateOK, error)
 
 	UserPlan(params *UserPlanParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserPlanOK, error)
 
@@ -993,6 +997,86 @@ func (a *Client) AppNotifications(params *AppNotificationsParams, authInfo runti
 }
 
 /*
+AppRolesQuery lists group roles for an app
+*/
+func (a *Client) AppRolesQuery(params *AppRolesQueryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesQueryOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppRolesQueryParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-roles-query",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/roles/{role-name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppRolesQueryReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppRolesQueryOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-roles-query: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+AppRolesUpdate replaces group roles for an app
+
+Replaces the groups for a given role on an app. Only the given groups will be present for a role on the app after this call.
+*/
+func (a *Client) AppRolesUpdate(params *AppRolesUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppRolesUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewAppRolesUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "app-roles-update",
+		Method:             "PUT",
+		PathPattern:        "/apps/{app-slug}/roles/{role-name}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &AppRolesUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*AppRolesUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for app-roles-update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 AppSetupBitriseYmlConfigGet gettings the location of the application s bitrise yaml
 
 Getting the location of the application's bitrise.yaml. Requires administrator level privileges to the app.
@@ -1440,129 +1524,6 @@ func (a *Client) ArtifactUpdate(params *ArtifactUpdateParams, authInfo runtime.C
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for artifact-update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-AvatarCandidateCreate creates avatar candidates
-
-Add new avatar candidates to a specific app
-*/
-func (a *Client) AvatarCandidateCreate(params *AvatarCandidateCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidateCreateCreated, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAvatarCandidateCreateParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "avatar-candidate-create",
-		Method:             "POST",
-		PathPattern:        "/apps/{app-slug}/avatar-candidates",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AvatarCandidateCreateReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AvatarCandidateCreateCreated)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for avatar-candidate-create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-AvatarCandidateList gets list of the avatar candidates
-
-List all available avatar candidates for an application
-*/
-func (a *Client) AvatarCandidateList(params *AvatarCandidateListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidateListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAvatarCandidateListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "avatar-candidate-list",
-		Method:             "GET",
-		PathPattern:        "/v0.1/apps/{app-slug}/avatar-candidates",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AvatarCandidateListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AvatarCandidateListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for avatar-candidate-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-AvatarCandidatePromote promotes an avatar candidate
-
-Promotes an avatar candidate for an app
-*/
-func (a *Client) AvatarCandidatePromote(params *AvatarCandidatePromoteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AvatarCandidatePromoteOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewAvatarCandidatePromoteParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "avatar-candidate-promote",
-		Method:             "PATCH",
-		PathPattern:        "/apps/{app-slug}/avatar-candidates/{avatar-slug}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &AvatarCandidatePromoteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*AvatarCandidatePromoteOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for avatar-candidate-promote: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -2667,6 +2628,47 @@ func (a *Client) GenericProjectFilesCreate(params *GenericProjectFilesCreatePara
 }
 
 /*
+LocalBuildList lists local builds of an app
+
+List all the local builds belonging to the specified Bitrise app. Set parameters to filter builds
+*/
+func (a *Client) LocalBuildList(params *LocalBuildListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*LocalBuildListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewLocalBuildListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "local-build-list",
+		Method:             "GET",
+		PathPattern:        "/apps/{app-slug}/local-builds",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &LocalBuildListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*LocalBuildListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for local-build-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 OrgList lists the organizations that the user is part of
 
 List all Bitrise organizations that the user is part of
@@ -2745,6 +2747,88 @@ func (a *Client) OrgShow(params *OrgShowParams, authInfo runtime.ClientAuthInfoW
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for org-show: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganizationMachineTypeUpdate migrates machine types
+
+Migrates all apps' machine types of an organization from one machine type to another
+*/
+func (a *Client) OrganizationMachineTypeUpdate(params *OrganizationMachineTypeUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganizationMachineTypeUpdateOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganizationMachineTypeUpdateParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "organization-machine-type-update",
+		Method:             "PATCH",
+		PathPattern:        "/organizations/{org-slug}/apps/machine_types",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganizationMachineTypeUpdateReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganizationMachineTypeUpdateOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for organization-machine-type-update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+OrganzationGroupsList lists organizations groups
+
+Lists the groups of an organization
+*/
+func (a *Client) OrganzationGroupsList(params *OrganzationGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrganzationGroupsListOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewOrganzationGroupsListParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "organzation-groups-list",
+		Method:             "GET",
+		PathPattern:        "/organizations/{org-slug}/groups",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &OrganzationGroupsListReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*OrganzationGroupsListOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for organzation-groups-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -3040,7 +3124,7 @@ PipelineRebuild rebuilds a pipeline
 
 Rebuilds a pipeline. You can rebuild the whole pipeline or only the unsuccessful and subsequent workflows by setting the partial flag to true.
 */
-func (a *Client) PipelineRebuild(params *PipelineRebuildParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineRebuildOK, error) {
+func (a *Client) PipelineRebuild(params *PipelineRebuildParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PipelineRebuildCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPipelineRebuildParams()
@@ -3066,7 +3150,7 @@ func (a *Client) PipelineRebuild(params *PipelineRebuildParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PipelineRebuildOK)
+	success, ok := result.(*PipelineRebuildCreated)
 	if ok {
 		return success, nil
 	}
@@ -3364,6 +3448,47 @@ func (a *Client) ProvisioningProfileUpdate(params *ProvisioningProfileUpdatePara
 }
 
 /*
+ReleaseCreateAppStore creates a new apple app store release for the app
+
+Create a new iOS release for the specified app. If the release candidate parameters (`release_branch` and `workflow`) are specified then the latest successful build is automatically picked up as release candidate and if `automatic_testflight_upload` is also turned on, then an upload to TestFlight is started immediately. You can use this endpoint to set up a fully automated release flow.
+*/
+func (a *Client) ReleaseCreateAppStore(params *ReleaseCreateAppStoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReleaseCreateAppStoreCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReleaseCreateAppStoreParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "release-create-app-store",
+		Method:             "POST",
+		PathPattern:        "/apps/{app-slug}/releases/app-store",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ReleaseCreateAppStoreReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ReleaseCreateAppStoreCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for release-create-app-store: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 SecretDelete deletes an application secret
 
 Delete an application secret. Requires administrator level privileges to the app.
@@ -3611,24 +3736,24 @@ func (a *Client) TestDeviceList(params *TestDeviceListParams, authInfo runtime.C
 }
 
 /*
-UserAddonTokens thes active addon tokens of the user
+UserMachineTypeUpdate migrates machine types
 
-Lists the active addon tokens of the user with some extra details.
+Migrates all apps' machine types of a user from one machine type to another
 */
-func (a *Client) UserAddonTokens(params *UserAddonTokensParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensOK, error) {
+func (a *Client) UserMachineTypeUpdate(params *UserMachineTypeUpdateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserMachineTypeUpdateOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewUserAddonTokensParams()
+		params = NewUserMachineTypeUpdateParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "user-addon-tokens",
-		Method:             "GET",
-		PathPattern:        "/me/addon-tokens",
+		ID:                 "user-machine-type-update",
+		Method:             "PATCH",
+		PathPattern:        "/user/{user-slug}/apps/machine_types",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
 		Params:             params,
-		Reader:             &UserAddonTokensReader{formats: a.formats},
+		Reader:             &UserMachineTypeUpdateReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -3641,54 +3766,13 @@ func (a *Client) UserAddonTokens(params *UserAddonTokensParams, authInfo runtime
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*UserAddonTokensOK)
+	success, ok := result.(*UserMachineTypeUpdateOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for user-addon-tokens: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-UserAddonTokensDelete removes an active addon token of the user
-
-Removes the active addon token of the user.
-*/
-func (a *Client) UserAddonTokensDelete(params *UserAddonTokensDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*UserAddonTokensDeleteOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewUserAddonTokensDeleteParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "user-addon-tokens-delete",
-		Method:             "DELETE",
-		PathPattern:        "/me/addon-tokens/{addon-id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &UserAddonTokensDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*UserAddonTokensDeleteOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for user-addon-tokens-delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for user-machine-type-update: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

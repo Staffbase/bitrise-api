@@ -60,7 +60,7 @@ func (o *SecretUpsertReader) ReadResponse(response runtime.ClientResponse, consu
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /apps/{app-slug}/secrets/{secret-name}] secret-upsert", response, response.Code())
 	}
 }
 
@@ -100,6 +100,11 @@ func (o *SecretUpsertCreated) IsServerError() bool {
 // IsCode returns true when this secret upsert created response a status code equal to that given
 func (o *SecretUpsertCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the secret upsert created response
+func (o *SecretUpsertCreated) Code() int {
+	return 201
 }
 
 func (o *SecretUpsertCreated) Error() string {
@@ -153,6 +158,11 @@ func (o *SecretUpsertNoContent) IsCode(code int) bool {
 	return code == 204
 }
 
+// Code gets the status code for the secret upsert no content response
+func (o *SecretUpsertNoContent) Code() int {
+	return 204
+}
+
 func (o *SecretUpsertNoContent) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertNoContent ", 204)
 }
@@ -203,6 +213,11 @@ func (o *SecretUpsertBadRequest) IsServerError() bool {
 // IsCode returns true when this secret upsert bad request response a status code equal to that given
 func (o *SecretUpsertBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the secret upsert bad request response
+func (o *SecretUpsertBadRequest) Code() int {
+	return 400
 }
 
 func (o *SecretUpsertBadRequest) Error() string {
@@ -268,6 +283,11 @@ func (o *SecretUpsertUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the secret upsert unauthorized response
+func (o *SecretUpsertUnauthorized) Code() int {
+	return 401
+}
+
 func (o *SecretUpsertUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertUnauthorized  %+v", 401, o.Payload)
 }
@@ -331,6 +351,11 @@ func (o *SecretUpsertNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the secret upsert not found response
+func (o *SecretUpsertNotFound) Code() int {
+	return 404
+}
+
 func (o *SecretUpsertNotFound) Error() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/secrets/{secret-name}][%d] secretUpsertNotFound  %+v", 404, o.Payload)
 }
@@ -392,6 +417,11 @@ func (o *SecretUpsertInternalServerError) IsServerError() bool {
 // IsCode returns true when this secret upsert internal server error response a status code equal to that given
 func (o *SecretUpsertInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the secret upsert internal server error response
+func (o *SecretUpsertInternalServerError) Code() int {
+	return 500
 }
 
 func (o *SecretUpsertInternalServerError) Error() string {

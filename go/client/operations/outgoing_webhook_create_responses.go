@@ -54,7 +54,7 @@ func (o *OutgoingWebhookCreateReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/outgoing-webhooks] outgoing-webhook-create", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *OutgoingWebhookCreateOK) IsServerError() bool {
 // IsCode returns true when this outgoing webhook create o k response a status code equal to that given
 func (o *OutgoingWebhookCreateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the outgoing webhook create o k response
+func (o *OutgoingWebhookCreateOK) Code() int {
+	return 200
 }
 
 func (o *OutgoingWebhookCreateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *OutgoingWebhookCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the outgoing webhook create bad request response
+func (o *OutgoingWebhookCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *OutgoingWebhookCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks][%d] outgoingWebhookCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *OutgoingWebhookCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this outgoing webhook create unauthorized response a status code equal to that given
 func (o *OutgoingWebhookCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the outgoing webhook create unauthorized response
+func (o *OutgoingWebhookCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OutgoingWebhookCreateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *OutgoingWebhookCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the outgoing webhook create not found response
+func (o *OutgoingWebhookCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *OutgoingWebhookCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/outgoing-webhooks][%d] outgoingWebhookCreateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *OutgoingWebhookCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this outgoing webhook create internal server error response a status code equal to that given
 func (o *OutgoingWebhookCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the outgoing webhook create internal server error response
+func (o *OutgoingWebhookCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OutgoingWebhookCreateInternalServerError) Error() string {

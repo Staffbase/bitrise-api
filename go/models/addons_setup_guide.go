@@ -85,6 +85,11 @@ func (m *AddonsSetupGuide) contextValidateInstructions(ctx context.Context, form
 	for i := 0; i < len(m.Instructions); i++ {
 
 		if m.Instructions[i] != nil {
+
+			if swag.IsZero(m.Instructions[i]) { // not required
+				return nil
+			}
+
 			if err := m.Instructions[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("instructions" + "." + strconv.Itoa(i))

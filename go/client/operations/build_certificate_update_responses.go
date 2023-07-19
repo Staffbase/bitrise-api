@@ -54,7 +54,7 @@ func (o *BuildCertificateUpdateReader) ReadResponse(response runtime.ClientRespo
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PATCH /apps/{app-slug}/build-certificates/{build-certificate-slug}] build-certificate-update", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *BuildCertificateUpdateOK) IsServerError() bool {
 // IsCode returns true when this build certificate update o k response a status code equal to that given
 func (o *BuildCertificateUpdateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the build certificate update o k response
+func (o *BuildCertificateUpdateOK) Code() int {
+	return 200
 }
 
 func (o *BuildCertificateUpdateOK) Error() string {
@@ -160,6 +165,11 @@ func (o *BuildCertificateUpdateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the build certificate update bad request response
+func (o *BuildCertificateUpdateBadRequest) Code() int {
+	return 400
+}
+
 func (o *BuildCertificateUpdateBadRequest) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateUpdateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *BuildCertificateUpdateUnauthorized) IsServerError() bool {
 // IsCode returns true when this build certificate update unauthorized response a status code equal to that given
 func (o *BuildCertificateUpdateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the build certificate update unauthorized response
+func (o *BuildCertificateUpdateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *BuildCertificateUpdateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *BuildCertificateUpdateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the build certificate update not found response
+func (o *BuildCertificateUpdateNotFound) Code() int {
+	return 404
+}
+
 func (o *BuildCertificateUpdateNotFound) Error() string {
 	return fmt.Sprintf("[PATCH /apps/{app-slug}/build-certificates/{build-certificate-slug}][%d] buildCertificateUpdateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *BuildCertificateUpdateInternalServerError) IsServerError() bool {
 // IsCode returns true when this build certificate update internal server error response a status code equal to that given
 func (o *BuildCertificateUpdateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the build certificate update internal server error response
+func (o *BuildCertificateUpdateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *BuildCertificateUpdateInternalServerError) Error() string {

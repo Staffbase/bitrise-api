@@ -54,7 +54,7 @@ func (o *AddonListByAppReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/addons] addon-list-by-app", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AddonListByAppOK) IsServerError() bool {
 // IsCode returns true when this addon list by app o k response a status code equal to that given
 func (o *AddonListByAppOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the addon list by app o k response
+func (o *AddonListByAppOK) Code() int {
+	return 200
 }
 
 func (o *AddonListByAppOK) Error() string {
@@ -160,6 +165,11 @@ func (o *AddonListByAppBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the addon list by app bad request response
+func (o *AddonListByAppBadRequest) Code() int {
+	return 400
+}
+
 func (o *AddonListByAppBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *AddonListByAppUnauthorized) IsServerError() bool {
 // IsCode returns true when this addon list by app unauthorized response a status code equal to that given
 func (o *AddonListByAppUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the addon list by app unauthorized response
+func (o *AddonListByAppUnauthorized) Code() int {
+	return 401
 }
 
 func (o *AddonListByAppUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *AddonListByAppNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the addon list by app not found response
+func (o *AddonListByAppNotFound) Code() int {
+	return 404
+}
+
 func (o *AddonListByAppNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/addons][%d] addonListByAppNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *AddonListByAppInternalServerError) IsServerError() bool {
 // IsCode returns true when this addon list by app internal server error response a status code equal to that given
 func (o *AddonListByAppInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the addon list by app internal server error response
+func (o *AddonListByAppInternalServerError) Code() int {
+	return 500
 }
 
 func (o *AddonListByAppInternalServerError) Error() string {

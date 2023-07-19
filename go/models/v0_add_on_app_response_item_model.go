@@ -111,6 +111,11 @@ func (m *V0AddOnAppResponseItemModel) ContextValidate(ctx context.Context, forma
 func (m *V0AddOnAppResponseItemModel) contextValidateIcon(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Icon != nil {
+
+		if swag.IsZero(m.Icon) { // not required
+			return nil
+		}
+
 		if err := m.Icon.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("icon")
@@ -127,6 +132,11 @@ func (m *V0AddOnAppResponseItemModel) contextValidateIcon(ctx context.Context, f
 func (m *V0AddOnAppResponseItemModel) contextValidatePlan(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Plan != nil {
+
+		if swag.IsZero(m.Plan) { // not required
+			return nil
+		}
+
 		if err := m.Plan.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("plan")

@@ -54,7 +54,7 @@ func (o *AppConfigCreateReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/bitrise.yml] app-config-create", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *AppConfigCreateOK) IsServerError() bool {
 // IsCode returns true when this app config create o k response a status code equal to that given
 func (o *AppConfigCreateOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the app config create o k response
+func (o *AppConfigCreateOK) Code() int {
+	return 200
 }
 
 func (o *AppConfigCreateOK) Error() string {
@@ -156,6 +161,11 @@ func (o *AppConfigCreateBadRequest) IsServerError() bool {
 // IsCode returns true when this app config create bad request response a status code equal to that given
 func (o *AppConfigCreateBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the app config create bad request response
+func (o *AppConfigCreateBadRequest) Code() int {
+	return 400
 }
 
 func (o *AppConfigCreateBadRequest) Error() string {
@@ -221,6 +231,11 @@ func (o *AppConfigCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the app config create unauthorized response
+func (o *AppConfigCreateUnauthorized) Code() int {
+	return 401
+}
+
 func (o *AppConfigCreateUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateUnauthorized  %+v", 401, o.Payload)
 }
@@ -284,6 +299,11 @@ func (o *AppConfigCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the app config create not found response
+func (o *AppConfigCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *AppConfigCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateNotFound  %+v", 404, o.Payload)
 }
@@ -319,7 +339,7 @@ AppConfigCreateInternalServerError describes a response with status code 500, wi
 Internal Server Error
 */
 type AppConfigCreateInternalServerError struct {
-	Payload *models.V0ProxyErrorRespModel
+	Payload *models.ServiceProxyErrorRespModel
 }
 
 // IsSuccess returns true when this app config create internal server error response has a 2xx status code
@@ -347,6 +367,11 @@ func (o *AppConfigCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
+// Code gets the status code for the app config create internal server error response
+func (o *AppConfigCreateInternalServerError) Code() int {
+	return 500
+}
+
 func (o *AppConfigCreateInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateInternalServerError  %+v", 500, o.Payload)
 }
@@ -355,13 +380,13 @@ func (o *AppConfigCreateInternalServerError) String() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/bitrise.yml][%d] appConfigCreateInternalServerError  %+v", 500, o.Payload)
 }
 
-func (o *AppConfigCreateInternalServerError) GetPayload() *models.V0ProxyErrorRespModel {
+func (o *AppConfigCreateInternalServerError) GetPayload() *models.ServiceProxyErrorRespModel {
 	return o.Payload
 }
 
 func (o *AppConfigCreateInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.V0ProxyErrorRespModel)
+	o.Payload = new(models.ServiceProxyErrorRespModel)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

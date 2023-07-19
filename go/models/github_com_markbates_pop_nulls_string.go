@@ -14,7 +14,7 @@ import (
 
 // GithubComMarkbatesPopNullsString github com markbates pop nulls string
 //
-// swagger:model github.com_markbates_pop_nulls.String
+// swagger:model github_com_markbates_pop_nulls.String
 type GithubComMarkbatesPopNullsString struct {
 
 	// string

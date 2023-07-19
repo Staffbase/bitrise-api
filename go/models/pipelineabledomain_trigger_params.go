@@ -37,12 +37,6 @@ type PipelineabledomainTriggerParams struct {
 	// commit message
 	CommitMessage string `json:"commit_message,omitempty"`
 
-	// commit paths
-	CommitPaths interface{} `json:"commit_paths,omitempty"`
-
-	// diff url
-	DiffURL string `json:"diff_url,omitempty"`
-
 	// environments
 	Environments []*PipelineabledomainEnvironments `json:"environments"`
 
@@ -59,7 +53,7 @@ type PipelineabledomainTriggerParams struct {
 	PullRequestRepositoryURL string `json:"pull_request_repository_url,omitempty"`
 
 	// tag
-	Tag string `json:"tag,omitempty"`
+	Tag interface{} `json:"tag,omitempty"`
 }
 
 // Validate validates this pipelineabledomain trigger params
@@ -121,6 +115,11 @@ func (m *PipelineabledomainTriggerParams) contextValidateEnvironments(ctx contex
 	for i := 0; i < len(m.Environments); i++ {
 
 		if m.Environments[i] != nil {
+
+			if swag.IsZero(m.Environments[i]) { // not required
+				return nil
+			}
+
 			if err := m.Environments[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("environments" + "." + strconv.Itoa(i))

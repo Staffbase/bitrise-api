@@ -54,7 +54,7 @@ func (o *GenericProjectFilesCreateReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/generic-project-files] generic-project-files-create", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *GenericProjectFilesCreateCreated) IsServerError() bool {
 // IsCode returns true when this generic project files create created response a status code equal to that given
 func (o *GenericProjectFilesCreateCreated) IsCode(code int) bool {
 	return code == 201
+}
+
+// Code gets the status code for the generic project files create created response
+func (o *GenericProjectFilesCreateCreated) Code() int {
+	return 201
 }
 
 func (o *GenericProjectFilesCreateCreated) Error() string {
@@ -160,6 +165,11 @@ func (o *GenericProjectFilesCreateBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the generic project files create bad request response
+func (o *GenericProjectFilesCreateBadRequest) Code() int {
+	return 400
+}
+
 func (o *GenericProjectFilesCreateBadRequest) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *GenericProjectFilesCreateUnauthorized) IsServerError() bool {
 // IsCode returns true when this generic project files create unauthorized response a status code equal to that given
 func (o *GenericProjectFilesCreateUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the generic project files create unauthorized response
+func (o *GenericProjectFilesCreateUnauthorized) Code() int {
+	return 401
 }
 
 func (o *GenericProjectFilesCreateUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *GenericProjectFilesCreateNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the generic project files create not found response
+func (o *GenericProjectFilesCreateNotFound) Code() int {
+	return 404
+}
+
 func (o *GenericProjectFilesCreateNotFound) Error() string {
 	return fmt.Sprintf("[POST /apps/{app-slug}/generic-project-files][%d] genericProjectFilesCreateNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *GenericProjectFilesCreateInternalServerError) IsServerError() bool {
 // IsCode returns true when this generic project files create internal server error response a status code equal to that given
 func (o *GenericProjectFilesCreateInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the generic project files create internal server error response
+func (o *GenericProjectFilesCreateInternalServerError) Code() int {
+	return 500
 }
 
 func (o *GenericProjectFilesCreateInternalServerError) Error() string {

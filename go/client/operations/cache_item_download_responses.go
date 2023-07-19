@@ -54,7 +54,7 @@ func (o *CacheItemDownloadReader) ReadResponse(response runtime.ClientResponse, 
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /apps/{app-slug}/cache-items/{cache-item-id}/download] cache-item-download", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *CacheItemDownloadOK) IsServerError() bool {
 // IsCode returns true when this cache item download o k response a status code equal to that given
 func (o *CacheItemDownloadOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the cache item download o k response
+func (o *CacheItemDownloadOK) Code() int {
+	return 200
 }
 
 func (o *CacheItemDownloadOK) Error() string {
@@ -160,6 +165,11 @@ func (o *CacheItemDownloadBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the cache item download bad request response
+func (o *CacheItemDownloadBadRequest) Code() int {
+	return 400
+}
+
 func (o *CacheItemDownloadBadRequest) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/cache-items/{cache-item-id}/download][%d] cacheItemDownloadBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *CacheItemDownloadUnauthorized) IsServerError() bool {
 // IsCode returns true when this cache item download unauthorized response a status code equal to that given
 func (o *CacheItemDownloadUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the cache item download unauthorized response
+func (o *CacheItemDownloadUnauthorized) Code() int {
+	return 401
 }
 
 func (o *CacheItemDownloadUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *CacheItemDownloadNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the cache item download not found response
+func (o *CacheItemDownloadNotFound) Code() int {
+	return 404
+}
+
 func (o *CacheItemDownloadNotFound) Error() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/cache-items/{cache-item-id}/download][%d] cacheItemDownloadNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *CacheItemDownloadInternalServerError) IsServerError() bool {
 // IsCode returns true when this cache item download internal server error response a status code equal to that given
 func (o *CacheItemDownloadInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the cache item download internal server error response
+func (o *CacheItemDownloadInternalServerError) Code() int {
+	return 500
 }
 
 func (o *CacheItemDownloadInternalServerError) Error() string {

@@ -54,7 +54,7 @@ func (o *OutgoingWebhookDeleteReader) ReadResponse(response runtime.ClientRespon
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}] outgoing-webhook-delete", response, response.Code())
 	}
 }
 
@@ -95,6 +95,11 @@ func (o *OutgoingWebhookDeleteOK) IsServerError() bool {
 // IsCode returns true when this outgoing webhook delete o k response a status code equal to that given
 func (o *OutgoingWebhookDeleteOK) IsCode(code int) bool {
 	return code == 200
+}
+
+// Code gets the status code for the outgoing webhook delete o k response
+func (o *OutgoingWebhookDeleteOK) Code() int {
+	return 200
 }
 
 func (o *OutgoingWebhookDeleteOK) Error() string {
@@ -160,6 +165,11 @@ func (o *OutgoingWebhookDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the outgoing webhook delete bad request response
+func (o *OutgoingWebhookDeleteBadRequest) Code() int {
+	return 400
+}
+
 func (o *OutgoingWebhookDeleteBadRequest) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteBadRequest  %+v", 400, o.Payload)
 }
@@ -221,6 +231,11 @@ func (o *OutgoingWebhookDeleteUnauthorized) IsServerError() bool {
 // IsCode returns true when this outgoing webhook delete unauthorized response a status code equal to that given
 func (o *OutgoingWebhookDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the outgoing webhook delete unauthorized response
+func (o *OutgoingWebhookDeleteUnauthorized) Code() int {
+	return 401
 }
 
 func (o *OutgoingWebhookDeleteUnauthorized) Error() string {
@@ -286,6 +301,11 @@ func (o *OutgoingWebhookDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the outgoing webhook delete not found response
+func (o *OutgoingWebhookDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *OutgoingWebhookDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /apps/{app-slug}/outgoing-webhooks/{app-webhook-slug}][%d] outgoingWebhookDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *OutgoingWebhookDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this outgoing webhook delete internal server error response a status code equal to that given
 func (o *OutgoingWebhookDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the outgoing webhook delete internal server error response
+func (o *OutgoingWebhookDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *OutgoingWebhookDeleteInternalServerError) Error() string {
