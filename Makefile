@@ -14,6 +14,7 @@
 
 .PHONY: download generate build help
 SWAGGER_SPEC=swagger.json
+SWAGGER_URL=https://api-docs.bitrise.io/docs/swagger.json
 
 help: ## Show this help.
 		@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {sub("\\\\n",sprintf("\n%22c"," "), $$2);printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -24,15 +25,18 @@ build: ## Build the API Go client.
 	go build ./go/...
 
 download: ## Download bitrise swagger specification
-	wget -q -O $(SWAGGER_SPEC) https://api-docs.bitrise.io/docs/swagger.json
+	wget -q -O $(SWAGGER_SPEC) $(SWAGGER_URL)
 
-generate: validate ## Generate the API Go client and the JSON document for the UI.
+clean:
+	rm -r go/
+
+generate: validate  ## Generate the API Go client and the JSON document for the UI.
 	go run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.5 generate client \
 	--name bitrise-api \
-	--spec $(SWAGGER_SPEC) \
+	--spec $(SWAGGER_URL) \
 	--target go \
 	--default-scheme=https \
-	--with-flatten=minimal \
+	--with-flatten=full \
 	--skip-tag-packages
 
 validate: ## Check that the swagger spec is valid.

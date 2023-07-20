@@ -18,10 +18,8 @@ import (
 // swagger:model v0.BuildTriggerParams
 type V0BuildTriggerParams struct {
 
-	// The public part of the SSH key you would like to use
-	BuildParams struct {
-		V0BuildTriggerParamsBuildParams
-	} `json:"build_params,omitempty"`
+	// build params
+	BuildParams *V0BuildTriggerParamsBuildParams `json:"build_params,omitempty"`
 
 	// hook info
 	HookInfo *V0BuildTriggerParamsHookInfo `json:"hook_info,omitempty"`
@@ -48,6 +46,17 @@ func (m *V0BuildTriggerParams) Validate(formats strfmt.Registry) error {
 func (m *V0BuildTriggerParams) validateBuildParams(formats strfmt.Registry) error {
 	if swag.IsZero(m.BuildParams) { // not required
 		return nil
+	}
+
+	if m.BuildParams != nil {
+		if err := m.BuildParams.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("build_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("build_params")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -91,6 +100,22 @@ func (m *V0BuildTriggerParams) ContextValidate(ctx context.Context, formats strf
 }
 
 func (m *V0BuildTriggerParams) contextValidateBuildParams(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.BuildParams != nil {
+
+		if swag.IsZero(m.BuildParams) { // not required
+			return nil
+		}
+
+		if err := m.BuildParams.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("build_params")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("build_params")
+			}
+			return err
+		}
+	}
 
 	return nil
 }

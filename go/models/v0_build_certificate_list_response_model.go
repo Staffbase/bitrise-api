@@ -22,10 +22,8 @@ type V0BuildCertificateListResponseModel struct {
 	// data
 	Data []*V0BuildCertificateResponseItemModel `json:"data"`
 
-	// pagination
-	Paging struct {
-		V0PagingResponseModel
-	} `json:"paging,omitempty"`
+	// paging
+	Paging *V0BuildCertificateListResponseModelPaging `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 build certificate list response model
@@ -77,6 +75,17 @@ func (m *V0BuildCertificateListResponseModel) validatePaging(formats strfmt.Regi
 		return nil
 	}
 
+	if m.Paging != nil {
+		if err := m.Paging.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("paging")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("paging")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -124,6 +133,22 @@ func (m *V0BuildCertificateListResponseModel) contextValidateData(ctx context.Co
 }
 
 func (m *V0BuildCertificateListResponseModel) contextValidatePaging(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Paging != nil {
+
+		if swag.IsZero(m.Paging) { // not required
+			return nil
+		}
+
+		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("paging")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("paging")
+			}
+			return err
+		}
+	}
 
 	return nil
 }

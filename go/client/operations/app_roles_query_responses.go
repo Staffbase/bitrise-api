@@ -6,14 +6,11 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/Staffbase/bitrise-api/go/models"
 )
@@ -54,7 +51,7 @@ AppRolesQueryOK describes a response with status code 200, with default header v
 List of group slugs
 */
 type AppRolesQueryOK struct {
-	Payload *AppRolesQueryOKBody
+	Payload *models.AppRolesQueryOKBody
 }
 
 // IsSuccess returns true when this app roles query o k response has a 2xx status code
@@ -95,13 +92,13 @@ func (o *AppRolesQueryOK) String() string {
 	return fmt.Sprintf("[GET /apps/{app-slug}/roles/{role-name}][%d] appRolesQueryOK  %+v", 200, o.Payload)
 }
 
-func (o *AppRolesQueryOK) GetPayload() *AppRolesQueryOKBody {
+func (o *AppRolesQueryOK) GetPayload() *models.AppRolesQueryOKBody {
 	return o.Payload
 }
 
 func (o *AppRolesQueryOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AppRolesQueryOKBody)
+	o.Payload = new(models.AppRolesQueryOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -178,100 +175,3 @@ func (o *AppRolesQueryNotFound) readResponse(response runtime.ClientResponse, co
 
 	return nil
 }
-
-/*
-AppRolesQueryOKBody app roles query o k body
-swagger:model AppRolesQueryOKBody
-*/
-type AppRolesQueryOKBody struct {
-	AppRolesQueryOKBodyAllOf0
-
-	// groups
-	Groups []string `json:"groups"`
-}
-
-// UnmarshalJSON unmarshals this object from a JSON structure
-func (o *AppRolesQueryOKBody) UnmarshalJSON(raw []byte) error {
-	// AppRolesQueryOKBodyAO0
-	var appRolesQueryOKBodyAO0 AppRolesQueryOKBodyAllOf0
-	if err := swag.ReadJSON(raw, &appRolesQueryOKBodyAO0); err != nil {
-		return err
-	}
-	o.AppRolesQueryOKBodyAllOf0 = appRolesQueryOKBodyAO0
-
-	// AppRolesQueryOKBodyAO1
-	var dataAppRolesQueryOKBodyAO1 struct {
-		Groups []string `json:"groups"`
-	}
-	if err := swag.ReadJSON(raw, &dataAppRolesQueryOKBodyAO1); err != nil {
-		return err
-	}
-
-	o.Groups = dataAppRolesQueryOKBodyAO1.Groups
-
-	return nil
-}
-
-// MarshalJSON marshals this object to a JSON structure
-func (o AppRolesQueryOKBody) MarshalJSON() ([]byte, error) {
-	_parts := make([][]byte, 0, 2)
-
-	appRolesQueryOKBodyAO0, err := swag.WriteJSON(o.AppRolesQueryOKBodyAllOf0)
-	if err != nil {
-		return nil, err
-	}
-	_parts = append(_parts, appRolesQueryOKBodyAO0)
-	var dataAppRolesQueryOKBodyAO1 struct {
-		Groups []string `json:"groups"`
-	}
-
-	dataAppRolesQueryOKBodyAO1.Groups = o.Groups
-
-	jsonDataAppRolesQueryOKBodyAO1, errAppRolesQueryOKBodyAO1 := swag.WriteJSON(dataAppRolesQueryOKBodyAO1)
-	if errAppRolesQueryOKBodyAO1 != nil {
-		return nil, errAppRolesQueryOKBodyAO1
-	}
-	_parts = append(_parts, jsonDataAppRolesQueryOKBodyAO1)
-	return swag.ConcatJSON(_parts...), nil
-}
-
-// Validate validates this app roles query o k body
-func (o *AppRolesQueryOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	// validation for a type composition with AppRolesQueryOKBodyAllOf0
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-// ContextValidate validates this app roles query o k body based on context it is used
-func (o *AppRolesQueryOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AppRolesQueryOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AppRolesQueryOKBody) UnmarshalBinary(b []byte) error {
-	var res AppRolesQueryOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AppRolesQueryOKBodyAllOf0 app roles query o k body all of0
-swagger:model AppRolesQueryOKBodyAllOf0
-*/
-type AppRolesQueryOKBodyAllOf0 interface{}
