@@ -33,10 +33,9 @@ clean:
 generate: validate  ## Generate the API Go client and the JSON document for the UI.
 	go run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.5 generate client \
 	--name bitrise-api \
-	--spec $(SWAGGER_URL) \
+	--spec $(SWAGGER_SPEC) \
 	--target go \
 	--default-scheme=https \
-	--with-flatten=full \
 	--skip-tag-packages
 
 validate: ## Check that the swagger spec is valid.
