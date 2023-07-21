@@ -22,8 +22,10 @@ type V0ArtifactListResponseModel struct {
 	// data
 	Data []*V0ArtifactListElementResponseModel `json:"data"`
 
-	// paging
-	Paging *V0ArtifactListResponseModelPaging `json:"paging,omitempty"`
+	// pagination
+	Paging struct {
+		V0PagingResponseModel
+	} `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 artifact list response model
@@ -75,17 +77,6 @@ func (m *V0ArtifactListResponseModel) validatePaging(formats strfmt.Registry) er
 		return nil
 	}
 
-	if m.Paging != nil {
-		if err := m.Paging.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -133,22 +124,6 @@ func (m *V0ArtifactListResponseModel) contextValidateData(ctx context.Context, f
 }
 
 func (m *V0ArtifactListResponseModel) contextValidatePaging(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Paging != nil {
-
-		if swag.IsZero(m.Paging) { // not required
-			return nil
-		}
-
-		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
 
 	return nil
 }

@@ -6,11 +6,14 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"context"
 	"fmt"
 	"io"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 
 	"github.com/Staffbase/bitrise-api/go/models"
 )
@@ -51,7 +54,7 @@ OrganzationGroupsListOK describes a response with status code 200, with default 
 list of groups
 */
 type OrganzationGroupsListOK struct {
-	Payload []*models.OrganzationGroupsListOKBodyItems
+	Payload []*OrganzationGroupsListOKBodyItems0
 }
 
 // IsSuccess returns true when this organzation groups list o k response has a 2xx status code
@@ -92,7 +95,7 @@ func (o *OrganzationGroupsListOK) String() string {
 	return fmt.Sprintf("[GET /organizations/{org-slug}/groups][%d] organzationGroupsListOK  %+v", 200, o.Payload)
 }
 
-func (o *OrganzationGroupsListOK) GetPayload() []*models.OrganzationGroupsListOKBodyItems {
+func (o *OrganzationGroupsListOK) GetPayload() []*OrganzationGroupsListOKBodyItems0 {
 	return o.Payload
 }
 
@@ -173,3 +176,111 @@ func (o *OrganzationGroupsListNotFound) readResponse(response runtime.ClientResp
 
 	return nil
 }
+
+/*
+OrganzationGroupsListOKBodyItems0 organzation groups list o k body items0
+swagger:model OrganzationGroupsListOKBodyItems0
+*/
+type OrganzationGroupsListOKBodyItems0 struct {
+	OrganzationGroupsListOKBodyItems0AllOf0
+
+	// name
+	Name string `json:"name,omitempty"`
+
+	// slug
+	Slug string `json:"slug,omitempty"`
+}
+
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (o *OrganzationGroupsListOKBodyItems0) UnmarshalJSON(raw []byte) error {
+	// AO0
+	var aO0 OrganzationGroupsListOKBodyItems0AllOf0
+	if err := swag.ReadJSON(raw, &aO0); err != nil {
+		return err
+	}
+	o.OrganzationGroupsListOKBodyItems0AllOf0 = aO0
+
+	// AO1
+	var dataAO1 struct {
+		Name string `json:"name,omitempty"`
+
+		Slug string `json:"slug,omitempty"`
+	}
+	if err := swag.ReadJSON(raw, &dataAO1); err != nil {
+		return err
+	}
+
+	o.Name = dataAO1.Name
+
+	o.Slug = dataAO1.Slug
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (o OrganzationGroupsListOKBodyItems0) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 2)
+
+	aO0, err := swag.WriteJSON(o.OrganzationGroupsListOKBodyItems0AllOf0)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO0)
+	var dataAO1 struct {
+		Name string `json:"name,omitempty"`
+
+		Slug string `json:"slug,omitempty"`
+	}
+
+	dataAO1.Name = o.Name
+
+	dataAO1.Slug = o.Slug
+
+	jsonDataAO1, errAO1 := swag.WriteJSON(dataAO1)
+	if errAO1 != nil {
+		return nil, errAO1
+	}
+	_parts = append(_parts, jsonDataAO1)
+	return swag.ConcatJSON(_parts...), nil
+}
+
+// Validate validates this organzation groups list o k body items0
+func (o *OrganzationGroupsListOKBodyItems0) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	// validation for a type composition with OrganzationGroupsListOKBodyItems0AllOf0
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+// ContextValidate validates this organzation groups list o k body items0 based on context it is used
+func (o *OrganzationGroupsListOKBodyItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	return nil
+}
+
+// MarshalBinary interface implementation
+func (o *OrganzationGroupsListOKBodyItems0) MarshalBinary() ([]byte, error) {
+	if o == nil {
+		return nil, nil
+	}
+	return swag.WriteJSON(o)
+}
+
+// UnmarshalBinary interface implementation
+func (o *OrganzationGroupsListOKBodyItems0) UnmarshalBinary(b []byte) error {
+	var res OrganzationGroupsListOKBodyItems0
+	if err := swag.ReadJSON(b, &res); err != nil {
+		return err
+	}
+	*o = res
+	return nil
+}
+
+/*
+OrganzationGroupsListOKBodyItems0AllOf0 organzation groups list o k body items0 all of0
+swagger:model OrganzationGroupsListOKBodyItems0AllOf0
+*/
+type OrganzationGroupsListOKBodyItems0AllOf0 interface{}
