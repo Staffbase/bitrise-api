@@ -22,7 +22,7 @@ type V0ArtifactListElementResponseModel struct {
 	ArtifactMeta []int64 `json:"artifact_meta"`
 
 	// artifact type
-	ArtifactType *GithubComMarkbatesPopNullsString `json:"artifact_type,omitempty"`
+	ArtifactType *NullsString `json:"artifact_type,omitempty"`
 
 	// file size bytes
 	FileSizeBytes int64 `json:"file_size_bytes,omitempty"`
@@ -37,7 +37,7 @@ type V0ArtifactListElementResponseModel struct {
 	Slug string `json:"slug,omitempty"`
 
 	// title
-	Title *GithubComMarkbatesPopNullsString `json:"title,omitempty"`
+	Title *NullsString `json:"title,omitempty"`
 }
 
 // Validate validates this v0 artifact list element response model

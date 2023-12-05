@@ -19,25 +19,25 @@ import (
 type V0BuildResponseItemModel struct {
 
 	// abort reason
-	AbortReason *GithubComMarkbatesPopNullsString `json:"abort_reason,omitempty"`
+	AbortReason *NullsString `json:"abort_reason,omitempty"`
 
 	// branch
-	Branch *GithubComMarkbatesPopNullsString `json:"branch,omitempty"`
+	Branch *NullsString `json:"branch,omitempty"`
 
 	// build number
 	BuildNumber int64 `json:"build_number,omitempty"`
 
 	// commit hash
-	CommitHash *GithubComMarkbatesPopNullsString `json:"commit_hash,omitempty"`
+	CommitHash *NullsString `json:"commit_hash,omitempty"`
 
 	// commit message
-	CommitMessage *GithubComMarkbatesPopNullsString `json:"commit_message,omitempty"`
+	CommitMessage *NullsString `json:"commit_message,omitempty"`
 
 	// commit view url
-	CommitViewURL *GithubComMarkbatesPopNullsString `json:"commit_view_url,omitempty"`
+	CommitViewURL *NullsString `json:"commit_view_url,omitempty"`
 
 	// credit cost
-	CreditCost *GithubComMarkbatesPopNullsInt64 `json:"credit_cost,omitempty"`
+	CreditCost *NullsInt64 `json:"credit_cost,omitempty"`
 
 	// environment prepare finished at
 	EnvironmentPrepareFinishedAt string `json:"environment_prepare_finished_at,omitempty"`
@@ -58,7 +58,7 @@ type V0BuildResponseItemModel struct {
 	LogFormat string `json:"log_format,omitempty"`
 
 	// machine type id
-	MachineTypeID *GithubComMarkbatesPopNullsString `json:"machine_type_id,omitempty"`
+	MachineTypeID *NullsString `json:"machine_type_id,omitempty"`
 
 	// original build params
 	OriginalBuildParams []int64 `json:"original_build_params"`
@@ -70,16 +70,16 @@ type V0BuildResponseItemModel struct {
 	PullRequestID int64 `json:"pull_request_id,omitempty"`
 
 	// pull request target branch
-	PullRequestTargetBranch *GithubComMarkbatesPopNullsString `json:"pull_request_target_branch,omitempty"`
+	PullRequestTargetBranch *NullsString `json:"pull_request_target_branch,omitempty"`
 
 	// pull request view url
-	PullRequestViewURL *GithubComMarkbatesPopNullsString `json:"pull_request_view_url,omitempty"`
+	PullRequestViewURL *NullsString `json:"pull_request_view_url,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
 
 	// stack identifier
-	StackIdentifier *GithubComMarkbatesPopNullsString `json:"stack_identifier,omitempty"`
+	StackIdentifier *NullsString `json:"stack_identifier,omitempty"`
 
 	// started on worker at
 	StartedOnWorkerAt string `json:"started_on_worker_at,omitempty"`
@@ -91,13 +91,13 @@ type V0BuildResponseItemModel struct {
 	StatusText string `json:"status_text,omitempty"`
 
 	// tag
-	Tag *GithubComMarkbatesPopNullsString `json:"tag,omitempty"`
+	Tag *NullsString `json:"tag,omitempty"`
 
 	// triggered at
 	TriggeredAt string `json:"triggered_at,omitempty"`
 
 	// triggered by
-	TriggeredBy *GithubComMarkbatesPopNullsString `json:"triggered_by,omitempty"`
+	TriggeredBy *NullsString `json:"triggered_by,omitempty"`
 
 	// triggered workflow
 	TriggeredWorkflow string `json:"triggered_workflow,omitempty"`

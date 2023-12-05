@@ -190,6 +190,8 @@ type ClientService interface {
 
 	ReleaseCreateAppStore(params *ReleaseCreateAppStoreParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReleaseCreateAppStoreCreated, error)
 
+	ReleaseCreateGooglePlay(params *ReleaseCreateGooglePlayParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReleaseCreateGooglePlayCreated, error)
+
 	SecretDelete(params *SecretDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretDeleteNoContent, error)
 
 	SecretList(params *SecretListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*SecretListOK, error)
@@ -712,7 +714,7 @@ func (a *Client) AppConfigDatastoreShow(params *AppConfigDatastoreShowParams, au
 /*
 AppCreate adds a new app
 
-Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: your git provider, the repository URL, the slug of the repository as it appears at the provider, and the slug of the owner of the repository. Read more about the app creation process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).
+Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: the repository URL and the isPublic field. Read more about the app creation process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).
 */
 func (a *Client) AppCreate(params *AppCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AppCreateOK, error) {
 	// TODO: Validate the params before sending
@@ -3485,6 +3487,47 @@ func (a *Client) ReleaseCreateAppStore(params *ReleaseCreateAppStoreParams, auth
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for release-create-app-store: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+ReleaseCreateGooglePlay creates a new google play store release for the app
+
+Create a new android release for the specified app. If the release candidate parameters (`release_branch` and `workflow`) are specified then the latest successful build is automatically picked up as release candidate and if `automatic_play_console_upload` is also turned on, then an upload to Google Play Console is started immediately. You can use this endpoint to set up a fully automated release flow.
+*/
+func (a *Client) ReleaseCreateGooglePlay(params *ReleaseCreateGooglePlayParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*ReleaseCreateGooglePlayCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewReleaseCreateGooglePlayParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "release-create-google-play",
+		Method:             "POST",
+		PathPattern:        "/apps/{app-slug}/releases/google-play",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"https"},
+		Params:             params,
+		Reader:             &ReleaseCreateGooglePlayReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*ReleaseCreateGooglePlayCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for release-create-google-play: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

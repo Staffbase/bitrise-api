@@ -31,16 +31,16 @@ type V0WebhookDeliveryItemResponseModel struct {
 	RequestURL string `json:"request_url,omitempty"`
 
 	// response body
-	ResponseBody *GithubComMarkbatesPopNullsString `json:"response_body,omitempty"`
+	ResponseBody *NullsString `json:"response_body,omitempty"`
 
 	// response headers
-	ResponseHeaders *GithubComMarkbatesPopNullsString `json:"response_headers,omitempty"`
+	ResponseHeaders *NullsString `json:"response_headers,omitempty"`
 
 	// response http status
-	ResponseHTTPStatus *GithubComMarkbatesPopNullsInt64 `json:"response_http_status,omitempty"`
+	ResponseHTTPStatus *NullsInt64 `json:"response_http_status,omitempty"`
 
 	// response seconds
-	ResponseSeconds *GithubComMarkbatesPopNullsInt64 `json:"response_seconds,omitempty"`
+	ResponseSeconds *NullsInt64 `json:"response_seconds,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`

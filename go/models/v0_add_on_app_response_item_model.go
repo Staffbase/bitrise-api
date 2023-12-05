@@ -19,7 +19,7 @@ import (
 type V0AddOnAppResponseItemModel struct {
 
 	// icon
-	Icon *GithubComMarkbatesPopNullsString `json:"icon,omitempty"`
+	Icon *NullsString `json:"icon,omitempty"`
 
 	// plan
 	Plan *AddonsPlan `json:"plan,omitempty"`

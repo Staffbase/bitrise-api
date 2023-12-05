@@ -22,7 +22,7 @@ type V0ArtifactResponseItemModel struct {
 	ArtifactMeta []int64 `json:"artifact_meta"`
 
 	// artifact type
-	ArtifactType *GithubComMarkbatesPopNullsString `json:"artifact_type,omitempty"`
+	ArtifactType *NullsString `json:"artifact_type,omitempty"`
 
 	// expiring download url
 	ExpiringDownloadURL string `json:"expiring_download_url,omitempty"`
@@ -43,7 +43,7 @@ type V0ArtifactResponseItemModel struct {
 	Slug string `json:"slug,omitempty"`
 
 	// title
-	Title *GithubComMarkbatesPopNullsString `json:"title,omitempty"`
+	Title *NullsString `json:"title,omitempty"`
 }
 
 // Validate validates this v0 artifact response item model

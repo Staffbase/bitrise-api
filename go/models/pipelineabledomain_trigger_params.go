@@ -49,8 +49,14 @@ type PipelineabledomainTriggerParams struct {
 	// pull request id
 	PullRequestID interface{} `json:"pull_request_id,omitempty"`
 
+	// pull request merge branch
+	PullRequestMergeBranch string `json:"pull_request_merge_branch,omitempty"`
+
 	// pull request repository url
 	PullRequestRepositoryURL string `json:"pull_request_repository_url,omitempty"`
+
+	// pull request unverified merge branch
+	PullRequestUnverifiedMergeBranch string `json:"pull_request_unverified_merge_branch,omitempty"`
 
 	// tag
 	Tag interface{} `json:"tag,omitempty"`

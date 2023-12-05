@@ -22,13 +22,11 @@ type V0AppUploadParams struct {
 	// The default branch of the repository. If it's not specified, it will be `master`.
 	DefaultBranchName string `json:"default_branch_name,omitempty"`
 
-	// The slug of the owner of the repository at the git provider
-	// Required: true
-	GitOwner *string `json:"git_owner"`
+	// [Deprecated] You no longer need to provide this field.
+	GitOwner string `json:"git_owner,omitempty"`
 
-	// The slug of the repository at the git provider
-	// Required: true
-	GitRepoSlug *string `json:"git_repo_slug"`
+	// [Deprecated] You no longer need to provide this field.
+	GitRepoSlug string `json:"git_repo_slug,omitempty"`
 
 	// If `true` then the repository visibility setting will be public, in case of `false` it will be private
 	// Required: true
@@ -41,8 +39,7 @@ type V0AppUploadParams struct {
 	OrganizationSlug string `json:"organization_slug,omitempty"`
 
 	// The git provider you are using, it can be `github`, `bitbucket`, `gitlab`, `gitlab-self-hosted` or `custom`
-	// Required: true
-	Provider *string `json:"provider"`
+	Provider string `json:"provider,omitempty"`
 
 	// The URL of your repository
 	// Required: true
@@ -51,28 +48,15 @@ type V0AppUploadParams struct {
 	// The title of the application. If it's not specified, it will be the git repository's name.
 	Title string `json:"title,omitempty"`
 
-	// It has to be provided by legacy reasons and has to have the `git` value
-	// Required: true
-	Type *string `json:"type"`
+	// [Deprecated] You no longer need to provide this field.
+	Type string `json:"type,omitempty"`
 }
 
 // Validate validates this v0 app upload params
 func (m *V0AppUploadParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateGitOwner(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateGitRepoSlug(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateIsPublic(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateProvider(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,31 +64,9 @@ func (m *V0AppUploadParams) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateType(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *V0AppUploadParams) validateGitOwner(formats strfmt.Registry) error {
-
-	if err := validate.Required("git_owner", "body", m.GitOwner); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *V0AppUploadParams) validateGitRepoSlug(formats strfmt.Registry) error {
-
-	if err := validate.Required("git_repo_slug", "body", m.GitRepoSlug); err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -117,27 +79,9 @@ func (m *V0AppUploadParams) validateIsPublic(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *V0AppUploadParams) validateProvider(formats strfmt.Registry) error {
-
-	if err := validate.Required("provider", "body", m.Provider); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *V0AppUploadParams) validateRepoURL(formats strfmt.Registry) error {
 
 	if err := validate.Required("repo_url", "body", m.RepoURL); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *V0AppUploadParams) validateType(formats strfmt.Registry) error {
-
-	if err := validate.Required("type", "body", m.Type); err != nil {
 		return err
 	}
 

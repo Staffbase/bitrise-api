@@ -73,6 +73,9 @@ type V0BuildTriggerParamsBuildParams struct {
 	// pull request repository url
 	PullRequestRepositoryURL string `json:"pull_request_repository_url,omitempty"`
 
+	// pull request unverified merge branch
+	PullRequestUnverifiedMergeBranch string `json:"pull_request_unverified_merge_branch,omitempty"`
+
 	// skip git status report
 	SkipGitStatusReport bool `json:"skip_git_status_report,omitempty"`
 
