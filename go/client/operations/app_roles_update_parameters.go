@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/Staffbase/bitrise-api/go/models"
 )
 
 // NewAppRolesUpdateParams creates a new AppRolesUpdateParams object,
@@ -71,7 +73,7 @@ type AppRolesUpdateParams struct {
 
 	   List of group slugs
 	*/
-	Groups AppRolesUpdateBody
+	Groups *models.AppRolesUpdateParamsBody
 
 	/* RoleName.
 
@@ -144,13 +146,13 @@ func (o *AppRolesUpdateParams) SetAppSlug(appSlug string) {
 }
 
 // WithGroups adds the groups to the app roles update params
-func (o *AppRolesUpdateParams) WithGroups(groups AppRolesUpdateBody) *AppRolesUpdateParams {
+func (o *AppRolesUpdateParams) WithGroups(groups *models.AppRolesUpdateParamsBody) *AppRolesUpdateParams {
 	o.SetGroups(groups)
 	return o
 }
 
 // SetGroups adds the groups to the app roles update params
-func (o *AppRolesUpdateParams) SetGroups(groups AppRolesUpdateBody) {
+func (o *AppRolesUpdateParams) SetGroups(groups *models.AppRolesUpdateParamsBody) {
 	o.Groups = groups
 }
 
@@ -177,8 +179,10 @@ func (o *AppRolesUpdateParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 	if err := r.SetPathParam("app-slug", o.AppSlug); err != nil {
 		return err
 	}
-	if err := r.SetBodyParam(o.Groups); err != nil {
-		return err
+	if o.Groups != nil {
+		if err := r.SetBodyParam(o.Groups); err != nil {
+			return err
+		}
 	}
 
 	// path param role-name
