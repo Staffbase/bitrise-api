@@ -49,3 +49,6 @@ test: ## Generate with openapitools/openapi-generator-cli
     	-o /local/go2 \
     	--git-user-id=staffbase \
     	--git-repo-id=bitrise-api
+
+test2:
+	go run github.com/deepmap/oapi-codegen/cmd/oapi-codegen@latest -package=examplepkg -generate=types,client,spec -o=go3/example-client.go ./openapi.yaml
