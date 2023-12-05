@@ -19,19 +19,19 @@ import (
 type V0PipelineListAllResponseItemModel struct {
 
 	// branch
-	Branch *GithubComGobuffaloNullsString `json:"branch,omitempty"`
+	Branch *NullsString `json:"branch,omitempty"`
 
 	// build number
 	BuildNumber int64 `json:"build_number,omitempty"`
 
 	// commit hash
-	CommitHash *GithubComGobuffaloNullsString `json:"commit_hash,omitempty"`
+	CommitHash *NullsString `json:"commit_hash,omitempty"`
 
 	// commit message
-	CommitMessage *GithubComGobuffaloNullsString `json:"commit_message,omitempty"`
+	CommitMessage *NullsString `json:"commit_message,omitempty"`
 
 	// credit cost
-	CreditCost *GithubComGobuffaloNullsInt64 `json:"credit_cost,omitempty"`
+	CreditCost *NullsInt64 `json:"credit_cost,omitempty"`
 
 	// finished at
 	FinishedAt string `json:"finished_at,omitempty"`
@@ -49,7 +49,7 @@ type V0PipelineListAllResponseItemModel struct {
 	PullRequestID int64 `json:"pull_request_id,omitempty"`
 
 	// pull request target branch
-	PullRequestTargetBranch *GithubComGobuffaloNullsString `json:"pull_request_target_branch,omitempty"`
+	PullRequestTargetBranch *NullsString `json:"pull_request_target_branch,omitempty"`
 
 	// repository
 	Repository *V0AppResponseItemModel `json:"repository,omitempty"`
@@ -64,13 +64,13 @@ type V0PipelineListAllResponseItemModel struct {
 	Status int64 `json:"status,omitempty"`
 
 	// tag
-	Tag *GithubComGobuffaloNullsString `json:"tag,omitempty"`
+	Tag *NullsString `json:"tag,omitempty"`
 
 	// triggered at
 	TriggeredAt string `json:"triggered_at,omitempty"`
 
 	// triggered by
-	TriggeredBy *GithubComGobuffaloNullsString `json:"triggered_by,omitempty"`
+	TriggeredBy *NullsString `json:"triggered_by,omitempty"`
 
 	// triggered workflow
 	TriggeredWorkflow string `json:"triggered_workflow,omitempty"`

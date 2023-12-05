@@ -19,8 +19,11 @@ import (
 // swagger:model v0.PipelineListResponseItemModel
 type V0PipelineListResponseItemModel struct {
 
+	// artifacts
+	Artifacts []*PipelineabledomainArtifactMeta `json:"artifacts"`
+
 	// branch
-	Branch *GithubComGobuffaloNullsString `json:"branch,omitempty"`
+	Branch *NullsString `json:"branch,omitempty"`
 
 	// build number
 	BuildNumber int64 `json:"build_number,omitempty"`
@@ -29,13 +32,13 @@ type V0PipelineListResponseItemModel struct {
 	BuildToolInvocations []*PipelineabledomainBuildToolInvocation `json:"build_tool_invocations"`
 
 	// commit hash
-	CommitHash *GithubComGobuffaloNullsString `json:"commit_hash,omitempty"`
+	CommitHash *NullsString `json:"commit_hash,omitempty"`
 
 	// commit message
-	CommitMessage *GithubComGobuffaloNullsString `json:"commit_message,omitempty"`
+	CommitMessage *NullsString `json:"commit_message,omitempty"`
 
 	// credit cost
-	CreditCost *GithubComGobuffaloNullsInt64 `json:"credit_cost,omitempty"`
+	CreditCost *NullsInt64 `json:"credit_cost,omitempty"`
 
 	// finished at
 	FinishedAt string `json:"finished_at,omitempty"`
@@ -56,7 +59,7 @@ type V0PipelineListResponseItemModel struct {
 	PullRequestID int64 `json:"pull_request_id,omitempty"`
 
 	// pull request target branch
-	PullRequestTargetBranch *GithubComGobuffaloNullsString `json:"pull_request_target_branch,omitempty"`
+	PullRequestTargetBranch *NullsString `json:"pull_request_target_branch,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`
@@ -68,7 +71,7 @@ type V0PipelineListResponseItemModel struct {
 	Status int64 `json:"status,omitempty"`
 
 	// tag
-	Tag *GithubComGobuffaloNullsString `json:"tag,omitempty"`
+	Tag *NullsString `json:"tag,omitempty"`
 
 	// trigger params
 	TriggerParams *PipelineabledomainTriggerParams `json:"trigger_params,omitempty"`
@@ -77,7 +80,7 @@ type V0PipelineListResponseItemModel struct {
 	TriggeredAt string `json:"triggered_at,omitempty"`
 
 	// triggered by
-	TriggeredBy *GithubComGobuffaloNullsString `json:"triggered_by,omitempty"`
+	TriggeredBy *NullsString `json:"triggered_by,omitempty"`
 
 	// triggered workflow
 	TriggeredWorkflow string `json:"triggered_workflow,omitempty"`
@@ -86,6 +89,10 @@ type V0PipelineListResponseItemModel struct {
 // Validate validates this v0 pipeline list response item model
 func (m *V0PipelineListResponseItemModel) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateArtifacts(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateBranch(formats); err != nil {
 		res = append(res, err)
@@ -130,6 +137,32 @@ func (m *V0PipelineListResponseItemModel) Validate(formats strfmt.Registry) erro
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *V0PipelineListResponseItemModel) validateArtifacts(formats strfmt.Registry) error {
+	if swag.IsZero(m.Artifacts) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Artifacts); i++ {
+		if swag.IsZero(m.Artifacts[i]) { // not required
+			continue
+		}
+
+		if m.Artifacts[i] != nil {
+			if err := m.Artifacts[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("artifacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("artifacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -334,6 +367,10 @@ func (m *V0PipelineListResponseItemModel) validateTriggeredBy(formats strfmt.Reg
 func (m *V0PipelineListResponseItemModel) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateArtifacts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateBranch(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -377,6 +414,31 @@ func (m *V0PipelineListResponseItemModel) ContextValidate(ctx context.Context, f
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *V0PipelineListResponseItemModel) contextValidateArtifacts(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Artifacts); i++ {
+
+		if m.Artifacts[i] != nil {
+
+			if swag.IsZero(m.Artifacts[i]) { // not required
+				return nil
+			}
+
+			if err := m.Artifacts[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("artifacts" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("artifacts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

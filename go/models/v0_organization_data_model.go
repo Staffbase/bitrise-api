@@ -20,7 +20,7 @@ import (
 type V0OrganizationDataModel struct {
 
 	// avatar icon url
-	AvatarIconURL *GithubComMarkbatesPopNullsString `json:"avatar_icon_url,omitempty"`
+	AvatarIconURL *NullsString `json:"avatar_icon_url,omitempty"`
 
 	// concurrency count
 	ConcurrencyCount int64 `json:"concurrency_count,omitempty"`

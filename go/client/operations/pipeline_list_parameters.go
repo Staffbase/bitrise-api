@@ -86,6 +86,12 @@ type PipelineListParams struct {
 	*/
 	Branch *string
 
+	/* BuildEnvironment.
+
+	   The build environment of the listed builds (ci, local, all) - default: ci
+	*/
+	BuildEnvironment *string
+
 	/* BuildNumber.
 
 	   The pipeline/standalone build number
@@ -100,7 +106,7 @@ type PipelineListParams struct {
 
 	/* Limit.
 
-	   Max number of elements per page (default: 10)
+	   Max number of elements per page - default: 10
 	*/
 	Limit *int64
 
@@ -109,6 +115,12 @@ type PipelineListParams struct {
 	   List pipelines/standalone builds run before a given date (RFC3339 time format) - deprecated
 	*/
 	Next *string
+
+	/* Pipeline.
+
+	   Name of the pipeline
+	*/
+	Pipeline *string
 
 	/* Status.
 
@@ -225,6 +237,17 @@ func (o *PipelineListParams) SetBranch(branch *string) {
 	o.Branch = branch
 }
 
+// WithBuildEnvironment adds the buildEnvironment to the pipeline list params
+func (o *PipelineListParams) WithBuildEnvironment(buildEnvironment *string) *PipelineListParams {
+	o.SetBuildEnvironment(buildEnvironment)
+	return o
+}
+
+// SetBuildEnvironment adds the buildEnvironment to the pipeline list params
+func (o *PipelineListParams) SetBuildEnvironment(buildEnvironment *string) {
+	o.BuildEnvironment = buildEnvironment
+}
+
 // WithBuildNumber adds the buildNumber to the pipeline list params
 func (o *PipelineListParams) WithBuildNumber(buildNumber *int64) *PipelineListParams {
 	o.SetBuildNumber(buildNumber)
@@ -267,6 +290,17 @@ func (o *PipelineListParams) WithNext(next *string) *PipelineListParams {
 // SetNext adds the next to the pipeline list params
 func (o *PipelineListParams) SetNext(next *string) {
 	o.Next = next
+}
+
+// WithPipeline adds the pipeline to the pipeline list params
+func (o *PipelineListParams) WithPipeline(pipeline *string) *PipelineListParams {
+	o.SetPipeline(pipeline)
+	return o
+}
+
+// SetPipeline adds the pipeline to the pipeline list params
+func (o *PipelineListParams) SetPipeline(pipeline *string) {
+	o.Pipeline = pipeline
 }
 
 // WithStatus adds the status to the pipeline list params
@@ -366,6 +400,23 @@ func (o *PipelineListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		}
 	}
 
+	if o.BuildEnvironment != nil {
+
+		// query param build_environment
+		var qrBuildEnvironment string
+
+		if o.BuildEnvironment != nil {
+			qrBuildEnvironment = *o.BuildEnvironment
+		}
+		qBuildEnvironment := qrBuildEnvironment
+		if qBuildEnvironment != "" {
+
+			if err := r.SetQueryParam("build_environment", qBuildEnvironment); err != nil {
+				return err
+			}
+		}
+	}
+
 	if o.BuildNumber != nil {
 
 		// query param build_number
@@ -429,6 +480,23 @@ func (o *PipelineListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		if qNext != "" {
 
 			if err := r.SetQueryParam("next", qNext); err != nil {
+				return err
+			}
+		}
+	}
+
+	if o.Pipeline != nil {
+
+		// query param pipeline
+		var qrPipeline string
+
+		if o.Pipeline != nil {
+			qrPipeline = *o.Pipeline
+		}
+		qPipeline := qrPipeline
+		if qPipeline != "" {
+
+			if err := r.SetQueryParam("pipeline", qPipeline); err != nil {
 				return err
 			}
 		}

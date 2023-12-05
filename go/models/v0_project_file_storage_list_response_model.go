@@ -22,8 +22,10 @@ type V0ProjectFileStorageListResponseModel struct {
 	// data
 	Data []*V0ProjectFileStorageResponseItemModel `json:"data"`
 
-	// paging
-	Paging *V0ProjectFileStorageListResponseModelPaging `json:"paging,omitempty"`
+	// pagination
+	Paging struct {
+		V0PagingResponseModel
+	} `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 project file storage list response model
@@ -75,17 +77,6 @@ func (m *V0ProjectFileStorageListResponseModel) validatePaging(formats strfmt.Re
 		return nil
 	}
 
-	if m.Paging != nil {
-		if err := m.Paging.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -133,22 +124,6 @@ func (m *V0ProjectFileStorageListResponseModel) contextValidateData(ctx context.
 }
 
 func (m *V0ProjectFileStorageListResponseModel) contextValidatePaging(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Paging != nil {
-
-		if swag.IsZero(m.Paging) { // not required
-			return nil
-		}
-
-		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
 
 	return nil
 }

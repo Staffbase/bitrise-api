@@ -19,7 +19,7 @@ import (
 type V0AppResponseItemModel struct {
 
 	// avatar url
-	AvatarURL *GithubComMarkbatesPopNullsString `json:"avatar_url,omitempty"`
+	AvatarURL *NullsString `json:"avatar_url,omitempty"`
 
 	// is disabled
 	IsDisabled bool `json:"is_disabled,omitempty"`
@@ -34,19 +34,19 @@ type V0AppResponseItemModel struct {
 	Owner *V0OwnerAccountResponseModel `json:"owner,omitempty"`
 
 	// project type
-	ProjectType *GithubComMarkbatesPopNullsString `json:"project_type,omitempty"`
+	ProjectType *NullsString `json:"project_type,omitempty"`
 
 	// provider
-	Provider *GithubComMarkbatesPopNullsString `json:"provider,omitempty"`
+	Provider *NullsString `json:"provider,omitempty"`
 
 	// repo owner
-	RepoOwner *GithubComMarkbatesPopNullsString `json:"repo_owner,omitempty"`
+	RepoOwner *NullsString `json:"repo_owner,omitempty"`
 
 	// repo slug
-	RepoSlug *GithubComMarkbatesPopNullsString `json:"repo_slug,omitempty"`
+	RepoSlug *NullsString `json:"repo_slug,omitempty"`
 
 	// repo url
-	RepoURL *GithubComMarkbatesPopNullsString `json:"repo_url,omitempty"`
+	RepoURL *NullsString `json:"repo_url,omitempty"`
 
 	// slug
 	Slug string `json:"slug,omitempty"`

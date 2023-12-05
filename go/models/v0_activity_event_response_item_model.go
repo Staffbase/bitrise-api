@@ -22,13 +22,13 @@ type V0ActivityEventResponseItemModel struct {
 	CreatedAt string `json:"created_at,omitempty"`
 
 	// description
-	Description *GithubComMarkbatesPopNullsString `json:"description,omitempty"`
+	Description *NullsString `json:"description,omitempty"`
 
 	// event icon
-	EventIcon *GithubComMarkbatesPopNullsString `json:"event_icon,omitempty"`
+	EventIcon *NullsString `json:"event_icon,omitempty"`
 
 	// event stype
-	EventStype *GithubComMarkbatesPopNullsString `json:"event_stype,omitempty"`
+	EventStype *NullsString `json:"event_stype,omitempty"`
 
 	// repository avatar icon url
 	RepositoryAvatarIconURL string `json:"repository_avatar_icon_url,omitempty"`
@@ -40,10 +40,10 @@ type V0ActivityEventResponseItemModel struct {
 	Slug string `json:"slug,omitempty"`
 
 	// target path string
-	TargetPathString *GithubComMarkbatesPopNullsString `json:"target_path_string,omitempty"`
+	TargetPathString *NullsString `json:"target_path_string,omitempty"`
 
 	// title
-	Title *GithubComMarkbatesPopNullsString `json:"title,omitempty"`
+	Title *NullsString `json:"title,omitempty"`
 }
 
 // Validate validates this v0 activity event response item model

@@ -31,7 +31,7 @@ type V0PlanDataModel struct {
 	Name string `json:"name,omitempty"`
 
 	// price
-	Price *GithubComMarkbatesPopNullsInt64 `json:"price,omitempty"`
+	Price *NullsInt64 `json:"price,omitempty"`
 }
 
 // Validate validates this v0 plan data model

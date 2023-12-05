@@ -212,7 +212,7 @@
                         "PersonalAccessToken": []
                     }
                 ],
-                "description": "Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: your git provider, the repository URL, the slug of the repository as it appears at the provider, and the slug of the owner of the repository. Read more about the app creation process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).",
+                "description": "Add a new app to Bitrise. This is the first step of the app registration process. To successfully set it up, you need to provide the required app parameters: the repository URL and the isPublic field. Read more about the app creation process in our [detailed guide](https://devcenter.bitrise.io/api/adding-and-managing-apps/#adding-a-new-app).",
                 "consumes": [
                     "application/json"
                 ],
@@ -3999,13 +3999,19 @@
                     },
                     {
                         "type": "string",
+                        "description": "The build environment of the listed builds (ci, local, all) - default: ci",
+                        "name": "build_environment",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
                         "description": "The commit message of the pipeline/standalone build",
                         "name": "commit_message",
                         "in": "query"
                     },
                     {
                         "type": "integer",
-                        "description": "Max number of elements per page (default: 10)",
+                        "description": "Max number of elements per page - default: 10",
                         "name": "limit",
                         "in": "query"
                     },
@@ -4013,6 +4019,12 @@
                         "type": "string",
                         "description": "List pipelines/standalone builds run before a given date (RFC3339 time format) - deprecated",
                         "name": "next",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Name of the pipeline",
+                        "name": "pipeline",
                         "in": "query"
                     },
                     {
@@ -4884,6 +4896,83 @@
                         "description": "Created",
                         "schema": {
                             "$ref": "#/definitions/v0.ReleaseCreateAppStoreRespModel"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Entity",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/service.StandardErrorRespModel"
+                        }
+                    }
+                }
+            }
+        },
+        "/apps/{app-slug}/releases/google-play": {
+            "post": {
+                "security": [
+                    {
+                        "PersonalAccessToken": []
+                    }
+                ],
+                "description": "Create a new android release for the specified app. If the release candidate parameters (`release_branch` and `workflow`) are specified then the latest successful build is automatically picked up as release candidate and if `automatic_play_console_upload` is also turned on, then an upload to Google Play Console is started immediately. You can use this endpoint to set up a fully automated release flow.",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "releases"
+                ],
+                "summary": "Create a new Google Play Store release for the app.",
+                "operationId": "release-create-google-play",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "App slug",
+                        "name": "app-slug",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "description": "Google Play release parameters",
+                        "name": "app",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/v0.ReleaseCreateGooglePlayParams"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "schema": {
+                            "$ref": "#/definitions/v0.ReleaseCreateGooglePlayRespModel"
                         }
                     },
                     "400": {
@@ -6687,7 +6776,7 @@
                 }
             }
         },
-        "github_com_gobuffalo_nulls.Int64": {
+        "nulls.Int64": {
             "type": "object",
             "properties": {
                 "int64": {
@@ -6699,7 +6788,7 @@
                 }
             }
         },
-        "github_com_gobuffalo_nulls.String": {
+        "nulls.String": {
             "type": "object",
             "properties": {
                 "string": {
@@ -6711,27 +6800,23 @@
                 }
             }
         },
-        "github_com_markbates_pop_nulls.Int64": {
+        "pipelineabledomain.ArtifactMeta": {
             "type": "object",
             "properties": {
-                "int64": {
-                    "type": "integer"
-                },
-                "valid": {
-                    "description": "Valid is true if Int64 is not NULL",
-                    "type": "boolean"
-                }
-            }
-        },
-        "github_com_markbates_pop_nulls.String": {
-            "type": "object",
-            "properties": {
-                "string": {
+                "artifact_type": {
                     "type": "string"
                 },
-                "valid": {
-                    "description": "Valid is true if String is not NULL",
-                    "type": "boolean"
+                "id": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "version_code": {
+                    "type": "string"
+                },
+                "version_name": {
+                    "type": "string"
                 }
             }
         },
@@ -6804,7 +6889,13 @@
                     "type": "string"
                 },
                 "pull_request_id": {},
+                "pull_request_merge_branch": {
+                    "type": "string"
+                },
                 "pull_request_repository_url": {
+                    "type": "string"
+                },
+                "pull_request_unverified_merge_branch": {
                     "type": "string"
                 },
                 "tag": {}
@@ -6847,13 +6938,13 @@
                     "type": "string"
                 },
                 "description": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "event_icon": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "event_stype": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "repository_avatar_icon_url": {
                     "type": "string"
@@ -6865,10 +6956,10 @@
                     "type": "string"
                 },
                 "target_path_string": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "title": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 }
             }
         },
@@ -6876,7 +6967,7 @@
             "type": "object",
             "properties": {
                 "icon": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "plan": {
                     "$ref": "#/definitions/addons.Plan"
@@ -7136,7 +7227,7 @@
             "type": "object",
             "properties": {
                 "avatar_url": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "is_disabled": {
                     "type": "boolean"
@@ -7151,19 +7242,19 @@
                     "$ref": "#/definitions/v0.OwnerAccountResponseModel"
                 },
                 "project_type": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "provider": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "repo_owner": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "repo_slug": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "repo_url": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "slug": {
                     "type": "string"
@@ -7289,12 +7380,8 @@
         "v0.AppUploadParams": {
             "type": "object",
             "required": [
-                "git_owner",
-                "git_repo_slug",
                 "is_public",
-                "provider",
-                "repo_url",
-                "type"
+                "repo_url"
             ],
             "properties": {
                 "default_branch_name": {
@@ -7302,11 +7389,11 @@
                     "type": "string"
                 },
                 "git_owner": {
-                    "description": "The slug of the owner of the repository at the git provider",
+                    "description": "[Deprecated] You no longer need to provide this field.",
                     "type": "string"
                 },
                 "git_repo_slug": {
-                    "description": "The slug of the repository at the git provider",
+                    "description": "[Deprecated] You no longer need to provide this field.",
                     "type": "string"
                 },
                 "is_public": {
@@ -7334,7 +7421,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "It has to be provided by legacy reasons and has to have the `git` value",
+                    "description": "[Deprecated] You no longer need to provide this field.",
                     "type": "string"
                 }
             }
@@ -7644,7 +7731,7 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "file_size_bytes": {
                     "type": "integer"
@@ -7662,7 +7749,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 }
             }
         },
@@ -7695,7 +7782,7 @@
                     }
                 },
                 "artifact_type": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "expiring_download_url": {
                     "type": "string"
@@ -7719,7 +7806,7 @@
                     "type": "string"
                 },
                 "title": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 }
             }
         },
@@ -7902,25 +7989,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -7935,7 +8022,7 @@
                     "type": "boolean"
                 },
                 "machine_type_id": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -7947,10 +8034,10 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "repository": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
@@ -7959,7 +8046,7 @@
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -7971,13 +8058,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8090,25 +8177,25 @@
             "type": "object",
             "properties": {
                 "abort_reason": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "branch": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "commit_view_url": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/nulls.Int64"
                 },
                 "environment_prepare_finished_at": {
                     "type": "string"
@@ -8129,7 +8216,7 @@
                     "type": "string"
                 },
                 "machine_type_id": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "original_build_params": {
                     "type": "array",
@@ -8144,16 +8231,16 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "pull_request_view_url": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "slug": {
                     "type": "string"
                 },
                 "stack_identifier": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "started_on_worker_at": {
                     "type": "string"
@@ -8165,13 +8252,13 @@
                     "type": "string"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8261,6 +8348,9 @@
                     "type": "string"
                 },
                 "pull_request_repository_url": {
+                    "type": "string"
+                },
+                "pull_request_unverified_merge_branch": {
                     "type": "string"
                 },
                 "skip_git_status_report": {
@@ -8410,7 +8500,7 @@
             "type": "object",
             "properties": {
                 "avatar_icon_url": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "concurrency_count": {
                     "type": "integer"
@@ -8603,19 +8693,19 @@
             "type": "object",
             "properties": {
                 "branch": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.Int64"
+                    "$ref": "#/definitions/nulls.Int64"
                 },
                 "finished_at": {
                     "type": "string"
@@ -8633,7 +8723,7 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "repository": {
                     "$ref": "#/definitions/v0.AppResponseItemModel"
@@ -8648,13 +8738,13 @@
                     "type": "integer"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "triggered_at": {
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8678,8 +8768,14 @@
         "v0.PipelineListResponseItemModel": {
             "type": "object",
             "properties": {
+                "artifacts": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/pipelineabledomain.ArtifactMeta"
+                    }
+                },
                 "branch": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "build_number": {
                     "type": "integer"
@@ -8691,13 +8787,13 @@
                     }
                 },
                 "commit_hash": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "commit_message": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "credit_cost": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.Int64"
+                    "$ref": "#/definitions/nulls.Int64"
                 },
                 "finished_at": {
                     "type": "string"
@@ -8718,7 +8814,7 @@
                     "type": "integer"
                 },
                 "pull_request_target_branch": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "slug": {
                     "type": "string"
@@ -8730,7 +8826,7 @@
                     "type": "integer"
                 },
                 "tag": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "trigger_params": {
                     "$ref": "#/definitions/pipelineabledomain.TriggerParams"
@@ -8739,7 +8835,7 @@
                     "type": "string"
                 },
                 "triggered_by": {
-                    "$ref": "#/definitions/github_com_gobuffalo_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "triggered_workflow": {
                     "type": "string"
@@ -8930,7 +9026,13 @@
                 "pull_request_id": {
                     "type": "string"
                 },
+                "pull_request_merge_branch": {
+                    "type": "string"
+                },
                 "pull_request_repository_url": {
+                    "type": "string"
+                },
+                "pull_request_unverified_merge_branch": {
                     "type": "string"
                 },
                 "tag": {
@@ -8981,7 +9083,7 @@
                     "type": "string"
                 },
                 "price": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/nulls.Int64"
                 }
             }
         },
@@ -9185,7 +9287,7 @@
             ],
             "properties": {
                 "automatic_testflight_upload": {
-                    "description": "Indicates whether or not to upload every release candidate build automatically to TestFlight (default: `false`)",
+                    "description": "@Deprecated use `automatic_store_upload` instead. Indicates whether or not to upload every release candidate build automatically to TestFlight (default: `false`)",
                     "type": "boolean"
                 },
                 "bundle_id": {
@@ -9235,6 +9337,72 @@
                 },
                 "platform": {
                     "description": "The platform of the release (`ios`)",
+                    "type": "string"
+                },
+                "status": {
+                    "description": "The status of the newly created release (`scheduled` or `in-progress`, depending on whether or not the release candidate settings were specified)",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.ReleaseCreateGooglePlayParams": {
+            "type": "object",
+            "required": [
+                "name",
+                "package_name"
+            ],
+            "properties": {
+                "automatic_play_console_upload": {
+                    "description": "Indicates whether or not to upload every release candidate build automatically to the Google Play Console (default: `false`)",
+                    "type": "boolean"
+                },
+                "description": {
+                    "description": "An internal description of the release; it won't be propagated to the App Store (default: empty)",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name/version of the release (e.g. `1.2`)",
+                    "type": "string"
+                },
+                "package_name": {
+                    "description": "The package name of the app to be released",
+                    "type": "string"
+                },
+                "release_branch": {
+                    "description": "The branch used for building the release candidate (default: empty)",
+                    "type": "string"
+                },
+                "slack_webhook_url": {
+                    "description": "The Slack webhook URL to use for sending Slack notifications (default: empty)",
+                    "type": "string"
+                },
+                "teams_webhook_url": {
+                    "description": "The Teams webhook URL to use for sending MS Teams notifications (default: empty)",
+                    "type": "string"
+                },
+                "workflow": {
+                    "description": "The workflow used for building the release candidate (default: empty)",
+                    "type": "string"
+                }
+            }
+        },
+        "v0.ReleaseCreateGooglePlayRespModel": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "description": "The ID of the newly created release",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "The name/version of the release (e.g. `1.2`)",
+                    "type": "string"
+                },
+                "package_name": {
+                    "description": "The package name of the app",
+                    "type": "string"
+                },
+                "platform": {
+                    "description": "The platform of the release (`android`)",
                     "type": "string"
                 },
                 "status": {
@@ -9375,16 +9543,16 @@
                     "type": "string"
                 },
                 "response_body": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "response_headers": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.String"
+                    "$ref": "#/definitions/nulls.String"
                 },
                 "response_http_status": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/nulls.Int64"
                 },
                 "response_seconds": {
-                    "$ref": "#/definitions/github_com_markbates_pop_nulls.Int64"
+                    "$ref": "#/definitions/nulls.Int64"
                 },
                 "slug": {
                     "type": "string"

@@ -14,17 +14,13 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// V0ReleaseCreateAppStoreParams v0 release create app store params
+// V0ReleaseCreateGooglePlayParams v0 release create google play params
 //
-// swagger:model v0.ReleaseCreateAppStoreParams
-type V0ReleaseCreateAppStoreParams struct {
+// swagger:model v0.ReleaseCreateGooglePlayParams
+type V0ReleaseCreateGooglePlayParams struct {
 
-	// @Deprecated use `automatic_store_upload` instead. Indicates whether or not to upload every release candidate build automatically to TestFlight (default: `false`)
-	AutomaticTestflightUpload bool `json:"automatic_testflight_upload,omitempty"`
-
-	// The bundle ID of the app to be released
-	// Required: true
-	BundleID *string `json:"bundle_id"`
+	// Indicates whether or not to upload every release candidate build automatically to the Google Play Console (default: `false`)
+	AutomaticPlayConsoleUpload bool `json:"automatic_play_console_upload,omitempty"`
 
 	// An internal description of the release; it won't be propagated to the App Store (default: empty)
 	Description string `json:"description,omitempty"`
@@ -32,6 +28,10 @@ type V0ReleaseCreateAppStoreParams struct {
 	// The name/version of the release (e.g. `1.2`)
 	// Required: true
 	Name *string `json:"name"`
+
+	// The package name of the app to be released
+	// Required: true
+	PackageName *string `json:"package_name"`
 
 	// The branch used for building the release candidate (default: empty)
 	ReleaseBranch string `json:"release_branch,omitempty"`
@@ -46,15 +46,15 @@ type V0ReleaseCreateAppStoreParams struct {
 	Workflow string `json:"workflow,omitempty"`
 }
 
-// Validate validates this v0 release create app store params
-func (m *V0ReleaseCreateAppStoreParams) Validate(formats strfmt.Registry) error {
+// Validate validates this v0 release create google play params
+func (m *V0ReleaseCreateGooglePlayParams) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateBundleID(formats); err != nil {
+	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateName(formats); err != nil {
+	if err := m.validatePackageName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -64,16 +64,7 @@ func (m *V0ReleaseCreateAppStoreParams) Validate(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *V0ReleaseCreateAppStoreParams) validateBundleID(formats strfmt.Registry) error {
-
-	if err := validate.Required("bundle_id", "body", m.BundleID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *V0ReleaseCreateAppStoreParams) validateName(formats strfmt.Registry) error {
+func (m *V0ReleaseCreateGooglePlayParams) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
@@ -82,13 +73,22 @@ func (m *V0ReleaseCreateAppStoreParams) validateName(formats strfmt.Registry) er
 	return nil
 }
 
-// ContextValidate validates this v0 release create app store params based on context it is used
-func (m *V0ReleaseCreateAppStoreParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *V0ReleaseCreateGooglePlayParams) validatePackageName(formats strfmt.Registry) error {
+
+	if err := validate.Required("package_name", "body", m.PackageName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this v0 release create google play params based on context it is used
+func (m *V0ReleaseCreateGooglePlayParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *V0ReleaseCreateAppStoreParams) MarshalBinary() ([]byte, error) {
+func (m *V0ReleaseCreateGooglePlayParams) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -96,8 +96,8 @@ func (m *V0ReleaseCreateAppStoreParams) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *V0ReleaseCreateAppStoreParams) UnmarshalBinary(b []byte) error {
-	var res V0ReleaseCreateAppStoreParams
+func (m *V0ReleaseCreateGooglePlayParams) UnmarshalBinary(b []byte) error {
+	var res V0ReleaseCreateGooglePlayParams
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
