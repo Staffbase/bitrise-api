@@ -22,8 +22,10 @@ type V0PipelineListResponseModel struct {
 	// data
 	Data []*V0PipelineListResponseItemModel `json:"data"`
 
-	// paging
-	Paging *V0PipelineListResponseModelPaging `json:"paging,omitempty"`
+	// pagination
+	Paging struct {
+		V0PagingResponseModel
+	} `json:"paging,omitempty"`
 }
 
 // Validate validates this v0 pipeline list response model
@@ -75,17 +77,6 @@ func (m *V0PipelineListResponseModel) validatePaging(formats strfmt.Registry) er
 		return nil
 	}
 
-	if m.Paging != nil {
-		if err := m.Paging.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -133,22 +124,6 @@ func (m *V0PipelineListResponseModel) contextValidateData(ctx context.Context, f
 }
 
 func (m *V0PipelineListResponseModel) contextValidatePaging(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Paging != nil {
-
-		if swag.IsZero(m.Paging) { // not required
-			return nil
-		}
-
-		if err := m.Paging.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("paging")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("paging")
-			}
-			return err
-		}
-	}
 
 	return nil
 }
