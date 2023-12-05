@@ -37,7 +37,6 @@ generate: clean   ## Generate the API Go client and the JSON document for the UI
 	--target go \
 	--default-scheme=https \
 	--with-flatten=minimal \
-	--strict-responders \
 	--skip-tag-packages
 
 validate: ## Check that the swagger spec is valid.
