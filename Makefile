@@ -41,3 +41,11 @@ generate: clean   ## Generate the API Go client and the JSON document for the UI
 
 validate: ## Check that the swagger spec is valid.
 	go run github.com/go-swagger/go-swagger/cmd/swagger@v0.30.5 validate $(SWAGGER_SPEC)
+
+test: ## Generate with openapitools/openapi-generator-cli
+		docker run --rm -v $(shell pwd):/local openapitools/openapi-generator-cli generate \
+		-i /local/swagger.json \
+		-g go \
+    	-o /local/go2 \
+    	--git-user-id=staffbase \
+    	--git-repo-id=bitrise-api
