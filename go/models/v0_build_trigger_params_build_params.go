@@ -17,7 +17,7 @@ import (
 //
 // swagger:model v0BuildTriggerParamsBuildParams
 type V0BuildTriggerParamsBuildParams struct {
-	V0BuildTriggerParamsBuildParams
+	*V0BuildTriggerParamsBuildParams
 }
 
 // UnmarshalJSON unmarshals this object from a JSON structure
@@ -27,7 +27,7 @@ func (m *V0BuildTriggerParamsBuildParams) UnmarshalJSON(raw []byte) error {
 	if err := swag.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
-	m.V0BuildTriggerParamsBuildParams = aO0
+	m.V0BuildTriggerParamsBuildParams = &aO0
 
 	return nil
 }
