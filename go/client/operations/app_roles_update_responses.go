@@ -6,14 +6,11 @@ package operations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"context"
 	"fmt"
 	"io"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 
 	"github.com/Staffbase/bitrise-api/go/models"
 )
@@ -54,7 +51,7 @@ AppRolesUpdateOK describes a response with status code 200, with default header 
 List of group slugs
 */
 type AppRolesUpdateOK struct {
-	Payload *AppRolesUpdateOKBody
+	Payload *models.AppRolesUpdateOKBody
 }
 
 // IsSuccess returns true when this app roles update o k response has a 2xx status code
@@ -95,13 +92,13 @@ func (o *AppRolesUpdateOK) String() string {
 	return fmt.Sprintf("[PUT /apps/{app-slug}/roles/{role-name}][%d] appRolesUpdateOK  %+v", 200, o.Payload)
 }
 
-func (o *AppRolesUpdateOK) GetPayload() *AppRolesUpdateOKBody {
+func (o *AppRolesUpdateOK) GetPayload() *models.AppRolesUpdateOKBody {
 	return o.Payload
 }
 
 func (o *AppRolesUpdateOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(AppRolesUpdateOKBody)
+	o.Payload = new(models.AppRolesUpdateOKBody)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -178,197 +175,3 @@ func (o *AppRolesUpdateUnprocessableEntity) readResponse(response runtime.Client
 
 	return nil
 }
-
-/*
-AppRolesUpdateBody app roles update body
-swagger:model AppRolesUpdateBody
-*/
-type AppRolesUpdateBody struct {
-	AppRolesUpdateParamsBodyAllOf0
-
-	// groups
-	Groups []string `json:"groups"`
-}
-
-// UnmarshalJSON unmarshals this object from a JSON structure
-func (o *AppRolesUpdateBody) UnmarshalJSON(raw []byte) error {
-	// AppRolesUpdateParamsBodyAO0
-	var appRolesUpdateParamsBodyAO0 AppRolesUpdateParamsBodyAllOf0
-	if err := swag.ReadJSON(raw, &appRolesUpdateParamsBodyAO0); err != nil {
-		return err
-	}
-	o.AppRolesUpdateParamsBodyAllOf0 = appRolesUpdateParamsBodyAO0
-
-	// AppRolesUpdateParamsBodyAO1
-	var dataAppRolesUpdateParamsBodyAO1 struct {
-		Groups []string `json:"groups"`
-	}
-	if err := swag.ReadJSON(raw, &dataAppRolesUpdateParamsBodyAO1); err != nil {
-		return err
-	}
-
-	o.Groups = dataAppRolesUpdateParamsBodyAO1.Groups
-
-	return nil
-}
-
-// MarshalJSON marshals this object to a JSON structure
-func (o AppRolesUpdateBody) MarshalJSON() ([]byte, error) {
-	_parts := make([][]byte, 0, 2)
-
-	appRolesUpdateParamsBodyAO0, err := swag.WriteJSON(o.AppRolesUpdateParamsBodyAllOf0)
-	if err != nil {
-		return nil, err
-	}
-	_parts = append(_parts, appRolesUpdateParamsBodyAO0)
-	var dataAppRolesUpdateParamsBodyAO1 struct {
-		Groups []string `json:"groups"`
-	}
-
-	dataAppRolesUpdateParamsBodyAO1.Groups = o.Groups
-
-	jsonDataAppRolesUpdateParamsBodyAO1, errAppRolesUpdateParamsBodyAO1 := swag.WriteJSON(dataAppRolesUpdateParamsBodyAO1)
-	if errAppRolesUpdateParamsBodyAO1 != nil {
-		return nil, errAppRolesUpdateParamsBodyAO1
-	}
-	_parts = append(_parts, jsonDataAppRolesUpdateParamsBodyAO1)
-	return swag.ConcatJSON(_parts...), nil
-}
-
-// Validate validates this app roles update body
-func (o *AppRolesUpdateBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	// validation for a type composition with AppRolesUpdateParamsBodyAllOf0
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-// ContextValidate validates this app roles update body based on context it is used
-func (o *AppRolesUpdateBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AppRolesUpdateBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AppRolesUpdateBody) UnmarshalBinary(b []byte) error {
-	var res AppRolesUpdateBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AppRolesUpdateOKBody app roles update o k body
-swagger:model AppRolesUpdateOKBody
-*/
-type AppRolesUpdateOKBody struct {
-	AppRolesUpdateOKBodyAllOf0
-
-	// groups
-	Groups []string `json:"groups"`
-}
-
-// UnmarshalJSON unmarshals this object from a JSON structure
-func (o *AppRolesUpdateOKBody) UnmarshalJSON(raw []byte) error {
-	// AppRolesUpdateOKBodyAO0
-	var appRolesUpdateOKBodyAO0 AppRolesUpdateOKBodyAllOf0
-	if err := swag.ReadJSON(raw, &appRolesUpdateOKBodyAO0); err != nil {
-		return err
-	}
-	o.AppRolesUpdateOKBodyAllOf0 = appRolesUpdateOKBodyAO0
-
-	// AppRolesUpdateOKBodyAO1
-	var dataAppRolesUpdateOKBodyAO1 struct {
-		Groups []string `json:"groups"`
-	}
-	if err := swag.ReadJSON(raw, &dataAppRolesUpdateOKBodyAO1); err != nil {
-		return err
-	}
-
-	o.Groups = dataAppRolesUpdateOKBodyAO1.Groups
-
-	return nil
-}
-
-// MarshalJSON marshals this object to a JSON structure
-func (o AppRolesUpdateOKBody) MarshalJSON() ([]byte, error) {
-	_parts := make([][]byte, 0, 2)
-
-	appRolesUpdateOKBodyAO0, err := swag.WriteJSON(o.AppRolesUpdateOKBodyAllOf0)
-	if err != nil {
-		return nil, err
-	}
-	_parts = append(_parts, appRolesUpdateOKBodyAO0)
-	var dataAppRolesUpdateOKBodyAO1 struct {
-		Groups []string `json:"groups"`
-	}
-
-	dataAppRolesUpdateOKBodyAO1.Groups = o.Groups
-
-	jsonDataAppRolesUpdateOKBodyAO1, errAppRolesUpdateOKBodyAO1 := swag.WriteJSON(dataAppRolesUpdateOKBodyAO1)
-	if errAppRolesUpdateOKBodyAO1 != nil {
-		return nil, errAppRolesUpdateOKBodyAO1
-	}
-	_parts = append(_parts, jsonDataAppRolesUpdateOKBodyAO1)
-	return swag.ConcatJSON(_parts...), nil
-}
-
-// Validate validates this app roles update o k body
-func (o *AppRolesUpdateOKBody) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	// validation for a type composition with AppRolesUpdateOKBodyAllOf0
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-// ContextValidate validates this app roles update o k body based on context it is used
-func (o *AppRolesUpdateOKBody) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *AppRolesUpdateOKBody) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *AppRolesUpdateOKBody) UnmarshalBinary(b []byte) error {
-	var res AppRolesUpdateOKBody
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*
-AppRolesUpdateOKBodyAllOf0 app roles update o k body all of0
-swagger:model AppRolesUpdateOKBodyAllOf0
-*/
-type AppRolesUpdateOKBodyAllOf0 interface{}
-
-/*
-AppRolesUpdateParamsBodyAllOf0 app roles update params body all of0
-swagger:model AppRolesUpdateParamsBodyAllOf0
-*/
-type AppRolesUpdateParamsBodyAllOf0 interface{}

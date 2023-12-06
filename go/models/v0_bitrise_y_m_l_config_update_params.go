@@ -18,11 +18,8 @@ import (
 // swagger:model v0.BitriseYMLConfigUpdateParams
 type V0BitriseYMLConfigUpdateParams struct {
 
-	// Location of bitrise.yml file. Enums(bitrise.io, repository)
-	// Example: repository
-	Location struct {
-		WebsiteBitriseYMLLocation
-	} `json:"location,omitempty"`
+	// location
+	Location *V0BitriseYMLConfigUpdateParamsLocation `json:"location,omitempty"`
 }
 
 // Validate validates this v0 bitrise y m l config update params
@@ -44,6 +41,17 @@ func (m *V0BitriseYMLConfigUpdateParams) validateLocation(formats strfmt.Registr
 		return nil
 	}
 
+	if m.Location != nil {
+		if err := m.Location.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("location")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("location")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -62,6 +70,22 @@ func (m *V0BitriseYMLConfigUpdateParams) ContextValidate(ctx context.Context, fo
 }
 
 func (m *V0BitriseYMLConfigUpdateParams) contextValidateLocation(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Location != nil {
+
+		if swag.IsZero(m.Location) { // not required
+			return nil
+		}
+
+		if err := m.Location.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("location")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("location")
+			}
+			return err
+		}
+	}
 
 	return nil
 }
