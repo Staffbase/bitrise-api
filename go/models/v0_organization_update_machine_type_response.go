@@ -20,7 +20,7 @@ import (
 type V0OrganizationUpdateMachineTypeResponse struct {
 
 	// errors
-	Errors []*V0OrganizationUpdateMachineTypeResponseErrorsItems0 `json:"errors"`
+	Errors []*V0OrganizationUpdateMachineTypeResponseErrorsItems `json:"errors"`
 
 	// The result of the migration
 	Message string `json:"message,omitempty"`
@@ -119,46 +119,6 @@ func (m *V0OrganizationUpdateMachineTypeResponse) MarshalBinary() ([]byte, error
 // UnmarshalBinary interface implementation
 func (m *V0OrganizationUpdateMachineTypeResponse) UnmarshalBinary(b []byte) error {
 	var res V0OrganizationUpdateMachineTypeResponse
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*m = res
-	return nil
-}
-
-// V0OrganizationUpdateMachineTypeResponseErrorsItems0 v0 organization update machine type response errors items0
-//
-// swagger:model V0OrganizationUpdateMachineTypeResponseErrorsItems0
-type V0OrganizationUpdateMachineTypeResponseErrorsItems0 struct {
-
-	// The apps which had an error's identifiers in the following format "#{app.title} (#{app.slug})"
-	App string `json:"app,omitempty"`
-
-	// error
-	Error string `json:"error,omitempty"`
-}
-
-// Validate validates this v0 organization update machine type response errors items0
-func (m *V0OrganizationUpdateMachineTypeResponseErrorsItems0) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this v0 organization update machine type response errors items0 based on context it is used
-func (m *V0OrganizationUpdateMachineTypeResponseErrorsItems0) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (m *V0OrganizationUpdateMachineTypeResponseErrorsItems0) MarshalBinary() ([]byte, error) {
-	if m == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(m)
-}
-
-// UnmarshalBinary interface implementation
-func (m *V0OrganizationUpdateMachineTypeResponseErrorsItems0) UnmarshalBinary(b []byte) error {
-	var res V0OrganizationUpdateMachineTypeResponseErrorsItems0
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
