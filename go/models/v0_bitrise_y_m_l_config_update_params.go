@@ -7,10 +7,12 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // V0BitriseYMLConfigUpdateParams v0 bitrise y m l config update params
@@ -18,8 +20,9 @@ import (
 // swagger:model v0.BitriseYMLConfigUpdateParams
 type V0BitriseYMLConfigUpdateParams struct {
 
-	// location
-	Location *V0BitriseYMLConfigUpdateParamsLocation `json:"location,omitempty"`
+	// Location of bitrise.yml file. Enums(bitrise.io, repository)
+	// Enum: [bitrise.io repository]
+	Location string `json:"location,omitempty"`
 }
 
 // Validate validates this v0 bitrise y m l config update params
@@ -36,57 +39,50 @@ func (m *V0BitriseYMLConfigUpdateParams) Validate(formats strfmt.Registry) error
 	return nil
 }
 
+var v0BitriseYMLConfigUpdateParamsTypeLocationPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["bitrise.io","repository"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		v0BitriseYMLConfigUpdateParamsTypeLocationPropEnum = append(v0BitriseYMLConfigUpdateParamsTypeLocationPropEnum, v)
+	}
+}
+
+const (
+
+	// V0BitriseYMLConfigUpdateParamsLocationBitriseDotIo captures enum value "bitrise.io"
+	V0BitriseYMLConfigUpdateParamsLocationBitriseDotIo string = "bitrise.io"
+
+	// V0BitriseYMLConfigUpdateParamsLocationRepository captures enum value "repository"
+	V0BitriseYMLConfigUpdateParamsLocationRepository string = "repository"
+)
+
+// prop value enum
+func (m *V0BitriseYMLConfigUpdateParams) validateLocationEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, v0BitriseYMLConfigUpdateParamsTypeLocationPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (m *V0BitriseYMLConfigUpdateParams) validateLocation(formats strfmt.Registry) error {
 	if swag.IsZero(m.Location) { // not required
 		return nil
 	}
 
-	if m.Location != nil {
-		if err := m.Location.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("location")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("location")
-			}
-			return err
-		}
+	// value enum
+	if err := m.validateLocationEnum("location", "body", m.Location); err != nil {
+		return err
 	}
 
 	return nil
 }
 
-// ContextValidate validate this v0 bitrise y m l config update params based on the context it is used
+// ContextValidate validates this v0 bitrise y m l config update params based on context it is used
 func (m *V0BitriseYMLConfigUpdateParams) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.contextValidateLocation(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *V0BitriseYMLConfigUpdateParams) contextValidateLocation(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Location != nil {
-
-		if swag.IsZero(m.Location) { // not required
-			return nil
-		}
-
-		if err := m.Location.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("location")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("location")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
