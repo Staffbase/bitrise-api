@@ -7833,12 +7833,12 @@
             "type": "object",
             "properties": {
                 "location": {
+                    "enum": [
+                      "bitrise.io",
+                      "repository"
+                    ],
                     "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/website.BitriseYMLLocation"
-                        }
-                    ]
+                    "type": "string"
                 }
             }
         },
@@ -7846,13 +7846,12 @@
             "type": "object",
             "properties": {
                 "location": {
-                    "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "allOf": [
-                        {
-                            "$ref": "#/definitions/website.BitriseYMLLocation"
-                        }
+                    "enum": [
+                        "bitrise.io",
+                        "repository"
                     ],
-                    "example": "repository"
+                    "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
+                    "type": "string"
                 }
             }
         },
@@ -9583,10 +9582,6 @@
             "enum": [
                 "bitrise.io",
                 "repository"
-            ],
-            "x-enum-varnames": [
-                "LocationBitriseIo",
-                "LocationRepository"
             ]
         }
     },
