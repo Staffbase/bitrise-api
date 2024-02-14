@@ -75,6 +75,9 @@ type V0BuildResponseItemModel struct {
 	// pull request view url
 	PullRequestViewURL *NullsString `json:"pull_request_view_url,omitempty"`
 
+	// rebuildable
+	Rebuildable bool `json:"rebuildable,omitempty"`
+
 	// slug
 	Slug string `json:"slug,omitempty"`
 

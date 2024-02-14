@@ -148,8 +148,6 @@ type ClientService interface {
 
 	GenericProjectFilesCreate(params *GenericProjectFilesCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*GenericProjectFilesCreateCreated, error)
 
-	LocalBuildList(params *LocalBuildListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*LocalBuildListOK, error)
-
 	OrgList(params *OrgListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgListOK, error)
 
 	OrgShow(params *OrgShowParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*OrgShowOK, error)
@@ -478,7 +476,7 @@ func (a *Client) AndroidKeystoreFileConfirm(params *AndroidKeystoreFileConfirmPa
 	op := &runtime.ClientOperation{
 		ID:                 "android-keystore-file-confirm",
 		Method:             "POST",
-		PathPattern:        "/apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}",
+		PathPattern:        "/apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"https"},
@@ -509,7 +507,7 @@ func (a *Client) AndroidKeystoreFileConfirm(params *AndroidKeystoreFileConfirmPa
 /*
 AndroidKeystoreFileCreate creates an android keystore file
 
-Add a new Android keystore file to an app
+Add a new Android keystore file to an app. `keystore_file_name` is required if there is already an existing keystore file for the app. It will determine the environment variable key to be used to refer to the keystore file in builds. E.g. `BITRISE_ANDROID_KEYSTORE_<keystore_file_name>_URL`. The `keystore_file_name` can only contain letters, numbers, and underscores.
 */
 func (a *Client) AndroidKeystoreFileCreate(params *AndroidKeystoreFileCreateParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*AndroidKeystoreFileCreateCreated, error) {
 	// TODO: Validate the params before sending
@@ -2626,47 +2624,6 @@ func (a *Client) GenericProjectFilesCreate(params *GenericProjectFilesCreatePara
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for generic-project-files-create: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-LocalBuildList lists local builds of an app
-
-List all the local builds belonging to the specified Bitrise app. Set parameters to filter builds
-*/
-func (a *Client) LocalBuildList(params *LocalBuildListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*LocalBuildListOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewLocalBuildListParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "local-build-list",
-		Method:             "GET",
-		PathPattern:        "/apps/{app-slug}/local-builds",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"https"},
-		Params:             params,
-		Reader:             &LocalBuildListReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*LocalBuildListOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for local-build-list: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

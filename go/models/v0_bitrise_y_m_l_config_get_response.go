@@ -7,12 +7,10 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // V0BitriseYMLConfigGetResponse v0 bitrise y m l config get response
@@ -21,8 +19,9 @@ import (
 type V0BitriseYMLConfigGetResponse struct {
 
 	// Location of bitrise.yml file. Enums(bitrise.io, repository)
-	// Enum: [bitrise.io repository]
-	Location string `json:"location,omitempty"`
+	Location struct {
+		WebsiteBitriseYMLLocation
+	} `json:"location,omitempty"`
 }
 
 // Validate validates this v0 bitrise y m l config get response
@@ -39,50 +38,30 @@ func (m *V0BitriseYMLConfigGetResponse) Validate(formats strfmt.Registry) error 
 	return nil
 }
 
-var v0BitriseYMLConfigGetResponseTypeLocationPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["bitrise.io","repository"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		v0BitriseYMLConfigGetResponseTypeLocationPropEnum = append(v0BitriseYMLConfigGetResponseTypeLocationPropEnum, v)
-	}
-}
-
-const (
-
-	// V0BitriseYMLConfigGetResponseLocationBitriseDotIo captures enum value "bitrise.io"
-	V0BitriseYMLConfigGetResponseLocationBitriseDotIo string = "bitrise.io"
-
-	// V0BitriseYMLConfigGetResponseLocationRepository captures enum value "repository"
-	V0BitriseYMLConfigGetResponseLocationRepository string = "repository"
-)
-
-// prop value enum
-func (m *V0BitriseYMLConfigGetResponse) validateLocationEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, v0BitriseYMLConfigGetResponseTypeLocationPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *V0BitriseYMLConfigGetResponse) validateLocation(formats strfmt.Registry) error {
 	if swag.IsZero(m.Location) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateLocationEnum("location", "body", m.Location); err != nil {
-		return err
-	}
-
 	return nil
 }
 
-// ContextValidate validates this v0 bitrise y m l config get response based on context it is used
+// ContextValidate validate this v0 bitrise y m l config get response based on the context it is used
 func (m *V0BitriseYMLConfigGetResponse) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateLocation(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *V0BitriseYMLConfigGetResponse) contextValidateLocation(ctx context.Context, formats strfmt.Registry) error {
+
 	return nil
 }
 

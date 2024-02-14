@@ -86,12 +86,6 @@ type PipelineListParams struct {
 	*/
 	Branch *string
 
-	/* BuildEnvironment.
-
-	   The build environment of the listed builds (ci, local, all) - default: ci
-	*/
-	BuildEnvironment *string
-
 	/* BuildNumber.
 
 	   The pipeline/standalone build number
@@ -235,17 +229,6 @@ func (o *PipelineListParams) WithBranch(branch *string) *PipelineListParams {
 // SetBranch adds the branch to the pipeline list params
 func (o *PipelineListParams) SetBranch(branch *string) {
 	o.Branch = branch
-}
-
-// WithBuildEnvironment adds the buildEnvironment to the pipeline list params
-func (o *PipelineListParams) WithBuildEnvironment(buildEnvironment *string) *PipelineListParams {
-	o.SetBuildEnvironment(buildEnvironment)
-	return o
-}
-
-// SetBuildEnvironment adds the buildEnvironment to the pipeline list params
-func (o *PipelineListParams) SetBuildEnvironment(buildEnvironment *string) {
-	o.BuildEnvironment = buildEnvironment
 }
 
 // WithBuildNumber adds the buildNumber to the pipeline list params
@@ -395,23 +378,6 @@ func (o *PipelineListParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.
 		if qBranch != "" {
 
 			if err := r.SetQueryParam("branch", qBranch); err != nil {
-				return err
-			}
-		}
-	}
-
-	if o.BuildEnvironment != nil {
-
-		// query param build_environment
-		var qrBuildEnvironment string
-
-		if o.BuildEnvironment != nil {
-			qrBuildEnvironment = *o.BuildEnvironment
-		}
-		qBuildEnvironment := qrBuildEnvironment
-		if qBuildEnvironment != "" {
-
-			if err := r.SetQueryParam("build_environment", qBuildEnvironment); err != nil {
 				return err
 			}
 		}

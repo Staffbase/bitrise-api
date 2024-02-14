@@ -54,7 +54,7 @@ func (o *AndroidKeystoreFileConfirmReader) ReadResponse(response runtime.ClientR
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}] android-keystore-file-confirm", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded] android-keystore-file-confirm", response, response.Code())
 	}
 }
 
@@ -103,11 +103,11 @@ func (o *AndroidKeystoreFileConfirmOK) Code() int {
 }
 
 func (o *AndroidKeystoreFileConfirmOK) Error() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmOK  %+v", 200, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmOK) String() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmOK  %+v", 200, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmOK) GetPayload() *models.V0ProjectFileStorageResponseModel {
@@ -171,11 +171,11 @@ func (o *AndroidKeystoreFileConfirmBadRequest) Code() int {
 }
 
 func (o *AndroidKeystoreFileConfirmBadRequest) Error() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmBadRequest) String() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmBadRequest) GetPayload() *models.ServiceStandardErrorRespModel {
@@ -239,11 +239,11 @@ func (o *AndroidKeystoreFileConfirmUnauthorized) Code() int {
 }
 
 func (o *AndroidKeystoreFileConfirmUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmUnauthorized) String() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmUnauthorized) GetPayload() *models.ServiceStandardErrorRespModel {
@@ -307,11 +307,11 @@ func (o *AndroidKeystoreFileConfirmNotFound) Code() int {
 }
 
 func (o *AndroidKeystoreFileConfirmNotFound) Error() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmNotFound  %+v", 404, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmNotFound) String() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmNotFound  %+v", 404, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmNotFound) GetPayload() *models.ServiceStandardErrorRespModel {
@@ -375,11 +375,11 @@ func (o *AndroidKeystoreFileConfirmInternalServerError) Code() int {
 }
 
 func (o *AndroidKeystoreFileConfirmInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmInternalServerError) String() string {
-	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}][%d] androidKeystoreFileConfirmInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded][%d] androidKeystoreFileConfirmInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *AndroidKeystoreFileConfirmInternalServerError) GetPayload() *models.ServiceStandardErrorRespModel {

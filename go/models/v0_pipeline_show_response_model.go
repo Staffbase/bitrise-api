@@ -51,6 +51,9 @@ type V0PipelineShowResponseModel struct {
 	// put on hold at
 	PutOnHoldAt interface{} `json:"put_on_hold_at,omitempty"`
 
+	// rebuildable
+	Rebuildable bool `json:"rebuildable,omitempty"`
+
 	// stages
 	Stages []*V0PipelineShowStageResponseModel `json:"stages"`
 

@@ -61,6 +61,9 @@ type V0PipelineListResponseItemModel struct {
 	// pull request target branch
 	PullRequestTargetBranch *NullsString `json:"pull_request_target_branch,omitempty"`
 
+	// rebuildable
+	Rebuildable bool `json:"rebuildable,omitempty"`
+
 	// slug
 	Slug string `json:"slug,omitempty"`
 
