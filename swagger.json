@@ -602,7 +602,7 @@
                         "PersonalAccessToken": []
                     }
                 ],
-                "description": "Add a new Android keystore file to an app",
+                "description": "Add a new Android keystore file to an app. `keystore_file_name` is required if there is already an existing keystore file for the app. It will determine the environment variable key to be used to refer to the keystore file in builds. E.g. `BITRISE_ANDROID_KEYSTORE_\u003ckeystore_file_name\u003e_URL`. The `keystore_file_name` can only contain letters, numbers, and underscores.",
                 "consumes": [
                     "application/json"
                 ],
@@ -667,24 +667,21 @@
             }
         },
         "/apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}": {
-            "post": {
+            "delete": {
                 "security": [
                     {
                         "PersonalAccessToken": []
                     }
                 ],
-                "description": "This is the last step of uploading an android keystore file to Bitrise. Confirm the android keystore file upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the upload](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#confirming-the-file-upload) guide.",
-                "consumes": [
-                    "application/json"
-                ],
+                "description": "Delete an app's android keystore file. You can fetch an app's android keystore file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/android-keystore-files](https://api-docs.bitrise.io/#/android-keystore-file/android-keystore-file-list) endpoint. Read more in our [Deleting a file](https://devcenter.bitrise.io/api/managing-android-keystore-files.html) guide.",
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "android-keystore-file"
                 ],
-                "summary": "Confirm an android keystore file upload",
-                "operationId": "android-keystore-file-confirm",
+                "summary": "Delete an android keystore file",
+                "operationId": "android-keystore-file-delete",
                 "parameters": [
                     {
                         "type": "string",
@@ -733,22 +730,27 @@
                         }
                     }
                 }
-            },
-            "delete": {
+            }
+        },
+        "/apps/{app-slug}/android-keystore-files/{android-keystore-file-slug}/uploaded": {
+            "post": {
                 "security": [
                     {
                         "PersonalAccessToken": []
                     }
                 ],
-                "description": "Delete an app's android keystore file. You can fetch an app's android keystore file slug if you first list all the uploaded files with the [GET /apps/{app-slug}/android-keystore-files](https://api-docs.bitrise.io/#/android-keystore-file/android-keystore-file-list) endpoint. Read more in our [Deleting a file](https://devcenter.bitrise.io/api/managing-android-keystore-files.html) guide.",
+                "description": "This is the last step of uploading an android keystore file to Bitrise. Confirm the android keystore file upload and view the file on the Code Signing tab of a specific app. Read more in our [Confirming the upload](https://devcenter.bitrise.io/api/managing-files-in-generic-file-storage/#confirming-the-file-upload) guide.",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
                 "tags": [
                     "android-keystore-file"
                 ],
-                "summary": "Delete an android keystore file",
-                "operationId": "android-keystore-file-delete",
+                "summary": "Confirm an android keystore file upload",
+                "operationId": "android-keystore-file-confirm",
                 "parameters": [
                     {
                         "type": "string",
@@ -3385,83 +3387,6 @@
                 }
             }
         },
-        "/apps/{app-slug}/local-builds": {
-            "get": {
-                "security": [
-                    {
-                        "PersonalAccessToken": []
-                    }
-                ],
-                "description": "List all the local builds belonging to the specified Bitrise app. Set parameters to filter builds",
-                "produces": [
-                    "application/json"
-                ],
-                "tags": [
-                    "local-builds"
-                ],
-                "summary": "List local builds of an app",
-                "operationId": "local-build-list",
-                "parameters": [
-                    {
-                        "type": "string",
-                        "description": "List local builds run after a given date (RFC3339 time format)",
-                        "name": "after",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "App slug",
-                        "name": "app-slug",
-                        "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "string",
-                        "description": "List local builds run before a given date (RFC3339 time format) - was called 'next' earlier",
-                        "name": "before",
-                        "in": "query"
-                    },
-                    {
-                        "type": "integer",
-                        "description": "Max number of elements per page (default: 10)",
-                        "name": "limit",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/v0.PipelineListResponseModel"
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "404": {
-                        "description": "Not Found",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    },
-                    "500": {
-                        "description": "Internal Server Error",
-                        "schema": {
-                            "$ref": "#/definitions/service.StandardErrorRespModel"
-                        }
-                    }
-                }
-            }
-        },
         "/apps/{app-slug}/outgoing-webhooks": {
             "get": {
                 "security": [
@@ -3995,12 +3920,6 @@
                         "type": "integer",
                         "description": "The pipeline/standalone build number",
                         "name": "build_number",
-                        "in": "query"
-                    },
-                    {
-                        "type": "string",
-                        "description": "The build environment of the listed builds (ci, local, all) - default: ci",
-                        "name": "build_environment",
                         "in": "query"
                     },
                     {
@@ -6882,6 +6801,9 @@
                         "$ref": "#/definitions/pipelineabledomain.Environments"
                     }
                 },
+                "machine_type_id": {
+                    "type": "string"
+                },
                 "pull_request_author": {
                     "type": "string"
                 },
@@ -6896,6 +6818,9 @@
                     "type": "string"
                 },
                 "pull_request_unverified_merge_branch": {
+                    "type": "string"
+                },
+                "stack": {
                     "type": "string"
                 },
                 "tag": {}
@@ -7833,12 +7758,12 @@
             "type": "object",
             "properties": {
                 "location": {
-                    "enum": [
-                      "bitrise.io",
-                      "repository"
-                    ],
                     "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "type": "string"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/website.BitriseYMLLocation"
+                        }
+                    ]
                 }
             }
         },
@@ -7846,12 +7771,13 @@
             "type": "object",
             "properties": {
                 "location": {
-                    "enum": [
-                        "bitrise.io",
-                        "repository"
-                    ],
                     "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
-                    "type": "string"
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/website.BitriseYMLLocation"
+                        }
+                    ],
+                    "example": "repository"
                 }
             }
         },
@@ -8234,6 +8160,9 @@
                 },
                 "pull_request_view_url": {
                     "$ref": "#/definitions/nulls.String"
+                },
+                "rebuildable": {
+                    "type": "boolean"
                 },
                 "slug": {
                     "type": "string"
@@ -8815,6 +8744,9 @@
                 "pull_request_target_branch": {
                     "$ref": "#/definitions/nulls.String"
                 },
+                "rebuildable": {
+                    "type": "boolean"
+                },
                 "slug": {
                     "type": "string"
                 },
@@ -8940,6 +8872,9 @@
                     "type": "integer"
                 },
                 "put_on_hold_at": {},
+                "rebuildable": {
+                    "type": "boolean"
+                },
                 "stages": {
                     "type": "array",
                     "items": {
@@ -9582,6 +9517,10 @@
             "enum": [
                 "bitrise.io",
                 "repository"
+            ],
+            "x-enum-varnames": [
+                "LocationBitriseIo",
+                "LocationRepository"
             ]
         }
     },
