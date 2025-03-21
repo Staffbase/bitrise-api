@@ -3,7 +3,7 @@ module github.com/Staffbase/bitrise-api
 go 1.20
 
 require (
-	github.com/go-openapi/errors v0.22.0
+	github.com/go-openapi/errors v0.22.1
 	github.com/go-openapi/runtime v0.28.0
 	github.com/go-openapi/strfmt v0.23.0
 	github.com/go-openapi/swag v0.23.1
