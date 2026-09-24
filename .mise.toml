@@ -1,0 +1,37 @@
+[env]
+SWAGGER_SPEC = "swagger.json"
+SWAGGER_URL = "https://api-docs.bitrise.io/docs/swagger.json"
+SWAGGER_VERSION = "v0.30.5"
+
+[tasks.download]
+description = "Download the bitrise swagger specification."
+run = "wget -q -O \"$SWAGGER_SPEC\" \"$SWAGGER_URL\""
+
+[tasks.validate]
+description = "Check that the swagger spec is valid."
+run = "go run github.com/go-swagger/go-swagger/cmd/swagger@$SWAGGER_VERSION validate \"$SWAGGER_SPEC\""
+
+[tasks.clean]
+description = "Remove the generated Go client code."
+run = "rm -rf go/*"
+
+[tasks.generate]
+description = "Generate the API Go client from the swagger spec."
+depends = ["clean"]
+run = """
+go run github.com/go-swagger/go-swagger/cmd/swagger@$SWAGGER_VERSION generate client \
+  --name bitrise-api \
+  --spec "$SWAGGER_SPEC" \
+  --target go \
+  --default-scheme=https \
+  --with-flatten=minimal \
+  --skip-tag-packages
+"""
+
+[tasks.build]
+description = "Build the API Go client."
+run = "go build ./go/..."
+
+[tasks.all]
+description = "Download the spec, generate the client and build it."
+run = "mise run download && mise run generate && mise run build"
