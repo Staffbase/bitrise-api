@@ -1,7 +1,7 @@
 [env]
 SWAGGER_SPEC = "swagger.json"
 SWAGGER_URL = "https://api-docs.bitrise.io/docs/swagger.json"
-SWAGGER_VERSION = "v0.30.5"
+SWAGGER_VERSION = "v0.36.6"
 
 [tasks.download]
 description = "Download the bitrise swagger specification."
