@@ -13,9 +13,11 @@ The main purpose is to provide a package of the generated golang client code, wh
 
 ## Development
 
-Please find all operation in the `Makefile`.
+Tooling is managed with [mise](https://mise.jdx.dev/). Find all available tasks with:
 
-`make help`
+`mise tasks`
+
+Common tasks: `mise run download`, `mise run generate`, `mise run build`, `mise run validate`, and `mise run all`.
 
 <table>
   <tr>

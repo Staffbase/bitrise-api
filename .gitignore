@@ -15,5 +15,8 @@
 # Dependency directories (remove the comment below to include it)
 .gobincache
 
+# mise local overrides
+.mise.local.toml
+
 /swagger_flat.json
 /swagger_go.json
