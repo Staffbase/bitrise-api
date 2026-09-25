@@ -1,34 +1,13 @@
 Fix v0.BitriseYMLConfigUpdateParams.location generation
 
-The upstream Bitrise swagger spec models the `location` property as:
+The upstream spec wraps the enum ref in `allOf` (standard Swagger 2.0
+idiom because JSON Schema draft-4 ignores siblings of a bare `$ref`).
+go-swagger emits that as an embedded-struct wrapper, marshalling to
+`{"location":{"WebsiteBitriseYMLLocation":"repository"}}` instead of
+the plain string the API expects (known bug: go-swagger #436, #740).
 
-    "allOf": [ { "$ref": "#/definitions/website.BitriseYMLLocation" } ]
-
-with a sibling `description` and `example`. That is a standard
-Swagger 2.0 idiom (JSON Schema draft-4 ignores sibling keywords next
-to a bare `$ref`, so `allOf` is the documented workaround). But
-go-swagger unconditionally routes single-ref `allOf` through its
-composed-object path and emits:
-
-    Location struct { WebsiteBitriseYMLLocation } `json:"location,omitempty"`
-
-which JSON-marshals to `{"location":{"WebsiteBitriseYMLLocation":"repository"}}`
-instead of the plain string the Bitrise API expects. This is a
-long-standing generator bug (go-swagger #436, #740; PR #1849 added
-partial type-alias support at definition level but not for scalar
-refs used inline in a property).
-
-Drop the `allOf` wrapper and use a bare `$ref` on the property so
-go-swagger emits the type-aliased form:
-
-    Location WebsiteBitriseYMLLocation `json:"location,omitempty"`
-
-The tradeoff is that the property-level `description` is dropped from
-the spec; the description on the referenced enum type is preserved.
-
-Remove this patch once go-swagger collapses single-scalar-ref `allOf`
-to an alias on its own, or once the upstream Bitrise spec stops
-wrapping the enum in `allOf`.
+Drop the `allOf` wrapper so the property uses a bare `$ref` and
+go-swagger emits `Location WebsiteBitriseYMLLocation`.
 
 --- a/swagger.json
 +++ b/swagger.json
