@@ -20,3 +20,7 @@
 
 /swagger_flat.json
 /swagger_go.json
+
+# patch backup and reject files
+*.orig
+*.rej
