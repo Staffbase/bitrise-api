@@ -1,0 +1,27 @@
+Fix v0.BitriseYMLConfigUpdateParams.location generation
+
+The upstream spec wraps the enum ref in `allOf` (standard Swagger 2.0
+idiom because JSON Schema draft-4 ignores siblings of a bare `$ref`).
+go-swagger emits that as an embedded-struct wrapper, marshalling to
+`{"location":{"WebsiteBitriseYMLLocation":"repository"}}` instead of
+the plain string the API expects (known bug: go-swagger #436, #740).
+
+Drop the `allOf` wrapper so the property uses a bare `$ref` and
+go-swagger emits `Location WebsiteBitriseYMLLocation`.
+
+--- a/swagger.json
++++ b/swagger.json
+@@ -9918,12 +9918,7 @@
+       "properties": {
+         "location": {
+           "description": "Location of bitrise.yml file. Enums(bitrise.io, repository)",
+-          "allOf": [
+-            {
+-              "$ref": "#/definitions/website.BitriseYMLLocation"
+-            }
+-          ],
+-          "example": "repository"
++          "$ref": "#/definitions/website.BitriseYMLLocation"
+         }
+       }
+     },

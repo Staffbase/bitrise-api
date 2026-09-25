@@ -4,6 +4,7 @@ package models
 
 import (
 	"context"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -17,10 +18,7 @@ import (
 type V0BitriseYMLConfigUpdateParams struct {
 
 	// Location of bitrise.yml file. Enums(bitrise.io, repository)
-	// Example: repository
-	Location struct {
-		WebsiteBitriseYMLLocation
-	} `json:"location,omitempty"`
+	Location WebsiteBitriseYMLLocation `json:"location,omitempty"`
 }
 
 // Validate validates this v0 bitrise y m l config update params
@@ -42,6 +40,19 @@ func (m *V0BitriseYMLConfigUpdateParams) validateLocation(formats strfmt.Registr
 		return nil
 	}
 
+	if err := m.Location.Validate(formats); err != nil {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
+			return ve.ValidateName("location")
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
+			return ce.ValidateName("location")
+		}
+
+		return err
+	}
+
 	return nil
 }
 
@@ -60,6 +71,23 @@ func (m *V0BitriseYMLConfigUpdateParams) ContextValidate(ctx context.Context, fo
 }
 
 func (m *V0BitriseYMLConfigUpdateParams) contextValidateLocation(ctx context.Context, formats strfmt.Registry) error {
+
+	if typeutils.IsZero(m.Location) { // not required
+		return nil
+	}
+
+	if err := m.Location.ContextValidate(ctx, formats); err != nil {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
+			return ve.ValidateName("location")
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
+			return ce.ValidateName("location")
+		}
+
+		return err
+	}
 
 	return nil
 }

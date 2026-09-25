@@ -7,6 +7,10 @@ SWAGGER_VERSION = "v0.36.6"
 description = "Download the bitrise swagger specification."
 run = "wget -q -O \"$SWAGGER_SPEC\" \"$SWAGGER_URL\""
 
+[tasks.patch]
+description = "Apply local patches to the swagger specification (idempotent)."
+run = "for p in patches/*.patch; do patch -p1 --forward --reject-file=- < \"$p\" || true; done"
+
 [tasks.validate]
 description = "Check that the swagger spec is valid."
 run = "go run github.com/go-swagger/go-swagger/cmd/swagger@$SWAGGER_VERSION validate \"$SWAGGER_SPEC\""
@@ -17,7 +21,7 @@ run = "rm -rf go/*"
 
 [tasks.generate]
 description = "Generate the API Go client from the swagger spec."
-depends = ["clean"]
+depends = ["patch", "clean"]
 run = """
 go run github.com/go-swagger/go-swagger/cmd/swagger@$SWAGGER_VERSION generate client \
   --name bitrise-api \
