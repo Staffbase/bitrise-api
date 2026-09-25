@@ -9,7 +9,16 @@ run = "wget -q -O \"$SWAGGER_SPEC\" \"$SWAGGER_URL\""
 
 [tasks.patch]
 description = "Apply local patches to the swagger specification (idempotent)."
-run = "for p in patches/*.patch; do patch -p1 --forward --reject-file=- < \"$p\" || true; done"
+run = """
+set -e
+for p in patches/*.patch; do
+  if patch -p1 -R --dry-run -sf < "$p" > /dev/null 2>&1; then
+    echo "already applied: $p"
+    continue
+  fi
+  patch -p1 --forward < "$p"
+done
+"""
 
 [tasks.validate]
 description = "Check that the swagger spec is valid."
